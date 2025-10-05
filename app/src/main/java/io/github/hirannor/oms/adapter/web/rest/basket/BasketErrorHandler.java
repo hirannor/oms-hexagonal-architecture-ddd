@@ -1,6 +1,7 @@
 package io.github.hirannor.oms.adapter.web.rest.basket;
 
 import io.github.hirannor.oms.adapter.web.rest.baskets.model.ProblemDetailsModel;
+import io.github.hirannor.oms.application.service.basket.error.BasketAlreadyCheckedOut;
 import io.github.hirannor.oms.application.service.basket.error.BasketNotFound;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,18 @@ class BasketErrorHandler {
                 .detail(ex.getMessage());
 
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BasketAlreadyCheckedOut.class)
+    ResponseEntity<?> basketAlreadyCheckedOut(final BasketAlreadyCheckedOut ex, final HttpServletRequest request) {
+        final ProblemDetailsModel message = new ProblemDetailsModel()
+                .timestamp(Instant.now())
+                .status(HttpStatus.CONFLICT.value())
+                .title("Basket is already checked out")
+                .instance(request.getRequestURI())
+                .detail(ex.getMessage());
+
+        return new ResponseEntity<>(message, HttpStatus.CONFLICT);
     }
 
 }

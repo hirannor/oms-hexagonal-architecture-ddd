@@ -1,5 +1,6 @@
 package io.github.hirannor.oms.domain.basket;
 
+import io.github.hirannor.oms.application.service.basket.error.BasketAlreadyCheckedOut;
 import io.github.hirannor.oms.domain.basket.command.CreateBasket;
 import io.github.hirannor.oms.domain.basket.events.BasketCheckedOut;
 import io.github.hirannor.oms.domain.basket.events.BasketCreated;
@@ -78,6 +79,9 @@ public class Basket extends AggregateRoot {
     public void addProduct(final BasketItem item) {
         Objects.requireNonNull(item, "BasketItem command cannot be null");
 
+        if (isCheckedOut())
+            throw new BasketAlreadyCheckedOut("Cannot modify basket after checkout");
+
         final ListIterator<BasketItem> iterator = items.listIterator();
 
         while (iterator.hasNext()) {
@@ -99,6 +103,9 @@ public class Basket extends AggregateRoot {
 
     public void removeProduct(final BasketItem item) {
         Objects.requireNonNull(item, "BasketItem command cannot be null");
+
+        if (isCheckedOut())
+            throw new BasketAlreadyCheckedOut("Cannot remove items from a checked-out basket");
 
         final ListIterator<BasketItem> iterator = items.listIterator();
         while (iterator.hasNext()) {
