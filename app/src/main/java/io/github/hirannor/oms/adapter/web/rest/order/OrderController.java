@@ -11,6 +11,8 @@ import io.github.hirannor.oms.adapter.web.rest.orders.model.OrderModel;
 import io.github.hirannor.oms.adapter.web.rest.orders.model.PayOrderResponseModel;
 import io.github.hirannor.oms.application.usecase.order.*;
 import io.github.hirannor.oms.application.usecase.payment.PaymentInitialization;
+import io.github.hirannor.oms.domain.core.valueobject.EmailAddress;
+import io.github.hirannor.oms.domain.customer.Customer;
 import io.github.hirannor.oms.domain.order.Order;
 import io.github.hirannor.oms.domain.order.OrderId;
 import io.github.hirannor.oms.domain.order.command.CreateOrder;
@@ -19,6 +21,8 @@ import io.github.hirannor.oms.domain.order.command.PaymentInstruction;
 import io.github.hirannor.oms.infrastructure.adapter.DriverAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -110,6 +114,16 @@ class OrderController implements OrdersApi {
         return orders.displayBy(OrderId.from(orderId))
                 .map(mapOrderToModel.andThen(ResponseEntity::ok))
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @Override
+    public ResponseEntity<List<OrderModel>> displayMine() {
+        final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        final List<OrderModel> orders = this.orders.displayBy(EmailAddress.from(auth.getName()))
+                .stream()
+                .map(mapOrderToModel)
+                .toList();
+        return ResponseEntity.ok(orders);
     }
 
     @Override

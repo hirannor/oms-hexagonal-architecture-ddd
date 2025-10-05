@@ -36,7 +36,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-
     get:
       summary: List all orders
       operationId: displayAll
@@ -55,6 +54,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+  /orders/me:
+    get:
+      summary: Get current customer's orders
+      operationId: displayMine
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: List of orders belonging to the authenticated customer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
 
   /orders/{orderId}:
     get:
