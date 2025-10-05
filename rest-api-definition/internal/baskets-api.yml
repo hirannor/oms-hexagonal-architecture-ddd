@@ -239,11 +239,20 @@ components:
             $ref: '#/components/schemas/BasketItem'
         totalPrice:
           $ref: '#/components/schemas/Money'
+        status:
+          $ref: '#/components/schemas/BasketStatus'
       required:
         - id
         - customerId
         - items
         - totalPrice
+        - status
+    BasketStatus:
+      type: string
+      enum:
+        - ACTIVE
+        - CHECKED_OUT
+        - EXPIRED
 
     ProblemDetails:
       type: object

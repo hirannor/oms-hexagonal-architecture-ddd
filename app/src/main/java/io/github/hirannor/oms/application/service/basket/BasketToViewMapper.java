@@ -33,7 +33,8 @@ public class BasketToViewMapper implements BiFunction<Basket, Map<ProductId, Pro
                 basket.id(),
                 basket.customer(),
                 itemViews,
-                basket.totalPrice()
+                basket.totalPrice(),
+                basket.status()
         );
     }
 }

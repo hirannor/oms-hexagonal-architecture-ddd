@@ -21,6 +21,7 @@ import javax.crypto.SecretKey;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -80,7 +81,26 @@ class JwtAuthentication implements Authenticator {
 
         validatePassword(providedPassword, storedPassword);
 
-        final String accessToken = generateAccessToken(storedUser);
+        final String accessToken = generateAccessToken(storedUser, Map.of());
+        final String refreshToken = generateRefreshToken(storedUser);
+
+        return AuthenticationResult.from(
+                user.emailAddress(),
+                accessToken,
+                refreshToken
+        );
+    }
+
+    @Override
+    public AuthenticationResult authenticate(AuthUser user, Map<String, Object> extraClaims) {
+        if (user == null) throw new IllegalArgumentException("auth cannot be null");
+
+        final AuthUser storedUser = authentications.findByEmail(user.emailAddress())
+                .orElseThrow(failBecauseEmailAddressWasNotFound(user.emailAddress()));
+
+        validatePassword(user.password().value(), storedUser.password().value());
+
+        final String accessToken = generateAccessToken(storedUser, extraClaims);
         final String refreshToken = generateRefreshToken(storedUser);
 
         return AuthenticationResult.from(
@@ -112,7 +132,7 @@ class JwtAuthentication implements Authenticator {
 
             return AuthenticationResult.from(
                     user.emailAddress(),
-                    generateAccessToken(user),
+                    generateAccessToken(user, Map.of()),
                     generateRefreshToken(user)
             );
         } catch (ExpiredJwtException ex) {
@@ -166,23 +186,22 @@ class JwtAuthentication implements Authenticator {
         return () -> new AuthUserNotFound("User was not found by: " + emailAddress.value());
     }
 
-    private String generateAccessToken(final AuthUser user) {
+    private String generateAccessToken(final AuthUser user, final Map<String, Object> extraClaims) {
         final Instant now = Instant.now();
 
-        final List<String> roles = user.roles()
-                .stream()
-                .map(Enum::name)
-                .toList();
-
-        return Jwts.builder()
+        var builder = Jwts.builder()
                 .subject(user.emailAddress().value())
-                .claim("roles", roles)
+                .claim("roles", user.roles().stream().map(Enum::name).toList())
                 .issuer(properties.getIssuer())
                 .audience().add(properties.getAudience()).and()
                 .issuedAt(Date.from(now))
-                .expiration(Date.from(now.plus(properties.getAccessExpiration())))
-                .signWith(key)
-                .compact();
+                .expiration(Date.from(now.plus(properties.getAccessExpiration())));
+
+        if (extraClaims != null && !extraClaims.isEmpty()) {
+            extraClaims.forEach(builder::claim);
+        }
+
+        return builder.signWith(key).compact();
     }
 
     private String generateRefreshToken(final AuthUser user) {

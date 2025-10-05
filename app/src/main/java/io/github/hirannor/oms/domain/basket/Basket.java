@@ -100,7 +100,24 @@ public class Basket extends AggregateRoot {
     public void removeProduct(final BasketItem item) {
         Objects.requireNonNull(item, "BasketItem command cannot be null");
 
-        items.remove(item);
+        final ListIterator<BasketItem> iterator = items.listIterator();
+        while (iterator.hasNext()) {
+            final BasketItem existing = iterator.next();
+
+            if (existing.productId().equals(item.productId())) {
+                int remainingQty = existing.quantity() - item.quantity();
+                if (remainingQty > 0) {
+                    iterator.set(BasketItem.create(
+                            existing.productId(),
+                            remainingQty,
+                            existing.price()
+                    ));
+                } else {
+                    iterator.remove();
+                }
+                return;
+            }
+        }
     }
 
     public Money totalPrice() {
