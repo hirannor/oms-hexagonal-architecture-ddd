@@ -1,6 +1,5 @@
 package io.github.hirannor.oms.domain.basket;
 
-import io.github.hirannor.oms.application.service.basket.error.BasketAlreadyCheckedOut;
 import io.github.hirannor.oms.domain.basket.command.CreateBasket;
 import io.github.hirannor.oms.domain.basket.events.BasketCheckedOut;
 import io.github.hirannor.oms.domain.basket.events.BasketCreated;
