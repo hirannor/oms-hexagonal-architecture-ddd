@@ -212,17 +212,21 @@ components:
           $ref: '#/components/schemas/Currency'
       required: [ amount, currency ]
 
-    OrderedProduct:
+    OrderItem:
       type: object
       properties:
         productId:
+          type: string
+        name:
+          type: string
+        description:
           type: string
         quantity:
           type: integer
           minimum: 1
         price:
           $ref: '#/components/schemas/Money'
-      required: [ productId, quantity, price ]
+      required: [ productId, name, description, quantity, price ]
 
     CreateOrder:
       type: object
@@ -232,7 +236,7 @@ components:
         products:
           type: array
           items:
-            $ref: '#/components/schemas/OrderedProduct'
+            $ref: '#/components/schemas/OrderItem'
       required: [ customerId, products ]
 
     PayOrderResponse:
@@ -266,7 +270,7 @@ components:
         orderedProducts:
           type: array
           items:
-            $ref: '#/components/schemas/OrderedProduct'
+            $ref: '#/components/schemas/OrderItem'
         customerId:
           type: string
         createdAt:

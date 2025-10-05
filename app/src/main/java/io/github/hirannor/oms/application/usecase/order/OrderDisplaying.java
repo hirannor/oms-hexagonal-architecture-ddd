@@ -1,5 +1,6 @@
 package io.github.hirannor.oms.application.usecase.order;
 
+import io.github.hirannor.oms.application.service.order.OrderView;
 import io.github.hirannor.oms.domain.core.valueobject.CustomerId;
 import io.github.hirannor.oms.domain.core.valueobject.EmailAddress;
 import io.github.hirannor.oms.domain.order.Order;
@@ -9,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderDisplaying {
-    List<Order> displayAll();
+    List<OrderView> displayAll();
 
-    Optional<Order> displayBy(OrderId id);
+    Optional<OrderView> displayBy(OrderId id);
 
-    List<Order> displayBy(EmailAddress id);
+    List<OrderView> displayBy(EmailAddress id);
 
 }

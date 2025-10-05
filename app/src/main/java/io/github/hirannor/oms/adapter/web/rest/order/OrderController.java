@@ -1,18 +1,15 @@
 package io.github.hirannor.oms.adapter.web.rest.order;
 
-import io.github.hirannor.oms.adapter.web.rest.order.mapping.ChangeOrderStatusModelToCommandMapper;
-import io.github.hirannor.oms.adapter.web.rest.order.mapping.CreateOrderModelToCommandMapper;
-import io.github.hirannor.oms.adapter.web.rest.order.mapping.OrderToModelMapper;
-import io.github.hirannor.oms.adapter.web.rest.order.mapping.PaymentInstructionToPayOrderResponseModelMapper;
+import io.github.hirannor.oms.adapter.web.rest.order.mapping.*;
 import io.github.hirannor.oms.adapter.web.rest.orders.api.OrdersApi;
 import io.github.hirannor.oms.adapter.web.rest.orders.model.ChangeOrderStatusModel;
 import io.github.hirannor.oms.adapter.web.rest.orders.model.CreateOrderModel;
 import io.github.hirannor.oms.adapter.web.rest.orders.model.OrderModel;
 import io.github.hirannor.oms.adapter.web.rest.orders.model.PayOrderResponseModel;
+import io.github.hirannor.oms.application.service.order.OrderView;
 import io.github.hirannor.oms.application.usecase.order.*;
 import io.github.hirannor.oms.application.usecase.payment.PaymentInitialization;
 import io.github.hirannor.oms.domain.core.valueobject.EmailAddress;
-import io.github.hirannor.oms.domain.customer.Customer;
 import io.github.hirannor.oms.domain.order.Order;
 import io.github.hirannor.oms.domain.order.OrderId;
 import io.github.hirannor.oms.domain.order.command.CreateOrder;
@@ -37,6 +34,7 @@ import java.util.function.Function;
 class OrderController implements OrdersApi {
 
     private final Function<CreateOrderModel, CreateOrder> mapCreateOrderModelToCommand;
+    private final Function<OrderView, OrderModel> mapOrderViewToModel;
     private final Function<Order, OrderModel> mapOrderToModel;
     private final Function<ChangeOrderStatusModel, ChangeOrderStatus> mapChangeOrderStatusModelToCommand;
     private final Function<PaymentInstruction, PayOrderResponseModel> mapPaymentInstructionToModel;
@@ -60,9 +58,10 @@ class OrderController implements OrdersApi {
                 status,
                 order,
                 new CreateOrderModelToCommandMapper(),
-                new OrderToModelMapper(),
+                new OrderViewToModelMapper(),
                 new ChangeOrderStatusModelToCommandMapper(),
-                new PaymentInstructionToPayOrderResponseModelMapper()
+                new PaymentInstructionToPayOrderResponseModelMapper(),
+                new OrderToModelMapper()
         );
     }
 
@@ -72,18 +71,20 @@ class OrderController implements OrdersApi {
                     final OrderStatusChanging status,
                     final OrderCancellation order,
                     final Function<CreateOrderModel, CreateOrder> mapCreateOrderModelToCommand,
-                    final Function<Order, OrderModel> mapOrderToModel,
+                    final Function<OrderView, OrderModel> mapOrderViewToModel,
                     final Function<ChangeOrderStatusModel, ChangeOrderStatus> mapChangeOrderStatusModelToCommand,
-                    final Function<PaymentInstruction, PayOrderResponseModel> mapPaymentInstructionToModel) {
+                    final Function<PaymentInstruction, PayOrderResponseModel> mapPaymentInstructionToModel,
+                    final Function<Order, OrderModel> mapOrderToModel) {
         this.orderCreator = orderCreator;
         this.payment = payment;
         this.orders = orders;
         this.status = status;
         this.order = order;
         this.mapCreateOrderModelToCommand = mapCreateOrderModelToCommand;
-        this.mapOrderToModel = mapOrderToModel;
+        this.mapOrderViewToModel = mapOrderViewToModel;
         this.mapChangeOrderStatusModelToCommand = mapChangeOrderStatusModelToCommand;
         this.mapPaymentInstructionToModel = mapPaymentInstructionToModel;
+        this.mapOrderToModel = mapOrderToModel;
     }
 
     @Override
@@ -112,7 +113,7 @@ class OrderController implements OrdersApi {
     @Override
     public ResponseEntity<OrderModel> displayBy(final String orderId) {
         return orders.displayBy(OrderId.from(orderId))
-                .map(mapOrderToModel.andThen(ResponseEntity::ok))
+                .map(mapOrderViewToModel.andThen(ResponseEntity::ok))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -121,7 +122,7 @@ class OrderController implements OrdersApi {
         final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         final List<OrderModel> orders = this.orders.displayBy(EmailAddress.from(auth.getName()))
                 .stream()
-                .map(mapOrderToModel)
+                .map(mapOrderViewToModel)
                 .toList();
         return ResponseEntity.ok(orders);
     }
@@ -130,7 +131,7 @@ class OrderController implements OrdersApi {
     public ResponseEntity<List<OrderModel>> displayAll() {
         final List<OrderModel> list = orders.displayAll()
                 .stream()
-                .map(mapOrderToModel)
+                .map(mapOrderViewToModel)
                 .toList();
         return ResponseEntity.ok(list);
     }
