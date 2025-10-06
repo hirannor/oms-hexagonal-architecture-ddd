@@ -93,8 +93,15 @@ export class OrderMapper {
         return OrderStatus.PROCESSING;
       case OrderStatusModel.Shipped:
         return OrderStatus.SHIPPED;
+      case OrderStatusModel.Cancelled:
+          return OrderStatus.CANCELLED;
+      case OrderStatusModel.Delivered:
+        return OrderStatus.DELIVERED;
+      case OrderStatusModel.PaidSuccessfully:
+        return OrderStatus.PAID_SUCCESSFULLY;
+      case OrderStatusModel.PaymentFailed:
+        return OrderStatus.PAYMENT_FAILED;
       default:
-        console.warn('Unknown order status from API:', model);
         return OrderStatus.CREATED;
     }
   }
