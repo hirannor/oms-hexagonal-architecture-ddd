@@ -22,11 +22,14 @@ import java.util.List;
 class SecurityConfiguration {
     private final JwtAuthenticationFilter authFilter;
     private final AccessDeniedHandler accessDenied;
+    private final FrontendProperties frontendProps;
 
     SecurityConfiguration(final JwtAuthenticationFilter authFilter,
-                          final AccessDeniedHandler accessDenied) {
+                          final AccessDeniedHandler accessDenied,
+                          final FrontendProperties frontendProps) {
         this.authFilter = authFilter;
         this.accessDenied = accessDenied;
+        this.frontendProps = frontendProps;
     }
 
     @Bean
@@ -79,7 +82,6 @@ class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/api/orders")
                         .hasRole(PermissionRoleModel.CUSTOMER.value())
 
-                        // Everything else
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(authFilter, BasicAuthenticationFilter.class)
@@ -93,7 +95,7 @@ class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.setAllowedOrigins(List.of(frontendProps.origin()));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
         configuration.setAllowCredentials(true);

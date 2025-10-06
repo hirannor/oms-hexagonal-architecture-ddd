@@ -48,8 +48,8 @@ payment:
   stripe:
     api-key: sk_test_
     webhook-secret: whsec_
-    success-url: http://google.com
-    failure-url: http://google.com
+    success-url: ${app.frontend.origin}/orders/success?session_id={CHECKOUT_SESSION_ID}
+    cancel-url: ${app.frontend.origin}/orders/failure
 
 email:
   from: no-reply@yourapp.com
@@ -80,3 +80,7 @@ messaging:
 
 outbox:
   house-keeping-cron:  "0 0 2 * * *"
+
+app:
+  frontend:
+    origin: http://localhost:4200

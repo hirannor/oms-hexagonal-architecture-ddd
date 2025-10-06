@@ -7,7 +7,7 @@ public class StripeConfigurationProperties {
     private String apiKey;
     private String webHookSecret;
     private String successUrl;
-    private String failureUrl;
+    private String cancelUrl;
 
     public StripeConfigurationProperties() {
     }
@@ -36,11 +36,11 @@ public class StripeConfigurationProperties {
         this.successUrl = successUrl;
     }
 
-    public String getFailureUrl() {
-        return failureUrl;
+    public String getCancelUrl() {
+        return cancelUrl;
     }
 
-    public void setFailureUrl(String failureUrl) {
-        this.failureUrl = failureUrl;
+    public void setCancelUrl(String cancelUrl) {
+        this.cancelUrl = cancelUrl;
     }
 }

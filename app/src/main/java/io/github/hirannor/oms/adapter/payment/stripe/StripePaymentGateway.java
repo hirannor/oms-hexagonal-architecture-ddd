@@ -81,8 +81,8 @@ class StripePaymentGateway implements PaymentGateway {
 
             final SessionCreateParams.Builder params = SessionCreateParams.builder()
                     .setMode(SessionCreateParams.Mode.PAYMENT)
-                    .setSuccessUrl(config.getSuccessUrl() + payment.orderId().value())
-                    .setCancelUrl(config.getFailureUrl() + payment.orderId().value())
+                    .setSuccessUrl(config.getSuccessUrl())
+                    .setCancelUrl(config.getCancelUrl())
                     .addPaymentMethodType(methodType)
                     .putMetadata("orderId", payment.orderId().value())
                     .setPaymentIntentData(

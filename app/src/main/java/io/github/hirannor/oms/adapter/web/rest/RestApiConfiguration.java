@@ -3,6 +3,7 @@ package io.github.hirannor.oms.adapter.web.rest;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import java.util.Locale;
         havingValue = "rest",
         matchIfMissing = true
 )
+@EnableConfigurationProperties(value = FrontendProperties.class)
 public class RestApiConfiguration {
 
     @Bean
