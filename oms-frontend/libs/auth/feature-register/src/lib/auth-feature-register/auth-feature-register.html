@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      pInputText
+      formControlName="email"
+      placeholder="you@example.com"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="password">Password</label>
+    <p-password
+      id="password"
+      formControlName="password"
+      [feedback]="true"
+      class="w-full"
+    ></p-password>
+  </div>
+
+  <div class="form-field">
+    <label for="confirmPassword">Confirm Password</label>
+    <p-password
+      id="confirmPassword"
+      formControlName="confirmPassword"
+      [feedback]="false"
+      class="w-full"
+    ></p-password>
+  </div>
+
+  <div class="form-actions">
+    <button
+      pButton
+      type="submit"
+      pButtonLabel="Register"
+      pButtonIcon="pi pi-user-plus"
+      [disabled]="form.invalid"
+    >Register</button>
+  </div>
+</form>

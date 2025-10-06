@@ -1,0 +1,102 @@
+
+/* ---------- HEADER ---------- */
+.order-summary-container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 1rem 0;
+}
+
+/* ---------- TABLE ---------- */
+.p-table {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.p-datatable tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.p-datatable th {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.p-datatable td {
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+/* ---------- FOOTER ---------- */
+.summary-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-top: 2px solid #e5e7eb;
+  padding-top: 1.25rem;
+}
+
+.summary-footer h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #111827;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.summary-footer strong {
+  color: #16a34a; /* green accent for total */
+}
+
+/* ---------- ACTIONS ---------- */
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.order-actions button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+/* ---------- STATUS MESSAGE ---------- */
+.order-status {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .order-summary-container {
+    padding: 1.25rem;
+  }
+
+  .summary-footer {
+    align-items: flex-start;
+  }
+
+  .summary-footer h3 {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .order-actions {
+    width: 100%;
+  }
+
+  .order-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .order-status {
+    justify-content: center;
+  }
+}

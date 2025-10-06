@@ -1,0 +1,90 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@oms-frontend/api/auth-data-access": [
+        "libs/api/auth-data-access/src/index.ts"
+      ],
+      "@oms-frontend/api/customer-data-access": [
+        "libs/api/customer-data-access/src/index.ts"
+      ],
+      "@oms-frontend/api/product-data-access": [
+        "libs/api/product-data-access/src/index.ts"
+      ],
+      "@oms-frontend/api/basket-data-access": [
+        "libs/api/basket-data-access/src/index.ts"
+      ],
+      "@oms-frontend/api/order-data-access": [
+        "libs/api/order-data-access/src/index.ts"
+      ],
+      "@oms-frontend/auth/data-access": ["libs/auth/data-access/src/index.ts"],
+      "@oms-frontend/auth/feature-login": [
+        "libs/auth/feature-login/src/index.ts"
+      ],
+      "@oms-frontend/auth/feature-register": [
+        "libs/auth/feature-register/src/index.ts"
+      ],
+      "@oms-frontend/auth/feature-shell": [
+        "libs/auth/feature-shell/src/index.ts"
+      ],
+      "@oms-frontend/auth/ui": ["libs/auth/ui/src/index.ts"],
+      "@oms-frontend/basket/data-access": [
+        "libs/basket/data-access/src/index.ts"
+      ],
+      "@oms-frontend/basket/feature-cart": [
+        "libs/basket/feature-cart/src/index.ts"
+      ],
+      "@oms-frontend/basket/feature-checkout": [
+        "libs/basket/feature-checkout/src/index.ts"
+      ],
+      "@oms-frontend/basket/ui": ["libs/basket/ui/src/index.ts"],
+      "@oms-frontend/customer/data-access": [
+        "libs/customer/data-access/src/index.ts"
+      ],
+      "@oms-frontend/customer/feature-profile": [
+        "libs/customer/feature-profile/src/index.ts"
+      ],
+      "@oms-frontend/customer/ui": ["libs/customer/ui/src/index.ts"],
+      "@oms-frontend/models": ["libs/shared/models/src/index.ts"],
+      "@oms-frontend/order/data-access": [
+        "libs/order/data-access/src/index.ts"
+      ],
+      "@oms-frontend/order/feature-history": [
+        "libs/order/feature-history/src/index.ts"
+      ],
+      "@oms-frontend/order/feature-details": [
+        "libs/order/feature-details/src/index.ts"
+      ],
+      "@oms-frontend/order/feature-payment-success": [
+        "libs/order/feature-payment-success/src/index.ts"
+      ],
+      "@oms-frontend/order/ui": ["libs/order/ui/src/index.ts"],
+      "@oms-frontend/product/data-access": [
+        "libs/product/data-access/src/index.ts"
+      ],
+      "@oms-frontend/product/feature-list": [
+        "libs/product/feature-list/src/index.ts"
+      ],
+      "@oms-frontend/product/ui": ["libs/product/ui/src/index.ts"],
+      "@oms-frontend/services": ["libs/shared/services/src/index.ts"],
+      "@oms-frontend/shared/data-access": [
+        "libs/shared/data-access/src/index.ts"
+      ],
+      "@oms-frontend/shared/ui": ["libs/shared/ui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,170 @@
+openapi: 3.0.3
+info:
+  title: Auth API
+  description: Auth API
+  version: 1.0.0
+paths:
+  /register:
+    post:
+      tags:
+        - Auth
+      summary: registers an user
+      description: registers an user
+      operationId: register
+      requestBody:
+        description: registration details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+      responses:
+        '201':
+          description: Successful operation
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Email already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /auth:
+    post:
+      tags:
+        - Auth
+      summary: authenticates an user
+      description: authenticates an user
+      operationId: authenticate
+      requestBody:
+        description: Authentication details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Authenticate'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationResult'
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized (invalid password, invalid token, or user not found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /auth/refresh:
+    post:
+      tags:
+        - Auth
+      summary: refreshes an access token
+      description: exchanges a refresh token for a new access token and refresh token
+      operationId: refreshToken
+      requestBody:
+        description: Refresh token details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationResult'
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized (invalid or expired refresh token)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+components:
+  schemas:
+    Register:
+      type: object
+      required:
+        - emailAddress
+        - password
+      properties:
+        password:
+          type: string
+          example: V7fR9pQ2
+        emailAddress:
+          type: string
+          example: test@test.com
+
+    Authenticate:
+      type: object
+      required:
+        - emailAddress
+        - password
+      properties:
+        password:
+          type: string
+          example: V7fR9pQ2
+        emailAddress:
+          type: string
+          example: test@test.com
+
+    RefreshRequest:
+      type: object
+      required:
+        - refreshToken
+      properties:
+        refreshToken:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+    AuthenticationResult:
+      type: object
+      properties:
+        emailAddress:
+          type: string
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+
+    ProblemDetails:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+          description: A map of fieldName -> validation error message

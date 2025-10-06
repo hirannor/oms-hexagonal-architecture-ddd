@@ -1,0 +1,65 @@
+1101 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+1156 [main] INFO  i.g.h.o.OrderManagementSystemApplication - Starting OrderManagementSystemApplication using Java 21.0.2 with PID 23528 (C:\Development\oms\oms-backend\app\target\classes started by DIMKAROL in C:\Development\oms)
+1157 [main] DEBUG i.g.h.o.OrderManagementSystemApplication - Running with Spring Boot v3.5.6, Spring v6.2.11
+1157 [main] INFO  i.g.h.o.OrderManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+1032 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+1086 [main] INFO  i.g.h.o.OrderManagementSystemApplication - Starting OrderManagementSystemApplication using Java 21.0.2 with PID 5220 (C:\Development\oms\oms-backend\app\target\classes started by DIMKAROL in C:\Development\oms)
+1086 [main] DEBUG i.g.h.o.OrderManagementSystemApplication - Running with Spring Boot v3.5.6, Spring v6.2.11
+1087 [main] INFO  i.g.h.o.OrderManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+3167 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+3530 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 348 ms. Found 9 JPA repository interfaces.
+4370 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+4387 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+4389 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+4389 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.46]
+4482 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+4482 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3341 ms
+4626 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+4815 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1e258d3b
+4818 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+5015 [main] INFO  liquibase.database - Set default schema name to public
+5783 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+6051 [main] INFO  liquibase.ui - Database is up to date, no changesets to execute
+6054 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+6069 [main] INFO  liquibase.util - UPDATE SUMMARY
+6070 [main] INFO  liquibase.util - Run:                          0
+6070 [main] INFO  liquibase.util - Previously run:              14
+6070 [main] INFO  liquibase.util - Filtered out:                 0
+6070 [main] INFO  liquibase.util - -------------------------------
+6070 [main] INFO  liquibase.util - Total change sets:           14
+6071 [main] INFO  liquibase.util - Update summary generated
+6072 [main] INFO  liquibase.command - Command execution complete
+7123 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+7252 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.29.Final
+7320 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+8378 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+8520 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+10381 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+10386 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+11052 [main] DEBUG i.g.h.o.a.w.r.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+12372 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 0311a13a-4c4e-49c4-bf2a-6bb7493f08da
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+12383 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+13083 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+13109 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+13114 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: localhost:5672
+13181 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: connectionFactory#637ca94b:0/SimpleConnection@41334af0 [delegate=amqp://guest@127.0.0.1:5672/, localPort=59152]
+13257 [main] INFO  i.g.h.o.OrderManagementSystemApplication - Started OrderManagementSystemApplication in 13.026 seconds (process running for 14.243)
+297578 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+297578 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+297580 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+297804 [http-nio-8080-exec-2] INFO  i.g.h.o.a.s.a.AuthenticationService - Attempting to authenticate with emailAddress=test@example.com
+297806 [http-nio-8080-exec-2] DEBUG i.g.h.o.a.p.j.c.CustomerJpaRepository - Fetching customer by e-mail emailAddress: EmailAddress[value=test@example.com]
+298032 [http-nio-8080-exec-2] INFO  i.g.h.o.a.s.a.AuthenticationService - Authentication successful for test@example.com
+300576 [http-nio-8080-exec-7] DEBUG i.g.h.o.a.p.j.c.CustomerJpaRepository - Fetching customer by e-mail emailAddress: EmailAddress[value=test@example.com]

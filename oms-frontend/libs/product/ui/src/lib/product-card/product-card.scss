@@ -1,0 +1,27 @@
+.product-card {
+  width: 100%;
+  text-align: center;
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    color: #555;
+    font-size: 0.9rem;
+    min-height: 3rem;
+  }
+
+  .price {
+    font-weight: 600;
+    color: var(--p-primary-600, #256c4d);
+    margin: 0.75rem 0 1rem;
+    font-size: 1rem;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+  }
+}

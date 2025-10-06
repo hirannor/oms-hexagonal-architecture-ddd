@@ -1,263 +1,78 @@
-# Spring Boot Hexagonal DDD - Order Management System
+# 🧩 Order Management System (OMS)
 
-| Build Status                                                                                                                                                                                                             | License                                                                                                                                                                                                          |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![Build Status](https://img.shields.io/github/actions/workflow/status/hirannor/springboot-hexagonal-ddd/.github/workflows/maven.yml)](https://github.com/hirannor/springboot-hexagonal-ddd/actions/workflows/maven.yml) | [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Commons Clause](https://img.shields.io/badge/Commons-Clause-red.svg)](https://commonsclause.com/) |
+| CI Status | License |
+|------------|----------|
+| [![CI](https://github.com/hirannor/oms-hexagonal-architecture-ddd/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/hirannor/oms-hexagonal-architecture-ddd/actions/workflows/ci.yml) | [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Commons Clause](https://img.shields.io/badge/Commons-Clause-red.svg)](https://commonsclause.com/) |
 
-## Overview
+---
 
-This project is a **Spring Boot** example implementing **Ports & Adapters / Hexagonal Architecture** with *
-*Domain-Driven Design (DDD)** principles.
+## 🧭 Overview
 
-The architecture enforces separation of concerns:
+The **Order Management System (OMS)** is a **full-stack demo project** that showcases  
+modern enterprise application design using **Hexagonal Architecture**, **Domain-Driven Design (DDD)**,  
+and **event-driven communication** between bounded contexts.
 
-* **Domain Layer:** Pure business logic, framework-agnostic.
-* **Application Layer:** Orchestrates use cases and mediates between domain and adapters.
-* **Adapters / Infrastructure Layer:** Implements technical concerns such as messaging, persistence, and external APIs.
+### Tech Highlights
+- **Backend:** Spring Boot 3 · Java 21 · Hexagonal Architecture · DDD · RabbitMQ · PostgreSQL
+- **Frontend:** Angular 20 (Nx Monorepo + NgRx) · PrimeNG · TypeScript
+- **API Contract:** Centralized [OpenAPI 3.0.3](openapi/) definitions shared between backend & frontend
 
-Architectural rules are validated using **[ArchUnit](https://www.archunit.org/)** to maintain a clean and consistent
-project structure.
+> 📘 For in-depth domain and backend design details, see [oms-backend/README.md](oms-backend/README.md).
 
-For DDD modeling, the project uses an **Order Management System** as the core domain, since it naturally covers a wide
-variety of concepts:
+---
 
-* **Customer** – aggregate root representing a registered user of the system.  
-  Customers can register, authenticate, and manage their own profile.  
-  Admins use the same `Customer` API but with extended permissions (e.g., list all, delete).
+## ⚙️ Architecture Overview
 
-* **Order** – aggregate root handling the full order lifecycle:
-    - Creation
-    - Status changes (
-      `WAITING_FOR_PAYMENT → PAID_SUCCESSFULLY → PROCESSING → SHIPPED → DELIVERED → RETURNED/REFUNDED`)
-    - Cancellation and refund
-    - Emits domain events such as `OrderCreated`, `OrderPaid`, `OrderShipped`.
+### Backend — Hexagonal (Ports & Adapters)
 
-* **Basket** – aggregate root representing a shopping basket where products can be added/removed before checkout.
-    - Customers can maintain one basket.
+| Layer | Responsibility |
+|:------|:----------------|
+| **Domain** | Core business logic, aggregates, and domain events. |
+| **Application** | Use-case orchestration and coordination between domain and adapters. |
+| **Adapters** | Persistence, messaging, web, and external system integrations. |
 
-* **Product** – aggregate root representing catalog items.
-    - Contains immutable product information (id, name, price, currency).
-  
-* **Inventory** – aggregate root representing stock levels of products.
-  - Tracks both `availableQuantity` and `reservedQuantity`.
-  - Supports operations:
-    - `reserve(quantity)` → called on basket checkout, prevents overselling.
-    - `release(quantity)` → called when payment expired/cancels, frees stock.
-    - `deduct(quantity)` → called when payment succeeds, finalizes stock usage.
-  - Emits domain events such as `InventoryCreated`, `StockReserved`, `StockReleased`, `StockDeducted`, `StockDeductionFailed`.
+The architecture enforces clear separation through **ArchUnit** tests and follows a strict dependency flow:
 
-* **Payment** – aggregate root representing the lifecycle of a payment transaction for an order.
-    - Created when a payment is initialized.
-    - References its associated `OrderId` and carries details like `Money amount`, `PaymentStatus`, and
-      `providerReference` (e.g., Stripe Checkout Session ID).
-    - Lifecycle: `INITIALIZED → SUCCEEDED / FAILED / CANCELED`.
-    - Emits domain events such as `PaymentInitialized`, `PaymentSucceeded`, `PaymentFailed`.
 
-Other concerns such as authentication and authorization are modeled separately via `AuthUser` (a value object), rather
-than as a dedicated aggregate root. Roles (`CUSTOMER`, `ADMIN`) control access to APIs instead of introducing extra
-domain entities.
+### Frontend — Nx Modular Architecture
+The Angular workspace mirrors backend boundaries:
+- `libs/feature-*` → domain-aligned feature modules
+- `libs/api/*-data-access` → generated TypeScript clients from OpenAPI
+- `libs/shared-*` → reusable UI & utility modules
 
-## 🛠 Tech Stack
+---
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring-boot&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-003B57?style=flat&logo=microsoft-sql-server&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
-![JUnit](https://img.shields.io/badge/JUnit-25A162?style=flat&logo=junit5&logoColor=white)
-![Testcontainers](https://img.shields.io/badge/Testcontainers-2496ED?style=flat&logo=docker&logoColor=white)
-![ArchUnit](https://img.shields.io/badge/ArchUnit-6DB33F?style=flat&logo=spring&logoColor=white)
-![OpenAPI](https://img.shields.io/badge/OpenAPI-6BA539?style=flat&logo=openapiinitiative&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+## 🧩 Domain Model
 
-## Architecture Overview
+| Aggregate | Responsibility |
+|------------|----------------|
+| **Customer** | Represents a system user; handles registration, authentication, and profile management. |
+| **Order** | Full order lifecycle (creation → payment → shipment → delivery → refund); emits events like `OrderCreated`, `OrderPaid`. |
+| **Basket** | Shopping cart per customer; add/remove products and initiate checkout. |
+| **Product** | Catalog item with immutable attributes (id, name, price, currency). |
+| **Inventory** | Tracks stock; supports `reserve`, `release`, `deduct`; prevents overselling. |
+| **Payment** | Lifecycle via Stripe (`INITIALIZED → SUCCEEDED/FAILED/CANCELED`); emits events like `PaymentSucceeded`. |
 
-![Architecture](img/architecture.svg)
+All aggregates emit **domain events**, which are persisted and published asynchronously for eventual consistency.
 
-Key principles enforced via ArchUnit tests:
+---
 
-* Dependency rules between layers (Domain → Application → Adapters).
-* Isolation of Domain Layer from frameworks.
-* Compliance with naming conventions and package structure.
+## 📡 Messaging & Event Flow
 
-Running these tests ensures **architectural integrity** as the project evolves.
+The backend leverages an **Outbox Pattern + RabbitMQ** setup for guaranteed, reliable delivery:
 
-### Messaging Flow (Outbox + RabbitMQ)
+1. Domain events are persisted in the **Outbox** table (same transaction).
+2. A scheduled job publishes events from Outbox → RabbitMQ exchange.
+3. Rabbit listeners consume messages and re-emit them as in-app events.
 
-![Messaging-flow](img/messaging_flow.svg)
+This ensures **exactly-once semantics** and stable inter-module communication.
 
-## Getting Started
+---
 
-### Prerequisites
+## 🌐 Frontend (Angular + Nx + NgRx)
 
-* [Git](https://git-scm.com/downloads)
-* [JDK 21](https://adoptium.net/)
-* [Maven](https://maven.apache.org/download.cgi)
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-
-### Quick Start
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/hirannor/springboot-hexagonal-ddd.git
-cd springboot-hexagonal-ddd
-```
-
-2. Start the PostgreSQL database with Docker:
-
-```bash
-docker-compose up -d
-```
-
-3. Build and run tests:
-
-```bash
-mvn clean verify
-```
-
-***Note:*** Some tests use **Testcontainers**, so Docker must be running.
-
-## Implementing a New Adapter
-
-Adapters are **explicitly configured**—the application excludes scanning the entire adapter package to avoid loading
-unnecessary beans.
-
-* Each adapter defines its own Spring configuration class.
-* Classes are imported via **@Import** on the main application class.
-* Component scanning occurs **only if conditions are met** via **@ConditionalOnProperty**.
-
-### Example: JWT Auth Adapter
-
-```java
-
-@Configuration
-@ComponentScan
-@ConditionalOnProperty(
-        value = "adapter.authentication",
-        havingValue = "jwt"
-)
-public class JwtAuthenticationConfiguration {
-}
-
-```
-
-```yaml
-# application-[profile].yml
-adapter:
-  authentication: # jwt
-  persistence: # spring-data-jpa | in-memory
-  payment: # mock | stripe
-  notification: # sms | email
-  messaging: # spring-event-bus
-  web: # rest
-```
-
-## Testing
-
-### Test Catalog and Maven Lifecycle
-
-|    Test Type     | Maven Lifecycle |
-|:----------------:|:---------------:|
-|    Unit test     |      test       |
-|  Component test  |      test       |
-|  ArchUnit test   |      test       |
-| Integration test |     verify      |
-
-## API Documentation
-
-* Accessible locally at: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
-
-### HTTP Requests
-
-All API requests for testing can be found in the project under:
-
-```
-/http-requests/
-```
-
-## Docker Setup
-
-* **File:** `docker-compose.yml`
-* **Environment variables:** stored in `.env`
-
-Start the database, smtp server, rabbitmq message broker:
-
-```bash
-docker-compose up -d
-```
-
-### RabbitMQ Management
-
-* Accessible locally at: [http://localhost:15672/](http://localhost:15672/)
-
-### MailHOG SMTP Server
-
-* Accessible locally at: [http://localhost:8025/](http://localhost:8025/)
-
-## 🧪 Testing Payment with Stripe Payment Adapter
-
-This project integrates with **Stripe Checkout** for payments.  
-Follow these steps to test payments locally.
-
-### 1. Create a Stripe Account
-
-1. Go to [https://dashboard.stripe.com/register](https://dashboard.stripe.com/register).
-2. Sign up for a free account (no credit card required).
-3. Switch to **Test Mode** in the Dashboard.
-
-### 2. Get API Keys
-
-* Navigate to **Developers → API Keys** in the Stripe Dashboard.
-* Copy the **Secret Key** (e.g., `sk_test_...`).
-* This will be used as `payment.stripe.api-key` in `application.yml`.
-
-### 3. Install Stripe CLI
-
-Install the Stripe CLI from [https://stripe.com/docs/stripe-cli](https://stripe.com/docs/stripe-cli).
-
-Verify installation:
-
-```bash
-stripe --version
-```
-
-### 4. Forward Webhooks to Your Local App
-
-```bash
-stripe listen --forward-to localhost:8080/api/payments/stripe/webhook
-```
-
-### 5. Update application.yml
-
-Add your Stripe configuration
-
-```yaml
-payment:
-  stripe:
-    api-key: sk_test_xxxxxxxxxxxxxxxxxxxxx
-    webhook-secret: whsec_xxxxxxxxxxxxxxxxxxxxx
-    success-url: # your success url
-    failure-url: # your failure url
-```
-
-- api-key → Stripe test secret key from Dashboard.
-- webhook-secret → Provided by Stripe CLI when running stripe listen.
-- success-url → Redirect URL after successful payment.
-- failure-url → Redirect URL after failed/canceled payment.
-
-### 6. Test Payments
-
-Stripe provides a list of test cards for simulating payments:
-👉 [https://docs.stripe.com/testing](https://docs.stripe.com/testing)
-
-Common test card:
-
-- Visa (Success): 4242 4242 4242 4242
-    - Exp: any future date, CVC: any 3 digits.
-
-## License
-
-This project is licensed under the MIT License with the Commons Clause.  
-⚠️ This means you may **not use this project for commercial purposes**.  
-See the [LICENSE](./LICENSE.md) file for full details.
+### Key Concepts
+- Modular feature libraries for each domain (`auth`, `basket`, `order`, `product`, etc.)
+- Typed REST clients generated from `/openapi` using:
+  ```bash
+  npm run generate:apis

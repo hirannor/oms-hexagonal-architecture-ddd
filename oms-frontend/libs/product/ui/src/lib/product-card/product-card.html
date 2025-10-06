@@ -1,0 +1,23 @@
+<p-card class="product-card">
+  <ng-template pTemplate="header">
+    <h3>{{ product.name }}</h3>
+  </ng-template>
+
+  <p class="description">{{ product.description }}</p>
+
+  <div class="price">
+    {{ product.price.amount }} {{ product.price.currency }}
+  </div>
+
+  <div class="actions">
+    <button
+      type="button"
+      pButton
+      label="Add to Basket"
+      icon="pi pi-shopping-cart"
+      class="p-button-sm p-button-success"
+      (click)="addToBasket.emit(product)"
+      [disabled]="disabled">
+    </button>
+  </div>
+</p-card>

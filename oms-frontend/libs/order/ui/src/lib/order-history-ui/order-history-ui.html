@@ -1,0 +1,39 @@
+<div class="orders-container">
+  <h2>My Orders</h2>
+
+  <p-table [value]="orders">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-order>
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.createdAt | date: 'short' }}</td>
+        <td>
+          <p-tag [value]="order.status" [severity]="getSeverity(order.status)"></p-tag>
+        </td>
+        <td>{{ order.totalPrice.amount }} {{ order.totalPrice.currency }}</td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-eye"
+            label="View"
+            class="p-button-text p-button-sm"
+            [routerLink]="['/orders', order.id]"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  @if (!orders || orders.length === 0) {
+    <p>No orders found yet.</p>
+  }
+</div>

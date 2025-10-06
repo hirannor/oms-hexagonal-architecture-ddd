@@ -1,0 +1,25 @@
+<div class="payment-success-container">
+  <div class="icon-container">
+    <i class="pi pi-check-circle"></i>
+  </div>
+
+  <h2>🎉 Payment Successful!</h2>
+
+  <p class="message">
+    Thank you! Your payment has been processed successfully, and your order is now confirmed.
+  </p>
+
+  @if (sessionId) {
+    <p class="session">
+      <strong>Session ID:</strong> {{ sessionId }}
+    </p>
+  }
+
+  <button
+    pButton
+    pButtonLabel="View My Orders"
+    pButtonIcon="pi pi-list"
+    class="p-button-success"
+    (click)="goToOrders()"
+  >Go To Orders</button>
+</div>

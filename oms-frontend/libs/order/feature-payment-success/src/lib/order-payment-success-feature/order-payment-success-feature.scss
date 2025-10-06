@@ -1,0 +1,94 @@
+/* ---------- MAIN CONTAINER ---------- */
+.payment-success-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  min-height: 300px;
+}
+
+/* ---------- ICON ---------- */
+.payment-success-container .icon-container {
+  font-size: 4rem;
+  color: #16a34a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- HEADER ---------- */
+.payment-success-container h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #16a34a;
+  margin: 0;
+}
+
+/* ---------- MESSAGE ---------- */
+.payment-success-container .message {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+/* ---------- SESSION INFO ---------- */
+.payment-success-container .session {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  word-break: break-word;
+}
+
+/* ---------- BUTTON ---------- */
+.payment-success-container button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  align-self: center;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .payment-success-container {
+    padding: 1.25rem;
+    margin: 1rem;
+    gap: 1.25rem;
+  }
+
+  .payment-success-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .payment-success-container .icon-container {
+    font-size: 3rem;
+  }
+
+  .payment-success-container .message {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .payment-success-container .session {
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+
+  .payment-success-container button {
+    width: 100%;
+    justify-content: center;
+  }
+}

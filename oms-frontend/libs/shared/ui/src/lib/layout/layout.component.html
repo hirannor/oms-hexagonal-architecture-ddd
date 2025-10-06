@@ -1,0 +1,58 @@
+<div class="layout-container">
+  <header class="layout-header p-shadow-3">
+    <div class="header-left">
+      <h2>OMS - Order Management System</h2>
+    </div>
+
+    <div class="header-search">
+      <input pInputText type="text" placeholder="Search products..." />
+      <button pButton pButtonIcon="pi pi-search">Search</button>
+    </div>
+
+    <div class="header-right">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-shopping-cart"
+        class="p-button-text p-button-rounded basket-button"
+        pTooltip="My Basket"
+        tooltipPosition="bottom"
+        routerLink="/basket"
+      ></button>
+
+      <button
+        pButton
+        type="button"
+        icon="pi pi-list"
+        class="p-button-text p-button-rounded orders-button"
+        pTooltip="My Orders"
+        tooltipPosition="bottom"
+        routerLink="/orders"
+      ></button>
+
+      <p-menu #profileMenu [popup]="true" [model]="profileItems"></p-menu>
+      <p-avatar
+        icon="pi pi-user"
+        shape="circle"
+        class="cursor-pointer"
+        (click)="profileMenu.toggle($event)"
+      ></p-avatar>
+    </div>
+  </header>
+
+  <div class="layout-body">
+    <aside class="layout-sidebar p-shadow-2">
+      <p-panelMenu [model]="sidebarItems"></p-panelMenu>
+    </aside>
+
+    <main class="layout-content">
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+
+  <footer class="layout-footer p-shadow-2">
+    <p>© 2025 OMS - All rights reserved</p>
+  </footer>
+</div>

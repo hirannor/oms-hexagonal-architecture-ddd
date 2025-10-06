@@ -1,0 +1,39 @@
+.profile-form {
+  max-width: 400px;
+  margin: 0 auto;
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      max-width: 350px;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+
+    .save-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .spinner-icon {
+      font-size: 1rem;
+    }
+  }
+
+  .country-select {
+    width: 350px;
+  }
+}

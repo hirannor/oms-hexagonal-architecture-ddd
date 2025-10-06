@@ -1,0 +1,7 @@
+<div class="order-history-container">
+  @if (loading$ | async) {
+    <lib-loading-spinner></lib-loading-spinner>
+  } @else {
+    <lib-order-history-ui [orders]="(orders$ | async) || []"></lib-order-history-ui>
+  }
+</div>

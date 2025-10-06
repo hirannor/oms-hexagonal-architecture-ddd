@@ -1,0 +1,157 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.layout-header {
+  background: var(--p-primary-500, #2f855a);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+}
+
+.header-search {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    background: transparent;
+  }
+
+  button {
+    border-radius: 0;
+    border: none;
+    background: var(--p-primary-500, #2f855a);
+    color: white;
+    padding: 0.6rem 1rem;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: var(--p-primary-600, #256c4d);
+    }
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.basket-button,
+.orders-button {
+  color: #ffffff !important;
+  border: none !important;
+  background: transparent !important;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  i {
+    color: #ffffff !important;
+    font-size: 1.25rem;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  &.active {
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+}
+
+.layout-header .p-avatar {
+  background: #ffffff;
+  color: #16a34a;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ---------- BODY ---------- */
+.layout-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden; /* prevent body scroll */
+}
+
+/* ---------- SIDEBAR ---------- */
+.layout-sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
+  overflow-y: auto; /* sidebar scrollable */
+
+  .p-panelmenu {
+    border: none;
+    background: transparent;
+  }
+
+  .p-menuitem-link {
+    border-radius: 6px;
+    padding: 0.75rem;
+
+    &.p-highlight {
+      background: var(--p-primary-100, #d1fae5);
+      color: var(--p-primary-700, #065f46);
+      font-weight: 500;
+    }
+  }
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.layout-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  overflow: hidden; /* prevent double scrollbars */
+}
+
+/* ---------- PAGE CONTENT ---------- */
+.page-content {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  /* 🔥 this makes the inner content scrollable */
+  overflow-y: auto;
+  min-height: 0; /* important in flex layouts */
+}
+
+/* ---------- FOOTER ---------- */
+.layout-footer {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}

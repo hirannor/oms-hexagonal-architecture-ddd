@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: Products API
+  description: Products API
+  version: 1.0.0
+security:
+  - bearerAuth: [ ]
+
+paths:
+  /products:
+    get:
+      tags:
+        - Product
+      summary: List all products
+      operationId: displayAll
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+    post:
+      tags:
+        - Product
+      summary: Create a new product
+      operationId: create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProduct'
+      responses:
+        '201':
+          description: Product created
+          headers:
+            Location:
+              schema:
+                type: string
+                description: URI of the created product
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Product with same name already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /products/{id}:
+    get:
+      tags:
+        - Product
+      summary: Get product by ID
+      operationId: displayBy
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    basicAuth:
+      type: http
+      scheme: basic
+
+  schemas:
+    CreateProduct:
+      type: object
+      required: [ name, description, price ]
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          $ref: '#/components/schemas/Money'
+
+    Product:
+      type: object
+      required: [id, name, description, price]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          $ref: '#/components/schemas/Money'
+
+    Money:
+      type: object
+      properties:
+        amount:
+          type: string
+          format: decimal
+          example: "99.99"
+        currency:
+          $ref: '#/components/schemas/Currency'
+      required: [ amount, currency ]
+
+    Currency:
+      type: string
+      enum:
+        - HUF
+        - EUR
+
+    ProblemDetails:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+          description: A map of fieldName -> validation error message

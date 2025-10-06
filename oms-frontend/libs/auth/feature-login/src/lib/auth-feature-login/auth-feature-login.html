@@ -1,0 +1,43 @@
+<div class="login-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        pInputText
+        formControlName="email"
+        placeholder="you@example.com"
+      />
+
+      @if (email.invalid && email.touched) {
+        <small class="error">Please enter a valid email</small>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="password">Password</label>
+      <p-password
+        id="password"
+        formControlName="password"
+        placeholder="••••••••"
+        [feedback]="false"
+        class="w-full"
+      ></p-password>
+
+      @if (password.invalid && password.touched) {
+        <small class="error">Password is required</small>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button
+        pButton
+        type="submit"
+        pButtonLabel="Login"
+        pButtonIcon="pi pi-sign-in"
+        [disabled]="form.invalid"
+      >Login</button>
+    </div>
+  </form>
+</div>

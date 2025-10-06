@@ -1,0 +1,96 @@
+.order-details {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADER ---------- */
+.order-details h2 {
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+/* ---------- META INFO ---------- */
+.order-details p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.order-details strong {
+  color: #111827;
+}
+
+.order-details .p-tag {
+  font-size: 0.85rem;
+}
+
+/* ---------- TABLE ---------- */
+.p-table {
+  margin-top: 1.5rem;
+}
+
+.p-datatable-striped tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.p-datatable-striped th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem;
+}
+
+.p-datatable-striped td {
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+
+/* ---------- TOTAL SECTION ---------- */
+.total-section {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e5e7eb;
+  text-align: right;
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+/* ---------- PAYMENT BUTTON ---------- */
+.order-details .mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.order-details .flex {
+  display: flex;
+}
+
+.order-details .justify-end {
+  justify-content: flex-end;
+}
+
+.order-details button {
+  margin-left: 1rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .order-details {
+    padding: 1rem;
+  }
+
+  .total-section {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .order-details button {
+    width: 100%;
+    justify-content: center;
+  }
+}

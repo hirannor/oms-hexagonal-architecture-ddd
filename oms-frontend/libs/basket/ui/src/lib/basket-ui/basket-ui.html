@@ -1,0 +1,99 @@
+<div class="basket-container">
+  @if (basket && basket.items.length > 0) {
+    <header class="basket-header">
+      <h2>Your Basket</h2>
+    </header>
+
+    <p-table [value]="basket.items" class="basket-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th class="text-center">Quantity</th>
+          <th>Unit Price</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-item>
+        <tr>
+          <td class="product-name">{{ item.name }}</td>
+          <td class="product-desc">{{ item.description }}</td>
+
+          <td class="quantity-cell">
+            <button
+              pButton
+              icon="pi pi-minus"
+              class="p-button-rounded p-button-text"
+              (click)="decrease.emit(item)"
+              pTooltip="Decrease quantity"
+              tooltipPosition="top"
+            ></button>
+
+            <span class="quantity-value">{{ item.quantity }}</span>
+
+            <button
+              pButton
+              icon="pi pi-plus"
+              class="p-button-rounded p-button-text"
+              (click)="increase.emit(item)"
+              pTooltip="Increase quantity"
+              tooltipPosition="top"
+            ></button>
+          </td>
+
+          <td>{{ item.price.amount }} {{ item.price.currency }}</td>
+          <td>
+            {{ (item.price.amount * item.quantity) | number: '1.2-2' }}
+            {{ item.price.currency }}
+          </td>
+
+          <td class="actions">
+            <button
+              pButton
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-danger p-button-text"
+              (click)="remove.emit(item)"
+              pTooltip="Remove item"
+              tooltipPosition="top"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <footer class="basket-footer">
+      <div class="basket-summary">
+        <h3>
+          Total:
+          <strong>{{ basket.totalPrice.amount }} {{ basket.totalPrice.currency }}</strong>
+        </h3>
+      </div>
+
+      <div class="checkout-button">
+        <button
+          pButton
+          pButtonLabel="Proceed to Checkout"
+          pButtonIcon="pi pi-credit-card"
+          class="p-button-success p-button-lg"
+          (click)="checkout.emit()"
+        >Checkout</button>
+      </div>
+    </footer>
+  } @else {
+    <div class="empty-basket">
+      <h3>Your basket is empty 🛒</h3>
+      <p>Start shopping to add your favorite items here.</p>
+      <button
+        pButton
+        pButtonLabel="Browse Products"
+        pButtonIcon="pi pi-box"
+        routerLink="/products"
+        class="p-button-outlined p-button-secondary"
+      >
+        Browse Products
+      </button>
+    </div>
+  }
+</div>

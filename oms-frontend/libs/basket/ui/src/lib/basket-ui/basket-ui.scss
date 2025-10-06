@@ -1,0 +1,66 @@
+.basket-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.basket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.basket-table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.quantity-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  .quantity-value {
+    font-weight: 500;
+    min-width: 2rem;
+    text-align: center;
+  }
+}
+
+.basket-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .basket-summary {
+    font-size: 1.2rem;
+  }
+
+  .checkout-button {
+    margin-top: 1rem;
+  }
+}
+
+.empty-basket {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #555;
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
