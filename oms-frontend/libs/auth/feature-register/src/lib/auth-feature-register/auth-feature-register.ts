@@ -24,24 +24,23 @@ import { CardModule } from 'primeng/card';
 })
 export class AuthFeatureRegister {
   private fb = inject(FormBuilder);
-  private store = inject(Store);
-
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required]],
   });
+  private store = inject(Store);
 
   onSubmit(): void {
     if (this.form.valid) {
-      const { email, password, confirmPassword } = this.form.value;
+      const {email, password, confirmPassword} = this.form.value;
 
       if (password !== confirmPassword) {
         return;
       }
 
       this.store.dispatch(
-        AuthActions.register({ email: email!, password: password! })
+        AuthActions.register({email: email!, password: password!})
       );
     }
   }

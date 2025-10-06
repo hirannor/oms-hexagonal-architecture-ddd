@@ -6,7 +6,7 @@ import { AuthApi } from '@oms-frontend/api/auth-data-access';
 const ACCESS_TOKEN_KEY = 'accessToken';
 const REFRESH_TOKEN_KEY = 'refreshToken';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthService {
   private router = inject(Router);
   private authApi = inject(AuthApi);
@@ -62,7 +62,7 @@ export class AuthService {
     const refreshToken = this.getRefreshToken();
     if (!refreshToken) throw new Error('No refresh token available');
 
-    return this.authApi.refreshToken({ refreshToken }).pipe(
+    return this.authApi.refreshToken({refreshToken}).pipe(
       tap((res) => {
         this.saveTokens(res.accessToken!, res.refreshToken!);
       }),

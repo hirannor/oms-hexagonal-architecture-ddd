@@ -72,6 +72,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         this.mapRoleToModel = mapRoleToModel;
     }
 
+    private static SimpleGrantedAuthority addRolePrefix(final PermissionRoleModel role) {
+        return new SimpleGrantedAuthority("ROLE_" + role.value());
+    }
+
     @Override
     protected boolean shouldNotFilter(final HttpServletRequest request) {
         final String path = request.getRequestURI();
@@ -130,9 +134,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.displayName());
         mapper.writeValue(response.getWriter(), problem);
-    }
-
-    private static SimpleGrantedAuthority addRolePrefix(final PermissionRoleModel role) {
-        return new SimpleGrantedAuthority("ROLE_" + role.value());
     }
 }

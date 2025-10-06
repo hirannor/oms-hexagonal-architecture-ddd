@@ -36,7 +36,7 @@ export const basketReducer = createReducer(
     BasketActions.addItemSuccess,
     BasketActions.removeItemSuccess,
     BasketActions.checkoutBasketSuccess,
-    (state, { basket }) => ({
+    (state, {basket}) => ({
       ...state,
       basket,
       loading: false,
@@ -49,7 +49,7 @@ export const basketReducer = createReducer(
     BasketActions.addItemFailure,
     BasketActions.removeItemFailure,
     BasketActions.checkoutBasketFailure,
-    (state, { error }) => ({
+    (state, {error}) => ({
       ...state,
       loading: false,
       error,

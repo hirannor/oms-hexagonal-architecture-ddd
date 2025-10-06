@@ -27,36 +27,34 @@ import { AuthService } from '@oms-frontend/shared/data-access';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
+  sidebarItems: MenuItem[] = [
+    {
+      label: 'Products',
+      icon: 'pi pi-box',
+      items: [
+        {label: 'Peripherals', icon: 'pi pi-cog', routerLink: '/products/peripherals'},
+        {label: 'Displays', icon: 'pi pi-desktop', routerLink: '/products/displays'},
+        {label: 'Audio & Smart Devices', icon: 'pi pi-headphones', routerLink: '/products/audio'},
+        {label: 'Accessories', icon: 'pi pi-sliders-h', routerLink: '/products/accessories'},
+        {label: 'Storage', icon: 'pi pi-database', routerLink: '/products/storage'},
+      ],
+    },
+    {label: 'My Basket', icon: 'pi pi-shopping-cart', routerLink: '/basket'},
+    {label: 'My Orders', icon: 'pi pi-list', routerLink: '/orders'},
+  ];
   private authService: AuthService = inject(AuthService);
-
   profileItems: MenuItem[] = [
     {
       label: 'My Profile',
       icon: 'pi pi-id-card',
       routerLink: '/customers/me',
     },
-    { separator: true },
+    {separator: true},
     {
       label: 'Logout',
       icon: 'pi pi-sign-out',
       command: () => this.authService.logout(),
     },
-  ];
-
-  sidebarItems: MenuItem[] = [
-    {
-      label: 'Products',
-      icon: 'pi pi-box',
-      items: [
-        { label: 'Peripherals', icon: 'pi pi-cog', routerLink: '/products/peripherals' },
-        { label: 'Displays', icon: 'pi pi-desktop', routerLink: '/products/displays' },
-        { label: 'Audio & Smart Devices', icon: 'pi pi-headphones', routerLink: '/products/audio' },
-        { label: 'Accessories', icon: 'pi pi-sliders-h', routerLink: '/products/accessories' },
-        { label: 'Storage', icon: 'pi pi-database', routerLink: '/products/storage' },
-      ],
-    },
-    { label: 'My Basket', icon: 'pi pi-shopping-cart', routerLink: '/basket' },
-    { label: 'My Orders', icon: 'pi pi-list', routerLink: '/orders' },
   ];
 
 }

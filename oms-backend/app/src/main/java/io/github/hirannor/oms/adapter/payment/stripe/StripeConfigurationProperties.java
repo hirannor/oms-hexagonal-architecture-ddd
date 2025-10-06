@@ -24,16 +24,16 @@ public class StripeConfigurationProperties {
         return successUrl;
     }
 
+    public void setSuccessUrl(String successUrl) {
+        this.successUrl = successUrl;
+    }
+
     public String getWebHookSecret() {
         return webHookSecret;
     }
 
     public void setWebHookSecret(String webHookSecret) {
         this.webHookSecret = webHookSecret;
-    }
-
-    public void setSuccessUrl(String successUrl) {
-        this.successUrl = successUrl;
     }
 
     public String getCancelUrl() {

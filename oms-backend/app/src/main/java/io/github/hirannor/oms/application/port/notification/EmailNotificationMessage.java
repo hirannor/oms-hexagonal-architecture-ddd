@@ -9,11 +9,6 @@ public record EmailNotificationMessage(
         Map<String, Object> variables
 ) implements NotificationMessage {
 
-    @Override
-    public String content() {
-        return subject;
-    }
-
     public static EmailNotificationMessage create(
             final String recipient,
             final String subject,
@@ -21,5 +16,10 @@ public record EmailNotificationMessage(
             final Map<String, Object> variables
     ) {
         return new EmailNotificationMessage(recipient, subject, templateName, variables);
+    }
+
+    @Override
+    public String content() {
+        return subject;
     }
 }

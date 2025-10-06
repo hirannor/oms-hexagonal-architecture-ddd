@@ -3,12 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AuthActions from './auth.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
-import {
-  AuthMapper,
-  AuthService,
-  LoginPayload,
-  RegisterPayload,
-} from '@oms-frontend/shared/data-access';
+import { AuthMapper, AuthService, LoginPayload, RegisterPayload, } from '@oms-frontend/shared/data-access';
 import { NotificationService } from '@oms-frontend/services';
 import { ProblemDetailsMapper } from '@oms-frontend/models';
 
@@ -17,13 +12,20 @@ export class AuthEffects {
   private actions$ = inject(Actions);
   private api = inject(AuthApi);
   private auth = inject(AuthService);
+  navigateAfterLogin$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.loginSuccess),
+        tap(() => this.auth.navigateToOrders())
+      ),
+    {dispatch: false}
+  );
   private notifications = inject(NotificationService);
-
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
-      mergeMap(({ email, password }) => {
-        const payload: LoginPayload = { email, password };
+      mergeMap(({email, password}) => {
+        const payload: LoginPayload = {email, password};
 
         return this.api
           .authenticate(AuthMapper.mapToAuthenticateModel(payload))
@@ -61,24 +63,14 @@ export class AuthEffects {
       })
     )
   );
-
-  navigateAfterLogin$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(AuthActions.loginSuccess),
-        tap(() => this.auth.navigateToOrders())
-      ),
-    { dispatch: false }
-  );
-
   register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.register),
-      mergeMap(({ email, password }) => {
-        const payload: RegisterPayload = { email, password };
+      mergeMap(({email, password}) => {
+        const payload: RegisterPayload = {email, password};
 
         return this.api.register(AuthMapper.mapToRegisterModel(payload)).pipe(
-          map(() => AuthActions.registerSuccess({ email })),
+          map(() => AuthActions.registerSuccess({email})),
           catchError((err) => {
             if (err.error) {
               const problem = ProblemDetailsMapper.fromApi(err.error);
@@ -105,8 +97,8 @@ export class AuthEffects {
       ofType(AuthActions.refreshToken),
       mergeMap(() =>
         this.auth.refreshTokens().pipe(
-          map(({ accessToken, refreshToken }) =>
-            AuthActions.refreshTokenSuccess({ accessToken, refreshToken })
+          map(({accessToken, refreshToken}) =>
+            AuthActions.refreshTokenSuccess({accessToken, refreshToken})
           ),
           catchError((err) => {
             this.auth.logout();
@@ -126,13 +118,13 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.registerSuccess),
-        tap(({ email }) => {
+        tap(({email}) => {
           this.notifications.success(
             'Registration successful',
             `Account created for ${email}. Please log in.`
           );
         })
       ),
-    { dispatch: false }
+    {dispatch: false}
   );
 }

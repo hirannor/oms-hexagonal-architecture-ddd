@@ -117,7 +117,7 @@ components:
 
     Product:
       type: object
-      required: [id, name, description, price]
+      required: [ id, name, description, price ]
       properties:
         id:
           type: string

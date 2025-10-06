@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges, } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -31,11 +23,9 @@ export class ProfileFormComponent implements OnChanges {
   @Input() customer: Customer | null = null;
   @Input() updating: boolean | null = false;
   @Output() save = new EventEmitter<Customer>();
-
-  private fb: FormBuilder = inject(FormBuilder);
-
   form: FormGroup;
   countryOptions = Countries;
+  private fb: FormBuilder = inject(FormBuilder);
 
   constructor() {
     this.form = this.fb.group({
@@ -49,7 +39,7 @@ export class ProfileFormComponent implements OnChanges {
           postalCode: [''],
           street: [''],
         },
-        { validators: this.fullAddressValidator }
+        {validators: this.fullAddressValidator}
       ),
     });
   }
@@ -69,11 +59,11 @@ export class ProfileFormComponent implements OnChanges {
     const address =
       addressGroup?.valid && value.address
         ? {
-            country: value.address.country,
-            city: value.address.city,
-            postalCode: value.address.postalCode,
-            street: value.address.street,
-          }
+          country: value.address.country,
+          city: value.address.city,
+          postalCode: value.address.postalCode,
+          street: value.address.street,
+        }
         : undefined;
 
     this.save.emit({
@@ -105,11 +95,11 @@ export class ProfileFormComponent implements OnChanges {
   ): ValidationErrors | null {
     if (!control.value) return null;
 
-    const { country, city, postalCode, street } = control.value;
+    const {country, city, postalCode, street} = control.value;
 
     const allEmpty = !country && !city && !postalCode && !street;
     const allFilled = country && city && postalCode && street;
 
-    return allEmpty || allFilled ? null : { incompleteAddress: true };
+    return allEmpty || allFilled ? null : {incompleteAddress: true};
   }
 }

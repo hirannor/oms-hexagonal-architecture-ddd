@@ -66,6 +66,14 @@ class BasketCommandService implements
         this.mapBasketToView = new BasketToViewMapper();
     }
 
+    private static Supplier<BasketNotFound> failBecauseBasketWasNotFoundBy(final CustomerId customerId) {
+        return () -> new BasketNotFound("Basket with customer id " + customerId + " not found");
+    }
+
+    private static Supplier<BasketNotFound> failBecauseBasketWasNotFoundBy(final BasketId basketId) {
+        return () -> new BasketNotFound("Basket with id " + basketId + " not found");
+    }
+
     @Override
     public Basket create(final CreateBasket creation) {
         if (creation == null) throw new IllegalArgumentException("CreateBasket is null");
@@ -191,14 +199,6 @@ class BasketCommandService implements
 
     private Supplier<CustomerNotFound> failBecauseCustomerWasNotFoundBy(final CustomerId id) {
         return () -> new CustomerNotFound("Customer not found with id:" + id.asText());
-    }
-
-    private static Supplier<BasketNotFound> failBecauseBasketWasNotFoundBy(final CustomerId customerId) {
-        return () -> new BasketNotFound("Basket with customer id " + customerId + " not found");
-    }
-
-    private static Supplier<BasketNotFound> failBecauseBasketWasNotFoundBy(final BasketId basketId) {
-        return () -> new BasketNotFound("Basket with id " + basketId + " not found");
     }
 
     private BasketView mapToView(final Basket basket) {

@@ -38,22 +38,22 @@ export const appRoutes: Routes = [
         ],
       },
 
-      { path: 'customers/me', component: CustomerFeatureProfile },
+      {path: 'customers/me', component: CustomerFeatureProfile},
       {
         path: 'products',
         children: [
-          { path: '', component: ProductListFeature },
-          { path: ':category', component: ProductListFeature },
+          {path: '', component: ProductListFeature},
+          {path: ':category', component: ProductListFeature},
         ],
       },
-      { path: 'basket', component: BasketCartFeature },
+      {path: 'basket', component: BasketCartFeature},
 
-      { path: '', pathMatch: 'full', redirectTo: 'products' },
+      {path: '', pathMatch: 'full', redirectTo: 'products'},
     ],
   },
 
-  { path: 'auth', component: AuthFeatureShell },
-  { path: 'login', redirectTo: 'auth', pathMatch: 'full' },
-  { path: 'register', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
+  {path: 'auth', component: AuthFeatureShell},
+  {path: 'login', redirectTo: 'auth', pathMatch: 'full'},
+  {path: 'register', redirectTo: 'auth', pathMatch: 'full'},
+  {path: '**', redirectTo: ''},
 ];

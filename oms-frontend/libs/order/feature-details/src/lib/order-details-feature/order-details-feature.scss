@@ -1,29 +1,22 @@
 /* ---------- MAIN CONTAINER ---------- */
 .order-details-container {
-  background: #ffffff;
-  border-radius: 12px;
+  background: transparent;
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  max-width: 900px;
+  max-width: 1200px;
   margin: 2rem auto;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
 
-/* ---------- EMPTY STATE ---------- */
-.order-details-container p {
-  text-align: center;
-  color: #6b7280;
-  font-size: 1rem;
-  margin: auto;
-}
+  p-card {
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
 
-/* ---------- CHILD COMPONENT ---------- */
-.order-details-container lib-order-details-ui {
-  display: block;
-  width: 100%;
+  h2 {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600;   /* font-semibold */
+    margin-bottom: 0.75rem; /* mb-3 */
+    color: #111827;
+  }
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -33,7 +26,7 @@
     margin: 1rem;
   }
 
-  .order-details-container p {
-    font-size: 0.95rem;
+  .order-details-container h2 {
+    font-size: 1.1rem;
   }
 }

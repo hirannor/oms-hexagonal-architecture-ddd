@@ -33,14 +33,15 @@ variety of concepts:
 
 * **Product** – aggregate root representing catalog items.
     - Contains immutable product information (id, name, price, currency).
-  
+
 * **Inventory** – aggregate root representing stock levels of products.
-  - Tracks both `availableQuantity` and `reservedQuantity`.
-  - Supports operations:
-    - `reserve(quantity)` → called on basket checkout, prevents overselling.
-    - `release(quantity)` → called when payment expired/cancels, frees stock.
-    - `deduct(quantity)` → called when payment succeeds, finalizes stock usage.
-  - Emits domain events such as `InventoryCreated`, `StockReserved`, `StockReleased`, `StockDeducted`, `StockDeductionFailed`.
+    - Tracks both `availableQuantity` and `reservedQuantity`.
+    - Supports operations:
+        - `reserve(quantity)` → called on basket checkout, prevents overselling.
+        - `release(quantity)` → called when payment expired/cancels, frees stock.
+        - `deduct(quantity)` → called when payment succeeds, finalizes stock usage.
+    - Emits domain events such as `InventoryCreated`, `StockReserved`, `StockReleased`, `StockDeducted`,
+      `StockDeductionFailed`.
 
 * **Payment** – aggregate root representing the lifecycle of a payment transaction for an order.
     - Created when a payment is initialized.

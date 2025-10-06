@@ -4,7 +4,7 @@
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  max-width: 900px;
+  max-width: 1200px;
   margin: 2rem auto;
   min-height: 300px;
   display: flex;
@@ -12,14 +12,6 @@
   position: relative;
 }
 
-/* ---------- LOADING STATE ---------- */
-.order-history-container lib-loading-spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  height: 200px;
-}
 
 /* ---------- ORDER HISTORY UI ---------- */
 .order-history-container lib-order-history-ui {

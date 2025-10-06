@@ -28,6 +28,15 @@ export class OrderMapper {
     };
   }
 
+  static mapToCreateOrderModel(domain: CreateOrder): CreateOrderModel {
+    return {
+      customerId: domain.customerId,
+      products: (domain.products ?? []).map(
+        OrderMapper.mapToOrderedProductModel
+      ),
+    };
+  }
+
   private static mapToOrderedProduct(model: OrderItemModel): OrderItem {
     if (!model || !model.price) {
       console.warn('Invalid product in API payload', model);
@@ -36,7 +45,7 @@ export class OrderMapper {
         name: '',
         description: '',
         quantity: 0,
-        price: { amount: '0', currency: Currency.HUF },
+        price: {amount: '0', currency: Currency.HUF},
       };
     }
 
@@ -52,15 +61,6 @@ export class OrderMapper {
     };
   }
 
-  static mapToCreateOrderModel(domain: CreateOrder): CreateOrderModel {
-    return {
-      customerId: domain.customerId,
-      products: (domain.products ?? []).map(
-        OrderMapper.mapToOrderedProductModel
-      ),
-    };
-  }
-
   private static mapToOrderedProductModel(domain: OrderItem): OrderItemModel {
     if (!domain || !domain.price) {
       console.warn('Invalid domain product in mapping', domain);
@@ -69,7 +69,7 @@ export class OrderMapper {
         name: '',
         description: '',
         quantity: 0,
-        price: { amount: '0', currency: CurrencyModel.Huf },
+        price: {amount: '0', currency: CurrencyModel.Huf},
       };
     }
 
@@ -94,7 +94,7 @@ export class OrderMapper {
       case OrderStatusModel.Shipped:
         return OrderStatus.SHIPPED;
       case OrderStatusModel.Cancelled:
-          return OrderStatus.CANCELLED;
+        return OrderStatus.CANCELLED;
       case OrderStatusModel.Delivered:
         return OrderStatus.DELIVERED;
       case OrderStatusModel.PaidSuccessfully:

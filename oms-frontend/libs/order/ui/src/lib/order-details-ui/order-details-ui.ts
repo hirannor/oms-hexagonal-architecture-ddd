@@ -15,6 +15,7 @@ import { TagModule } from 'primeng/tag';
 export class OrderDetailsUi {
   @Input() order!: Order;
   @Output() pay = new EventEmitter<string>();
+  protected readonly OrderStatus = OrderStatus;
 
   mapStatusToSeverity(
     status: OrderStatus
@@ -35,5 +36,8 @@ export class OrderDetailsUi {
     }
   }
 
-  protected readonly OrderStatus = OrderStatus;
+  canPay() : boolean {
+    return this.order.status === OrderStatus.WAITING_FOR_PAYMENT ||
+      this.order.status === OrderStatus.PAYMENT_FAILED;
+  }
 }

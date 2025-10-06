@@ -19,7 +19,7 @@ public class MessageToModelMapper implements Function<Message, MessageModel> {
     @Autowired
     public MessageToModelMapper(final List<MessageMapper<?, ?>> mappers) {
         this.registry = mappers.stream()
-            .collect(Collectors.toMap(MessageMapper::messageType, m -> m));
+                .collect(Collectors.toMap(MessageMapper::messageType, m -> m));
     }
 
     @Override

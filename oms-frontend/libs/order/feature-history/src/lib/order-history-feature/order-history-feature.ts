@@ -1,11 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import {
-  OrderActions,
-  selectAllOrders,
-  selectOrderLoading,
-} from '@oms-frontend/order/data-access';
+import { OrderActions, selectAllOrders, selectOrderLoading, } from '@oms-frontend/order/data-access';
 import { OrderHistoryUi } from '@oms-frontend/order/ui';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 
@@ -22,6 +18,6 @@ export class OrderHistoryFeature implements OnInit {
   readonly loading$ = this.store.select(selectOrderLoading);
 
   ngOnInit() {
-      this.store.dispatch(OrderActions.loadOrders());
+    this.store.dispatch(OrderActions.loadOrders());
   }
 }

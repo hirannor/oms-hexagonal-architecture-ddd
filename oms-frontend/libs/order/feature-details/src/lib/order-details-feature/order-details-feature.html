@@ -1,6 +1,6 @@
 <div class="order-details-container">
   @if (loading$ | async) {
-      <lib-loading-spinner></lib-loading-spinner>
+    <lib-loading-spinner></lib-loading-spinner>
   } @else {
     @if (order$ | async; as order) {
       <lib-order-details-ui

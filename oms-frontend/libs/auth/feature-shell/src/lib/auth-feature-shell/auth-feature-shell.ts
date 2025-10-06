@@ -11,4 +11,5 @@ import { AuthFeatureLogin } from '@oms-frontend/auth/feature-login';
   templateUrl: './auth-feature-shell.html',
   styleUrls: ['./auth-feature-shell.scss'],
 })
-export class AuthFeatureShell {}
+export class AuthFeatureShell {
+}

@@ -18,14 +18,13 @@ import java.util.function.Supplier;
 
 public class Order extends AggregateRoot {
 
-    private OrderStatus status;
-
     private final OrderId id;
     private final List<OrderItem> orderItems;
     private final CustomerId customer;
     private final Instant createdAt;
     private final List<OrderStatusChange> history;
     private final List<DomainEvent> events;
+    private OrderStatus status;
 
     Order(final OrderId id,
           final List<OrderItem> orderItems,
@@ -61,6 +60,10 @@ public class Order extends AggregateRoot {
         createdOrder.events.add(OrderCreated.record(createdOrder.id, command.customer()));
 
         return createdOrder;
+    }
+
+    private static Function<OrderItem, ProductQuantity> mapOrderItemToProductQuantity() {
+        return item -> ProductQuantity.of(item.productId(), item.quantity());
     }
 
     public OrderId id() {
@@ -248,10 +251,6 @@ public class Order extends AggregateRoot {
 
     private Supplier<IllegalStateException> failBecauseOrderDoesntContainProduct() {
         return () -> new IllegalStateException("Order must contain at least one product");
-    }
-
-    private static Function<OrderItem, ProductQuantity> mapOrderItemToProductQuantity() {
-        return item -> ProductQuantity.of(item.productId(), item.quantity());
     }
 
 }

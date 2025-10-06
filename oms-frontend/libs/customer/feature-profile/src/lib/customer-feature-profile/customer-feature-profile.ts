@@ -2,11 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import * as CustomerActions from '@oms-frontend/customer/data-access';
-import {
-  selectCustomer,
-  selectCustomerLoading,
-  selectCustomerUpdating,
-} from '@oms-frontend/customer/data-access';
+import { selectCustomer, selectCustomerLoading, selectCustomerUpdating } from '@oms-frontend/customer/data-access';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProfileFormComponent } from '@oms-frontend/customer/ui';
@@ -39,7 +35,7 @@ export class CustomerFeatureProfile implements OnInit {
 
   onSave(updated: Customer) {
     this.store.dispatch(
-      CustomerActions.updateCustomerProfile({ customer: updated })
+      CustomerActions.updateCustomerProfile({customer: updated})
     );
   }
 }

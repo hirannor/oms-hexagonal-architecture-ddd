@@ -47,14 +47,14 @@ public record Address(Country country, String city, PostalCode postalCode, Strin
         );
     }
 
+    public static Address empty() {
+        return new Address(null, "", PostalCode.empty(), "");
+    }
+
     public boolean isComplete() {
         return country != null
                 && city != null && !city.isBlank()
                 && postalCode != null
                 && streetAddress != null && !streetAddress.isBlank();
-    }
-
-    public static Address empty() {
-        return new Address(null, "", PostalCode.empty(), "");
     }
 }

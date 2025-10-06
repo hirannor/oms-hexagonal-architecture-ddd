@@ -24,12 +24,12 @@ export const productReducer = createReducer(
     loading: true,
     error: null,
   })),
-  on(ProductActions.loadProductsSuccess, (state, { products }) => ({
+  on(ProductActions.loadProductsSuccess, (state, {products}) => ({
     ...state,
     products,
     loading: false,
   })),
-  on(ProductActions.loadProductsFailure, (state, { error }) => ({
+  on(ProductActions.loadProductsFailure, (state, {error}) => ({
     ...state,
     error,
     loading: false,
@@ -40,12 +40,12 @@ export const productReducer = createReducer(
     loading: true,
     error: null,
   })),
-  on(ProductActions.loadProductByIdSuccess, (state, { product }) => ({
+  on(ProductActions.loadProductByIdSuccess, (state, {product}) => ({
     ...state,
     selectedProduct: product,
     loading: false,
   })),
-  on(ProductActions.loadProductByIdFailure, (state, { error }) => ({
+  on(ProductActions.loadProductByIdFailure, (state, {error}) => ({
     ...state,
     error,
     loading: false,
@@ -56,12 +56,12 @@ export const productReducer = createReducer(
     loading: true,
     error: null,
   })),
-  on(ProductActions.createProductSuccess, (state, { product }) => ({
+  on(ProductActions.createProductSuccess, (state, {product}) => ({
     ...state,
     products: [...state.products, product],
     loading: false,
   })),
-  on(ProductActions.createProductFailure, (state, { error }) => ({
+  on(ProductActions.createProductFailure, (state, {error}) => ({
     ...state,
     error,
     loading: false,

@@ -79,7 +79,7 @@ messaging:
       max-attempts: 3
 
 outbox:
-  house-keeping-cron:  "0 0 2 * * *"
+  house-keeping-cron: "0 0 2 * * *"
 
 app:
   frontend:

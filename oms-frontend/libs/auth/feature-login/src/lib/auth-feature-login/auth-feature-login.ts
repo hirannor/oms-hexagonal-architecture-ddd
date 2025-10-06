@@ -24,12 +24,11 @@ import { ButtonModule } from 'primeng/button';
 })
 export class AuthFeatureLogin {
   private readonly fb = inject(FormBuilder);
-  private readonly store = inject(Store);
-
   readonly form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
+  private readonly store = inject(Store);
 
   get email() {
     return this.form.get('email')!;
@@ -41,9 +40,9 @@ export class AuthFeatureLogin {
 
   onSubmit(): void {
     if (this.form.valid) {
-      const { email, password } = this.form.value;
+      const {email, password} = this.form.value;
       this.store.dispatch(
-        AuthActions.login({ email: email!, password: password! })
+        AuthActions.login({email: email!, password: password!})
       );
     } else {
       this.form.markAllAsTouched();

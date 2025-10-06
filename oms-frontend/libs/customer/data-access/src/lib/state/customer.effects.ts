@@ -41,7 +41,7 @@ export class CustomerEffects {
   updateProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CustomerActions.updateCustomerProfile),
-      mergeMap(({ customer }) =>
+      mergeMap(({customer}) =>
         this.api
           .changePersonalDetails(customer.id, CustomerMapper.toApi(customer))
           .pipe(
@@ -74,6 +74,6 @@ export class CustomerEffects {
           this.notifications.success('Profile updated successfully');
         })
       ),
-    { dispatch: false }
+    {dispatch: false}
   );
 }

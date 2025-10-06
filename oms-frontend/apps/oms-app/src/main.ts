@@ -18,14 +18,8 @@ import { provideStore } from '@ngrx/store';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthInterceptor } from '@oms-frontend/shared/data-access';
 import { MessageService } from 'primeng/api';
-import {
-  CustomerEffects,
-  customerReducer,
-} from '@oms-frontend/customer/data-access';
-import {
-  ProductEffects,
-  productReducer,
-} from '@oms-frontend/product/data-access';
+import { CustomerEffects, customerReducer, } from '@oms-frontend/customer/data-access';
+import { ProductEffects, productReducer, } from '@oms-frontend/product/data-access';
 import { BasketEffects, basketReducer } from '@oms-frontend/basket/data-access';
 import { OrderEffects, orderReducer } from '@oms-frontend/order/data-access';
 
@@ -49,13 +43,19 @@ bootstrapApplication(App, {
       },
     }),
 
-    { provide: AUTH_BASE_PATH, useValue: environment.apiUrl },
-    { provide: CUSTOMER_BASE_PATH, useValue: environment.apiUrl },
-    { provide: PRODUCT_BASE_PATH, useValue: environment.apiUrl },
-    { provide: BASKET_BASE_PATH, useValue: environment.apiUrl },
-    { provide: ORDER_BASE_PATH, useValue: environment.apiUrl },
+    {provide: AUTH_BASE_PATH, useValue: environment.apiUrl},
+    {provide: CUSTOMER_BASE_PATH, useValue: environment.apiUrl},
+    {provide: PRODUCT_BASE_PATH, useValue: environment.apiUrl},
+    {provide: BASKET_BASE_PATH, useValue: environment.apiUrl},
+    {provide: ORDER_BASE_PATH, useValue: environment.apiUrl},
     provideHttpClient(),
-    provideStore({ auth: authReducer, customer: customerReducer, product: productReducer, basket: basketReducer, orders: orderReducer }),
+    provideStore({
+      auth: authReducer,
+      customer: customerReducer,
+      product: productReducer,
+      basket: basketReducer,
+      orders: orderReducer
+    }),
     provideEffects([AuthEffects, CustomerEffects, ProductEffects, BasketEffects, OrderEffects]),
     provideStoreDevtools(),
     MessageService

@@ -1,63 +1,63 @@
-<form [formGroup]="form" (ngSubmit)="onSave()" class="p-fluid grid formgrid profile-form">
+<form (ngSubmit)="onSave()" [formGroup]="form" class="p-fluid grid formgrid profile-form">
+  <div class="field col-12 md:col-6">
+    <label for="email">Email</label>
+    <input formControlName="emailAddress" id="email" pInputText readonly/>
+  </div>
+
+  <div class="col-12 grid">
     <div class="field col-12 md:col-6">
-        <label for="email">Email</label>
-        <input id="email" pInputText formControlName="emailAddress" readonly />
+      <label for="firstName">First Name</label>
+      <input formControlName="firstName" id="firstName" pInputText/>
     </div>
 
-    <div class="col-12 grid">
-        <div class="field col-12 md:col-6">
-            <label for="firstName">First Name</label>
-            <input id="firstName" pInputText formControlName="firstName" />
-        </div>
+    <div class="field col-12 md:col-6">
+      <label for="lastName">Last Name</label>
+      <input formControlName="lastName" id="lastName" pInputText/>
+    </div>
+  </div>
 
-        <div class="field col-12 md:col-6">
-            <label for="lastName">Last Name</label>
-            <input id="lastName" pInputText formControlName="lastName" />
-        </div>
+  <div class="col-12 grid" formGroupName="address">
+    <div class="field col-12 md:col-6">
+      <label for="country">Country</label>
+      <p-select
+        [options]="countryOptions"
+        class="country-select"
+        formControlName="country"
+        id="country"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Select Country">
+      </p-select>
     </div>
 
-    <div formGroupName="address" class="col-12 grid">
-        <div class="field col-12 md:col-6">
-            <label for="country">Country</label>
-            <p-select
-                    id="country"
-                    formControlName="country"
-                    [options]="countryOptions"
-                    optionLabel="label"
-                    optionValue="value"
-                    placeholder="Select Country"
-                    class="country-select">
-            </p-select>
-        </div>
-
-        <div class="field col-12 md:col-6">
-            <label for="postalCode">Postal Code</label>
-            <input id="postalCode" type="number" pInputText formControlName="postalCode" />
-        </div>
-
-        <div class="field col-12 md:col-6">
-            <label for="city">City</label>
-            <input id="city" pInputText formControlName="city" />
-        </div>
-
-        <div class="field col-12">
-            <label for="street">Street</label>
-            <input id="street" pInputText formControlName="street" />
-        </div>
+    <div class="field col-12 md:col-6">
+      <label for="postalCode">Postal Code</label>
+      <input formControlName="postalCode" id="postalCode" pInputText type="number"/>
     </div>
 
-    <div class="form-actions">
-        <button
-                pButton
-                type="submit"
-                class="p-button-primary save-button"
-                [disabled]="form.invalid || updating">
-            @if (updating) {
-                <i class="pi pi-spin pi-spinner spinner-icon"></i>
-                Saving...
-            } @else {
-                Save
-            }
-        </button>
+    <div class="field col-12 md:col-6">
+      <label for="city">City</label>
+      <input formControlName="city" id="city" pInputText/>
     </div>
+
+    <div class="field col-12">
+      <label for="street">Street</label>
+      <input formControlName="street" id="street" pInputText/>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button
+      [disabled]="form.invalid || updating"
+      class="p-button-primary save-button"
+      pButton
+      type="submit">
+      @if (updating) {
+        <i class="pi pi-spin pi-spinner spinner-icon"></i>
+        Saving...
+      } @else {
+        Save
+      }
+    </button>
+  </div>
 </form>

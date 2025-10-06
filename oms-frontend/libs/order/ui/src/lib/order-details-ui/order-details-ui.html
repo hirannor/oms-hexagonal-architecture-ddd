@@ -6,7 +6,7 @@
   <p><strong>Date:</strong> {{ order.createdAt | date: 'medium' }}</p>
   <p class="flex items-center gap-2">
     <strong>Status:</strong>
-    <p-tag [value]="order.status" [severity]="mapStatusToSeverity(order.status)"></p-tag>
+    <p-tag [severity]="mapStatusToSeverity(order.status)" [value]="order.status"></p-tag>
   </p>
 
   <p-table
@@ -23,7 +23,7 @@
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-item>
+    <ng-template let-item pTemplate="body">
       <tr>
         <td>{{ item.name }}</td>
         <td class="text-sm text-gray-600">
@@ -52,16 +52,16 @@
     </span>
   </div>
 
-  @if (order.status === OrderStatus.WAITING_FOR_PAYMENT) {
+  @if (canPay()) {
     <div class="mt-4 flex justify-end">
-        <button
-            pButton
-            class="p-button-success"
-            (click)="pay.emit(order.id)"
-        >
+      <button
+        pButton
+        class="p-button-success"
+        (click)="pay.emit(order.id)"
+      >
         <span pButtonIcon class="pi pi-credit-card"></span>
         <span pButtonLabel>Pay Now</span>
-        </button>
+      </button>
     </div>
   }
 </div>

@@ -25,7 +25,7 @@ export class OrderHistoryUi {
   @Input() orders: Order[] = [];
 
   mapStatusToSeverity(
-      status: OrderStatus
+    status: OrderStatus
   ): 'success' | 'info' | 'warn' | 'danger' | 'secondary' {
     switch (status) {
       case OrderStatus.WAITING_FOR_PAYMENT:

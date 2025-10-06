@@ -2,8 +2,8 @@ import { createAction, props } from '@ngrx/store';
 import { Product } from '@oms-frontend/shared/data-access';
 
 export const loadProducts = createAction(
-    '[Product] Load All',
-    props<{ category?: string; search?: string }>()
+  '[Product] Load All',
+  props<{ category?: string; search?: string }>()
 );
 export const loadProductsSuccess = createAction(
   '[Product] Load All Success',

@@ -10,7 +10,6 @@
             (confirmOrderClicked)="onConfirmOrder($event)">
           </lib-basket-ui-summary>
         }
-
         @case ('ACTIVE') {
           <div class="pending-checkout">
             <h3>Processing checkout...</h3>
@@ -18,7 +17,6 @@
             <lib-loading-spinner></lib-loading-spinner>
           </div>
         }
-
         @default {
           <lib-loading-spinner></lib-loading-spinner>
         }

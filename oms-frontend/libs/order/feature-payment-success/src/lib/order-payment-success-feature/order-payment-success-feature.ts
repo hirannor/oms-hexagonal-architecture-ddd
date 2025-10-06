@@ -11,10 +11,9 @@ import { ButtonModule } from 'primeng/button';
   styleUrls: ['./order-payment-success-feature.scss'],
 })
 export class OrderPaymentSuccessFeature implements OnInit {
+  sessionId?: string;
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
-
-  sessionId?: string;
 
   ngOnInit(): void {
     this.sessionId =

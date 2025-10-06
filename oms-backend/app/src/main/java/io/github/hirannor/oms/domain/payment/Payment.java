@@ -42,6 +42,22 @@ public class Payment extends AggregateRoot {
         this.events = new ArrayList<>();
     }
 
+    public static Payment start(final StartPayment start) {
+        Objects.requireNonNull(start, "start command cannot be null");
+
+        final Payment payment = new PaymentBuilder()
+                .id(start.paymentId())
+                .order(start.orderId())
+                .amount(start.amount())
+                .status(INITIALIZED)
+                .providerReference(start.providerReference())
+                .assemble();
+
+        payment.events.add(PaymentInitialized.record(payment.id, start.orderId(), start.amount()));
+
+        return payment;
+    }
+
     public PaymentId id() {
         return id;
     }
@@ -64,22 +80,6 @@ public class Payment extends AggregateRoot {
 
     public Instant createdAt() {
         return createdAt;
-    }
-
-    public static Payment start(final StartPayment start) {
-        Objects.requireNonNull(start, "start command cannot be null");
-
-        final Payment payment = new PaymentBuilder()
-                .id(start.paymentId())
-                .order(start.orderId())
-                .amount(start.amount())
-                .status(INITIALIZED)
-                .providerReference(start.providerReference())
-                .assemble();
-
-        payment.events.add(PaymentInitialized.record(payment.id, start.orderId(), start.amount()));
-
-        return payment;
     }
 
     public void applyReceipt(final PaymentReceipt receipt) {

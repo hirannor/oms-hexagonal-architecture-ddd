@@ -16,9 +16,9 @@ public class Basket extends AggregateRoot {
 
     private final BasketId id;
     private final CustomerId customer;
-    private BasketStatus status;
     private final List<BasketItem> items;
     private final List<DomainEvent> events;
+    private BasketStatus status;
 
     Basket(final BasketId id, final CustomerId customer) {
         Objects.requireNonNull(id);

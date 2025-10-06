@@ -18,10 +18,10 @@ public class Inventory extends AggregateRoot {
 
     private final InventoryId id;
     private final ProductId productId;
-    private int availableQuantity;
-    private int reservedQuantity;
     private final List<DomainEvent> events;
     private final Instant createdAt;
+    private int availableQuantity;
+    private int reservedQuantity;
 
     Inventory(final InventoryId id,
               final ProductId productId,

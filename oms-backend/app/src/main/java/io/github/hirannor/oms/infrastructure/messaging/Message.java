@@ -8,9 +8,9 @@ import java.util.UUID;
  * @author Mate Karolyi
  */
 public interface Message {
-    MessageId id();
-
     static MessageId generateId() {
         return new MessageId(UUID.randomUUID());
     }
+
+    MessageId id();
 }

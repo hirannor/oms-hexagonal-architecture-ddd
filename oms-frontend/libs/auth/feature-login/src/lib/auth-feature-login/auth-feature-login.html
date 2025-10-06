@@ -1,21 +1,21 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form p-fluid">
-    <div class="form-field">
-        <label for="email">Email</label>
-        <input id="email" type="email" pInputText formControlName="email" placeholder="you@example.com" />
-    </div>
+<form (ngSubmit)="onSubmit()" [formGroup]="form" class="auth-form p-fluid">
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input formControlName="email" id="email" pInputText placeholder="you@example.com" type="email"/>
+  </div>
 
-    <div class="form-field">
-        <label for="password">Password</label>
-        <p-password
-                id="password"
-                formControlName="password"
-                [feedback]="false"
-                class="w-full"
-                [inputStyleClass]="'w-full'"
-        ></p-password>
-    </div>
+  <div class="form-field">
+    <label for="password">Password</label>
+    <p-password
+      [feedback]="false"
+      [inputStyleClass]="'w-full'"
+      class="w-full"
+      formControlName="password"
+      id="password"
+    ></p-password>
+  </div>
 
-    <div class="form-actions">
-        <button pButton type="submit" [disabled]="form.invalid">Login</button>
-    </div>
+  <div class="form-actions">
+    <button [disabled]="form.invalid" pButton type="submit">Login</button>
+  </div>
 </form>

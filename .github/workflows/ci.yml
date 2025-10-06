@@ -13,6 +13,7 @@ jobs:
     defaults:
       run:
         working-directory: oms-backend
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -24,15 +25,16 @@ jobs:
           java-version: 21
           cache: maven
 
-      - name: Build and test with Maven
+      - name: Build & test with Maven
         run: mvn --batch-mode --update-snapshots verify
 
   frontend:
-    name: Frontend Build
+    name: Frontend Lint & Build
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: oms-frontend
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -40,9 +42,23 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
           cache-dependency-path: oms-frontend/package-lock.json
+
+      - name: Upgrade npm to match local
+        run: npm install -g npm@11
+
+      - name: Print Node & npm versions
+        run: |
+          node -v
+          npm -v
+
+      - name: Clear npm cache
+        run: npm cache clean --force
+
+      - name: Check dependency tree
+        run: npm ls --depth=0 || true
 
       - name: Install dependencies
         run: npm ci

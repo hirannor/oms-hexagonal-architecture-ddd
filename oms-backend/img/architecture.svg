@@ -76,7 +76,9 @@
     <text x="805" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
           fill="white">JPA Store
     </text>
-    <text x="805" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Database Storage</text>
+    <text x="805" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Database
+        Storage
+    </text>
 
     <!-- In-Memory Persistence Adapter -->
     <rect x="735" y="170" width="140" height="50" rx="8" fill="#27ae60" stroke="#229954" stroke-width="2"
@@ -84,7 +86,9 @@
     <text x="805" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
           fill="white">In-Memory Store
     </text>
-    <text x="805" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Memory/Testing</text>
+    <text x="805" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">
+        Memory/Testing
+    </text>
 
     <!-- Event Bus Adapter -->
     <rect x="735" y="290" width="140" height="50" rx="8" fill="#27ae60" stroke="#229954" stroke-width="2"
@@ -92,7 +96,9 @@
     <text x="805" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
           fill="white">Event Bus (Rabbit)
     </text>
-    <text x="805" y="328" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Event Publishing</text>
+    <text x="805" y="328" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Event
+        Publishing
+    </text>
 
     <!-- Stripe Payment Gateway Adapter -->
     <rect x="735" y="350" width="140" height="50" rx="8" fill="#27ae60" stroke="#229954" stroke-width="2"
@@ -100,7 +106,9 @@
     <text x="805" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
           fill="white">Stripe Payment
     </text>
-    <text x="805" y="388" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Payment Gateway</text>
+    <text x="805" y="388" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Payment
+        Gateway
+    </text>
 
     <!-- Mock Payment Gateway Adapter -->
     <rect x="735" y="410" width="140" height="50" rx="8" fill="#27ae60" stroke="#229954" stroke-width="2"
@@ -108,7 +116,9 @@
     <text x="805" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
           fill="white">Mock Payment
     </text>
-    <text x="805" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Testing Gateway</text>
+    <text x="805" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">Testing
+        Gateway
+    </text>
 
     <!-- SMS Notification Adapter -->
     <rect x="735" y="470" width="140" height="50" rx="8" fill="#27ae60" stroke="#229954" stroke-width="2"
@@ -116,7 +126,9 @@
     <text x="805" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
           fill="white">SMS Notification
     </text>
-    <text x="805" y="508" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">SMS Gateway</text>
+    <text x="805" y="508" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">SMS
+        Gateway
+    </text>
 
     <!-- Email Notification Adapter -->
     <rect x="735" y="530" width="140" height="50" rx="8" fill="#27ae60" stroke="#229954" stroke-width="2"
@@ -124,7 +136,9 @@
     <text x="805" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold"
           fill="white">Email Notification
     </text>
-    <text x="805" y="568" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">SMTP Service</text>
+    <text x="805" y="568" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a9dfbf">SMTP
+        Service
+    </text>
 
     <!-- Primary Ports (Interfaces) -->
     <circle cx="310" cy="270" r="25" fill="#f39c12" stroke="#e67e22" stroke-width="2" filter="url(#shadow)"/>
@@ -214,23 +228,32 @@
 
     <!-- Legend items -->
     <rect x="95" y="690" width="20" height="15" fill="#3498db"/>
-    <text x="125" y="702" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Application Core - Business domains with Command/Query services</text>
+    <text x="125" y="702" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Application Core - Business
+        domains with Command/Query services
+    </text>
 
     <rect x="95" y="715" width="20" height="15" fill="#e74c3c"/>
-    <text x="125" y="727" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Primary Adapters - Drive the application (REST API, JWT Auth)</text>
+    <text x="125" y="727" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Primary Adapters - Drive the
+        application (REST API, JWT Auth)
+    </text>
 
     <rect x="95" y="740" width="20" height="15" fill="#27ae60"/>
-    <text x="125" y="752" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Secondary Adapters - Data persistence, messaging, notifications</text>
+    <text x="125" y="752" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Secondary Adapters - Data
+        persistence, messaging, notifications
+    </text>
 
-<!--    <rect x="95" y="790" width="20" height="15" fill="#6f42c1"/>-->
-<!--    <text x="125" y="802" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Stripe Payment - Production payment processing</text>-->
+    <!--    <rect x="95" y="790" width="20" height="15" fill="#6f42c1"/>-->
+    <!--    <text x="125" y="802" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Stripe Payment - Production payment processing</text>-->
 
-<!--    <rect x="95" y="815" width="20" height="15" fill="#f39c12"/>-->
-<!--    <text x="125" y="827" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Mock Payment and Ports - Testing/development  interface definitions</text>-->
+    <!--    <rect x="95" y="815" width="20" height="15" fill="#f39c12"/>-->
+    <!--    <text x="125" y="827" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Mock Payment and Ports - Testing/development  interface definitions</text>-->
 
     <circle cx="105" cy="775" r="8" fill="#f39c12"/>
-    <text x="125" y="780" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Primary Ports - REST, Auth</text>
+    <text x="125" y="780" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Primary Ports - REST, Auth
+    </text>
 
     <circle cx="105" cy="800" r="8" fill="#9b59b6"/>
-    <text x="125" y="805" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Secondary Ports - Repository, Inventory, Messaging, Payment, Notification interfaces</text>
+    <text x="125" y="805" font-family="Arial, sans-serif" font-size="14" fill="#2c3e50">Secondary Ports - Repository,
+        Inventory, Messaging, Payment, Notification interfaces
+    </text>
 </svg>

@@ -12,23 +12,23 @@
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-order>
+    <ng-template let-order pTemplate="body">
       <tr>
         <td>{{ order.id }}</td>
         <td>{{ order.createdAt | date: 'short' }}</td>
         <td>
-          <p-tag [value]="order.status" [severity]="mapStatusToSeverity(order.status)"></p-tag>
+          <p-tag [severity]="mapStatusToSeverity(order.status)" [value]="order.status"></p-tag>
         </td>
         <td>{{ order.totalPrice.amount }} {{ order.totalPrice.currency }}</td>
         <td>
-            <button
-                pButton
-                class="p-button-text p-button-sm"
-                [routerLink]="['/orders', order.id]"
-            >
-                <span pButtonIcon class="pi pi-eye"></span>
-                <span pButtonLabel>View</span>
-            </button>
+          <button
+            [routerLink]="['/orders', order.id]"
+            class="p-button-text p-button-sm"
+            pButton
+          >
+            <span class="pi pi-eye" pButtonIcon></span>
+            <span pButtonLabel>View</span>
+          </button>
 
         </td>
       </tr>

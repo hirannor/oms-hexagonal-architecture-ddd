@@ -11,7 +11,7 @@
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-item>
+    <ng-template let-item pTemplate="body">
       <tr>
         <td>{{ item.name }}</td>
         <td>{{ item.quantity }}</td>
@@ -31,14 +31,14 @@
     </h3>
 
     <div class="order-actions">
-        <button
-            pButton
-            class="p-button-success"
-            (click)="confirmOrderClicked.emit(basket)"
-        >
-        <span pButtonIcon class="pi pi-check"></span>
+      <button
+        (click)="confirmOrderClicked.emit(basket)"
+        class="p-button-success"
+        pButton
+      >
+        <span class="pi pi-check" pButtonIcon></span>
         <span pButtonLabel>Confirm Order</span>
-        </button>
+      </button>
     </div>
 
   </div>

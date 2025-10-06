@@ -10,12 +10,32 @@ import { ProductMapper } from '@oms-frontend/shared/data-access';
 export class ProductEffects {
   private actions$ = inject(Actions);
   private api = inject(ProductApi);
+  loadById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.loadProductById),
+      mergeMap(({id}) =>
+        this.api.displayBy(id).pipe(
+          map((res) =>
+            ProductActions.loadProductByIdSuccess({
+              product: ProductMapper.mapToProduct(res),
+            })
+          ),
+          catchError((err) =>
+            of(
+              ProductActions.loadProductByIdFailure({
+                error: err?.message ?? 'Failed to load product',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
   private notifications = inject(NotificationService);
-
   loadAll$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.loadProducts),
-        mergeMap(({ category, search }) =>
+      mergeMap(({category, search}) =>
         this.api.displayAll().pipe(
           map((res) =>
             ProductActions.loadProductsSuccess({
@@ -35,33 +55,10 @@ export class ProductEffects {
       )
     )
   );
-
-  loadById$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ProductActions.loadProductById),
-      mergeMap(({ id }) =>
-        this.api.displayBy(id).pipe(
-          map((res) =>
-            ProductActions.loadProductByIdSuccess({
-              product: ProductMapper.mapToProduct(res),
-            })
-          ),
-          catchError((err) =>
-            of(
-              ProductActions.loadProductByIdFailure({
-                error: err?.message ?? 'Failed to load product',
-              })
-            )
-          )
-        )
-      )
-    )
-  );
-
   create$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.createProduct),
-      mergeMap(({ product }) =>
+      mergeMap(({product}) =>
         this.api.create(ProductMapper.mapToProductModel(product)).pipe(
           map((res) =>
             ProductActions.createProductSuccess({

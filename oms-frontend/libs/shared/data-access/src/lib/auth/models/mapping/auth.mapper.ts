@@ -1,8 +1,4 @@
-import {
-  AuthenticateModel,
-  AuthenticationResultModel,
-  RegisterModel,
-} from '@oms-frontend/api/auth-data-access';
+import { AuthenticateModel, AuthenticationResultModel, RegisterModel, } from '@oms-frontend/api/auth-data-access';
 import { LoginPayload } from '../login-payload';
 import { RegisterPayload } from '../register-payload';
 import { AuthResult } from '../auth-result';

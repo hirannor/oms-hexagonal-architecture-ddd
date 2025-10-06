@@ -5,37 +5,37 @@
     </div>
 
     <div class="header-search">
-      <input pInputText type="text" placeholder="Search products..." />
+      <input pInputText placeholder="Search products..." type="text"/>
       <button pButton pButtonIcon="pi pi-search">Search</button>
     </div>
 
     <div class="header-right">
       <button
-        pButton
-        type="button"
-        icon="pi pi-shopping-cart"
         class="p-button-text p-button-rounded basket-button"
+        icon="pi pi-shopping-cart"
+        pButton
         pTooltip="My Basket"
-        tooltipPosition="bottom"
         routerLink="/basket"
+        tooltipPosition="bottom"
+        type="button"
       ></button>
 
       <button
-        pButton
-        type="button"
-        icon="pi pi-list"
         class="p-button-text p-button-rounded orders-button"
+        icon="pi pi-list"
+        pButton
         pTooltip="My Orders"
-        tooltipPosition="bottom"
         routerLink="/orders"
+        tooltipPosition="bottom"
+        type="button"
       ></button>
 
-      <p-menu #profileMenu [popup]="true" [model]="profileItems"></p-menu>
+      <p-menu #profileMenu [model]="profileItems" [popup]="true"></p-menu>
       <p-avatar
+        (click)="profileMenu.toggle($event)"
+        class="cursor-pointer"
         icon="pi pi-user"
         shape="circle"
-        class="cursor-pointer"
-        (click)="profileMenu.toggle($event)"
       ></p-avatar>
     </div>
   </header>

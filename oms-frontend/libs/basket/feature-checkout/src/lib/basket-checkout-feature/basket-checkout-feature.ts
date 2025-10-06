@@ -1,14 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  BasketActions,
-  selectBasket,
-  selectBasketLoading,
-} from '@oms-frontend/basket/data-access';
-import {
-  AuthService,
-  Basket,
-  OrderItem,
-} from '@oms-frontend/shared/data-access';
+import { BasketActions, selectBasket, selectBasketLoading, } from '@oms-frontend/basket/data-access';
+import { AuthService, Basket, OrderItem, } from '@oms-frontend/shared/data-access';
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { BasketSummaryUi } from '@oms-frontend/basket/ui';
@@ -24,18 +16,16 @@ import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 })
 export class BasketCheckoutFeature implements OnInit {
   private readonly store = inject(Store);
-  private readonly auth = inject(AuthService);
-
   readonly basket$ = this.store.select(selectBasket);
   readonly loading$ = this.store.select(selectBasketLoading);
-
+  private readonly auth = inject(AuthService);
   private customerId: string | null = null;
 
   ngOnInit() {
     this.customerId = this.auth.extractCustomerId();
 
     if (this.customerId) {
-      this.store.dispatch(BasketActions.loadBasket({ customerId: this.customerId }));
+      this.store.dispatch(BasketActions.loadBasket({customerId: this.customerId}));
     }
   }
 
@@ -51,6 +41,6 @@ export class BasketCheckoutFeature implements OnInit {
       price: item.price,
     }));
 
-    this.store.dispatch(OrderActions.createOrder({ customerId: this.customerId, products }));
+    this.store.dispatch(OrderActions.createOrder({customerId: this.customerId, products}));
   }
 }

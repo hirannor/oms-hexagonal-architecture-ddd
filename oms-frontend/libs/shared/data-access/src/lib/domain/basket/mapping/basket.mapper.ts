@@ -1,9 +1,4 @@
-import {
-  BasketItemModel,
-  BasketModel,
-  BasketStatusModel,
-  CurrencyModel,
-} from '@oms-frontend/api/basket-data-access';
+import { BasketItemModel, BasketModel, BasketStatusModel, CurrencyModel, } from '@oms-frontend/api/basket-data-access';
 import { Currency } from '@oms-frontend/models';
 import { BasketItem } from '../basket-item';
 import { BasketStatus } from '../basket-status';
@@ -23,19 +18,6 @@ export class BasketMapper {
     };
   }
 
-  private static mapToBasketItem(model: BasketItemModel): BasketItem {
-    return {
-      productId: model.productId,
-      name: model.name,
-      description: model.description,
-      quantity: model.quantity,
-      price: {
-        amount: model.price.amount,
-        currency: this.mapToCurrency(model.price.currency),
-      },
-    };
-  }
-
   static mapToBasketItemModel(item: BasketItem): BasketItemModel {
     return {
       productId: item.productId,
@@ -45,6 +27,19 @@ export class BasketMapper {
       price: {
         amount: item.price.amount,
         currency: this.mapToCurrencyModel(item.price.currency),
+      },
+    };
+  }
+
+  private static mapToBasketItem(model: BasketItemModel): BasketItem {
+    return {
+      productId: model.productId,
+      name: model.name,
+      description: model.description,
+      quantity: model.quantity,
+      price: {
+        amount: model.price.amount,
+        currency: this.mapToCurrency(model.price.currency),
       },
     };
   }

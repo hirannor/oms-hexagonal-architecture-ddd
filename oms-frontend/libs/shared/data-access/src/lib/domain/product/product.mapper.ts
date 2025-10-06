@@ -1,7 +1,4 @@
-import {
-  CurrencyModel,
-  ProductModel,
-} from '@oms-frontend/api/product-data-access';
+import { CurrencyModel, ProductModel, } from '@oms-frontend/api/product-data-access';
 import { Product } from './product';
 import { Currency } from '@oms-frontend/models';
 
