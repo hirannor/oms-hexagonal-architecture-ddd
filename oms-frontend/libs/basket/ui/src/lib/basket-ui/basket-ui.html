@@ -1,8 +1,5 @@
 <div class="basket-container">
   @if (basket && basket.items.length > 0) {
-    <header class="basket-header">
-      <h2>Your Basket</h2>
-    </header>
 
     <p-table [value]="basket.items" class="basket-table">
       <ng-template pTemplate="header">

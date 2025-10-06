@@ -3,7 +3,16 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { BasketApi } from '@oms-frontend/api/basket-data-access';
 import { BasketMapper } from '@oms-frontend/shared/data-access';
 import { Store } from '@ngrx/store';
-import { catchError, concatMap, map, mergeMap, of, switchMap, tap, withLatestFrom, } from 'rxjs';
+import {
+  catchError,
+  concatMap,
+  map,
+  mergeMap,
+  of,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 import { NotificationService } from '@oms-frontend/services';
 import { BasketActions } from './basket.actions';
 import { selectBasket } from './basket.selector';
@@ -16,7 +25,7 @@ export class BasketEffects {
   loadBasket$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BasketActions.loadBasket),
-      mergeMap(({customerId}) =>
+      mergeMap(({ customerId }) =>
         this.basketApi.displayBy(customerId).pipe(
           map((apiBasket) =>
             BasketActions.loadBasketSuccess({
@@ -25,7 +34,7 @@ export class BasketEffects {
           ),
           catchError((error) => {
             if (error.status === 404) {
-              return of(BasketActions.loadBasketFailure({error: 'empty'}));
+              return of(BasketActions.loadBasketFailure({ error: 'empty' }));
             }
             return of(
               BasketActions.loadBasketFailure({
@@ -42,8 +51,8 @@ export class BasketEffects {
   createBasket$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BasketActions.createBasket),
-      mergeMap(({customerId}) =>
-        this.basketApi.createBasket({customerId}).pipe(
+      mergeMap(({ customerId }) =>
+        this.basketApi.createBasket({ customerId }).pipe(
           map((apiBasket) => {
             this.notifications.success('Basket created successfully');
             return BasketActions.createBasketSuccess({
@@ -69,7 +78,7 @@ export class BasketEffects {
     this.actions$.pipe(
       ofType(BasketActions.addItem),
       withLatestFrom(this.store.select(selectBasket)),
-      concatMap(([{customerId, item}, basket]) => {
+      concatMap(([{ customerId, item }, basket]) => {
         const basketId = basket?.id;
 
         const addItemToBasket = (id: string) =>
@@ -83,7 +92,7 @@ export class BasketEffects {
                       BasketMapper.mapToBasket(apiBasket)
                     );
                     this.notifications.success(`${item.name} added to basket`);
-                    return BasketActions.addItemSuccess({basket: updated});
+                    return BasketActions.addItemSuccess({ basket: updated });
                   })
                 )
               ),
@@ -101,7 +110,7 @@ export class BasketEffects {
             );
 
         if (!basketId) {
-          return this.basketApi.createBasket({customerId}).pipe(
+          return this.basketApi.createBasket({ customerId }).pipe(
             switchMap((apiBasket) =>
               addItemToBasket(BasketMapper.mapToBasket(apiBasket).id)
             ),
@@ -124,11 +133,11 @@ export class BasketEffects {
     this.actions$.pipe(
       ofType(BasketActions.removeItem),
       withLatestFrom(this.store.select(selectBasket)),
-      concatMap(([{customerId, item}, basket]) => {
+      concatMap(([{ customerId, item }, basket]) => {
         if (!basket?.id) {
           this.notifications.error('Cannot remove item — basket not found');
           return of(
-            BasketActions.removeItemFailure({error: 'Basket not found'})
+            BasketActions.removeItemFailure({ error: 'Basket not found' })
           );
         }
 
@@ -178,11 +187,11 @@ export class BasketEffects {
   checkoutBasket$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BasketActions.checkoutBasket),
-      switchMap(({customerId}) =>
+      switchMap(({ customerId }) =>
         this.basketApi.checkout(customerId).pipe(
           map((apiBasket) => {
             const basket = this.normalize(BasketMapper.mapToBasket(apiBasket));
-            return BasketActions.checkoutBasketSuccess({basket});
+            return BasketActions.checkoutBasketSuccess({ basket });
           }),
           catchError((error) => {
             this.notifications.error(
@@ -207,7 +216,7 @@ export class BasketEffects {
           this.notifications.info('Your basket has been checked out.');
         })
       ),
-    {dispatch: false}
+    { dispatch: false }
   );
   private readonly router = inject(Router);
 

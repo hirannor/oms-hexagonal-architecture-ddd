@@ -16,11 +16,11 @@ export class CustomerMapper {
       lastName: model.lastName ?? undefined,
       address: model.address
         ? {
-          country: model.address.country as unknown as CountryCode,
-          postalCode: model.address.postalCode ?? undefined,
-          city: model.address.city ?? undefined,
-          street: model.address.streetAddress ?? undefined,
-        }
+            country: model.address.country as unknown as CountryCode,
+            postalCode: model.address.postalCode ?? undefined,
+            city: model.address.city ?? undefined,
+            street: model.address.streetAddress ?? undefined,
+          }
         : undefined,
     };
   }

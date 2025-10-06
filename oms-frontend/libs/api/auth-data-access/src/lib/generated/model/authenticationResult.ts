@@ -8,10 +8,8 @@
  * Do not edit the class manually.
  */
 
-
 export interface AuthenticationResultModel {
   emailAddress?: string;
   accessToken?: string;
   refreshToken?: string;
 }
-

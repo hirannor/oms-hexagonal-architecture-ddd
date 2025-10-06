@@ -13,7 +13,7 @@ export class ProductEffects {
   loadById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.loadProductById),
-      mergeMap(({id}) =>
+      mergeMap(({ id }) =>
         this.api.displayBy(id).pipe(
           map((res) =>
             ProductActions.loadProductByIdSuccess({
@@ -35,7 +35,7 @@ export class ProductEffects {
   loadAll$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.loadProducts),
-      mergeMap(({category, search}) =>
+      mergeMap(({ category, search }) =>
         this.api.displayAll().pipe(
           map((res) =>
             ProductActions.loadProductsSuccess({
@@ -58,7 +58,7 @@ export class ProductEffects {
   create$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.createProduct),
-      mergeMap(({product}) =>
+      mergeMap(({ product }) =>
         this.api.create(ProductMapper.mapToProductModel(product)).pipe(
           map((res) =>
             ProductActions.createProductSuccess({

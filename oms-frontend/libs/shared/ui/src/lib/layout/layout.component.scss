@@ -41,18 +41,18 @@
     font-size: 0.95rem;
     background: transparent;
   }
+}
 
-  button {
-    border-radius: 0;
-    border: none;
-    background: var(--p-primary-500, #2f855a);
-    color: white;
-    padding: 0.6rem 1rem;
-    transition: background 0.2s ease;
+.app-title-link {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
 
-    &:hover {
-      background: var(--p-primary-600, #256c4d);
-    }
+  &:hover {
+    opacity: 0.85;
+    text-decoration: underline;
   }
 }
 
@@ -60,27 +60,6 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.basket-button,
-.orders-button {
-  color: #ffffff !important;
-  border: none !important;
-  background: transparent !important;
-  transition: background 0.2s ease, color 0.2s ease;
-
-  i {
-    color: #ffffff !important;
-    font-size: 1.25rem;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
-  }
-
-  &.active {
-    background: rgba(255, 255, 255, 0.25) !important;
-  }
 }
 
 .layout-header .p-avatar {
@@ -101,7 +80,7 @@
 
 /* ---------- SIDEBAR ---------- */
 .layout-sidebar {
-  width: 240px;
+  width: 300px;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
   padding: 1rem;

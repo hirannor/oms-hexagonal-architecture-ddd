@@ -1,5 +1,11 @@
 import { inject } from '@angular/core';
-import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest, } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandlerFn,
+  HttpInterceptorFn,
+  HttpRequest,
+} from '@angular/common/http';
 import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 
@@ -15,7 +21,7 @@ export const AuthInterceptor: HttpInterceptorFn = (
   }
 
   const cloned = accessToken
-    ? req.clone({setHeaders: {Authorization: `Bearer ${accessToken}`}})
+    ? req.clone({ setHeaders: { Authorization: `Bearer ${accessToken}` } })
     : req;
 
   return next(cloned).pipe(
@@ -28,9 +34,9 @@ export const AuthInterceptor: HttpInterceptorFn = (
         }
 
         return auth.refreshTokens().pipe(
-          switchMap(({accessToken}) => {
+          switchMap(({ accessToken }) => {
             const retried = req.clone({
-              setHeaders: {Authorization: `Bearer ${accessToken}`},
+              setHeaders: { Authorization: `Bearer ${accessToken}` },
             });
             return next(retried);
           }),

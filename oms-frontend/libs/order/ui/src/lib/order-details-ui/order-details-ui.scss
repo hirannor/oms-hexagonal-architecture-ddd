@@ -1,35 +1,7 @@
-.order-details {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ---------- HEADER ---------- */
-.order-details h2 {
-  margin-bottom: 1rem;
-  color: #111827;
-}
-
-/* ---------- META INFO ---------- */
-.order-details p {
-  margin: 0.25rem 0;
-  font-size: 0.95rem;
-  color: #374151;
-}
-
-.order-details strong {
-  color: #111827;
-}
-
-.order-details .p-tag {
-  font-size: 0.85rem;
-}
-
 /* ---------- TABLE ---------- */
 .p-table {
   margin-top: 1.5rem;
+
 }
 
 .p-datatable-striped tr:nth-child(even) {
@@ -58,23 +30,6 @@
   color: #111827;
 }
 
-/* ---------- PAYMENT BUTTON ---------- */
-.order-details .mt-4 {
-  margin-top: 1.5rem !important;
-}
-
-.order-details .flex {
-  display: flex;
-}
-
-.order-details .justify-end {
-  justify-content: flex-end;
-}
-
-.order-details button {
-  margin-left: 1rem;
-  padding: 0.75rem 1.5rem;
-}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {

@@ -8,7 +8,15 @@ import { Tooltip } from 'primeng/tooltip';
 
 @Component({
   selector: 'lib-basket-ui',
-  imports: [CommonModule, ButtonDirective, ButtonIcon, ButtonLabel, TableModule, RouterLink, Tooltip],
+  imports: [
+    CommonModule,
+    ButtonDirective,
+    ButtonIcon,
+    ButtonLabel,
+    TableModule,
+    RouterLink,
+    Tooltip,
+  ],
   standalone: true,
   templateUrl: './basket-ui.html',
   styleUrl: './basket-ui.scss',

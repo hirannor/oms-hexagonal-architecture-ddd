@@ -1,4 +1,5 @@
-<div class="basket-container">
+<div class="feature-container">
+  <h2 class="feature-title">Your Basket</h2>
   @if (loading$ | async) {
     <lib-loading-spinner></lib-loading-spinner>
   } @else if (isEmpty$ | async) {

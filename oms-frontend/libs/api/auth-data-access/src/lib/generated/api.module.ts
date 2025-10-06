@@ -1,4 +1,9 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf, } from '@angular/core';
+import {
+  ModuleWithProviders,
+  NgModule,
+  Optional,
+  SkipSelf,
+} from '@angular/core';
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
@@ -21,7 +26,7 @@ export class ApiModule {
     if (!http) {
       throw new Error(
         'You need to import the HttpClientModule in your AppModule! \n' +
-        'See also https://github.com/angular/angular/issues/20575'
+          'See also https://github.com/angular/angular/issues/20575'
       );
     }
   }
@@ -31,7 +36,7 @@ export class ApiModule {
   ): ModuleWithProviders<ApiModule> {
     return {
       ngModule: ApiModule,
-      providers: [{provide: Configuration, useFactory: configurationFactory}],
+      providers: [{ provide: Configuration, useFactory: configurationFactory }],
     };
   }
 }

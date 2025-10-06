@@ -1,7 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { AuthService, Basket, BasketItem, OrderItem, } from '@oms-frontend/shared/data-access';
+import {
+  AuthService,
+  Basket,
+  BasketItem,
+  OrderItem,
+} from '@oms-frontend/shared/data-access';
 import {
   BasketActions,
   selectBasket,
@@ -42,7 +47,9 @@ export class BasketCartFeature implements OnInit {
     this.customerId = this.auth.extractCustomerId();
 
     if (this.customerId) {
-      this.store.dispatch(BasketActions.loadBasket({customerId: this.customerId}));
+      this.store.dispatch(
+        BasketActions.loadBasket({ customerId: this.customerId })
+      );
     }
   }
 
@@ -55,30 +62,34 @@ export class BasketCartFeature implements OnInit {
     };
 
     this.store.dispatch(
-      BasketActions.addItem({customerId: this.customerId, item: updatedItem})
+      BasketActions.addItem({ customerId: this.customerId, item: updatedItem })
     );
   }
 
   onDecrease(item: BasketItem): void {
     if (!this.customerId) return;
 
-    const oneLess: BasketItem = {...item, quantity: 1};
+    const oneLess: BasketItem = { ...item, quantity: 1 };
 
     this.store.dispatch(
-      BasketActions.removeItem({customerId: this.customerId, item: oneLess})
+      BasketActions.removeItem({ customerId: this.customerId, item: oneLess })
     );
   }
 
   onRemove(item: BasketItem): void {
     if (!this.customerId) return;
 
-    this.store.dispatch(BasketActions.removeItem({customerId: this.customerId, item}));
+    this.store.dispatch(
+      BasketActions.removeItem({ customerId: this.customerId, item })
+    );
   }
 
   onCheckout(): void {
     if (!this.customerId) return;
 
-    this.store.dispatch(BasketActions.checkoutBasket({customerId: this.customerId}));
+    this.store.dispatch(
+      BasketActions.checkoutBasket({ customerId: this.customerId })
+    );
   }
 
   onConfirmOrder(basket: Basket): void {
@@ -92,6 +103,8 @@ export class BasketCartFeature implements OnInit {
       price: item.price,
     }));
 
-    this.store.dispatch(OrderActions.createOrder({customerId: this.customerId, products}));
+    this.store.dispatch(
+      OrderActions.createOrder({ customerId: this.customerId, products })
+    );
   }
 }

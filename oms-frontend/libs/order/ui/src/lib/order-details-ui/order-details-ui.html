@@ -1,67 +1,65 @@
-<div class="order-details p-4">
-  <h2 class="text-xl font-semibold mb-3">
-    Order #{{ order.id }}
-  </h2>
+<h2 class="text-xl font-semibold mb-3">
+  Order #{{ order.id }}
+</h2>
 
-  <p><strong>Date:</strong> {{ order.createdAt | date: 'medium' }}</p>
-  <p class="flex items-center gap-2">
-    <strong>Status:</strong>
-    <p-tag [severity]="mapStatusToSeverity(order.status)" [value]="order.status"></p-tag>
-  </p>
+<p><strong>Date:</strong> {{ order.createdAt | date: 'medium' }}</p>
+<p class="flex items-center gap-2">
+  <strong>Status:</strong>
+  <p-tag [severity]="mapStatusToSeverity(order.status)" [value]="order.status"></p-tag>
+</p>
 
-  <p-table
-    [value]="order.orderItems"
-    class="p-datatable-striped mt-4"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Product</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Total</th>
-      </tr>
-    </ng-template>
+<p-table
+  [value]="order.orderItems"
+  class="p-datatable-striped mt-4"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Product</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Total</th>
+    </tr>
+  </ng-template>
 
-    <ng-template let-item pTemplate="body">
-      <tr>
-        <td>{{ item.name }}</td>
-        <td class="text-sm text-gray-600">
-          {{ item.description || '-' }}
-        </td>
-        <td>{{ item.quantity }}</td>
-        <td>
-          {{ item.price.amount }} {{ item.price.currency }}
-        </td>
-        <td>
-          {{
-            (item.price.amount * item.quantity) | number : '1.2-2'
-          }}
-          {{ item.price.currency }}
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+  <ng-template let-item pTemplate="body">
+    <tr>
+      <td>{{ item.name }}</td>
+      <td class="text-sm text-gray-600">
+        {{ item.description || '-' }}
+      </td>
+      <td>{{ item.quantity }}</td>
+      <td>
+        {{ item.price.amount }} {{ item.price.currency }}
+      </td>
+      <td>
+        {{
+          (item.price.amount * item.quantity) | number : '1.2-2'
+        }}
+        {{ item.price.currency }}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
 
-  <div
-    class="total-section flex justify-end items-center gap-2 mt-4 text-lg font-semibold"
-  >
-    <span>Total:</span>
-    <span>
+<div
+  class="total-section flex justify-end items-center gap-2 mt-4 text-lg font-semibold"
+>
+  <span>Total:</span>
+  <span>
       {{ order.totalPrice.amount }} {{ order.totalPrice.currency }}
     </span>
-  </div>
-
-  @if (canPay()) {
-    <div class="mt-4 flex justify-end">
-      <button
-        pButton
-        class="p-button-success"
-        (click)="pay.emit(order.id)"
-      >
-        <span pButtonIcon class="pi pi-credit-card"></span>
-        <span pButtonLabel>Pay Now</span>
-      </button>
-    </div>
-  }
 </div>
+
+@if (canPay()) {
+  <div class="mt-4 flex justify-end">
+    <button
+      pButton
+      class="p-button-success"
+      (click)="pay.emit(order.id)"
+    >
+      <span pButtonIcon class="pi pi-credit-card"></span>
+      <span pButtonLabel>Pay Now</span>
+    </button>
+  </div>
+}

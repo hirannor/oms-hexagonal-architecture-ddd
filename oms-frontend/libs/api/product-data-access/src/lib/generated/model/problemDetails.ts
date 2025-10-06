@@ -8,7 +8,6 @@
  * Do not edit the class manually.
  */
 
-
 export interface ProblemDetailsModel {
   timestamp?: string;
   title?: string;
@@ -18,6 +17,5 @@ export interface ProblemDetailsModel {
   /**
    * A map of fieldName -> validation error message
    */
-  fields?: { [key: string]: string; };
+  fields?: { [key: string]: string };
 }
-

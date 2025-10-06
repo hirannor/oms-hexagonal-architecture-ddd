@@ -1,42 +1,51 @@
 <div class="layout-container">
   <header class="layout-header p-shadow-3">
     <div class="header-left">
-      <h2>OMS - Order Management System</h2>
+      <h2>
+        <a class="app-title-link" routerLink="/products">
+          OMS - Order Management System
+        </a>
+      </h2>
     </div>
 
     <div class="header-search">
       <input pInputText placeholder="Search products..." type="text"/>
-      <button pButton pButtonIcon="pi pi-search">Search</button>
+      <button pButton>
+        <span class="pi pi-search" pButtonIcon></span>
+      </button>
     </div>
 
     <div class="header-right">
       <button
-        class="p-button-text p-button-rounded basket-button"
-        icon="pi pi-shopping-cart"
         pButton
         pTooltip="My Basket"
+        rounded="true"
         routerLink="/basket"
         tooltipPosition="bottom"
         type="button"
-      ></button>
+      >
+        <span class="pi pi-shopping-cart" pButtonIcon></span>
+      </button>
 
       <button
-        class="p-button-text p-button-rounded orders-button"
-        icon="pi pi-list"
         pButton
         pTooltip="My Orders"
+        rounded="true"
         routerLink="/orders"
         tooltipPosition="bottom"
         type="button"
-      ></button>
+      >
+        <span class="pi pi-list" pButtonIcon></span>
+      </button>
 
       <p-menu #profileMenu [model]="profileItems" [popup]="true"></p-menu>
       <p-avatar
         (click)="profileMenu.toggle($event)"
         class="cursor-pointer"
-        icon="pi pi-user"
         shape="circle"
-      ></p-avatar>
+      >
+        <span class="pi pi-user" pButtonIcon></span>
+      </p-avatar>
     </div>
   </header>
 

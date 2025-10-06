@@ -7,7 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { HttpHeaders, HttpParameterCodec, HttpParams, } from '@angular/common/http';
+import {
+  HttpHeaders,
+  HttpParameterCodec,
+  HttpParams,
+} from '@angular/common/http';
 import { CustomHttpParameterCodec } from './encoder';
 import { Configuration } from './configuration';
 
@@ -69,9 +73,9 @@ export class BaseService {
       if (key != null) {
         return isDeep
           ? Object.keys(value as Record<string, any>).reduce(
-            (hp, k) => hp.append(`${key}[${k}]`, value[k]),
-            httpParams
-          )
+              (hp, k) => hp.append(`${key}[${k}]`, value[k]),
+              httpParams
+            )
           : httpParams.append(key, JSON.stringify(value));
       }
       // Otherwise, if it's an array, add each element.

@@ -8,13 +8,10 @@
  * Do not edit the class manually.
  */
 
-
 export enum BasketStatusModel {
-
   Active = 'ACTIVE',
 
   CheckedOut = 'CHECKED_OUT',
 
-  Expired = 'EXPIRED'
+  Expired = 'EXPIRED',
 }
-

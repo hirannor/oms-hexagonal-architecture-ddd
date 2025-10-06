@@ -1,19 +1,22 @@
-<div class="product-list-container">
-  @if (loading$ | async) {
-    <lib-loading-spinner></lib-loading-spinner>
-  } @else {
-    @if (products$ | async; as products) {
-      <div class="product-grid">
-        @for (product of products; track product.id) {
-          <lib-product-card
-            [product]="product"
-            (addToBasket)="onAddToBasket($event)"
-            [disabled]="(basket$ | async)?.status === 'CHECKED_OUT'">
-          </lib-product-card>
-        }
-      </div>
-    } @else {
+<div class="feature-container">
+  <h2 class="feature-title">Products</h2>
+  <div class="product-list-container">
+    @if (loading$ | async) {
       <lib-loading-spinner></lib-loading-spinner>
+    } @else {
+      @if (products$ | async; as products) {
+        <div class="product-grid">
+          @for (product of products; track product.id) {
+            <lib-product-card
+              [product]="product"
+              (addToBasket)="onAddToBasket($event)"
+              [disabled]="(basket$ | async)?.status === 'CHECKED_OUT'">
+            </lib-product-card>
+          }
+        </div>
+      } @else {
+        <lib-loading-spinner></lib-loading-spinner>
+      }
     }
-  }
+  </div>
 </div>

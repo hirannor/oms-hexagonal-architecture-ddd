@@ -47,13 +47,13 @@ export class OrderEffects {
   payOrder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderActions.payOrder),
-      mergeMap(({orderId}) =>
+      mergeMap(({ orderId }) =>
         this.api.pay(orderId).pipe(
           map((response) => {
-            const {paymentUrl} = response;
+            const { paymentUrl } = response;
             window.open(paymentUrl, '_blank');
             this.notifications.success('Redirecting to payment...');
-            return OrderActions.payOrderSuccess({paymentUrl});
+            return OrderActions.payOrderSuccess({ paymentUrl });
           }),
           catchError((err) => {
             if (err.error) {
@@ -78,7 +78,7 @@ export class OrderEffects {
   createOrder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderActions.createOrder),
-      mergeMap(({customerId, products}) => {
+      mergeMap(({ customerId, products }) => {
         const createOrder = OrderMapper.mapToCreateOrderModel({
           customerId,
           products,
@@ -88,7 +88,7 @@ export class OrderEffects {
           map((apiOrder) => {
             const order = OrderMapper.mapToOrder(apiOrder);
             this.notifications.success('Order created successfully');
-            return OrderActions.createOrderSuccess({order});
+            return OrderActions.createOrderSuccess({ order });
           }),
           catchError((err) => {
             if (err.error) {
@@ -113,7 +113,7 @@ export class OrderEffects {
   loadOrderById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderActions.loadOrderById),
-      mergeMap(({orderId}) =>
+      mergeMap(({ orderId }) =>
         this.api.displayBy(orderId).pipe(
           map((apiOrder) =>
             OrderActions.loadOrderByIdSuccess({
@@ -145,10 +145,10 @@ export class OrderEffects {
     () =>
       this.actions$.pipe(
         ofType(OrderActions.createOrderSuccess),
-        tap(({order}) => {
+        tap(({ order }) => {
           this.router.navigate([`/orders/${order.id}`]);
         })
       ),
-    {dispatch: false}
+    { dispatch: false }
   );
 }

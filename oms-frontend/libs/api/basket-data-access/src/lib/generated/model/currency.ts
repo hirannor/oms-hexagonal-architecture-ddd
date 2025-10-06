@@ -8,11 +8,8 @@
  * Do not edit the class manually.
  */
 
-
 export enum CurrencyModel {
-
   Huf = 'HUF',
 
-  Eur = 'EUR'
+  Eur = 'EUR',
 }
-

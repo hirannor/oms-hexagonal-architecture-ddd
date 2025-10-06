@@ -31,16 +31,68 @@ export class LayoutComponent {
     {
       label: 'Products',
       icon: 'pi pi-box',
+      expanded: true,
       items: [
-        {label: 'Peripherals', icon: 'pi pi-cog', routerLink: '/products/peripherals'},
-        {label: 'Displays', icon: 'pi pi-desktop', routerLink: '/products/displays'},
-        {label: 'Audio & Smart Devices', icon: 'pi pi-headphones', routerLink: '/products/audio'},
-        {label: 'Accessories', icon: 'pi pi-sliders-h', routerLink: '/products/accessories'},
-        {label: 'Storage', icon: 'pi pi-database', routerLink: '/products/storage'},
+        {
+          label: 'Peripherals',
+          icon: 'pi pi-cog',
+          routerLink: '/products/peripherals',
+        },
+        {
+          label: 'Displays',
+          icon: 'pi pi-desktop',
+          routerLink: '/products/displays',
+        },
+        {
+          label: 'Audio & Smart Devices',
+          icon: 'pi pi-headphones',
+          routerLink: '/products/audio',
+        },
+        {
+          label: 'Accessories',
+          icon: 'pi pi-sliders-h',
+          routerLink: '/products/accessories',
+        },
+        {
+          label: 'Storage',
+          icon: 'pi pi-database',
+          routerLink: '/products/storage',
+        },
       ],
     },
-    {label: 'My Basket', icon: 'pi pi-shopping-cart', routerLink: '/basket'},
-    {label: 'My Orders', icon: 'pi pi-list', routerLink: '/orders'},
+    { label: 'My Basket', icon: 'pi pi-shopping-cart', routerLink: '/basket' },
+    { label: 'My Orders', icon: 'pi pi-list', routerLink: '/orders' },
+    {
+      label: 'Support',
+      icon: 'pi pi-info-circle',
+      items: [
+        {
+          label: 'Contact Us',
+          icon: 'pi pi-envelope',
+          routerLink: '/support/contact',
+        },
+        {
+          label: 'FAQ',
+          icon: 'pi pi-question-circle',
+          routerLink: '/support/faq',
+        },
+        {
+          label: 'Shipping & Returns',
+          icon: 'pi pi-truck',
+          routerLink: '/support/shipping',
+        },
+        {
+          label: 'Privacy Policy',
+          icon: 'pi pi-lock',
+          routerLink: '/support/privacy',
+        },
+        {
+          label: 'Terms of Service',
+          icon: 'pi pi-file',
+          routerLink: '/support/terms',
+        },
+      ],
+    },
   ];
   private authService: AuthService = inject(AuthService);
   profileItems: MenuItem[] = [
@@ -49,12 +101,11 @@ export class LayoutComponent {
       icon: 'pi pi-id-card',
       routerLink: '/customers/me',
     },
-    {separator: true},
+    { separator: true },
     {
       label: 'Logout',
       icon: 'pi pi-sign-out',
       command: () => this.authService.logout(),
     },
   ];
-
 }

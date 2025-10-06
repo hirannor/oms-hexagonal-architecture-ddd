@@ -1,6 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { BasketActions, selectBasket, selectBasketLoading, } from '@oms-frontend/basket/data-access';
-import { AuthService, Basket, OrderItem, } from '@oms-frontend/shared/data-access';
+import {
+  BasketActions,
+  selectBasket,
+  selectBasketLoading,
+} from '@oms-frontend/basket/data-access';
+import {
+  AuthService,
+  Basket,
+  OrderItem,
+} from '@oms-frontend/shared/data-access';
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { BasketSummaryUi } from '@oms-frontend/basket/ui';
@@ -25,13 +33,14 @@ export class BasketCheckoutFeature implements OnInit {
     this.customerId = this.auth.extractCustomerId();
 
     if (this.customerId) {
-      this.store.dispatch(BasketActions.loadBasket({customerId: this.customerId}));
+      this.store.dispatch(
+        BasketActions.loadBasket({ customerId: this.customerId })
+      );
     }
   }
 
   onConfirmOrder(basket: Basket): void {
     if (!this.customerId) return;
-
 
     const products: OrderItem[] = basket.items.map((item) => ({
       name: item.name,
@@ -41,6 +50,8 @@ export class BasketCheckoutFeature implements OnInit {
       price: item.price,
     }));
 
-    this.store.dispatch(OrderActions.createOrder({customerId: this.customerId, products}));
+    this.store.dispatch(
+      OrderActions.createOrder({ customerId: this.customerId, products })
+    );
   }
 }

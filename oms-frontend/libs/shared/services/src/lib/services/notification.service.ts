@@ -2,24 +2,24 @@ import { inject, Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ProblemDetails } from '@oms-frontend/models';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class NotificationService {
   private messageService: MessageService = inject(MessageService);
 
   success(summary: string, detail?: string) {
-    this.messageService.add({severity: 'success', summary, detail});
+    this.messageService.add({ severity: 'success', summary, detail });
   }
 
   error(summary: string, detail?: string) {
-    this.messageService.add({severity: 'error', summary, detail});
+    this.messageService.add({ severity: 'error', summary, detail });
   }
 
   warn(summary: string, detail?: string) {
-    this.messageService.add({severity: 'warn', summary, detail});
+    this.messageService.add({ severity: 'warn', summary, detail });
   }
 
   info(summary: string, detail?: string) {
-    this.messageService.add({severity: 'info', summary, detail});
+    this.messageService.add({ severity: 'info', summary, detail });
   }
 
   fromProblem(problem: ProblemDetails) {

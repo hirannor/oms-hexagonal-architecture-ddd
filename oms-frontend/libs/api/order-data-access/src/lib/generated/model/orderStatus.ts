@@ -8,9 +8,7 @@
  * Do not edit the class manually.
  */
 
-
 export enum OrderStatusModel {
-
   WaitingForPayment = 'WAITING_FOR_PAYMENT',
 
   PaidSuccessfully = 'PAID_SUCCESSFULLY',
@@ -31,6 +29,5 @@ export enum OrderStatusModel {
 
   Returned = 'RETURNED',
 
-  Refunded = 'REFUNDED'
+  Refunded = 'REFUNDED',
 }
-

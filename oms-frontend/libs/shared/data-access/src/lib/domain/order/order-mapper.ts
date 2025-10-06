@@ -45,7 +45,7 @@ export class OrderMapper {
         name: '',
         description: '',
         quantity: 0,
-        price: {amount: '0', currency: Currency.HUF},
+        price: { amount: '0', currency: Currency.HUF },
       };
     }
 
@@ -69,7 +69,7 @@ export class OrderMapper {
         name: '',
         description: '',
         quantity: 0,
-        price: {amount: '0', currency: CurrencyModel.Huf},
+        price: { amount: '0', currency: CurrencyModel.Huf },
       };
     }
 

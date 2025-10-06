@@ -42,5 +42,4 @@ export const refreshTokenFailure = createAction(
   props<{ error: string }>()
 );
 
-
 export const logout = createAction('[Auth] Logout');

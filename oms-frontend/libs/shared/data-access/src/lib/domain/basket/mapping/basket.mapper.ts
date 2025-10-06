@@ -1,4 +1,9 @@
-import { BasketItemModel, BasketModel, BasketStatusModel, CurrencyModel, } from '@oms-frontend/api/basket-data-access';
+import {
+  BasketItemModel,
+  BasketModel,
+  BasketStatusModel,
+  CurrencyModel,
+} from '@oms-frontend/api/basket-data-access';
 import { Currency } from '@oms-frontend/models';
 import { BasketItem } from '../basket-item';
 import { BasketStatus } from '../basket-status';

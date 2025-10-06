@@ -33,14 +33,14 @@ export class AuthFeatureRegister {
 
   onSubmit(): void {
     if (this.form.valid) {
-      const {email, password, confirmPassword} = this.form.value;
+      const { email, password, confirmPassword } = this.form.value;
 
       if (password !== confirmPassword) {
         return;
       }
 
       this.store.dispatch(
-        AuthActions.register({email: email!, password: password!})
+        AuthActions.register({ email: email!, password: password! })
       );
     }
   }

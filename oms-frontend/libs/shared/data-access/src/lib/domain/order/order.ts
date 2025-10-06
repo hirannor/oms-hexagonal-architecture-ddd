@@ -10,4 +10,3 @@ export interface Order {
   createdAt: string;
   status: OrderStatus;
 }
-

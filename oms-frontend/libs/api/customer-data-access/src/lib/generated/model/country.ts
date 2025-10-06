@@ -8,11 +8,8 @@
  * Do not edit the class manually.
  */
 
-
 export enum CountryModel {
-
   Hungary = 'HUNGARY',
 
-  Germany = 'GERMANY'
+  Germany = 'GERMANY',
 }
-

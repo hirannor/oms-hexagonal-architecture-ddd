@@ -24,12 +24,12 @@ export const customerReducer = createReducer(
     loading: true,
     error: null,
   })),
-  on(CustomerActions.loadCustomerProfileSuccess, (state, {customer}) => ({
+  on(CustomerActions.loadCustomerProfileSuccess, (state, { customer }) => ({
     ...state,
     customer,
     loading: false,
   })),
-  on(CustomerActions.loadCustomerProfileFailure, (state, {error}) => ({
+  on(CustomerActions.loadCustomerProfileFailure, (state, { error }) => ({
     ...state,
     error,
     loading: false,
@@ -40,12 +40,12 @@ export const customerReducer = createReducer(
     updating: true,
     error: null,
   })),
-  on(CustomerActions.updateCustomerProfileSuccess, (state, {customer}) => ({
+  on(CustomerActions.updateCustomerProfileSuccess, (state, { customer }) => ({
     ...state,
     customer,
     updating: false,
   })),
-  on(CustomerActions.updateCustomerProfileFailure, (state, {error}) => ({
+  on(CustomerActions.updateCustomerProfileFailure, (state, { error }) => ({
     ...state,
     error,
     updating: false,

@@ -1,8 +1,8 @@
 package io.github.hirannor.oms.adapter.web.rest.basket;
 
 import io.github.hirannor.oms.adapter.web.rest.baskets.model.ProblemDetailsModel;
-import io.github.hirannor.oms.domain.basket.BasketAlreadyCheckedOut;
 import io.github.hirannor.oms.application.service.basket.error.BasketNotFound;
+import io.github.hirannor.oms.domain.basket.BasketAlreadyCheckedOut;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

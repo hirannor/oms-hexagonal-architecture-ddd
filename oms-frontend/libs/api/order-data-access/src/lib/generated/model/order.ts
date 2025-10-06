@@ -19,6 +19,3 @@ export interface OrderModel {
   createdAt: string;
   totalPrice: MoneyModel;
 }
-
-
-

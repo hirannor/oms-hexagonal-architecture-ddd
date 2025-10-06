@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { OrderDetailsUi } from '@oms-frontend/order/ui';
-import { OrderActions, selectOrderLoading, selectSelectedOrder, } from '@oms-frontend/order/data-access';
+import {
+  OrderActions,
+  selectOrderLoading,
+  selectSelectedOrder,
+} from '@oms-frontend/order/data-access';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
-import { Card } from "primeng/card";
 
 @Component({
   selector: 'lib-order-feature-details',
   standalone: true,
-  imports: [CommonModule, OrderDetailsUi, LoadingSpinnerComponent, Card],
+  imports: [CommonModule, OrderDetailsUi, LoadingSpinnerComponent],
   templateUrl: './order-details-feature.html',
 })
 export class OrderDetailsFeature implements OnInit {

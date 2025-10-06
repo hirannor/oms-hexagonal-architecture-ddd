@@ -1,6 +1,4 @@
 <div class="orders-container">
-  <h2>My Orders</h2>
-
   <p-table [value]="orders">
     <ng-template pTemplate="header">
       <tr>
@@ -17,7 +15,11 @@
         <td>{{ order.id }}</td>
         <td>{{ order.createdAt | date: 'short' }}</td>
         <td>
-          <p-tag [severity]="mapStatusToSeverity(order.status)" [value]="order.status"></p-tag>
+          <p-tag
+            [icon]="mapStatusToIcon(order.status)"
+            [severity]="mapStatusToSeverity(order.status)"
+            [value]="mapStatusToLabel(order.status)"
+          ></p-tag>
         </td>
         <td>{{ order.totalPrice.amount }} {{ order.totalPrice.currency }}</td>
         <td>

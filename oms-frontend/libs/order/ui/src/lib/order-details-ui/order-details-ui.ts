@@ -8,7 +8,14 @@ import { TagModule } from 'primeng/tag';
 @Component({
   selector: 'lib-order-details-ui',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonDirective, ButtonIcon, ButtonLabel, TagModule],
+  imports: [
+    CommonModule,
+    TableModule,
+    ButtonDirective,
+    ButtonIcon,
+    ButtonLabel,
+    TagModule,
+  ],
   templateUrl: './order-details-ui.html',
   styleUrl: './order-details-ui.scss',
 })
@@ -36,8 +43,10 @@ export class OrderDetailsUi {
     }
   }
 
-  canPay() : boolean {
-    return this.order.status === OrderStatus.WAITING_FOR_PAYMENT ||
-      this.order.status === OrderStatus.PAYMENT_FAILED;
+  canPay(): boolean {
+    return (
+      this.order.status === OrderStatus.WAITING_FOR_PAYMENT ||
+      this.order.status === OrderStatus.PAYMENT_FAILED
+    );
   }
 }

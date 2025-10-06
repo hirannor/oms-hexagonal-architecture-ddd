@@ -40,9 +40,9 @@ export class AuthFeatureLogin {
 
   onSubmit(): void {
     if (this.form.valid) {
-      const {email, password} = this.form.value;
+      const { email, password } = this.form.value;
       this.store.dispatch(
-        AuthActions.login({email: email!, password: password!})
+        AuthActions.login({ email: email!, password: password! })
       );
     } else {
       this.form.markAllAsTouched();
