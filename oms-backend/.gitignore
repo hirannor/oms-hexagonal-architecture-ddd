@@ -35,4 +35,3 @@ build/
 ### Log files ###
 *.log
 *.zip
-app/logs
