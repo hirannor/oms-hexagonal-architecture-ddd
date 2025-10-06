@@ -36,7 +36,7 @@ The architecture enforces clear separation through **ArchUnit** tests and follow
 
 ### Frontend — Nx Modular Architecture
 The Angular workspace mirrors backend boundaries:
-- `libs/feature-*` → domain-aligned feature modules
+- `libs/<domain>/feature-*` → domain-aligned feature modules (e.g., customer, order, product etc.)
 - `libs/api/*-data-access` → generated TypeScript clients from OpenAPI
 - `libs/shared-*` → reusable UI & utility modules
 
@@ -62,7 +62,7 @@ All aggregates emit **domain events**, which are persisted and published asynchr
 The backend leverages an **Outbox Pattern + RabbitMQ** setup for guaranteed, reliable delivery:
 
 1. Domain events are persisted in the **Outbox** table (same transaction).
-2. A scheduled job publishes events from Outbox → RabbitMQ exchange.
+2. A scheduled job publishes messages from Outbox → RabbitMQ exchange.
 3. Rabbit listeners consume messages and re-emit them as in-app events.
 
 This ensures **exactly-once semantics** and stable inter-module communication.
@@ -76,3 +76,4 @@ This ensures **exactly-once semantics** and stable inter-module communication.
 - Typed REST clients generated from `/openapi` using:
   ```bash
   npm run generate:apis
+```
