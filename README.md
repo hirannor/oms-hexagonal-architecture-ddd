@@ -76,4 +76,3 @@ This ensures **exactly-once semantics** and stable inter-module communication.
 - Typed REST clients generated from `/openapi` using:
   ```bash
   npm run generate:apis
-```
