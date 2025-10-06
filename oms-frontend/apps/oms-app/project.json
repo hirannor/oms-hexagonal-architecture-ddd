@@ -23,7 +23,6 @@
           }
         ],
         "styles": [
-          "primeicons/primeicons.css",
           "apps/oms-app/src/styles.scss"
         ]
       },

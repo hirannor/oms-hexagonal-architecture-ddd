@@ -48,8 +48,7 @@ export class LayoutComponent {
       label: 'Products',
       icon: 'pi pi-box',
       items: [
-        { label: 'All', icon: 'pi pi-list', routerLink: '/products' },
-        { label: 'Peripherals', icon: 'pi pi-computer', routerLink: '/products/peripherals' },
+        { label: 'Peripherals', icon: 'pi pi-cog', routerLink: '/products/peripherals' },
         { label: 'Displays', icon: 'pi pi-desktop', routerLink: '/products/displays' },
         { label: 'Audio & Smart Devices', icon: 'pi pi-headphones', routerLink: '/products/audio' },
         { label: 'Accessories', icon: 'pi pi-sliders-h', routerLink: '/products/accessories' },

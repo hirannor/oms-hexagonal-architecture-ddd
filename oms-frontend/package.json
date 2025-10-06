@@ -34,9 +34,10 @@
     "@ngrx/store": "^20.0.1",
     "@ngrx/store-devtools": "^20.0.1",
     "@primeng/themes": "^20.2.0",
-    "@primeuix/themes": "^1.2.5",
-    "primeicons": "^7.0.0",
-    "primeng": "^20.2.0",
+    "@primeuix/themes": "1.2.5",
+    "primeflex": "4.0.0",
+    "primeicons": "7.0.0",
+    "primeng": "20.2.0",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },

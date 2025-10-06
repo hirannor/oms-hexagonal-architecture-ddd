@@ -22,25 +22,27 @@
           <td class="product-desc">{{ item.description }}</td>
 
           <td class="quantity-cell">
-            <button
-              pButton
-              icon="pi pi-minus"
-              class="p-button-rounded p-button-text"
-              (click)="decrease.emit(item)"
-              pTooltip="Decrease quantity"
-              tooltipPosition="top"
-            ></button>
+              <button
+                  pButton
+                  class="p-button-rounded p-button-text"
+                  (click)="decrease.emit(item)"
+                  pTooltip="Decrease quantity"
+                  tooltipPosition="top"
+              >
+              <span pButtonIcon class="pi pi-minus"></span>
+              </button>
 
             <span class="quantity-value">{{ item.quantity }}</span>
 
-            <button
-              pButton
-              icon="pi pi-plus"
-              class="p-button-rounded p-button-text"
-              (click)="increase.emit(item)"
-              pTooltip="Increase quantity"
-              tooltipPosition="top"
-            ></button>
+              <button
+                  pButton
+                  class="p-button-rounded p-button-text"
+                  (click)="increase.emit(item)"
+                  pTooltip="Increase quantity"
+                  tooltipPosition="top"
+              >
+              <span pButtonIcon class="pi pi-plus"></span>
+              </button>
           </td>
 
           <td>{{ item.price.amount }} {{ item.price.currency }}</td>
@@ -50,14 +52,15 @@
           </td>
 
           <td class="actions">
-            <button
-              pButton
-              icon="pi pi-trash"
-              class="p-button-rounded p-button-danger p-button-text"
-              (click)="remove.emit(item)"
-              pTooltip="Remove item"
-              tooltipPosition="top"
-            ></button>
+              <button
+                  pButton
+                  class="p-button-rounded p-button-danger p-button-text"
+                  (click)="remove.emit(item)"
+                  pTooltip="Remove item"
+                  tooltipPosition="top"
+              >
+              <span pButtonIcon class="pi pi-trash"></span>
+              </button>
           </td>
         </tr>
       </ng-template>
@@ -72,28 +75,28 @@
       </div>
 
       <div class="checkout-button">
-        <button
-          pButton
-          pButtonLabel="Proceed to Checkout"
-          pButtonIcon="pi pi-credit-card"
-          class="p-button-success p-button-lg"
-          (click)="checkout.emit()"
-        >Checkout</button>
+          <button
+              pButton
+              class="p-button-success p-button-lg"
+              (click)="checkout.emit()"
+          >
+          <span pButtonIcon class="pi pi-credit-card"></span>
+          <span pButtonLabel>Proceed to Checkout</span>
+          </button>
       </div>
     </footer>
   } @else {
     <div class="empty-basket">
       <h3>Your basket is empty 🛒</h3>
       <p>Start shopping to add your favorite items here.</p>
-      <button
-        pButton
-        pButtonLabel="Browse Products"
-        pButtonIcon="pi pi-box"
-        routerLink="/products"
-        class="p-button-outlined p-button-secondary"
-      >
-        Browse Products
-      </button>
+        <button
+            pButton
+            class="p-button-outlined p-button-secondary"
+            routerLink="/products"
+        >
+        <span pButtonIcon class="pi pi-box"></span>
+        <span pButtonLabel>Browse Products</span>
+        </button>
     </div>
   }
 </div>

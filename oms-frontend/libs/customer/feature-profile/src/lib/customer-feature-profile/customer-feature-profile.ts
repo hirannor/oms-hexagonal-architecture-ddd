@@ -35,7 +35,6 @@ export class CustomerFeatureProfile implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(CustomerActions.loadCustomerProfile());
-    this.updating$.subscribe((v) => console.log('>>> updating =', v));
   }
 
   onSave(updated: Customer) {

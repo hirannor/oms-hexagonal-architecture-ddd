@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import { Product } from '@oms-frontend/shared/data-access';
@@ -7,7 +7,7 @@ import { Product } from '@oms-frontend/shared/data-access';
 @Component({
   selector: 'lib-product-card',
   standalone: true,
-  imports: [CommonModule, CardModule, ButtonDirective, ButtonLabel, ButtonIcon],
+  imports: [CommonModule, CardModule, ButtonDirective, ButtonLabel, ButtonIcon, NgOptimizedImage],
   templateUrl: './product-card.html',
   styleUrls: ['./product-card.scss'],
 })

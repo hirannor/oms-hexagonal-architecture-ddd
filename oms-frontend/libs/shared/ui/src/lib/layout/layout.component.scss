@@ -96,7 +96,7 @@
 .layout-body {
   flex: 1;
   display: flex;
-  overflow: hidden; /* prevent body scroll */
+  overflow: hidden;
 }
 
 /* ---------- SIDEBAR ---------- */
@@ -105,7 +105,7 @@
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
   padding: 1rem;
-  overflow-y: auto; /* sidebar scrollable */
+  overflow-y: auto;
 
   .p-panelmenu {
     border: none;
@@ -130,7 +130,7 @@
   display: flex;
   flex-direction: column;
   background: #f9fafb;
-  overflow: hidden; /* prevent double scrollbars */
+  overflow: hidden;
 }
 
 /* ---------- PAGE CONTENT ---------- */
@@ -141,16 +141,14 @@
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-  /* 🔥 this makes the inner content scrollable */
   overflow-y: auto;
-  min-height: 0; /* important in flex layouts */
+  min-height: 0;
 }
 
 /* ---------- FOOTER ---------- */
 .layout-footer {
   background: #ffffff;
   border-top: 1px solid #e5e7eb;
-  padding: 0.75rem;
   text-align: center;
   font-size: 0.875rem;
   color: #6b7280;

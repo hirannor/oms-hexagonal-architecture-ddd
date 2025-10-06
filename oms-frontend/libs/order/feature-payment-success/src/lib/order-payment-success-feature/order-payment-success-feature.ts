@@ -9,7 +9,6 @@ import { ButtonModule } from 'primeng/button';
   imports: [CommonModule, ButtonModule],
   templateUrl: './order-payment-success-feature.html',
   styleUrls: ['./order-payment-success-feature.scss'],
-
 })
 export class OrderPaymentSuccessFeature implements OnInit {
   private readonly router = inject(Router);

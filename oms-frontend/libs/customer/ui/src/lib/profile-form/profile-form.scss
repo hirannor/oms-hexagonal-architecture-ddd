@@ -1,6 +1,11 @@
 .profile-form {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 
   .field {
     display: flex;
@@ -10,30 +15,55 @@
     label {
       font-weight: 600;
       margin-bottom: 0.5rem;
+      color: var(--text-color);
     }
 
-    input {
-      max-width: 350px;
+    input,
+    .p-select {
+      width: 100%;
     }
+  }
+
+  .formgrid {
+    row-gap: 1rem;
+    column-gap: 1.5rem;
+  }
+
+  .country-select {
+    width: 100%;
   }
 
   .form-actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 
     .save-button {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-    }
+      font-weight: 600;
+      min-width: 140px;
 
-    .spinner-icon {
-      font-size: 1rem;
+      .spinner-icon {
+        font-size: 1rem;
+      }
     }
   }
 
-  .country-select {
-    width: 350px;
+  .ng-invalid.ng-touched .p-inputtext,
+  .ng-invalid.ng-touched .p-select {
+    border-color: var(--red-400);
+    box-shadow: 0 0 0 1px var(--red-300);
+  }
+
+  @media (max-width: 768px) {
+    .form-actions {
+      justify-content: center;
+
+      .save-button {
+        width: 100%;
+      }
+    }
   }
 }

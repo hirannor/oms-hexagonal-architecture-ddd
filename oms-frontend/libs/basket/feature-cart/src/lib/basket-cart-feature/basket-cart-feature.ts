@@ -43,52 +43,53 @@ export class BasketCartFeature implements OnInit {
   readonly isEmpty$ = this.store.select(selectIsBasketEmpty);
   readonly loading$ = this.store.select(selectBasketLoading);
 
+  private customerId: string | null = null;
+
   ngOnInit(): void {
-    const customerId = this.auth.extractCustomerId();
-    if (customerId) {
-      this.store.dispatch(BasketActions.loadBasket({ customerId }));
+    this.customerId = this.auth.extractCustomerId();
+
+    if (this.customerId) {
+      this.store.dispatch(BasketActions.loadBasket({ customerId: this.customerId }));
     }
   }
 
   onIncrease(item: BasketItem): void {
-    const customerId = this.auth.extractCustomerId();
-    if (!customerId) return;
+    if (!this.customerId) return;
+
     const updatedItem: BasketItem = {
       ...item,
       quantity: 1,
     };
 
     this.store.dispatch(
-      BasketActions.addItem({ customerId, item: updatedItem })
+      BasketActions.addItem({ customerId: this.customerId, item: updatedItem })
     );
   }
 
   onDecrease(item: BasketItem): void {
-    const customerId = this.auth.extractCustomerId();
-    if (!customerId) return;
+    if (!this.customerId) return;
 
     const oneLess: BasketItem = { ...item, quantity: 1 };
 
     this.store.dispatch(
-      BasketActions.removeItem({ customerId, item: oneLess })
+      BasketActions.removeItem({ customerId: this.customerId, item: oneLess })
     );
   }
 
   onRemove(item: BasketItem): void {
-    const customerId = this.auth.extractCustomerId();
-    if (!customerId) return;
-    this.store.dispatch(BasketActions.removeItem({ customerId, item }));
+    if (!this.customerId) return;
+
+    this.store.dispatch(BasketActions.removeItem({ customerId: this.customerId, item }));
   }
 
   onCheckout(): void {
-    const customerId = this.auth.extractCustomerId();
-    if (!customerId) return;
-    this.store.dispatch(BasketActions.checkoutBasket({ customerId }));
+    if (!this.customerId) return;
+
+    this.store.dispatch(BasketActions.checkoutBasket({ customerId: this.customerId }));
   }
 
   onConfirmOrder(basket: Basket): void {
-    const customerId = this.auth.extractCustomerId();
-    if (!customerId) return;
+    if (!this.customerId) return;
 
     const products: OrderItem[] = basket.items.map((item) => ({
       productId: item.productId,
@@ -98,6 +99,6 @@ export class BasketCartFeature implements OnInit {
       price: item.price,
     }));
 
-    this.store.dispatch(OrderActions.createOrder({ customerId, products }));
+    this.store.dispatch(OrderActions.createOrder({ customerId: this.customerId, products }));
   }
 }

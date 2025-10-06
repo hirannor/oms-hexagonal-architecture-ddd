@@ -5,7 +5,7 @@ import { OrderStatus } from './order-status';
 export interface Order {
   id: string;
   customerId: string;
-  orderedProducts: OrderItem[];
+  orderItems: OrderItem[];
   totalPrice: Money;
   createdAt: string;
   status: OrderStatus;

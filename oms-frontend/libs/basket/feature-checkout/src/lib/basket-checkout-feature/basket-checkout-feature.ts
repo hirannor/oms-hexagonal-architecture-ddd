@@ -29,16 +29,19 @@ export class BasketCheckoutFeature implements OnInit {
   readonly basket$ = this.store.select(selectBasket);
   readonly loading$ = this.store.select(selectBasketLoading);
 
+  private customerId: string | null = null;
+
   ngOnInit() {
-    const customerId = this.auth.extractCustomerId();
-    if (customerId) {
-      this.store.dispatch(BasketActions.loadBasket({ customerId }));
+    this.customerId = this.auth.extractCustomerId();
+
+    if (this.customerId) {
+      this.store.dispatch(BasketActions.loadBasket({ customerId: this.customerId }));
     }
   }
 
   onConfirmOrder(basket: Basket): void {
-    const customerId = this.auth.extractCustomerId();
-    if (!customerId) return;
+    if (!this.customerId) return;
+
 
     const products: OrderItem[] = basket.items.map((item) => ({
       name: item.name,
@@ -48,6 +51,6 @@ export class BasketCheckoutFeature implements OnInit {
       price: item.price,
     }));
 
-    this.store.dispatch(OrderActions.createOrder({ customerId, products }));
+    this.store.dispatch(OrderActions.createOrder({ customerId: this.customerId, products }));
   }
 }

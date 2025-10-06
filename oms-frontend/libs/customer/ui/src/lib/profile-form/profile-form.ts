@@ -32,9 +32,10 @@ export class ProfileFormComponent implements OnChanges {
   @Input() updating: boolean | null = false;
   @Output() save = new EventEmitter<Customer>();
 
+  private fb: FormBuilder = inject(FormBuilder);
+
   form: FormGroup;
   countryOptions = Countries;
-  private fb: FormBuilder = inject(FormBuilder);
 
   constructor() {
     this.form = this.fb.group({

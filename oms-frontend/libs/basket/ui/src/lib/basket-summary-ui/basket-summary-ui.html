@@ -31,13 +31,14 @@
     </h3>
 
     <div class="order-actions">
-      <button
-        pButton
-        pButtonLabel="Confirm Order"
-        pButtonIcon="pi pi-check"
-        class="p-button-success"
-        (click)="confirmOrderClicked.emit(basket)"
-      >Confirm Order</button>
+        <button
+            pButton
+            class="p-button-success"
+            (click)="confirmOrderClicked.emit(basket)"
+        >
+        <span pButtonIcon class="pi pi-check"></span>
+        <span pButtonLabel>Confirm Order</span>
+        </button>
     </div>
 
   </div>

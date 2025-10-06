@@ -16,7 +16,7 @@ export class OrderMapper {
     return {
       id: model.id,
       customerId: model.customerId,
-      orderedProducts: (model.orderedProducts ?? []).map(
+      orderItems: (model.orderedProducts ?? []).map(
         OrderMapper.mapToOrderedProduct
       ),
       totalPrice: {

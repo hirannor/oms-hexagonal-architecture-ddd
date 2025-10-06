@@ -15,11 +15,12 @@
     </p>
   }
 
-  <button
-    pButton
-    pButtonLabel="View My Orders"
-    pButtonIcon="pi pi-list"
-    class="p-button-success"
-    (click)="goToOrders()"
-  >Go To Orders</button>
+    <button
+        pButton
+        class="p-button-success"
+        (click)="goToOrders()"
+    >
+    <span pButtonIcon class="pi pi-list"></span>
+    <span pButtonLabel>View My Orders</span>
+    </button>
 </div>

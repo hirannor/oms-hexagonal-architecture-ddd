@@ -19,11 +19,13 @@ import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 export class OrderDetailsFeature implements OnInit {
   private readonly store = inject(Store);
   private readonly route = inject(ActivatedRoute);
+
   readonly order$ = this.store.select(selectSelectedOrder);
   readonly loading$ = this.store.select(selectOrderLoading);
 
   ngOnInit() {
     const orderId = this.route.snapshot.paramMap.get('orderId');
+
     if (orderId) {
       this.store.dispatch(OrderActions.loadOrderById({ orderId }));
     }
