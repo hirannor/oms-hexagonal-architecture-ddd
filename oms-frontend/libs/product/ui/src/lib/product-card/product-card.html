@@ -13,11 +13,12 @@
     <button
       type="button"
       pButton
-      label="Add to Basket"
-      icon="pi pi-shopping-cart"
+      pButtonLabel="Add to Basket"
+      pButtonIcon="pi pi-shopping-cart"
       class="p-button-sm p-button-success"
       (click)="addToBasket.emit(product)"
       [disabled]="disabled">
+        Add to Basket
     </button>
   </div>
 </p-card>

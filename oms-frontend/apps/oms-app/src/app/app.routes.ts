@@ -39,7 +39,13 @@ export const appRoutes: Routes = [
       },
 
       { path: 'customers/me', component: CustomerFeatureProfile },
-      { path: 'products', component: ProductListFeature },
+      {
+        path: 'products',
+        children: [
+          { path: '', component: ProductListFeature },
+          { path: ':category', component: ProductListFeature },
+        ],
+      },
       { path: 'basket', component: BasketCartFeature },
 
       { path: '', pathMatch: 'full', redirectTo: 'products' },

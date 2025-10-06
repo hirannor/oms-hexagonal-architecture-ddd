@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProductCard } from '@oms-frontend/product/ui';
@@ -31,13 +32,18 @@ import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 export class ProductListFeature implements OnInit {
   private store = inject(Store);
   private authService = inject(AuthService);
+  private route = inject(ActivatedRoute);
 
   readonly products$ = this.store.select(selectAllProducts);
   readonly loading$ = this.store.select(selectProductLoading);
   readonly basket$ = this.store.select(selectBasket);
 
+
   ngOnInit() {
-    this.store.dispatch(ProductActions.loadProducts());
+    this.route.paramMap.subscribe((params) => {
+      const category = params.get('category') ?? undefined;
+      this.store.dispatch(ProductActions.loadProducts({ category }));
+    });
   }
 
   onAddToBasket(product: Product): void {

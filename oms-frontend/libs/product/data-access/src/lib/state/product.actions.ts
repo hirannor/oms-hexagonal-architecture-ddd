@@ -1,8 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { Product } from '@oms-frontend/shared/data-access';
 
-export const loadProducts = createAction('[Product] Load All');
-
+export const loadProducts = createAction(
+    '[Product] Load All',
+    props<{ category?: string; search?: string }>()
+);
 export const loadProductsSuccess = createAction(
   '[Product] Load All Success',
   props<{ products: Product[] }>()

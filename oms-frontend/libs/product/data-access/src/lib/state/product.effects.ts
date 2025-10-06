@@ -15,7 +15,7 @@ export class ProductEffects {
   loadAll$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.loadProducts),
-      mergeMap(() =>
+        mergeMap(({ category, search }) =>
         this.api.displayAll().pipe(
           map((res) =>
             ProductActions.loadProductsSuccess({

@@ -1,8 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { BasketCartFeature } from '@oms-frontend/basket/feature-cart';
-import { BasketUi } from '@oms-frontend/basket/ui';
 import {
   OrderActions,
   selectAllOrders,
@@ -15,7 +13,7 @@ import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 @Component({
   selector: 'lib-order-feature-history',
   standalone: true,
-  imports: [CommonModule, OrderHistoryUi, LoadingSpinnerComponent, BasketUi],
+  imports: [CommonModule, OrderHistoryUi, LoadingSpinnerComponent],
   templateUrl: './order-history-feature.html',
 })
 export class OrderHistoryFeature implements OnInit {
