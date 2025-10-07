@@ -1,0 +1,52 @@
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { Order, OrderStatus } from '@oms-frontend/shared/data-access';
+
+@Component({
+  selector: 'lib-order-details-ui',
+  standalone: true,
+  imports: [
+    CommonModule,
+    TableModule,
+    ButtonDirective,
+    ButtonIcon,
+    ButtonLabel,
+    TagModule,
+  ],
+  templateUrl: './order-details-ui.html',
+  styleUrl: './order-details-ui.scss',
+})
+export class OrderDetailsUi {
+  @Input() order!: Order;
+  @Output() pay = new EventEmitter<string>();
+  protected readonly OrderStatus = OrderStatus;
+
+  mapStatusToSeverity(
+    status: OrderStatus
+  ): 'success' | 'info' | 'warn' | 'danger' | 'secondary' {
+    switch (status) {
+      case OrderStatus.WAITING_FOR_PAYMENT:
+        return 'warn';
+      case OrderStatus.PAID_SUCCESSFULLY:
+        return 'success';
+      case OrderStatus.CANCELLED:
+      case OrderStatus.PAYMENT_FAILED:
+        return 'danger';
+      case OrderStatus.PROCESSING:
+      case OrderStatus.SHIPPED:
+        return 'info';
+      default:
+        return 'secondary';
+    }
+  }
+
+  canPay(): boolean {
+    return (
+      this.order.status === OrderStatus.WAITING_FOR_PAYMENT ||
+      this.order.status === OrderStatus.PAYMENT_FAILED
+    );
+  }
+}

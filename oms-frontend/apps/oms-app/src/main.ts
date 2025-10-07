@@ -12,22 +12,16 @@ import { BASE_PATH as ORDER_BASE_PATH } from '@oms-frontend/api/order-data-acces
 import { App } from './app/app';
 import { appRoutes } from './app/app.routes';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { AuthEffects, authReducer } from '@oms-frontend/auth/data-access';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthInterceptor } from '@oms-frontend/shared/data-access';
 import { MessageService } from 'primeng/api';
-import {
-  CustomerEffects,
-  customerReducer,
-} from '@oms-frontend/customer/data-access';
-import {
-  ProductEffects,
-  productReducer,
-} from '@oms-frontend/product/data-access';
-import { BasketEffects, basketReducer } from '@oms-frontend/basket/data-access';
-import { OrderEffects, orderReducer } from '@oms-frontend/order/data-access';
+import { AuthEffects, authReducer } from '@oms-frontend/auth';
+import { BasketEffects, basketReducer } from '@oms-frontend/basket';
+import { CustomerEffects, customerReducer } from '@oms-frontend/customer';
+import { OrderEffects, orderReducer } from '@oms-frontend/order';
+import { ProductEffects, productReducer } from '@oms-frontend/product';
 
 export const environment = {
   production: false,
