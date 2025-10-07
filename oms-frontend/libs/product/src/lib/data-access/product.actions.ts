@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { Product } from '@oms-frontend/shared/data-access';
+import { Product } from '@oms-frontend/shared';
 
 export const ProductLoadActions = createActionGroup({
   source: 'Product/Load All',

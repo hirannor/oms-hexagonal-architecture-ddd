@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Order, OrderStatus } from '@oms-frontend/shared';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
-import { Order, OrderStatus } from '@oms-frontend/shared/data-access';
 
 @Component({
   selector: 'lib-order-details-ui',
@@ -22,7 +22,6 @@ import { Order, OrderStatus } from '@oms-frontend/shared/data-access';
 export class OrderDetailsUi {
   @Input() order!: Order;
   @Output() pay = new EventEmitter<string>();
-  protected readonly OrderStatus = OrderStatus;
 
   mapStatusToSeverity(
     status: OrderStatus

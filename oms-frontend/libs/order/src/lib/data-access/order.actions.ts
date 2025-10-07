@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Order, OrderItem } from '@oms-frontend/shared/data-access';
+import { Order, OrderItem } from '@oms-frontend/shared';
 
 export const OrderLoadActions = createActionGroup({
   source: 'Order/Load All',

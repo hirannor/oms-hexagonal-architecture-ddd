@@ -1,13 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { CustomerMapper, NotificationService } from '@oms-frontend/shared';
 import {
   CustomerProfileLoadActions,
   CustomerProfileUpdateActions,
 } from './customer.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { CustomerApi } from '@oms-frontend/api/customer-data-access';
-import { CustomerMapper } from '@oms-frontend/shared/data-access';
-import { NotificationService } from '@oms-frontend/services';
 
 @Injectable()
 export class CustomerEffects {

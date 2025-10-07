@@ -1,10 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { Customer, LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { Customer } from '@oms-frontend/shared/data-access';
-import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 import { ProfileFormComponent } from '../../ui/profile-form/profile-form';
 import {
   selectCustomer,

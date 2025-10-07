@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { NotificationService, OrderMapper, ProblemDetailsMapper } from '@oms-frontend/shared';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -10,9 +11,6 @@ import {
   OrderPaymentActions,
 } from './order.actions';
 import { OrderApi } from '@oms-frontend/api/order-data-access';
-import { NotificationService } from '@oms-frontend/services';
-import { OrderMapper } from '@oms-frontend/shared/data-access';
-import { ProblemDetailsMapper } from '@oms-frontend/models';
 
 @Injectable()
 export class OrderEffects {

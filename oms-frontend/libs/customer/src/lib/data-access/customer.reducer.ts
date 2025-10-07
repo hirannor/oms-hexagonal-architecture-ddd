@@ -1,9 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
+import { Customer } from '@oms-frontend/shared';
 import {
   CustomerProfileLoadActions,
   CustomerProfileUpdateActions,
 } from './customer.actions';
-import { Customer } from '@oms-frontend/shared/data-access';
 
 export interface CustomerState {
   customer: Customer | null;

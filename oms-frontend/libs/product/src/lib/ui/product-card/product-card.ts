@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Product } from '@oms-frontend/shared';
 import { CardModule } from 'primeng/card';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
-import { Product } from '@oms-frontend/shared/data-access';
 
 @Component({
   selector: 'lib-product-card',

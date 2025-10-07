@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Basket, BasketItem } from '@oms-frontend/shared';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { Basket, BasketItem } from '@oms-frontend/shared/data-access';
 import { RouterLink } from '@angular/router';
 import { Tooltip } from 'primeng/tooltip';
 

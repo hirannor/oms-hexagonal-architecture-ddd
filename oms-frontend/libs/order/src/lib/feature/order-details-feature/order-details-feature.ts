@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
+import { LoadingSpinnerComponent } from '@oms-frontend/shared';
 import {
   selectOrderLoading,
   selectSelectedOrder,

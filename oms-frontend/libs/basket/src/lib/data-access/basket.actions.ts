@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Basket, BasketItem } from '@oms-frontend/shared/data-access';
+import { Basket, BasketItem } from '@oms-frontend/shared';
 
 export const BasketCreationActions = createActionGroup({
   source: 'Basket/Create',

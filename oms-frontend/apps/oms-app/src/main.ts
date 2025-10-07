@@ -15,7 +15,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { AuthInterceptor } from '@oms-frontend/shared/data-access';
+import { AuthInterceptor } from '@oms-frontend/shared';
 import { MessageService } from 'primeng/api';
 import { AuthEffects, authReducer } from '@oms-frontend/auth';
 import { BasketEffects, basketReducer } from '@oms-frontend/basket';

@@ -1,14 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import {
-  AuthService,
-  Basket,
-  BasketItem,
-  OrderItem,
-} from '@oms-frontend/shared/data-access';
+import { AuthService, Basket, BasketItem, LoadingSpinnerComponent, OrderItem } from '@oms-frontend/shared';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
-import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 import { RouterLink } from '@angular/router';
 
 import {

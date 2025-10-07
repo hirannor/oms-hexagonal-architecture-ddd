@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from '@oms-frontend/shared/ui';
-import { authGuard } from '@oms-frontend/shared/data-access';
 import { AuthFeatureShell } from '@oms-frontend/auth';
 import { BasketCartFeature } from '@oms-frontend/basket';
 import { CustomerFeatureProfile } from '@oms-frontend/customer';
+import { authGuard, LayoutComponent } from '@oms-frontend/shared';
 
 export const appRoutes: Routes = [
   {

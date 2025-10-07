@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { NotificationService, ProductMapper } from '@oms-frontend/shared';
 import {
   ProductCreateActions,
   ProductDetailsActions,
@@ -7,8 +8,6 @@ import {
 } from './product.actions';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { ProductApi } from '@oms-frontend/api/product-data-access';
-import { NotificationService } from '@oms-frontend/services';
-import { ProductMapper } from '@oms-frontend/shared/data-access';
 
 @Injectable()
 export class ProductEffects {

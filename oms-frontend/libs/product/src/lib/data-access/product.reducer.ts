@@ -1,10 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
+import { Product } from '@oms-frontend/shared';
 import {
   ProductCreateActions,
   ProductDetailsActions,
   ProductLoadActions,
 } from './product.actions';
-import { Product } from '@oms-frontend/shared/data-access';
 
 export interface ProductState {
   products: Product[];

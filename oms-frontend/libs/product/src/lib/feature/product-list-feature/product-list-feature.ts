@@ -2,13 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AuthService, BasketItem, LoadingSpinnerComponent, Product } from '@oms-frontend/shared';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import {
-  AuthService,
-  BasketItem,
-  Product,
-} from '@oms-frontend/shared/data-access';
-import { LoadingSpinnerComponent } from '@oms-frontend/shared/ui';
 import { BasketAddItemActions, selectBasket } from '@oms-frontend/basket';
 import { ProductCard } from '../../ui/product-card/product-card';
 import {
