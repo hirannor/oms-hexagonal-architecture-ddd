@@ -1,4 +1,4 @@
-import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+﻿import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
 import { Configuration, ConfigurationParameters } from './configuration';
 import { BASE_PATH } from './variables';
 
@@ -15,3 +15,4 @@ export function provideApi(
         },
   ]);
 }
+

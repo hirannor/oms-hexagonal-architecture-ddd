@@ -1,5 +1,5 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Basket, BasketItem } from '@oms-frontend/domain';
+﻿import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { Basket, BasketItem } from '@oms-frontend/models';
 
 export const BasketCreationActions = createActionGroup({
   source: 'Basket/Create',
@@ -52,3 +52,4 @@ export const BasketClearActions = createActionGroup({
     request: emptyProps(),
   },
 });
+

@@ -1,4 +1,4 @@
-import { HttpParameterCodec } from '@angular/common/http';
+﻿import { HttpParameterCodec } from '@angular/common/http';
 
 /**
  * Custom HttpParameterCodec
@@ -21,3 +21,4 @@ export class CustomHttpParameterCodec implements HttpParameterCodec {
     return decodeURIComponent(v);
   }
 }
+

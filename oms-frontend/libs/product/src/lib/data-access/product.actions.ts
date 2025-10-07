@@ -1,5 +1,5 @@
-import { createActionGroup, props } from '@ngrx/store';
-import { Product } from '@oms-frontend/domain';
+﻿import { createActionGroup, props } from '@ngrx/store';
+import { Product } from '@oms-frontend/models';
 
 export const ProductLoadActions = createActionGroup({
   source: 'Product/Load All',
@@ -27,3 +27,4 @@ export const ProductCreateActions = createActionGroup({
     failure: props<{ error: string }>(),
   },
 });
+

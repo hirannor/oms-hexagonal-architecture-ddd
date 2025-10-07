@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+﻿import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { BasketState } from './basket.reducer';
 
 export const selectBasketState = createFeatureSelector<BasketState>('basket');
@@ -32,3 +32,4 @@ export const selectIsBasketEmpty = createSelector(
   selectBasketState,
   (state) => !state.basket || state.basket.items.length === 0
 );
+

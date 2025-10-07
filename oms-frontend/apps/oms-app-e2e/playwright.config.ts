@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+﻿import { defineConfig, devices } from '@playwright/test';
 import { nxE2EPreset } from '@nx/playwright/preset';
 import { workspaceRoot } from '@nx/devkit';
 
@@ -66,3 +66,4 @@ export default defineConfig({
     } */
   ],
 });
+

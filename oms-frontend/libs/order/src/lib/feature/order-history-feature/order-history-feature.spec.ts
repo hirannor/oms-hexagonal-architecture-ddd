@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { OrderHistoryFeature } from './order-history-feature';
 
 describe('OrderFeatureHistory', () => {
@@ -19,3 +19,4 @@ describe('OrderFeatureHistory', () => {
     expect(component).toBeTruthy();
   });
 });
+

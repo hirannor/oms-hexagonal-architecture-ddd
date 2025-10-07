@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Customers API
  *
  *
@@ -641,3 +641,4 @@ export class CustomerApi extends BaseService {
     );
   }
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Basket API
  *
  *
@@ -18,3 +18,4 @@ export interface BasketModel {
   totalPrice: MoneyModel;
   status: BasketStatusModel;
 }
+

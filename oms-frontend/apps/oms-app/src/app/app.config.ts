@@ -1,4 +1,4 @@
-import {
+﻿import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
@@ -13,3 +13,4 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
   ],
 };
+

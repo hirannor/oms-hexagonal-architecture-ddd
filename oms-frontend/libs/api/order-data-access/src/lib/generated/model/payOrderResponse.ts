@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Orders API
  *
  *
@@ -17,3 +17,4 @@ export interface PayOrderResponseModel {
   orderId: string;
   amount: MoneyModel;
 }
+

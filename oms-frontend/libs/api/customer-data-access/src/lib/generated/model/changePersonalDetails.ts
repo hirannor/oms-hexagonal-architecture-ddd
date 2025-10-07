@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Customers API
  *
  *
@@ -17,3 +17,4 @@ export interface ChangePersonalDetailsModel {
   address?: AddressModel;
   gender?: GenderModel;
 }
+

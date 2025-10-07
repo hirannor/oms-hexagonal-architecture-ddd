@@ -1,4 +1,4 @@
-import { inject } from '@angular/core';
+﻿import { inject } from '@angular/core';
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -51,3 +51,4 @@ export const AuthInterceptor: HttpInterceptorFn = (
     })
   );
 };
+

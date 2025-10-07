@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+﻿import { Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 import { orderReducer } from './data-access/order.reducer';
@@ -33,3 +33,4 @@ export const ORDER_ROUTES: Routes = [
         ],
     },
 ];
+

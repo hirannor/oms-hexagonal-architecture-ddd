@@ -1,4 +1,4 @@
-import { ProblemDetails as UiProblemDetails } from './problem-details';
+﻿import { ProblemDetails as UiProblemDetails } from './problem-details';
 
 export class ProblemDetailsMapper {
   static fromApi(model: any): UiProblemDetails {
@@ -14,3 +14,4 @@ export class ProblemDetailsMapper {
     };
   }
 }
+

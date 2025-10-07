@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasketCheckoutFeature } from './basket-checkout-feature';
 
 describe('BasketFeatureCheckout', () => {
@@ -19,3 +19,4 @@ describe('BasketFeatureCheckout', () => {
     expect(component).toBeTruthy();
   });
 });
+

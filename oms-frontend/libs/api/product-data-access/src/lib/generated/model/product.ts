@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Products API
  *
  *
@@ -15,3 +15,4 @@ export interface ProductModel {
   description: string;
   price: MoneyModel;
 }
+

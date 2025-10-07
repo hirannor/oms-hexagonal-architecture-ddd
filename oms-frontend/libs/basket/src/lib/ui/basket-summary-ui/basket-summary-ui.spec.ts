@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasketSummaryUi } from './basket-summary-ui';
 
 describe('BasketUi', () => {
@@ -19,3 +19,4 @@ describe('BasketUi', () => {
     expect(component).toBeTruthy();
   });
 });
+

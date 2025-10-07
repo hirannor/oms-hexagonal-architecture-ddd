@@ -1,5 +1,5 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Customer } from '@oms-frontend/domain';
+﻿import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { Customer } from '@oms-frontend/models';
 
 export const CustomerProfileLoadActions = createActionGroup({
   source: 'Customer/Profile Load',
@@ -18,3 +18,4 @@ export const CustomerProfileUpdateActions = createActionGroup({
     Failure: props<{ error: string }>(),
   },
 });
+

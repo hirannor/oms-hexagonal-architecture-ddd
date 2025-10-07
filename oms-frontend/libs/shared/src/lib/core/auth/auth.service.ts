@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
 import { map, Observable, tap } from 'rxjs';
@@ -77,3 +77,4 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 }
+

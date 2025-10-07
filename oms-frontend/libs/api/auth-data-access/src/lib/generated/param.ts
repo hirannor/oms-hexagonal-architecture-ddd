@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Standard parameter styles defined by OpenAPI spec
  */
 export type StandardParamStyle =
@@ -64,3 +64,4 @@ export interface Param {
   dataType: DataType;
   dataFormat: DataFormat | undefined;
 }
+

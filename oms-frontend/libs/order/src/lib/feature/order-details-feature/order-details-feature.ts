@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
@@ -37,3 +37,4 @@ export class OrderDetailsFeature implements OnInit {
     this.store.dispatch(OrderPaymentActions.request({ orderId }));
   }
 }
+

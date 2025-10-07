@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Auth API
  *
  *
@@ -373,3 +373,4 @@ export class AuthApi extends BaseService {
     });
   }
 }
+

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CustomerFeatureProfile } from './customer-feature-profile';
 
 describe('CustomerFeatureProfile', () => {
@@ -19,3 +19,4 @@ describe('CustomerFeatureProfile', () => {
     expect(component).toBeTruthy();
   });
 });
+

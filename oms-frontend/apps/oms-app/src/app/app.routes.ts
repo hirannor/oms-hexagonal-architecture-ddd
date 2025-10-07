@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+﻿import { Routes } from '@angular/router';
 import { AuthFeatureShell } from '@oms-frontend/auth';
 import { BasketCartFeature } from '@oms-frontend/basket';
 import { CustomerFeatureProfile } from '@oms-frontend/customer';
@@ -37,3 +37,4 @@ export const appRoutes: Routes = [
   { path: 'register', redirectTo: 'auth', pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];
+

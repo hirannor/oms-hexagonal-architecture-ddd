@@ -1,5 +1,5 @@
-import { createReducer, on } from '@ngrx/store';
-import { Product } from '@oms-frontend/domain';
+﻿import { createReducer, on } from '@ngrx/store';
+import { Product } from '@oms-frontend/models';
 import {
   ProductCreateActions,
   ProductDetailsActions,
@@ -71,3 +71,4 @@ export const productReducer = createReducer(
     loading: false,
   }))
 );
+

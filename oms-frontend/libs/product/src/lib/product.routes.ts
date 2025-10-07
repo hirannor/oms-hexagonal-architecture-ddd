@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+﻿import { Routes } from '@angular/router';
 import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { productReducer } from './data-access/product.reducer';
@@ -29,3 +29,4 @@ export const PRODUCT_ROUTES: Routes = [
         ],
     },
 ];
+

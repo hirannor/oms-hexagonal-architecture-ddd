@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Basket, BasketItem, OrderItem } from '@oms-frontend/domain';
+import { Basket, BasketItem, OrderItem } from '@oms-frontend/models';
 import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import { RouterLink } from '@angular/router';
@@ -9,7 +9,6 @@ import { RouterLink } from '@angular/router';
 import {
   selectBasket,
   selectBasketLoading,
-  selectIsBasketEmpty,
 } from '../../data-access/basket.selector';
 import {
   BasketAddItemActions,
@@ -43,7 +42,6 @@ export class BasketCartFeature implements OnInit {
   private readonly auth = inject(AuthService);
 
   readonly basket$ = this.store.select(selectBasket);
-  readonly isEmpty$ = this.store.select(selectIsBasketEmpty);
   readonly loading$ = this.store.select(selectBasketLoading);
 
   private customerId: string | null = null;
@@ -111,6 +109,6 @@ export class BasketCartFeature implements OnInit {
     this.store.dispatch(
       OrderCreateActions.request({ customerId: this.customerId, products })
     );
-    this.store.dispatch(BasketClearActions.request());
   }
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Auth API
  *
  *
@@ -12,3 +12,4 @@ export interface RegisterModel {
   password: string;
   emailAddress: string;
 }
+

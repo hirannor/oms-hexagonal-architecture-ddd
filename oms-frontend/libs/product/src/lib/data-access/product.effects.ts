@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProductMapper } from '@oms-frontend/domain';
+import { ProductMapper } from '@oms-frontend/models';
 import { NotificationService } from '@oms-frontend/shared';
 import {
   ProductCreateActions,
@@ -84,3 +84,4 @@ export class ProductEffects {
     )
   );
 }
+

@@ -1,4 +1,4 @@
-import {
+﻿import {
   HttpHeaders,
   HttpParameterCodec,
   HttpParams,
@@ -217,3 +217,4 @@ export class Configuration {
     return encodeURIComponent(String(value));
   }
 }
+

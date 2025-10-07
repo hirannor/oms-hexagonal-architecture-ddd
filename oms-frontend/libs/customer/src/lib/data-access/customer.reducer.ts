@@ -1,5 +1,5 @@
-import { createReducer, on } from '@ngrx/store';
-import { Customer } from '@oms-frontend/domain';
+﻿import { createReducer, on } from '@ngrx/store';
+import { Customer } from '@oms-frontend/models';
 import {
   CustomerProfileLoadActions,
   CustomerProfileUpdateActions,
@@ -54,3 +54,4 @@ export const customerReducer = createReducer(
     error,
   }))
 );
+

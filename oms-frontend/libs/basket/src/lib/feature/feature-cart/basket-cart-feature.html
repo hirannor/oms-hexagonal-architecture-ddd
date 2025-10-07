@@ -1,4 +1,4 @@
-<div class="feature-container">
+﻿<div class="feature-container">
   <h2 class="feature-title">Your Basket</h2>
 
   @if (loading$ | async) {
@@ -7,7 +7,7 @@
     @if (basket$ | async; as basket) {
       @if (basket === null || basket.items.length === 0) {
         <div class="empty-basket">
-          <h3>Your basket is empty 🛒</h3>
+          <h3>Your basket is empty</h3>
           <p>Start shopping to add your first item.</p>
           <button
             pButton
@@ -43,7 +43,7 @@
       }
     } @else {
       <div class="empty-basket">
-        <h3>Your basket is empty 🛒</h3>
+        <h3>Your basket is empty</h3>
         <p>Start shopping to add your first item.</p>
         <button
           pButton
@@ -58,3 +58,4 @@
     }
   }
 </div>
+

@@ -1,4 +1,4 @@
-import {
+﻿import {
   ModuleWithProviders,
   NgModule,
   Optional,
@@ -40,3 +40,4 @@ export class ApiModule {
     };
   }
 }
+

@@ -1,4 +1,4 @@
-export default {
+﻿export default {
   displayName: 'customer',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
@@ -19,3 +19,4 @@ export default {
     'jest-preset-angular/build/serializers/html-comment',
   ],
 };
+

@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+﻿import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CustomerState } from './customer.reducer';
 
 export const selectCustomerState =
@@ -23,3 +23,4 @@ export const selectCustomerError = createSelector(
   selectCustomerState,
   (state) => state.error
 );
+

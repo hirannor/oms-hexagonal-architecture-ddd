@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Basket API
  *
  *
@@ -15,3 +15,4 @@ export enum BasketStatusModel {
 
   Expired = 'EXPIRED',
 }
+

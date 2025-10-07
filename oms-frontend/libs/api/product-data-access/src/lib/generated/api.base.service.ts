@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Products API
  *
  *
@@ -107,3 +107,4 @@ export class BaseService {
     throw Error('key may not be null if value is not object or array');
   }
 }
+

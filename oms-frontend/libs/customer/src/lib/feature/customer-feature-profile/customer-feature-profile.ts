@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Customer } from '@oms-frontend/domain';
+import { Customer } from '@oms-frontend/models';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -46,3 +46,4 @@ export class CustomerFeatureProfile implements OnInit {
     );
   }
 }
+

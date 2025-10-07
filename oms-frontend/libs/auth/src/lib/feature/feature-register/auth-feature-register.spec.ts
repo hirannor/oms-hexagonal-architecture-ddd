@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AuthFeatureRegister } from './auth-feature-register';
 
 describe('AuthFeatureRegister', () => {
@@ -19,3 +19,4 @@ describe('AuthFeatureRegister', () => {
     expect(component).toBeTruthy();
   });
 });
+

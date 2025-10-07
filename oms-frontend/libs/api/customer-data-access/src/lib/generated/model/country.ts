@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Customers API
  *
  *
@@ -13,3 +13,4 @@ export enum CountryModel {
 
   Germany = 'GERMANY',
 }
+

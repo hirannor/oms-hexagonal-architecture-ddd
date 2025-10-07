@@ -68,7 +68,7 @@
             "sourceTag": "type:app",
             "onlyDependOnLibsWithTags": [
               "type:feature",
-              "type:domain",
+              "type:models",
               "type:shared",
               "type:api"
             ]
@@ -76,7 +76,7 @@
           {
             "sourceTag": "type:feature",
             "onlyDependOnLibsWithTags": [
-              "type:domain",
+              "type:models",
               "type:shared",
               "type:api"
             ]
@@ -102,7 +102,7 @@
             "sourceTag": "scope:order",
             "onlyDependOnLibsWithTags": [
               "scope:order",
-              "type:domain",
+              "type:models",
               "type:shared",
               "type:api"
             ]
@@ -111,7 +111,7 @@
             "sourceTag": "scope:customer",
             "onlyDependOnLibsWithTags": [
               "scope:customer",
-              "type:domain",
+              "type:models",
               "type:shared",
               "type:api"
             ]
@@ -120,7 +120,7 @@
             "sourceTag": "scope:basket",
             "onlyDependOnLibsWithTags": [
               "scope:basket",
-              "type:domain",
+              "type:models",
               "type:shared",
               "type:api"
             ]
@@ -129,7 +129,7 @@
             "sourceTag": "scope:product",
             "onlyDependOnLibsWithTags": [
               "scope:product",
-              "type:domain",
+              "type:models",
               "type:shared",
               "type:api"
             ]
@@ -138,7 +138,7 @@
             "sourceTag": "scope:auth",
             "onlyDependOnLibsWithTags": [
               "scope:auth",
-              "type:domain",
+              "type:models",
               "type:shared",
               "type:api"
             ]

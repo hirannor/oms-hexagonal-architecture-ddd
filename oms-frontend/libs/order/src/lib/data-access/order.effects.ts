@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { OrderMapper, ProblemDetailsMapper } from '@oms-frontend/domain';
+import { OrderMapper, ProblemDetailsMapper } from '@oms-frontend/models';
 import { NotificationService } from '@oms-frontend/shared';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
@@ -51,7 +51,7 @@ export class OrderEffects {
     )
   );
 
-  /** 💳 Pay for an order */
+  /** đź’ł Pay for an order */
   payOrder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderPaymentActions.request),
@@ -84,7 +84,7 @@ export class OrderEffects {
     )
   );
 
-  /** 🛒 Create new order */
+  /** đź›’ Create new order */
   createOrder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderCreateActions.request),
@@ -121,7 +121,7 @@ export class OrderEffects {
     )
   );
 
-  /** 🔍 Load single order by ID */
+  /** đź”Ť Load single order by ID */
   loadOrderById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderDetailsActions.request),
@@ -164,3 +164,4 @@ export class OrderEffects {
     { dispatch: false }
   );
 }
+

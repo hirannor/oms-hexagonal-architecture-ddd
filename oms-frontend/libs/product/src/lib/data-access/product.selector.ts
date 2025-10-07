@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+﻿import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ProductState } from './product.reducer';
 
 export const selectProductState =
@@ -23,3 +23,4 @@ export const selectSelectedProduct = createSelector(
   selectProductState,
   (state) => state.selectedProduct
 );
+

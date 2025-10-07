@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Products API
  *
  *
@@ -363,3 +363,4 @@ export class ProductApi extends BaseService {
     );
   }
 }
+

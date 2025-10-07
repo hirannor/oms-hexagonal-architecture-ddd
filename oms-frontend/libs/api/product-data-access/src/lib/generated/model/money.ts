@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Products API
  *
  *
@@ -13,3 +13,4 @@ export interface MoneyModel {
   amount: string;
   currency: CurrencyModel;
 }
+

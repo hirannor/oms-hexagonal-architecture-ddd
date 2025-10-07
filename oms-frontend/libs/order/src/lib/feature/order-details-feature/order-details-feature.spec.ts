@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { OrderDetailsFeature } from './order-details-feature';
 
 describe('OrderHistoryFeature', () => {
@@ -19,3 +19,4 @@ describe('OrderHistoryFeature', () => {
     expect(component).toBeTruthy();
   });
 });
+

@@ -1,8 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { BasketItem, Product } from '@oms-frontend/domain';
+import { BasketItem, Product } from '@oms-frontend/models';
 import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BasketAddItemActions, selectBasket } from '@oms-frontend/basket';
@@ -58,3 +58,4 @@ export class ProductListFeature implements OnInit {
     this.store.dispatch(BasketAddItemActions.request({ customerId, item }));
   }
 }
+

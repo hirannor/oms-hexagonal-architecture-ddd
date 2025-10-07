@@ -1,5 +1,5 @@
-import { createReducer, on } from '@ngrx/store';
-import { Basket } from '@oms-frontend/domain';
+﻿import { createReducer, on } from '@ngrx/store';
+import { Basket } from '@oms-frontend/models';
 import {
   BasketAddItemActions,
   BasketCheckoutActions,
@@ -110,3 +110,4 @@ export const basketReducer = createReducer(
     error: null,
   }))
 );
+

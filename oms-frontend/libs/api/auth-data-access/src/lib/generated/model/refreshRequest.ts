@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Auth API
  *
  *
@@ -11,3 +11,4 @@
 export interface RefreshRequestModel {
   refreshToken: string;
 }
+

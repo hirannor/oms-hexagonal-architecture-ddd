@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Basket API
  *
  *
@@ -11,3 +11,4 @@
 export interface CreateBasketModel {
   customerId: string;
 }
+

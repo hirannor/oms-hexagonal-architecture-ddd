@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CustomerMapper } from '@oms-frontend/domain';
+import { CustomerMapper } from '@oms-frontend/models';
 import { NotificationService } from '@oms-frontend/shared';
 import {
   CustomerProfileLoadActions,
@@ -80,3 +80,4 @@ export class CustomerEffects {
     { dispatch: false }
   );
 }
+

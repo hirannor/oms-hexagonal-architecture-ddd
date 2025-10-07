@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Product } from '@oms-frontend/domain';
+import { Product } from '@oms-frontend/models';
 import { CardModule } from 'primeng/card';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 
@@ -16,3 +16,4 @@ export class ProductCard {
   @Output() addToBasket = new EventEmitter<Product>();
   @Input() disabled = false;
 }
+

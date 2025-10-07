@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Basket API
  *
  *
@@ -754,3 +754,4 @@ export class BasketApi extends BaseService {
     );
   }
 }
+

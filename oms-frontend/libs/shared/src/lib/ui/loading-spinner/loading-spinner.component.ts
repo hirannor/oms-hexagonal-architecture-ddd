@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
@@ -12,3 +12,4 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 export class LoadingSpinnerComponent {
   @Input() size = '70px';
 }
+

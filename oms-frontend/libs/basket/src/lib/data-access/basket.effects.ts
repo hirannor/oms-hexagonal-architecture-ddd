@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { BasketMapper } from '@oms-frontend/domain';
+import { BasketMapper } from '@oms-frontend/models';
 import { NotificationService } from '@oms-frontend/shared';
 import {
   catchError,
@@ -141,7 +141,7 @@ export class BasketEffects {
       withLatestFrom(this.store.select(selectBasket)),
       concatMap(([{ customerId, item }, basket]) => {
         if (!basket?.id) {
-          this.notifications.error('Cannot remove item — basket not found');
+          this.notifications.error('Cannot remove item â€” basket not found');
           return of(
             BasketRemoveItemActions.failure({ error: 'Basket not found' })
           );
@@ -234,3 +234,4 @@ export class BasketEffects {
     return basket;
   }
 }
+

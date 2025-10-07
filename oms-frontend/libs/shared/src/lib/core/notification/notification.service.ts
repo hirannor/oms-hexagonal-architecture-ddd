@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ProblemDetails } from '../models/problem-details';
 
@@ -26,3 +26,4 @@ export class NotificationService {
     this.error(problem.title ?? 'Error', problem.detail ?? 'Unexpected error');
   }
 }
+

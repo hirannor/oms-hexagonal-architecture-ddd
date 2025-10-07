@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Order, OrderStatus } from '@oms-frontend/domain';
+import { Order, OrderStatus } from '@oms-frontend/models';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
@@ -81,3 +81,4 @@ export class OrderHistoryUi {
     }
   }
 }
+

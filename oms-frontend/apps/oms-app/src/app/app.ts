@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { Toast } from 'primeng/toast';
 
@@ -12,3 +12,4 @@ import { Toast } from 'primeng/toast';
 export class App {
   protected title = 'oms-app';
 }
+

@@ -1,11 +1,11 @@
-import { inject, Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
     AuthMapper,
     LoginPayload,
     ProblemDetailsMapper,
     RegisterPayload
-} from '@oms-frontend/domain';
+} from '@oms-frontend/models';
 import { AuthService, NotificationService } from '@oms-frontend/shared';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
@@ -132,3 +132,4 @@ export class AuthEffects {
     { dispatch: false }
   );
 }
+

@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Basket, OrderItem } from '@oms-frontend/domain';
+import { Basket, OrderItem } from '@oms-frontend/models';
 import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 
 import { BasketSummaryUi } from '../../ui/basket-summary-ui/basket-summary-ui';
@@ -54,3 +54,4 @@ export class BasketCheckoutFeature implements OnInit {
     );
   }
 }
+

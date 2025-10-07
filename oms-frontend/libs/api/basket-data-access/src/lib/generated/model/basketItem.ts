@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Basket API
  *
  *
@@ -16,3 +16,4 @@ export interface BasketItemModel {
   quantity: number;
   price: MoneyModel;
 }
+

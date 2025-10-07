@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasketCartFeature } from './basket-cart-feature';
 
 describe('BasketFeatureCart', () => {
@@ -19,3 +19,4 @@ describe('BasketFeatureCart', () => {
     expect(component).toBeTruthy();
   });
 });
+

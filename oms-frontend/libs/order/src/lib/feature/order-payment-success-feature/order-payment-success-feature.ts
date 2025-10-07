@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+﻿import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
@@ -24,3 +24,4 @@ export class OrderPaymentSuccessFeature implements OnInit {
     this.router.navigate(['/orders']);
   }
 }
+

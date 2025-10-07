@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared';
@@ -25,3 +25,4 @@ export class OrderHistoryFeature implements OnInit {
     this.store.dispatch(OrderLoadActions.request());
   }
 }
+

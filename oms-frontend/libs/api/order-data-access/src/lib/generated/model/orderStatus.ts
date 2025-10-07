@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Orders API
  *
  *
@@ -31,3 +31,4 @@ export enum OrderStatusModel {
 
   Refunded = 'REFUNDED',
 }
+

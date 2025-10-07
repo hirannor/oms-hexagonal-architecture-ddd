@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+﻿import { createReducer, on } from '@ngrx/store';
 import { AuthState } from './auth.models';
 import { AuthActions } from './auth.actions';
 
@@ -48,3 +48,4 @@ export const authReducer = createReducer(
 
   on(AuthActions.logout, () => initialState)
 );
+

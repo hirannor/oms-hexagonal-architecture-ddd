@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { AuthFeatureRegister } from '../feature-register/auth-feature-register';
@@ -12,3 +12,4 @@ import { AuthFeatureLogin } from '../feature-login/auth-feature-login';
   styleUrls: ['./auth-feature-shell.scss'],
 })
 export class AuthFeatureShell {}
+

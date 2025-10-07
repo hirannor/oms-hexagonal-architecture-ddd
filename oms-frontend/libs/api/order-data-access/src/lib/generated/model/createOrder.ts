@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Orders API
  *
  *
@@ -13,3 +13,4 @@ export interface CreateOrderModel {
   customerId: string;
   products: Array<OrderItemModel>;
 }
+

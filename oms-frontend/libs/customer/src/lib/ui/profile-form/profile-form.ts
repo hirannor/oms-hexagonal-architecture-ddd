@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   EventEmitter,
   inject,
@@ -15,7 +15,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { Countries, Customer } from '@oms-frontend/domain';
+import { Countries, Customer } from '@oms-frontend/models';
 import { ButtonDirective } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
@@ -111,3 +111,4 @@ export class ProfileFormComponent implements OnChanges {
     return allEmpty || allFilled ? null : { incompleteAddress: true };
   }
 }
+

@@ -1,4 +1,4 @@
-export interface ProblemDetails {
+﻿export interface ProblemDetails {
   timestamp?: string;
   title?: string;
   status?: number;
@@ -6,3 +6,4 @@ export interface ProblemDetails {
   instance?: string;
   fields?: Record<string, string>;
 }
+

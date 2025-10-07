@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { OrderHistoryUi } from './order-history-ui';
 
 describe('OrderUi', () => {
@@ -19,3 +19,4 @@ describe('OrderUi', () => {
     expect(component).toBeTruthy();
   });
 });
+

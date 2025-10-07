@@ -1,4 +1,4 @@
-<div class="feature-container">
+﻿<div class="feature-container">
   <h2 class="feature-title">My Orders</h2>
 
   @if (loading$ | async) {
@@ -7,3 +7,4 @@
     <lib-order-history-ui [orders]="(orders$ | async) || []"></lib-order-history-ui>
   }
 </div>
+
