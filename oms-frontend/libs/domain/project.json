@@ -4,7 +4,7 @@
   "sourceRoot": "domain/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:domain"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

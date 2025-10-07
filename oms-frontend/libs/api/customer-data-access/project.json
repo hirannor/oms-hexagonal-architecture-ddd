@@ -4,7 +4,7 @@
   "sourceRoot": "libs/api/customer-data-access/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:api", "scope:customer"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

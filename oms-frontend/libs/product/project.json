@@ -4,7 +4,7 @@
   "sourceRoot": "libs/product/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:feature", "scope:product"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
