@@ -3,13 +3,13 @@ import {
   CurrencyModel,
   OrderItemModel,
   OrderModel,
-  OrderStatusModel,
+  OrderStatusModel
 } from '@oms-frontend/api/order-data-access';
-import { Currency } from '../../../models/currency';
-import { OrderItem } from './order-item';
-import { Order } from './order';
-import { OrderStatus } from './order-status';
-import { CreateOrder } from './create-order';
+import { Currency } from '../../core/currency';
+import { OrderItem } from '../order-item';
+import { Order } from '../order';
+import { OrderStatus } from '../order-status';
+import { CreateOrder } from '../create-order';
 
 export class OrderMapper {
   static mapToOrder(model: OrderModel): Order {

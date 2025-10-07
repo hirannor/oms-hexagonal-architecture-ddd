@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { BasketMapper, NotificationService } from '@oms-frontend/shared';
+import { BasketMapper } from '@oms-frontend/domain';
+import { NotificationService } from '@oms-frontend/shared';
 import {
   catchError,
   concatMap,

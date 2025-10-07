@@ -1,4 +1,4 @@
-import { Money } from '../../../models/money';
+import { Money } from '../core/money';
 import { OrderItem } from './order-item';
 import { OrderStatus } from './order-status';
 

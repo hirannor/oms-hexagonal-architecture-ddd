@@ -8,7 +8,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
 import { MenuItem } from 'primeng/api';
-import { AuthService } from '../../data-access/auth/auth.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'oms-layout',

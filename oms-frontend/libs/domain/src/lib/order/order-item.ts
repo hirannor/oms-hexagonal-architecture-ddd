@@ -1,4 +1,4 @@
-import { Money } from '../../../models/money';
+import { Money } from '../core/money';
 
 export interface OrderItem {
   productId: string;

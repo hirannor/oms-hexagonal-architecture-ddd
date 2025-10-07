@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Order } from '@oms-frontend/shared';
+import { Order } from '@oms-frontend/domain';
 import { OrderState } from './order.reducer';
 
 export const selectOrderState = createFeatureSelector<OrderState>('orders');

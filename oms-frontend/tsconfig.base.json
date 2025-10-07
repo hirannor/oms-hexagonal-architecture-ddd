@@ -10,10 +10,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -21,43 +18,26 @@
       "@oms-frontend/api/auth-data-access": [
         "libs/api/auth-data-access/src/index.ts"
       ],
-      "@oms-frontend/api/customer-data-access": [
-        "libs/api/customer-data-access/src/index.ts"
-      ],
-      "@oms-frontend/api/product-data-access": [
-        "libs/api/product-data-access/src/index.ts"
-      ],
       "@oms-frontend/api/basket-data-access": [
         "libs/api/basket-data-access/src/index.ts"
+      ],
+      "@oms-frontend/api/customer-data-access": [
+        "libs/api/customer-data-access/src/index.ts"
       ],
       "@oms-frontend/api/order-data-access": [
         "libs/api/order-data-access/src/index.ts"
       ],
-      "@oms-frontend/auth": [
-        "libs/auth/src/index.ts"
+      "@oms-frontend/api/product-data-access": [
+        "libs/api/product-data-access/src/index.ts"
       ],
-      "@oms-frontend/basket": [
-        "libs/basket/src/index.ts"
-      ],
-      "@oms-frontend/customer": [
-        "libs/customer/src/index.ts"
-      ],
-      "@oms-frontend/models": [
-        "libs/shared/models/src/index.ts"
-      ],
-      "@oms-frontend/order": [
-        "libs/order/src/index.ts"
-      ],
-      "@oms-frontend/product": [
-        "libs/product/src/index.ts"
-      ],
-      "@oms-frontend/shared": [
-        "libs/shared/src/index.ts"
-      ],
+      "@oms-frontend/auth": ["libs/auth/src/index.ts"],
+      "@oms-frontend/basket": ["libs/basket/src/index.ts"],
+      "@oms-frontend/customer": ["libs/customer/src/index.ts"],
+      "@oms-frontend/order": ["libs/order/src/index.ts"],
+      "@oms-frontend/product": ["libs/product/src/index.ts"],
+      "@oms-frontend/domain": ["libs/domain/src/index.ts"],
+      "@oms-frontend/shared": ["libs/shared/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

@@ -1,4 +1,4 @@
-import { Money } from '../../../models/money';
+import { Money } from '../core/money';
 import { BasketItem } from './basket-item';
 import { BasketStatus } from './basket-status';
 

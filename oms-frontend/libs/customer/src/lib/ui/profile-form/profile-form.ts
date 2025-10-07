@@ -15,7 +15,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { Countries, Customer } from '@oms-frontend/shared';
+import { Countries, Customer } from '@oms-frontend/domain';
 import { ButtonDirective } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';

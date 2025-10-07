@@ -1,8 +1,8 @@
 export default {
-  displayName: 'shared',
+  displayName: 'domain',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/shared',
+  coverageDirectory: '../../../coverage/domain',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

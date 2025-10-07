@@ -21,9 +21,10 @@ import { OrderDetailsUi } from '../../ui/order-details-ui/order-details-ui';
 })
 export class OrderDetailsFeature implements OnInit {
   private readonly store = inject(Store);
+  private readonly route = inject(ActivatedRoute);
+
   readonly order$ = this.store.select(selectSelectedOrder);
   readonly loading$ = this.store.select(selectOrderLoading);
-  private readonly route = inject(ActivatedRoute);
 
   ngOnInit() {
     const orderId = this.route.snapshot.paramMap.get('orderId');

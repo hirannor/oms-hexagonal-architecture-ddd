@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CustomerMapper, NotificationService } from '@oms-frontend/shared';
+import { CustomerMapper } from '@oms-frontend/domain';
+import { NotificationService } from '@oms-frontend/shared';
 import {
   CustomerProfileLoadActions,
   CustomerProfileUpdateActions,

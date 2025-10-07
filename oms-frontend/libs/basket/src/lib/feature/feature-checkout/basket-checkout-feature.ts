@@ -1,7 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { AuthService, Basket, LoadingSpinnerComponent, OrderItem } from '@oms-frontend/shared';
+import { Basket, OrderItem } from '@oms-frontend/domain';
+import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 
 import { BasketSummaryUi } from '../../ui/basket-summary-ui/basket-summary-ui';
 import {

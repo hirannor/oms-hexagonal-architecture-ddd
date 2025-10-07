@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Order } from '@oms-frontend/shared';
+import { Order } from '@oms-frontend/domain';
 import {
   OrderCancelActions,
   OrderCreateActions,

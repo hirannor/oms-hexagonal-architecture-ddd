@@ -2,7 +2,7 @@ import {
   AddressModel,
   ChangePersonalDetailsModel,
   CountryModel,
-  CustomerModel,
+  CustomerModel
 } from '@oms-frontend/api/customer-data-access';
 import { Customer } from '../customer';
 import { CountryCode } from '../country-enum';

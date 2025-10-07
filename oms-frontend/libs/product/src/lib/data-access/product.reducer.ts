@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Product } from '@oms-frontend/shared';
+import { Product } from '@oms-frontend/domain';
 import {
   ProductCreateActions,
   ProductDetailsActions,

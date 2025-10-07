@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Customer } from '@oms-frontend/shared';
+import { Customer } from '@oms-frontend/domain';
 
 export const CustomerProfileLoadActions = createActionGroup({
   source: 'Customer/Profile Load',

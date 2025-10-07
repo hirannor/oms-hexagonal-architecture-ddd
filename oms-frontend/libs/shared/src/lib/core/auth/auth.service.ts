@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
+import { map, Observable, tap } from 'rxjs';
 
 const ACCESS_TOKEN_KEY = 'accessToken';
 const REFRESH_TOKEN_KEY = 'refreshToken';

@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { NotificationService, OrderMapper, ProblemDetailsMapper } from '@oms-frontend/shared';
+import { OrderMapper, ProblemDetailsMapper } from '@oms-frontend/domain';
+import { NotificationService } from '@oms-frontend/shared';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Customer } from '@oms-frontend/shared';
+import { Customer } from '@oms-frontend/domain';
 import {
   CustomerProfileLoadActions,
   CustomerProfileUpdateActions,

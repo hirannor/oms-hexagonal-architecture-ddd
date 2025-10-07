@@ -2,12 +2,11 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
     AuthMapper,
-    AuthService,
     LoginPayload,
-    NotificationService,
     ProblemDetailsMapper,
     RegisterPayload
-} from '@oms-frontend/shared';
+} from '@oms-frontend/domain';
+import { AuthService, NotificationService } from '@oms-frontend/shared';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
 import { AuthActions } from './auth.actions';

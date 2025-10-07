@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Basket } from '@oms-frontend/shared';
+import { Basket } from '@oms-frontend/domain';
 import {
   BasketAddItemActions,
   BasketCheckoutActions,

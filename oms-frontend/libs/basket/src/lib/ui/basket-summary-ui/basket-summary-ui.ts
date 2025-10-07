@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Basket } from '@oms-frontend/shared';
+import { Basket } from '@oms-frontend/domain';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { MessageModule } from 'primeng/message';
