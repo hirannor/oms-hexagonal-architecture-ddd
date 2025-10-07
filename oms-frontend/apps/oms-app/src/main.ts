@@ -20,8 +20,6 @@ import { MessageService } from 'primeng/api';
 import { AuthEffects, authReducer } from '@oms-frontend/auth';
 import { BasketEffects, basketReducer } from '@oms-frontend/basket';
 import { CustomerEffects, customerReducer } from '@oms-frontend/customer';
-import { OrderEffects, orderReducer } from '@oms-frontend/order';
-import { ProductEffects, productReducer } from '@oms-frontend/product';
 
 export const environment = {
   production: false,
@@ -51,16 +49,12 @@ bootstrapApplication(App, {
     provideStore({
       auth: authReducer,
       customer: customerReducer,
-      product: productReducer,
       basket: basketReducer,
-      orders: orderReducer,
     }),
     provideEffects([
       AuthEffects,
       CustomerEffects,
-      ProductEffects,
       BasketEffects,
-      OrderEffects,
     ]),
     provideStoreDevtools(),
     MessageService,
