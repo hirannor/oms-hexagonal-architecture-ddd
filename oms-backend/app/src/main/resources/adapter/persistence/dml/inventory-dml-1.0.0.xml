@@ -6,94 +6,68 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet author="hirannor" id="insert_data::inventory:dml:1.0.0">
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="1"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440001"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440001"/>
-            <column name="available_quantity" valueNumeric="100"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="1"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440001"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440001"/><column name="available_quantity" valueNumeric="120"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="2"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440002"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440002"/><column name="available_quantity" valueNumeric="110"/><column name="reserved_quantity" valueNumeric="8"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="3"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440011"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440011"/><column name="available_quantity" valueNumeric="140"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="4"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440012"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440012"/><column name="available_quantity" valueNumeric="100"/><column name="reserved_quantity" valueNumeric="4"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="5"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440013"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440013"/><column name="available_quantity" valueNumeric="130"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="6"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440014"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440014"/><column name="available_quantity" valueNumeric="125"/><column name="reserved_quantity" valueNumeric="7"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="7"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440015"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440015"/><column name="available_quantity" valueNumeric="115"/><column name="reserved_quantity" valueNumeric="1"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="8"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440016"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440016"/><column name="available_quantity" valueNumeric="90"/><column name="reserved_quantity" valueNumeric="0"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="9"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440017"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440017"/><column name="available_quantity" valueNumeric="150"/><column name="reserved_quantity" valueNumeric="6"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="10"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440018"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440018"/><column name="available_quantity" valueNumeric="130"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="11"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440019"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440019"/><column name="available_quantity" valueNumeric="105"/><column name="reserved_quantity" valueNumeric="4"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="12"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440020"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440020"/><column name="available_quantity" valueNumeric="125"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
 
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="2"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440002"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440002"/>
-            <column name="available_quantity" valueNumeric="80"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
+        <!-- ========== DISPLAY (13–24) ========== -->
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="13"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440021"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440021"/><column name="available_quantity" valueNumeric="70"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="14"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440022"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440022"/><column name="available_quantity" valueNumeric="85"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="15"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440023"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440023"/><column name="available_quantity" valueNumeric="60"/><column name="reserved_quantity" valueNumeric="4"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="16"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440024"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440024"/><column name="available_quantity" valueNumeric="55"/><column name="reserved_quantity" valueNumeric="1"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="17"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440025"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440025"/><column name="available_quantity" valueNumeric="45"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="18"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440026"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440026"/><column name="available_quantity" valueNumeric="90"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="19"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440027"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440027"/><column name="available_quantity" valueNumeric="25"/><column name="reserved_quantity" valueNumeric="1"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="20"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440028"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440028"/><column name="available_quantity" valueNumeric="65"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="21"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440029"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440029"/><column name="available_quantity" valueNumeric="100"/><column name="reserved_quantity" valueNumeric="4"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="22"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440030"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440030"/><column name="available_quantity" valueNumeric="50"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="23"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440031"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440031"/><column name="available_quantity" valueNumeric="35"/><column name="reserved_quantity" valueNumeric="1"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="24"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440032"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440032"/><column name="available_quantity" valueNumeric="60"/><column name="reserved_quantity" valueNumeric="0"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
 
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="3"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440003"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440003"/>
-            <column name="available_quantity" valueNumeric="150"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
+        <!-- ========== AUDIO_AND_SMART_DEVICE (25–36) ========== -->
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="25"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440033"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440033"/><column name="available_quantity" valueNumeric="120"/><column name="reserved_quantity" valueNumeric="6"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="26"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440034"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440034"/><column name="available_quantity" valueNumeric="70"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="27"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440035"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440035"/><column name="available_quantity" valueNumeric="95"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="28"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440036"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440036"/><column name="available_quantity" valueNumeric="80"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="29"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440037"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440037"/><column name="available_quantity" valueNumeric="100"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="30"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440038"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440038"/><column name="available_quantity" valueNumeric="60"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="31"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440039"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440039"/><column name="available_quantity" valueNumeric="115"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="32"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440040"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440040"/><column name="available_quantity" valueNumeric="125"/><column name="reserved_quantity" valueNumeric="4"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="33"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440041"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440041"/><column name="available_quantity" valueNumeric="85"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="34"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440042"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440042"/><column name="available_quantity" valueNumeric="75"/><column name="reserved_quantity" valueNumeric="1"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="35"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440043"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440043"/><column name="available_quantity" valueNumeric="90"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="36"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440044"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440044"/><column name="available_quantity" valueNumeric="140"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
 
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="4"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440004"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440004"/>
-            <column name="available_quantity" valueNumeric="50"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
+        <!-- ========== STORAGE (37–48) ========== -->
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="37"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440045"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440045"/><column name="available_quantity" valueNumeric="90"/><column name="reserved_quantity" valueNumeric="6"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="38"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440046"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440046"/><column name="available_quantity" valueNumeric="100"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="39"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440047"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440047"/><column name="available_quantity" valueNumeric="80"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="40"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440048"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440048"/><column name="available_quantity" valueNumeric="150"/><column name="reserved_quantity" valueNumeric="7"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="41"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440049"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440049"/><column name="available_quantity" valueNumeric="110"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="42"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440050"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440050"/><column name="available_quantity" valueNumeric="70"/><column name="reserved_quantity" valueNumeric="1"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="43"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440051"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440051"/><column name="available_quantity" valueNumeric="60"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="44"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440052"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440052"/><column name="available_quantity" valueNumeric="100"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="45"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440053"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440053"/><column name="available_quantity" valueNumeric="75"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="46"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440054"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440054"/><column name="available_quantity" valueNumeric="130"/><column name="reserved_quantity" valueNumeric="1"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="47"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440055"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440055"/><column name="available_quantity" valueNumeric="45"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="48"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440056"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440056"/><column name="available_quantity" valueNumeric="85"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
 
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="5"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440005"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440005"/>
-            <column name="available_quantity" valueNumeric="120"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
+        <!-- ========== ACCESSORIES (49–54) ========== -->
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="49"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440057"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440057"/><column name="available_quantity" valueNumeric="150"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="50"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440058"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440058"/><column name="available_quantity" valueNumeric="130"/><column name="reserved_quantity" valueNumeric="3"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="51"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440059"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440059"/><column name="available_quantity" valueNumeric="110"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="52"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440060"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440060"/><column name="available_quantity" valueNumeric="200"/><column name="reserved_quantity" valueNumeric="6"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="53"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440061"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440061"/><column name="available_quantity" valueNumeric="180"/><column name="reserved_quantity" valueNumeric="5"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
+        <insert tableName="ec_inventory"><column name="id" valueNumeric="54"/><column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440062"/><column name="product_id" value="550e8400-e29b-41d4-a716-446655440062"/><column name="available_quantity" valueNumeric="160"/><column name="reserved_quantity" valueNumeric="2"/><column name="created_at" valueDate="2025-09-23T10:00:00"/></insert>
 
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="6"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440006"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440006"/>
-            <column name="available_quantity" valueNumeric="60"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
-
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="7"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440007"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440007"/>
-            <column name="available_quantity" valueNumeric="200"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
-
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="8"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440008"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440008"/>
-            <column name="available_quantity" valueNumeric="90"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
-
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="9"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440009"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440009"/>
-            <column name="available_quantity" valueNumeric="75"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
-
-        <insert tableName="ec_inventory">
-            <column name="id" valueNumeric="10"/>
-            <column name="inventory_id" value="inv-550e8400-e29b-41d4-a716-446655440010"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440010"/>
-            <column name="available_quantity" valueNumeric="110"/>
-            <column name="reserved_quantity" valueNumeric="0"/>
-            <column name="created_at" valueDate="2025-09-23T10:00:00"/>
-        </insert>
     </changeSet>
 </databaseChangeLog>
