@@ -5,7 +5,7 @@
   OrderModel,
   OrderStatusModel,
 } from '@oms-frontend/api/order-data-access';
-import { Currency } from '../../core/currency';
+import { Currency } from '../../core';
 import { OrderItem } from '../order-item';
 import { Order } from '../order';
 import { OrderStatus } from '../order-status';

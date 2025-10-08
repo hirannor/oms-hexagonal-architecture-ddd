@@ -1,16 +1,23 @@
-﻿import { ProblemDetails as UiProblemDetails } from './problem-details';
+﻿import {
+  ProblemDetails,
+  ProblemDetails as UiProblemDetails,
+} from './problem-details';
 
 export class ProblemDetailsMapper {
-  static fromApi(model: any): UiProblemDetails {
-    if (!model) return { detail: 'Unknown error', status: 0 };
+  static fromApi(model: unknown): UiProblemDetails {
+    if (!model || typeof model !== 'object') {
+      return { detail: 'Unknown error', status: 0 };
+    }
+
+    const data = model as Partial<ProblemDetails>;
 
     return {
-      timestamp: model.timestamp,
-      title: model.title,
-      status: model.status,
-      detail: model.detail,
-      instance: model.instance,
-      fields: model.fields ?? {},
+      timestamp: data.timestamp ?? '',
+      title: data.title ?? 'Error',
+      status: data.status ?? 0,
+      detail: data.detail ?? 'An unexpected error occurred.',
+      instance: data.instance ?? '',
+      fields: data.fields ?? {},
     };
   }
 }

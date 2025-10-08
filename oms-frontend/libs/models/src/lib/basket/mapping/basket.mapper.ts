@@ -4,7 +4,7 @@
   BasketStatusModel,
 } from '@oms-frontend/api/basket-data-access';
 import { CurrencyModel } from '@oms-frontend/api/order-data-access';
-import { Currency } from '../../core/currency';
+import { Currency } from '../../core';
 import { BasketItem } from '../basket-item';
 import { BasketStatus } from '../basket-status';
 import { Basket } from '../basket';

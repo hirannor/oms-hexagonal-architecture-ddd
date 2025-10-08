@@ -1,6 +1,6 @@
 ﻿import { CurrencyModel } from '@oms-frontend/api/order-data-access';
 import { ProductModel } from '@oms-frontend/api/product-data-access';
-import { Currency } from '../core/currency';
+import { Currency } from '../core';
 import { Product } from './product';
 
 export class ProductMapper {

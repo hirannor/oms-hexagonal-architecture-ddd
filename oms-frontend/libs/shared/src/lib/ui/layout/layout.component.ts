@@ -14,7 +14,7 @@ import { map, Observable } from 'rxjs';
 import { BadgeDirective } from 'primeng/badge';
 
 @Component({
-  selector: 'oms-layout',
+  selector: 'lib-layout',
   standalone: true,
   imports: [
     CommonModule,

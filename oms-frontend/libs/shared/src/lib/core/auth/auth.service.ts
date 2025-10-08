@@ -64,11 +64,13 @@ export class AuthService {
 
     return this.authApi.refreshToken({ refreshToken }).pipe(
       tap((res) => {
-        this.saveTokens(res.accessToken!, res.refreshToken!);
+        if (res.accessToken && res.refreshToken) {
+          this.saveTokens(res.accessToken, res.refreshToken);
+        }
       }),
       map((res) => ({
-        accessToken: res.accessToken!,
-        refreshToken: res.refreshToken!,
+        accessToken: res.accessToken ?? '',
+        refreshToken: res.refreshToken ?? '',
       }))
     );
   }

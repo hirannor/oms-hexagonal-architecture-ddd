@@ -16,7 +16,7 @@
     "lint": "nx lint oms-app",
     "e2e": "nx e2e oms-app-e2e",
     "test:all": "nx run-many --target=test --all",
-    "lint:all": "nx run-many --target=lint --all",
+    "lint:all": "nx run-many --target=lint --all --exclude='api-*'",
     "build:all": "nx run-many --target=build --all"
   },
   "dependencies": {

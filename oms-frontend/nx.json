@@ -107,12 +107,43 @@
             ]
           },
           {
+            "sourceTag": "scope:auth",
+            "onlyDependOnLibsWithTags": [
+              "scope:auth",
+              "type:models",
+              "type:shared"
+            ]
+          },
+          {
+            "sourceTag": "scope:customer",
+            "onlyDependOnLibsWithTags": [
+              "scope:customer",
+              "type:models",
+              "type:shared"
+            ]
+          },
+          {
             "sourceTag": "scope:basket",
             "onlyDependOnLibsWithTags": [
               "scope:basket",
               "type:models",
-              "type:shared",
-              "type:api"
+              "type:shared"
+            ]
+          },
+          {
+            "sourceTag": "scope:product",
+            "onlyDependOnLibsWithTags": [
+              "scope:product",
+              "type:models",
+              "type:shared"
+            ]
+          },
+          {
+            "sourceTag": "scope:order",
+            "onlyDependOnLibsWithTags": [
+              "scope:order",
+              "type:models",
+              "type:shared"
             ]
           }
         ]
