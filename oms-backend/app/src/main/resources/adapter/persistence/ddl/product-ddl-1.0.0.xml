@@ -15,6 +15,9 @@
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="description" type="TEXT"/>
             <column name="price_amount" type="DECIMAL(19,2)">
                 <constraints nullable="false"/>

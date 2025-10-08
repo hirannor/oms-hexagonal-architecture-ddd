@@ -12,12 +12,14 @@ public record CreateProduct(
         ProductId productId,
         String name,
         String description,
+        ProductCategory category,
         Money price
 ) implements Command {
 
     public CreateProduct {
         Objects.requireNonNull(productId, "ProductId cannot be null");
         Objects.requireNonNull(name, "Product name cannot be null");
+        Objects.requireNonNull(name, "Product category cannot be null");
         Objects.requireNonNull(price, "Product price cannot be null");
 
         if (price.amount().compareTo(BigDecimal.ZERO) <= 0) {
@@ -28,7 +30,8 @@ public record CreateProduct(
     public static CreateProduct issue(
             final String name,
             final String description,
+            final ProductCategory category,
             final Money price) {
-        return new CreateProduct(CommandId.generate(), ProductId.generate(), name, description, price);
+        return new CreateProduct(CommandId.generate(), ProductId.generate(), name, description, category, price);
     }
 }

@@ -60,17 +60,17 @@ export class LayoutComponent {
         {
           label: 'Peripherals',
           icon: 'pi pi-cog',
-          routerLink: '/products/peripherals',
+          routerLink: '/products/peripheral',
         },
         {
           label: 'Displays',
           icon: 'pi pi-desktop',
-          routerLink: '/products/displays',
+          routerLink: '/products/display',
         },
         {
           label: 'Audio & Smart Devices',
           icon: 'pi pi-headphones',
-          routerLink: '/products/audio',
+          routerLink: '/products/audio_and_smart_device',
         },
         {
           label: 'Accessories',

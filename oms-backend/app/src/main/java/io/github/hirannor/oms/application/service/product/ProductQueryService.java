@@ -4,6 +4,7 @@ import io.github.hirannor.oms.application.usecase.product.ProductDisplaying;
 import io.github.hirannor.oms.domain.product.Product;
 import io.github.hirannor.oms.domain.product.ProductId;
 import io.github.hirannor.oms.domain.product.ProductRepository;
+import io.github.hirannor.oms.domain.product.query.FilterCriteria;
 import io.github.hirannor.oms.infrastructure.application.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,8 +21,10 @@ class ProductQueryService implements ProductDisplaying {
     }
 
     @Override
-    public List<Product> displayAll() {
-        return products.findAll();
+    public List<Product> displayAll(final FilterCriteria criteria) {
+        if (criteria == null) throw new IllegalArgumentException("criteria cannot be null");
+
+        return products.findAll(criteria);
     }
 
     @Override

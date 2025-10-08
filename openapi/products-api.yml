@@ -13,6 +13,17 @@ paths:
         - Product
       summary: List all products
       operationId: displayAll
+      parameters:
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -125,6 +136,8 @@ components:
           type: string
         description:
           type: string
+        category:
+          $ref: '#/components/schemas/ProductCategory'
         price:
           $ref: '#/components/schemas/Money'
 
@@ -144,6 +157,14 @@ components:
       enum:
         - HUF
         - EUR
+    ProductCategory:
+      type: string
+      enum:
+        - PERIPHERAL
+        - DISPLAY
+        - AUDIO_AND_SMART_DEVICE
+        - ACCESSORIES
+        - STORAGE
 
     ProblemDetails:
       type: object

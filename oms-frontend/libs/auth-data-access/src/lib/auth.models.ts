@@ -4,4 +4,5 @@
   refreshToken: string | null;
   loading: boolean;
   error: string | null;
+  success: boolean;
 }

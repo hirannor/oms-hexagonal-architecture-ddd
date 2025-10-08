@@ -5,7 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="hirannor" id="insert_data::product:dml:1.0.0">
+    <changeSet author="hirannor" id="insert_data::product:dml:1.2.0">
+
+        <!-- ========== PERIPHERAL ========== -->
         <insert tableName="ec_product">
             <column name="id" valueNumeric="1"/>
             <column name="product_id" value="550e8400-e29b-41d4-a716-446655440001"/>
@@ -13,8 +15,8 @@
             <column name="description" value="Ergonomic wireless mouse with adjustable DPI"/>
             <column name="price_amount" value="24.99"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
         </insert>
-
         <insert tableName="ec_product">
             <column name="id" valueNumeric="2"/>
             <column name="product_id" value="550e8400-e29b-41d4-a716-446655440002"/>
@@ -22,79 +24,486 @@
             <column name="description" value="RGB backlit mechanical keyboard with blue switches"/>
             <column name="price_amount" value="89.50"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
         </insert>
-
         <insert tableName="ec_product">
             <column name="id" valueNumeric="3"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440003"/>
-            <column name="name" value="Gaming Headset"/>
-            <column name="description" value="Surround sound headset with noise-cancelling microphone"/>
-            <column name="price_amount" value="59.99"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440011"/>
+            <column name="name" value="Gaming Mousepad"/>
+            <column name="description" value="Extended surface RGB mousepad with non-slip rubber base"/>
+            <column name="price_amount" value="29.99"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
         </insert>
-
         <insert tableName="ec_product">
             <column name="id" valueNumeric="4"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440004"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440012"/>
+            <column name="name" value="Wireless Combo Set"/>
+            <column name="description" value="Keyboard and mouse combo with 2.4GHz wireless connection"/>
+            <column name="price_amount" value="49.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="5"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440013"/>
+            <column name="name" value="USB Webcam"/>
+            <column name="description" value="Full HD 1080p webcam with built-in microphone"/>
+            <column name="price_amount" value="59.99"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="6"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440014"/>
+            <column name="name" value="Ergonomic Mouse"/>
+            <column name="description" value="Vertical ergonomic mouse reducing wrist strain"/>
+            <column name="price_amount" value="39.95"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="7"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440015"/>
+            <column name="name" value="Gaming Controller"/>
+            <column name="description" value="Wireless gamepad compatible with PC and console"/>
+            <column name="price_amount" value="64.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="8"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440016"/>
+            <column name="name" value="Trackball Mouse"/>
+            <column name="description" value="Precision trackball mouse ideal for CAD designers"/>
+            <column name="price_amount" value="79.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="9"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440017"/>
+            <column name="name" value="Numeric Keypad"/>
+            <column name="description" value="Wireless numeric keypad with rechargeable battery"/>
+            <column name="price_amount" value="19.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="10"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440018"/>
+            <column name="name" value="Keyboard Wrist Rest"/>
+            <column name="description" value="Memory foam wrist support for keyboards and mice"/>
+            <column name="price_amount" value="14.50"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="11"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440019"/>
+            <column name="name" value="Gaming Headset Stand"/>
+            <column name="description" value="RGB headset stand with USB hub"/>
+            <column name="price_amount" value="34.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="12"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440020"/>
+            <column name="name" value="Wireless Presenter"/>
+            <column name="description" value="Laser presenter with USB receiver for slideshows"/>
+            <column name="price_amount" value="24.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="PERIPHERAL"/>
+        </insert>
+
+        <!-- ========== DISPLAY ========== -->
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="13"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440021"/>
             <column name="name" value="4K Monitor"/>
             <column name="description" value="27-inch 4K UHD monitor with HDR support"/>
             <column name="price_amount" value="329.00"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
         </insert>
-
         <insert tableName="ec_product">
-            <column name="id" valueNumeric="5"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440005"/>
-            <column name="name" value="External SSD 1TB"/>
-            <column name="description" value="Portable high-speed SSD with USB-C connectivity"/>
-            <column name="price_amount" value="149.90"/>
+            <column name="id" valueNumeric="14"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440022"/>
+            <column name="name" value="Full HD Monitor"/>
+            <column name="description" value="24-inch 1080p LED monitor with slim bezels"/>
+            <column name="price_amount" value="139.00"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="15"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440023"/>
+            <column name="name" value="Curved Gaming Monitor"/>
+            <column name="description" value="32-inch curved 165Hz gaming display"/>
+            <column name="price_amount" value="399.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="16"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440024"/>
+            <column name="name" value="Portable Monitor"/>
+            <column name="description" value="15.6-inch USB-C portable touchscreen display"/>
+            <column name="price_amount" value="229.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="17"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440025"/>
+            <column name="name" value="Ultrawide Monitor"/>
+            <column name="description" value="34-inch 1440p ultrawide monitor for productivity"/>
+            <column name="price_amount" value="599.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="18"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440026"/>
+            <column name="name" value="Office Monitor"/>
+            <column name="description" value="23-inch LED monitor with adjustable stand"/>
+            <column name="price_amount" value="119.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="19"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440027"/>
+            <column name="name" value="5K Studio Display"/>
+            <column name="description" value="27-inch 5K Retina display with P3 color gamut"/>
+            <column name="price_amount" value="1499.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="20"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440028"/>
+            <column name="name" value="144Hz Gaming Monitor"/>
+            <column name="description" value="27-inch IPS display with 144Hz refresh rate"/>
+            <column name="price_amount" value="279.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="21"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440029"/>
+            <column name="name" value="Budget Monitor"/>
+            <column name="description" value="22-inch basic office monitor with HDMI input"/>
+            <column name="price_amount" value="99.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="22"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440030"/>
+            <column name="name" value="Touchscreen Monitor"/>
+            <column name="description" value="24-inch capacitive touchscreen display"/>
+            <column name="price_amount" value="349.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="23"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440031"/>
+            <column name="name" value="Graphic Designer Display"/>
+            <column name="description" value="Color-calibrated 99% AdobeRGB 27-inch monitor"/>
+            <column name="price_amount" value="899.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="24"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440032"/>
+            <column name="name" value="Portable 4K Monitor"/>
+            <column name="description" value="15.6-inch portable 4K display with HDR support"/>
+            <column name="price_amount" value="379.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="DISPLAY"/>
         </insert>
 
+        <!-- ========== AUDIO_AND_SMART_DEVICE ========== -->
+
         <insert tableName="ec_product">
-            <column name="id" valueNumeric="6"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440006"/>
+            <column name="id" valueNumeric="25"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440033"/>
+            <column name="name" value="Gaming Headset"/>
+            <column name="description" value="Surround sound headset with noise-cancelling microphone"/>
+            <column name="price_amount" value="59.99"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="26"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440034"/>
             <column name="name" value="Smartwatch"/>
             <column name="description" value="Water-resistant smartwatch with heart rate tracking"/>
             <column name="price_amount" value="199.00"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
         </insert>
-
         <insert tableName="ec_product">
-            <column name="id" valueNumeric="7"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440007"/>
+            <column name="id" valueNumeric="27"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440035"/>
             <column name="name" value="Bluetooth Speaker"/>
             <column name="description" value="Portable Bluetooth speaker with 12h battery life"/>
             <column name="price_amount" value="45.99"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="28"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440036"/>
+            <column name="name" value="Wireless Earbuds"/>
+            <column name="description" value="Noise-cancelling wireless earbuds with charging case"/>
+            <column name="price_amount" value="129.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="29"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440037"/>
+            <column name="name" value="Smart Home Hub"/>
+            <column name="description" value="Voice-controlled smart hub for connected devices"/>
+            <column name="price_amount" value="99.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="30"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440038"/>
+            <column name="name" value="Noise Cancelling Headphones"/>
+            <column name="description" value="Over-ear wireless headphones with ANC technology"/>
+            <column name="price_amount" value="249.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="31"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440039"/>
+            <column name="name" value="Smart Speaker"/>
+            <column name="description" value="Wi-Fi smart speaker with voice assistant support"/>
+            <column name="price_amount" value="89.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="32"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440040"/>
+            <column name="name" value="Fitness Tracker"/>
+            <column name="description" value="Lightweight tracker with sleep and activity monitoring"/>
+            <column name="price_amount" value="69.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="33"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440041"/>
+            <column name="name" value="Smart Display"/>
+            <column name="description" value="8-inch smart display with integrated assistant"/>
+            <column name="price_amount" value="169.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="34"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440042"/>
+            <column name="name" value="Bluetooth Soundbar"/>
+            <column name="description" value="Compact 2.1-channel Bluetooth soundbar for TVs"/>
+            <column name="price_amount" value="149.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="35"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440043"/>
+            <column name="name" value="Wireless Microphone"/>
+            <column name="description" value="Dual-channel wireless microphone system for content creators"/>
+            <column name="price_amount" value="129.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="36"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440044"/>
+            <column name="name" value="Smart Plug Set"/>
+            <column name="description" value="Wi-Fi smart plug 3-pack with energy monitoring"/>
+            <column name="price_amount" value="49.99"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="AUDIO_AND_SMART_DEVICE"/>
         </insert>
 
+        <!-- ========== STORAGE ========== -->
         <insert tableName="ec_product">
-            <column name="id" valueNumeric="8"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440008"/>
+            <column name="id" valueNumeric="37"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440045"/>
+            <column name="name" value="External SSD 1TB"/>
+            <column name="description" value="Portable high-speed SSD with USB-C connectivity"/>
+            <column name="price_amount" value="149.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="38"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440046"/>
+            <column name="name" value="External HDD 2TB"/>
+            <column name="description" value="Reliable portable hard drive with USB 3.0 interface"/>
+            <column name="price_amount" value="79.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="39"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440047"/>
+            <column name="name" value="NVMe SSD 1TB"/>
+            <column name="description" value="High-performance NVMe SSD with PCIe Gen4 support"/>
+            <column name="price_amount" value="119.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="40"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440048"/>
+            <column name="name" value="USB Flash Drive 128GB"/>
+            <column name="description" value="Compact USB 3.2 flash drive with keychain design"/>
+            <column name="price_amount" value="22.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="41"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440049"/>
+            <column name="name" value="MicroSD Card 256GB"/>
+            <column name="description" value="High-speed U3 A2 microSD card for 4K recording"/>
+            <column name="price_amount" value="39.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="42"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440050"/>
+            <column name="name" value="External SSD 2TB"/>
+            <column name="description" value="Ultra-fast external SSD for creative professionals"/>
+            <column name="price_amount" value="249.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="43"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440051"/>
+            <column name="name" value="Network NAS Drive"/>
+            <column name="description" value="2-bay NAS storage for home backup solutions"/>
+            <column name="price_amount" value="299.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="44"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440052"/>
+            <column name="name" value="USB-C Flash Drive 256GB"/>
+            <column name="description" value="Dual USB-C and USB-A connectors for easy transfer"/>
+            <column name="price_amount" value="29.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="45"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440053"/>
+            <column name="name" value="External HDD 4TB"/>
+            <column name="description" value="Desktop external drive for backup and archiving"/>
+            <column name="price_amount" value="119.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="46"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440054"/>
+            <column name="name" value="SSD Enclosure USB-C"/>
+            <column name="description" value="Tool-free aluminum enclosure for NVMe SSDs"/>
+            <column name="price_amount" value="29.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="47"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440055"/>
+            <column name="name" value="RAID Storage System"/>
+            <column name="description" value="4-bay RAID system with USB 3.2 connectivity"/>
+            <column name="price_amount" value="499.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="48"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440056"/>
+            <column name="name" value="M.2 SSD 2TB"/>
+            <column name="description" value="Ultra-fast PCIe Gen5 M.2 SSD for gaming PCs"/>
+            <column name="price_amount" value="319.00"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="STORAGE"/>
+        </insert>
+
+        <!-- ========== ACCESSORIES ========== -->
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="49"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440057"/>
             <column name="name" value="USB-C Hub"/>
             <column name="description" value="7-in-1 USB-C hub with HDMI, SD card, and USB 3.0 ports"/>
             <column name="price_amount" value="34.95"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="ACCESSORIES"/>
         </insert>
-
         <insert tableName="ec_product">
-            <column name="id" valueNumeric="9"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440009"/>
+            <column name="id" valueNumeric="50"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440058"/>
             <column name="name" value="Laptop Stand"/>
             <column name="description" value="Adjustable aluminum laptop stand for better ergonomics"/>
             <column name="price_amount" value="29.99"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="ACCESSORIES"/>
         </insert>
-
         <insert tableName="ec_product">
-            <column name="id" valueNumeric="10"/>
-            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440010"/>
+            <column name="id" valueNumeric="51"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440059"/>
             <column name="name" value="Wireless Charger"/>
             <column name="description" value="Fast wireless charging pad compatible with Qi-enabled devices"/>
             <column name="price_amount" value="19.90"/>
             <column name="price_currency" value="EUR"/>
+            <column name="category" value="ACCESSORIES"/>
         </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="52"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440060"/>
+            <column name="name" value="Cable Organizer"/>
+            <column name="description" value="Magnetic cable management system for desks"/>
+            <column name="price_amount" value="14.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="ACCESSORIES"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="53"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440061"/>
+            <column name="name" value="Phone Stand"/>
+            <column name="description" value="Adjustable phone stand with aluminum base"/>
+            <column name="price_amount" value="12.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="ACCESSORIES"/>
+        </insert>
+        <insert tableName="ec_product">
+            <column name="id" valueNumeric="54"/>
+            <column name="product_id" value="550e8400-e29b-41d4-a716-446655440062"/>
+            <column name="name" value="HDMI Cable 2m"/>
+            <column name="description" value="High-speed HDMI 2.1 cable supporting 8K resolution"/>
+            <column name="price_amount" value="9.90"/>
+            <column name="price_currency" value="EUR"/>
+            <column name="category" value="ACCESSORIES"/>
+        </insert>
+
     </changeSet>
 
 </databaseChangeLog>

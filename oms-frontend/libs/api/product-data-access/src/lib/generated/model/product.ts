@@ -7,11 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ProductCategoryModel } from './productCategory';
 import { MoneyModel } from './money';
 
 export interface ProductModel {
   id: string;
   name: string;
   description: string;
+  category?: ProductCategoryModel;
   price: MoneyModel;
 }

@@ -3,6 +3,22 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+
+  .form-message {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    text-align: center;
+
+    &.success {
+      color: #2e7d32;
+      font-weight: 500;
+    }
+
+    &.error {
+      color: #c62828;
+      font-weight: 500;
+    }
+  }
 }
 
 .form-field {

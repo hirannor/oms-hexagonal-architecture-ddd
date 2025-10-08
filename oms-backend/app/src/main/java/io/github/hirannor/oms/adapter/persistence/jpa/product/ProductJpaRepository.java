@@ -5,6 +5,7 @@ import io.github.hirannor.oms.adapter.persistence.jpa.product.mapping.ProductToM
 import io.github.hirannor.oms.domain.product.Product;
 import io.github.hirannor.oms.domain.product.ProductId;
 import io.github.hirannor.oms.domain.product.ProductRepository;
+import io.github.hirannor.oms.domain.product.query.FilterCriteria;
 import io.github.hirannor.oms.infrastructure.adapter.DrivenAdapter;
 import io.github.hirannor.oms.infrastructure.adapter.PersistenceAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static io.github.hirannor.oms.adapter.persistence.jpa.product.ProductModelSpecification.categoryMatches;
+import static io.github.hirannor.oms.adapter.persistence.jpa.product.ProductModelSpecification.nameMatches;
 
 @DrivenAdapter
 @PersistenceAdapter
@@ -59,8 +63,11 @@ class ProductJpaRepository implements ProductRepository {
     }
 
     @Override
-    public List<Product> findAll() {
-        return products.findAll()
+    public List<Product> findAll(final FilterCriteria criteria) {
+        if (criteria == null) throw new IllegalArgumentException("FilterCriteria object cannot be null!");
+
+        return products.findAll(categoryMatches(criteria.category())
+                        .and(nameMatches(criteria.name())))
                 .stream()
                 .map(mapModelToDomain)
                 .collect(Collectors.toList());

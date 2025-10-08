@@ -22,6 +22,7 @@ public class CreateProductModelToCommandMapper implements Function<CreateProduct
         return CreateProduct.issue(
                 model.getName(),
                 model.getDescription(),
+                null,
                 mapModelToDomain.apply(model.getPrice())
         );
     }

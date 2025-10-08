@@ -14,6 +14,7 @@ model/models.ts
 model/money.ts
 model/problemDetails.ts
 model/product.ts
+model/productCategory.ts
 param.ts
 provide-api.ts
 variables.ts

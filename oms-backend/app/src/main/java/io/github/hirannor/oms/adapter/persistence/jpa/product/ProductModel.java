@@ -32,6 +32,10 @@ public class ProductModel {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @Column(name = "CATEGORY")
+    @Enumerated(EnumType.STRING)
+    private ProductCategoryModel category;
+
     @Column(name = "PRICE_AMOUNT")
     private BigDecimal priceAmount;
 
@@ -88,5 +92,13 @@ public class ProductModel {
 
     public void setPriceCurrency(CurrencyModel priceCurrency) {
         this.priceCurrency = priceCurrency;
+    }
+
+    public ProductCategoryModel getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategoryModel category) {
+        this.category = category;
     }
 }

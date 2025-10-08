@@ -6,6 +6,7 @@ public class ProductBuilder {
     private ProductId id;
     private String name;
     private String description;
+    private ProductCategory category;
     private Money price;
 
     public ProductBuilder id(final ProductId id) {
@@ -23,12 +24,18 @@ public class ProductBuilder {
         return this;
     }
 
+
+    public ProductBuilder category(final ProductCategory category) {
+        this.category = category;
+        return this;
+    }
+
     public ProductBuilder price(Money price) {
         this.price = price;
         return this;
     }
 
     public Product assemble() {
-        return new Product(id, name, description, price);
+        return new Product(id, name, description, category, price);
     }
 }

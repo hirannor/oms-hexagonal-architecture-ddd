@@ -1,5 +1,6 @@
 package io.github.hirannor.oms.adapter.persistence.jpa.product;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Optional;
 
 interface ProductSpringDataJpaRepository extends Repository<ProductModel, Long> {
 
-    List<ProductModel> findAll();
+    List<ProductModel> findAll(Specification<ProductModel> spec);
 
     List<ProductModel> findAllByProductIdIn(List<String> productIds);
 

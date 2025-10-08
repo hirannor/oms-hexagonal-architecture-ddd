@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Standard parameter styles defined by OpenAPI spec
  */
 export type StandardParamStyle =

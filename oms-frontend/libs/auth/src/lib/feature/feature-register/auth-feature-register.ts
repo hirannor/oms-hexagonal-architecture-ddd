@@ -33,11 +33,13 @@ export class AuthFeatureRegister {
 
   readonly loading$ = this.auth.loading$;
 
+  readonly success$ = this.auth.success$;
+  readonly error$ = this.auth.error$;
+
   onSubmit(): void {
     if (this.form.invalid) return;
 
     const { email, password, confirmPassword } = this.form.value;
-
     if (password !== confirmPassword) return;
 
     this.auth.register(email!, password!);

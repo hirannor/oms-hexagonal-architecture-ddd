@@ -12,21 +12,25 @@ public class Product extends AggregateRoot {
     private final ProductId id;
     private final String name;
     private final String description;
+    private final ProductCategory category;
     private final Money price;
     private final List<DomainEvent> events;
 
     Product(final ProductId id,
             final String name,
             final String description,
+            final ProductCategory category,
             final Money price) {
         Objects.requireNonNull(id);
         Objects.requireNonNull(name);
+        Objects.requireNonNull(category);
         Objects.requireNonNull(description);
         Objects.requireNonNull(price);
 
         this.id = id;
         this.name = name;
         this.description = description;
+        this.category = category;
         this.price = price;
         this.events = new ArrayList<>(0);
     }
@@ -42,6 +46,7 @@ public class Product extends AggregateRoot {
                 .id(cmd.productId())
                 .name(cmd.name())
                 .description(cmd.description())
+                .category(cmd.category())
                 .price(cmd.price())
                 .assemble();
 
@@ -70,6 +75,11 @@ public class Product extends AggregateRoot {
     public String description() {
         return description;
     }
+
+    public ProductCategory category() {
+        return category;
+    }
+
 
     @Override
     public List<DomainEvent> events() {

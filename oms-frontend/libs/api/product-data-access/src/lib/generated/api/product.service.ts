@@ -10,7 +10,7 @@
 /* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional } from '@angular/core';
-import { HttpClient, HttpContext, HttpEvent, HttpResponse, } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpEvent, HttpParams, HttpResponse, } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
@@ -154,10 +154,14 @@ export class ProductApi extends BaseService {
 
   /**
    * List all products
+   * @param category
+   * @param name
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public displayAll(
+    category?: string,
+    name?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -167,6 +171,8 @@ export class ProductApi extends BaseService {
     }
   ): Observable<Array<ProductModel>>;
   public displayAll(
+    category?: string,
+    name?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -176,6 +182,8 @@ export class ProductApi extends BaseService {
     }
   ): Observable<HttpResponse<Array<ProductModel>>>;
   public displayAll(
+    category?: string,
+    name?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -185,6 +193,8 @@ export class ProductApi extends BaseService {
     }
   ): Observable<HttpEvent<Array<ProductModel>>>;
   public displayAll(
+    category?: string,
+    name?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
@@ -193,6 +203,18 @@ export class ProductApi extends BaseService {
       transferCache?: boolean;
     }
   ): Observable<any> {
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    localVarQueryParameters = this.addToHttpParams(
+      localVarQueryParameters,
+      <any>category,
+      'category'
+    );
+    localVarQueryParameters = this.addToHttpParams(
+      localVarQueryParameters,
+      <any>name,
+      'name'
+    );
+
     let localVarHeaders = this.defaultHeaders;
 
     // authentication (bearerAuth) required
@@ -238,6 +260,7 @@ export class ProductApi extends BaseService {
       `${basePath}${localVarPath}`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         ...(withCredentials ? { withCredentials } : {}),
         headers: localVarHeaders,

@@ -42,7 +42,7 @@ export class ProductEffects {
     this.actions$.pipe(
       ofType(ProductLoadActions.request),
       mergeMap(({ category, search }) =>
-        this.api.displayAll().pipe(
+        this.api.displayAll(category).pipe(
           map((res) =>
             ProductLoadActions.success({
               products: res.map(ProductMapper.mapToProduct),
