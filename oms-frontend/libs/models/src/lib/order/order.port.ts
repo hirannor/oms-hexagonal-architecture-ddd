@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { InjectionToken } from '@angular/core';
 import { Order } from './order';
-import { Basket } from '../basket/basket';
+import { Basket } from '../basket';
 
 export interface IOrderPort {
   readonly allOrders$: Observable<Order[]>;

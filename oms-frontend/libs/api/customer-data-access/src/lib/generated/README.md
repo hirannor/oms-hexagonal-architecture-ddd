@@ -102,15 +102,15 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideApi } from '';
 
 export const appConfig: ApplicationConfig = {
-    providers: [
-        // ...
-        provideHttpClient(),
-        provideApi({
-            withCredentials: true,
-            username: 'user',
-            password: 'password'
-        })
-    ],
+  providers: [
+    // ...
+    provideHttpClient(),
+    provideApi({
+      withCredentials: true,
+      username: 'user',
+      password: 'password'
+    })
+  ],
 };
 ```
 
@@ -121,21 +121,21 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideApi, Configuration } from '';
 
 export const appConfig: ApplicationConfig = {
-    providers: [
-        // ...
-        provideHttpClient(),
-        {
-            provide: Configuration,
-            useFactory: (authService: AuthService) => new Configuration({
-                    basePath: 'http://localhost:9999',
-                    withCredentials: true,
-                    username: authService.getUsername(),
-                    password: authService.getPassword(),
-            }),
-            deps: [AuthService],
-            multi: false
-        }
-    ],
+  providers: [
+    // ...
+    provideHttpClient(),
+    {
+      provide: Configuration,
+      useFactory: (authService: AuthService) => new Configuration({
+        basePath: 'http://localhost:9999',
+        withCredentials: true,
+        username: authService.getUsername(),
+        password: authService.getPassword(),
+      }),
+      deps: [AuthService],
+      multi: false
+    }
+  ],
 };
 ```
 

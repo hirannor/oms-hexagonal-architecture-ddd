@@ -29,43 +29,43 @@ import { BasketSummaryUi } from '../../ui/basket-summary-ui/basket-summary-ui';
   styleUrls: ['./basket-cart-feature.scss'],
 })
 export class BasketCartFeature implements OnInit {
-  private readonly basketPort = inject(BASKET_PORT);
-  private readonly orderPort = inject(ORDER_PORT);
+  private readonly baskets = inject(BASKET_PORT);
+  private readonly orders = inject(ORDER_PORT);
   private readonly auth = inject(AuthService);
 
-  readonly basket$ = this.basketPort.basket$;
-  readonly loading$ = this.basketPort.loading$;
+  readonly basket$ = this.baskets.basket$;
+  readonly loading$ = this.baskets.loading$;
 
   private customerId: string | null = null;
 
   ngOnInit(): void {
     this.customerId = this.auth.extractCustomerId();
     if (this.customerId) {
-      this.basketPort.loadBasket(this.customerId);
+      this.baskets.loadBasket(this.customerId);
     }
   }
 
   onIncrease(item: BasketItem): void {
     if (!this.customerId) return;
-    this.basketPort.addItem(this.customerId, { ...item, quantity: 1 });
+    this.baskets.addItem(this.customerId, { ...item, quantity: 1 });
   }
 
   onDecrease(item: BasketItem): void {
     if (!this.customerId) return;
-    this.basketPort.removeItem(this.customerId, { ...item, quantity: 1 });
+    this.baskets.removeItem(this.customerId, { ...item, quantity: 1 });
   }
 
   onRemove(item: BasketItem): void {
     if (!this.customerId) return;
-    this.basketPort.removeItem(this.customerId, item);
+    this.baskets.removeItem(this.customerId, item);
   }
 
   onCheckout(): void {
     if (!this.customerId) return;
-    this.basketPort.checkout(this.customerId);
+    this.baskets.checkout(this.customerId);
   }
 
   onConfirmOrder(basket: Basket): void {
-    this.orderPort.createFromBasket(basket);
+    this.orders.createFromBasket(basket);
   }
 }

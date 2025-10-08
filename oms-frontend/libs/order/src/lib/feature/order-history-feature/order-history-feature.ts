@@ -11,12 +11,12 @@ import { ORDER_PORT } from '@oms-frontend/models';
   templateUrl: './order-history-feature.html',
 })
 export class OrderHistoryFeature implements OnInit {
-  private readonly orderFacade = inject(ORDER_PORT);
+  private readonly orders = inject(ORDER_PORT);
 
-  readonly orders$ = this.orderFacade.allOrders$;
-  readonly loading$ = this.orderFacade.loading$;
+  readonly orders$ = this.orders.allOrders$;
+  readonly loading$ = this.orders.loading$;
 
   ngOnInit(): void {
-    this.orderFacade.loadOrders();
+    this.orders.loadOrders();
   }
 }

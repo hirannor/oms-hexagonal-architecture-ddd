@@ -23,14 +23,14 @@ import { AUTH_PORT } from '@oms-frontend/models';
 })
 export class AuthFeatureLogin {
   private readonly fb = inject(FormBuilder);
-  private readonly authPort = inject(AUTH_PORT);
+  private readonly auth = inject(AUTH_PORT);
 
   readonly form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
 
-  readonly loading$ = this.authPort.loading$;
+  readonly loading$ = this.auth.loading$;
 
   get email() {
     return this.form.get('email')!;
@@ -48,7 +48,7 @@ export class AuthFeatureLogin {
 
     const { email, password } = this.form.value;
     if (email && password) {
-      this.authPort.login(email, password);
+      this.auth.login(email, password);
     }
   }
 }

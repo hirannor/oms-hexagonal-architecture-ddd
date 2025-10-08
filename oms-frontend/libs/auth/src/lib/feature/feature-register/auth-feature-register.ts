@@ -23,7 +23,7 @@ import { AUTH_PORT } from '@oms-frontend/models';
 })
 export class AuthFeatureRegister {
   private readonly fb = inject(FormBuilder);
-  private readonly authPort = inject(AUTH_PORT);
+  private readonly auth = inject(AUTH_PORT);
 
   readonly form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -31,7 +31,7 @@ export class AuthFeatureRegister {
     confirmPassword: ['', [Validators.required]],
   });
 
-  readonly loading$ = this.authPort.loading$;
+  readonly loading$ = this.auth.loading$;
 
   onSubmit(): void {
     if (this.form.invalid) return;
@@ -40,6 +40,6 @@ export class AuthFeatureRegister {
 
     if (password !== confirmPassword) return;
 
-    this.authPort.register(email!, password!);
+    this.auth.register(email!, password!);
   }
 }
