@@ -4,7 +4,10 @@
   "sourceRoot": "libs/api/auth-data-access/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:api", "scope:auth"],
+  "tags": [
+    "type:api",
+    "scope:auth"
+  ],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

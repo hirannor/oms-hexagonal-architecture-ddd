@@ -4,7 +4,10 @@
   "sourceRoot": "libs/api/order-data-access/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:api", "scope:order"],
+  "tags": [
+    "type:api",
+    "scope:order"
+  ],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

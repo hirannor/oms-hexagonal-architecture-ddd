@@ -7,4 +7,3 @@ export interface OrderItem {
   quantity: number;
   price: Money;
 }
-

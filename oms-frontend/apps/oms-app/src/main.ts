@@ -17,9 +17,33 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
-import { AuthEffects, authReducer } from '@oms-frontend/auth';
-import { BasketEffects, basketReducer } from '@oms-frontend/basket';
-import { CustomerEffects, customerReducer } from '@oms-frontend/customer';
+import {
+  AUTH_PORT,
+  BASKET_PORT,
+  CUSTOMER_PORT,
+  ORDER_PORT,
+  PRODUCT_PORT,
+} from '@oms-frontend/models';
+import { OrderEffects, OrderFacade } from '@oms-frontend/order-data-access';
+import {
+  BasketEffects,
+  BasketFacade,
+  basketReducer,
+} from '@oms-frontend/basket-data-access';
+import {
+  ProductEffects,
+  ProductFacade,
+} from '@oms-frontend/product-data-access';
+import {
+  AuthEffects,
+  AuthFacade,
+  authReducer,
+} from '@oms-frontend/auth-data-access';
+import {
+  CustomerEffects,
+  CustomerFacade,
+  customerReducer,
+} from '@oms-frontend/customer-data-access';
 
 export const environment = {
   production: false,
@@ -55,9 +79,15 @@ bootstrapApplication(App, {
       AuthEffects,
       CustomerEffects,
       BasketEffects,
+      OrderEffects,
+      ProductEffects,
     ]),
     provideStoreDevtools(),
     MessageService,
+    { provide: ORDER_PORT, useExisting: OrderFacade },
+    { provide: BASKET_PORT, useExisting: BasketFacade },
+    { provide: PRODUCT_PORT, useExisting: ProductFacade },
+    { provide: AUTH_PORT, useExisting: AuthFacade },
+    { provide: CUSTOMER_PORT, useExisting: CustomerFacade },
   ],
 }).catch((err) => console.error(err));
-

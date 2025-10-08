@@ -19,4 +19,3 @@ describe('ProductUi', () => {
     expect(component).toBeTruthy();
   });
 });
-

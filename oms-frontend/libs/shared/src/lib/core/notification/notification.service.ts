@@ -26,4 +26,3 @@ export class NotificationService {
     this.error(problem.title ?? 'Error', problem.detail ?? 'Unexpected error');
   }
 }
-

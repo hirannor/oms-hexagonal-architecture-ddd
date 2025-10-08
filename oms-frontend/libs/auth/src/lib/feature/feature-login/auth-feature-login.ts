@@ -1,12 +1,11 @@
 ﻿import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { AuthActions } from '../../data-access/auth.actions';
+import { AUTH_PORT } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-auth-feature-login',
@@ -24,11 +23,14 @@ import { AuthActions } from '../../data-access/auth.actions';
 })
 export class AuthFeatureLogin {
   private readonly fb = inject(FormBuilder);
+  private readonly authPort = inject(AUTH_PORT);
+
   readonly form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
-  private readonly store = inject(Store);
+
+  readonly loading$ = this.authPort.loading$;
 
   get email() {
     return this.form.get('email')!;
@@ -39,14 +41,14 @@ export class AuthFeatureLogin {
   }
 
   onSubmit(): void {
-    if (this.form.valid) {
-      const { email, password } = this.form.value;
-      this.store.dispatch(
-        AuthActions.login({ email: email!, password: password! })
-      );
-    } else {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
+      return;
+    }
+
+    const { email, password } = this.form.value;
+    if (email && password) {
+      this.authPort.login(email, password);
     }
   }
 }
-

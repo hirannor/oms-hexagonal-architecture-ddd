@@ -1,13 +1,8 @@
 ﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Store } from '@ngrx/store';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared';
-import {
-  selectAllOrders,
-  selectOrderLoading,
-} from '../../data-access/order.selector';
 import { OrderHistoryUi } from '../../ui/order-history-ui/order-history-ui';
-import { OrderLoadActions } from '../../data-access/order.actions';
+import { ORDER_PORT } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-order-feature-history',
@@ -16,13 +11,12 @@ import { OrderLoadActions } from '../../data-access/order.actions';
   templateUrl: './order-history-feature.html',
 })
 export class OrderHistoryFeature implements OnInit {
-  private readonly store = inject(Store);
+  private readonly orderFacade = inject(ORDER_PORT);
 
-  readonly orders$ = this.store.select(selectAllOrders);
-  readonly loading$ = this.store.select(selectOrderLoading);
+  readonly orders$ = this.orderFacade.allOrders$;
+  readonly loading$ = this.orderFacade.loading$;
 
-  ngOnInit() {
-    this.store.dispatch(OrderLoadActions.request());
+  ngOnInit(): void {
+    this.orderFacade.loadOrders();
   }
 }
-

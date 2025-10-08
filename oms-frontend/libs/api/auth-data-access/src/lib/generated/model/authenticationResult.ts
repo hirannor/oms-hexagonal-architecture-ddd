@@ -13,4 +13,3 @@ export interface AuthenticationResultModel {
   accessToken?: string;
   refreshToken?: string;
 }
-

@@ -19,4 +19,3 @@ describe('OrderHistoryFeature', () => {
     expect(component).toBeTruthy();
   });
 });
-

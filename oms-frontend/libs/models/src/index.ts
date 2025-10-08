@@ -1,6 +1,4 @@
-﻿export * from '../../shared/src/lib/core/models/problem-details';
-export * from '../../shared/src/lib/core/models/problem-details.mapper';
-export * from './lib/core/currency';
+﻿export * from './lib/core/currency';
 export * from './lib/core/money';
 export * from './lib/auth/auth-result';
 export * from './lib/auth/login-payload';
@@ -20,4 +18,8 @@ export * from './lib/order/order-item';
 export * from './lib/order/order-status';
 export * from './lib/order/mapping/order-mapper';
 export * from './lib/order/create-order';
-
+export * from './lib/order/order.port';
+export * from './lib/basket/basket.port';
+export * from './lib/product/product.port';
+export * from './lib/auth/auth.port';
+export * from './lib/customer/customer.port';

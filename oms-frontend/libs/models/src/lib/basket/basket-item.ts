@@ -7,4 +7,3 @@ export interface BasketItem {
   quantity: number;
   price: Money;
 }
-

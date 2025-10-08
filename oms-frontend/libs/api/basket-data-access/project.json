@@ -1,10 +1,13 @@
 {
-  "name": "basket-auth-data-access",
+  "name": "api-basket-data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/api/basket-data-access/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:api", "scope:basket"],
+  "tags": [
+    "type:api",
+    "scope:basket"
+  ],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

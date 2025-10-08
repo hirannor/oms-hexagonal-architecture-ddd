@@ -24,4 +24,3 @@ export class OrderPaymentSuccessFeature implements OnInit {
     this.router.navigate(['/orders']);
   }
 }
-

@@ -226,4 +226,3 @@ export class Configuration {
     return encodeURIComponent(String(value));
   }
 }
-

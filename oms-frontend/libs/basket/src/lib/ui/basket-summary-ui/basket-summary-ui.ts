@@ -16,4 +16,3 @@ export class BasketSummaryUi {
   @Input() basket!: Basket;
   @Output() confirmOrderClicked = new EventEmitter<Basket>();
 }
-

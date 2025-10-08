@@ -4,4 +4,3 @@ export interface CreateOrder {
   customerId: string;
   products: OrderItem[];
 }
-

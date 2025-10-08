@@ -1,17 +1,9 @@
 ﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared';
-import {
-  selectOrderLoading,
-  selectSelectedOrder,
-} from '../../data-access/order.selector';
-import {
-  OrderDetailsActions,
-  OrderPaymentActions,
-} from '../../data-access/order.actions';
 import { OrderDetailsUi } from '../../ui/order-details-ui/order-details-ui';
+import { ORDER_PORT } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-order-feature-details',
@@ -20,21 +12,20 @@ import { OrderDetailsUi } from '../../ui/order-details-ui/order-details-ui';
   templateUrl: './order-details-feature.html',
 })
 export class OrderDetailsFeature implements OnInit {
-  private readonly store = inject(Store);
+  private readonly orderFacade = inject(ORDER_PORT);
   private readonly route = inject(ActivatedRoute);
 
-  readonly order$ = this.store.select(selectSelectedOrder);
-  readonly loading$ = this.store.select(selectOrderLoading);
+  readonly order$ = this.orderFacade.selectedOrder$;
+  readonly loading$ = this.orderFacade.loading$;
 
-  ngOnInit() {
+  ngOnInit(): void {
     const orderId = this.route.snapshot.paramMap.get('orderId');
     if (orderId) {
-      this.store.dispatch(OrderDetailsActions.request({ orderId }));
+      this.orderFacade.loadOrderById(orderId);
     }
   }
 
-  onPay(orderId: string) {
-    this.store.dispatch(OrderPaymentActions.request({ orderId }));
+  onPay(orderId: string): void {
+    this.orderFacade.pay(orderId);
   }
 }
-

@@ -18,4 +18,3 @@ export interface BasketModel {
   totalPrice: MoneyModel;
   status: BasketStatusModel;
 }
-

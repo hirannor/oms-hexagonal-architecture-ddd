@@ -2,4 +2,3 @@
   email: string;
   password: string;
 }
-

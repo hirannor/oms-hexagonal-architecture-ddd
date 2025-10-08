@@ -12,4 +12,3 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 export class LoadingSpinnerComponent {
   @Input() size = '70px';
 }
-

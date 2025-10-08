@@ -19,4 +19,3 @@ describe('BasketUi', () => {
     expect(component).toBeTruthy();
   });
 });
-

@@ -12,4 +12,3 @@ export interface RegisterModel {
   password: string;
   emailAddress: string;
 }
-

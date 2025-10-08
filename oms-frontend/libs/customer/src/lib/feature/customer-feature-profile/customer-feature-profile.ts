@@ -7,14 +7,12 @@ import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProfileFormComponent } from '../../ui/profile-form/profile-form';
 import {
+  CustomerProfileLoadActions,
+  CustomerProfileUpdateActions,
   selectCustomer,
   selectCustomerLoading,
   selectCustomerUpdating,
-} from '../../data-access/customer.selector';
-import {
-  CustomerProfileLoadActions,
-  CustomerProfileUpdateActions,
-} from '../../data-access/customer.actions';
+} from '@oms-frontend/customer-data-access';
 
 @Component({
   selector: 'lib-customer-feature-profile',
@@ -46,4 +44,3 @@ export class CustomerFeatureProfile implements OnInit {
     );
   }
 }
-

@@ -19,4 +19,3 @@ export interface ProblemDetailsModel {
    */
   fields?: { [key: string]: string };
 }
-

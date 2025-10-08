@@ -4,3 +4,5 @@ export * from './lib/core/notification/notification.service';
 export * from './lib/core/auth/auth.interceptor';
 export * from './lib/core/auth/auth.guard';
 export * from './lib/core/auth/auth.service';
+export * from './lib/core/models/problem-details.mapper';
+export * from './lib/core/models/problem-details';

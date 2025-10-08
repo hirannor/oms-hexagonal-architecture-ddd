@@ -11,4 +11,3 @@
 export interface CreateBasketModel {
   customerId: string;
 }
-

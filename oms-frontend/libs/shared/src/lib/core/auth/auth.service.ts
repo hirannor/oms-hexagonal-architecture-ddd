@@ -77,4 +77,3 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 }
-

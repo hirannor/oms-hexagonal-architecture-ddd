@@ -64,4 +64,3 @@ export interface Param {
   dataType: DataType;
   dataFormat: DataFormat | undefined;
 }
-

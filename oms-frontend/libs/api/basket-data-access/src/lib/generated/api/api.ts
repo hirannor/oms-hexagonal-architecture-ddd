@@ -2,4 +2,3 @@
 import { BasketApi } from './basket.service';
 
 export const APIS = [BasketApi];
-

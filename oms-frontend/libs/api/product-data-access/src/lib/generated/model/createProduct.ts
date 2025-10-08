@@ -14,4 +14,3 @@ export interface CreateProductModel {
   description: string;
   price: MoneyModel;
 }
-

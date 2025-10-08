@@ -6,4 +6,3 @@
   instance?: string;
   fields?: Record<string, string>;
 }
-

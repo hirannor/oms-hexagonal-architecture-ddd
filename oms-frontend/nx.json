@@ -68,6 +68,7 @@
             "sourceTag": "type:app",
             "onlyDependOnLibsWithTags": [
               "type:feature",
+              "type:data-access",
               "type:models",
               "type:shared",
               "type:api"
@@ -77,19 +78,14 @@
             "sourceTag": "type:feature",
             "onlyDependOnLibsWithTags": [
               "type:models",
-              "type:shared",
-              "type:api"
-            ]
-          },
-          {
-            "sourceTag": "type:domain",
-            "onlyDependOnLibsWithTags": [
-            ]
-          },
-          {
-            "sourceTag": "type:shared",
-            "onlyDependOnLibsWithTags": [
               "type:shared"
+            ]
+          },
+          {
+            "sourceTag": "type:data-access",
+            "onlyDependOnLibsWithTags": [
+              "type:models",
+              "type:api"
             ]
           },
           {
@@ -99,45 +95,21 @@
             ]
           },
           {
-            "sourceTag": "scope:order",
+            "sourceTag": "type:models",
             "onlyDependOnLibsWithTags": [
-              "scope:order",
-              "type:models",
-              "type:shared",
-              "type:api"
+              "type:models"
             ]
           },
           {
-            "sourceTag": "scope:customer",
+            "sourceTag": "type:shared",
             "onlyDependOnLibsWithTags": [
-              "scope:customer",
-              "type:models",
-              "type:shared",
-              "type:api"
+              "type:shared"
             ]
           },
           {
             "sourceTag": "scope:basket",
             "onlyDependOnLibsWithTags": [
               "scope:basket",
-              "type:models",
-              "type:shared",
-              "type:api"
-            ]
-          },
-          {
-            "sourceTag": "scope:product",
-            "onlyDependOnLibsWithTags": [
-              "scope:product",
-              "type:models",
-              "type:shared",
-              "type:api"
-            ]
-          },
-          {
-            "sourceTag": "scope:auth",
-            "onlyDependOnLibsWithTags": [
-              "scope:auth",
               "type:models",
               "type:shared",
               "type:api"

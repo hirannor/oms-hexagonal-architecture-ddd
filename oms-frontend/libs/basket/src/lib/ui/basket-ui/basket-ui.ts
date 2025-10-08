@@ -30,4 +30,3 @@ export class BasketUi {
   @Output() remove = new EventEmitter<BasketItem>();
   @Output() checkout = new EventEmitter<void>();
 }
-

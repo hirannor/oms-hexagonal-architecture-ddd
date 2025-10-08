@@ -1,25 +1,16 @@
 ﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Store } from '@ngrx/store';
-import { Basket, BasketItem, OrderItem } from '@oms-frontend/models';
-import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
-import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import { RouterLink } from '@angular/router';
-
+import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import {
-  selectBasket,
-  selectBasketLoading,
-} from '../../data-access/basket.selector';
-import {
-  BasketAddItemActions,
-  BasketCheckoutActions,
-  BasketClearActions,
-  BasketLoadActions,
-  BasketRemoveItemActions,
-} from '../../data-access/basket.actions';
+  Basket,
+  BASKET_PORT,
+  BasketItem,
+  ORDER_PORT,
+} from '@oms-frontend/models';
+import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { BasketUi } from '../../ui/basket-ui/basket-ui';
 import { BasketSummaryUi } from '../../ui/basket-summary-ui/basket-summary-ui';
-import { OrderCreateActions } from '@oms-frontend/order';
 
 @Component({
   selector: 'lib-basket-feature-cart',
@@ -29,86 +20,52 @@ import { OrderCreateActions } from '@oms-frontend/order';
     BasketUi,
     BasketSummaryUi,
     ButtonDirective,
-    RouterLink,
-    LoadingSpinnerComponent,
     ButtonLabel,
     ButtonIcon,
+    RouterLink,
+    LoadingSpinnerComponent,
   ],
   templateUrl: './basket-cart-feature.html',
   styleUrls: ['./basket-cart-feature.scss'],
 })
 export class BasketCartFeature implements OnInit {
-  private readonly store = inject(Store);
+  private readonly basketPort = inject(BASKET_PORT);
+  private readonly orderPort = inject(ORDER_PORT);
   private readonly auth = inject(AuthService);
 
-  readonly basket$ = this.store.select(selectBasket);
-  readonly loading$ = this.store.select(selectBasketLoading);
+  readonly basket$ = this.basketPort.basket$;
+  readonly loading$ = this.basketPort.loading$;
 
   private customerId: string | null = null;
 
   ngOnInit(): void {
     this.customerId = this.auth.extractCustomerId();
     if (this.customerId) {
-      this.store.dispatch(
-        BasketLoadActions.request({ customerId: this.customerId })
-      );
+      this.basketPort.loadBasket(this.customerId);
     }
   }
 
   onIncrease(item: BasketItem): void {
     if (!this.customerId) return;
-    const updatedItem: BasketItem = { ...item, quantity: 1 };
-
-    this.store.dispatch(
-      BasketAddItemActions.request({
-        customerId: this.customerId,
-        item: updatedItem,
-      })
-    );
+    this.basketPort.addItem(this.customerId, { ...item, quantity: 1 });
   }
 
   onDecrease(item: BasketItem): void {
     if (!this.customerId) return;
-    const oneLess: BasketItem = { ...item, quantity: 1 };
-
-    this.store.dispatch(
-      BasketRemoveItemActions.request({
-        customerId: this.customerId,
-        item: oneLess,
-      })
-    );
+    this.basketPort.removeItem(this.customerId, { ...item, quantity: 1 });
   }
 
   onRemove(item: BasketItem): void {
     if (!this.customerId) return;
-
-    this.store.dispatch(
-      BasketRemoveItemActions.request({ customerId: this.customerId, item })
-    );
+    this.basketPort.removeItem(this.customerId, item);
   }
 
   onCheckout(): void {
     if (!this.customerId) return;
-
-    this.store.dispatch(
-      BasketCheckoutActions.request({ customerId: this.customerId })
-    );
+    this.basketPort.checkout(this.customerId);
   }
 
   onConfirmOrder(basket: Basket): void {
-    if (!this.customerId) return;
-
-    const products: OrderItem[] = basket.items.map((item) => ({
-      productId: item.productId,
-      name: item.name,
-      description: item.description,
-      quantity: item.quantity,
-      price: item.price,
-    }));
-
-    this.store.dispatch(
-      OrderCreateActions.request({ customerId: this.customerId, products })
-    );
+    this.orderPort.createFromBasket(basket);
   }
 }
-

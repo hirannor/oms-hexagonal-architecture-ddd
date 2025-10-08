@@ -12,4 +12,3 @@ import { AuthFeatureLogin } from '../feature-login/auth-feature-login';
   styleUrls: ['./auth-feature-shell.scss'],
 })
 export class AuthFeatureShell {}
-

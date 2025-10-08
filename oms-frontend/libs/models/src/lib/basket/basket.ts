@@ -9,4 +9,3 @@ export interface Basket {
   totalPrice: Money;
   status: BasketStatus;
 }
-

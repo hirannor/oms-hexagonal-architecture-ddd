@@ -16,4 +16,3 @@ export interface OrderItemModel {
   quantity: number;
   price: MoneyModel;
 }
-

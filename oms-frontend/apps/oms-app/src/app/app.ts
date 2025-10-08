@@ -12,4 +12,3 @@ import { Toast } from 'primeng/toast';
 export class App {
   protected title = 'oms-app';
 }
-

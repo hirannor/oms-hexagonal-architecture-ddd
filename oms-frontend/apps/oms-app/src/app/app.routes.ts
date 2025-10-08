@@ -20,13 +20,13 @@ export const appRoutes: Routes = [
       {
         path: 'orders',
         loadChildren: () =>
-            import('@oms-frontend/order').then((m) => m.ORDER_ROUTES),
+          import('@oms-frontend/order').then((m) => m.ORDER_ROUTES),
       },
       { path: 'customers/me', component: CustomerFeatureProfile },
       {
         path: 'products',
         loadChildren: () =>
-            import('@oms-frontend/product').then((m) => m.PRODUCT_ROUTES),
+          import('@oms-frontend/product').then((m) => m.PRODUCT_ROUTES),
       },
       { path: 'basket', component: BasketCartFeature },
       { path: '', pathMatch: 'full', redirectTo: 'products' },
@@ -37,4 +37,3 @@ export const appRoutes: Routes = [
   { path: 'register', redirectTo: 'auth', pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];
-

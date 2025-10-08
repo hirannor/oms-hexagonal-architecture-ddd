@@ -373,4 +373,3 @@ export class AuthApi extends BaseService {
     });
   }
 }
-

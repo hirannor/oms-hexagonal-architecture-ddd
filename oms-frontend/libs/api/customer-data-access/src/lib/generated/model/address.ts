@@ -15,4 +15,3 @@ export interface AddressModel {
   postalCode: number;
   streetAddress: string;
 }
-

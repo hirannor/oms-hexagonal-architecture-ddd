@@ -19,4 +19,3 @@ export interface CustomerModel {
   gender?: GenderModel;
   emailAddress: string;
 }
-

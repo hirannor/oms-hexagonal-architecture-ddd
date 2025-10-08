@@ -16,4 +16,3 @@ export class ProductCard {
   @Output() addToBasket = new EventEmitter<Product>();
   @Input() disabled = false;
 }
-

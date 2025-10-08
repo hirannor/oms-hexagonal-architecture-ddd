@@ -11,4 +11,3 @@ export const authGuard: CanActivateFn = () => {
   authService.logout();
   return false;
 };
-

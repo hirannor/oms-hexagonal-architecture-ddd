@@ -19,4 +19,3 @@ describe('BasketFeatureCart', () => {
     expect(component).toBeTruthy();
   });
 });
-

@@ -13,4 +13,3 @@ export enum CountryModel {
 
   Germany = 'GERMANY',
 }
-

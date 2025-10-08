@@ -19,4 +19,3 @@ describe('OrderUi', () => {
     expect(component).toBeTruthy();
   });
 });
-

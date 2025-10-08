@@ -1,17 +1,15 @@
 ﻿import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { BasketItem, Product } from '@oms-frontend/models';
+import {
+  BASKET_PORT,
+  BasketItem,
+  Product,
+  PRODUCT_PORT,
+} from '@oms-frontend/models';
 import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { BasketAddItemActions, selectBasket } from '@oms-frontend/basket';
 import { ProductCard } from '../../ui/product-card/product-card';
-import {
-  selectAllProducts,
-  selectProductLoading,
-} from '../../data-access/product.selector';
-import { ProductLoadActions } from '../../data-access/product.actions';
 
 @Component({
   selector: 'lib-product-feature-list',
@@ -26,26 +24,25 @@ import { ProductLoadActions } from '../../data-access/product.actions';
   styleUrls: ['./product-list-feature.scss'],
 })
 export class ProductListFeature implements OnInit {
-  private store = inject(Store);
-  readonly products$ = this.store.select(selectAllProducts);
-  readonly loading$ = this.store.select(selectProductLoading);
-  readonly basket$ = this.store.select(selectBasket);
-  private authService = inject(AuthService);
-  private route = inject(ActivatedRoute);
+  private readonly productPort = inject(PRODUCT_PORT);
+  private readonly basketPort = inject(BASKET_PORT);
+  private readonly auth = inject(AuthService);
+  private readonly route = inject(ActivatedRoute);
 
-  ngOnInit() {
+  readonly products$ = this.productPort.products$;
+  readonly loading$ = this.productPort.loading$;
+  readonly basket$ = this.basketPort.basket$;
+
+  ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const category = params.get('category') ?? undefined;
-      this.store.dispatch(ProductLoadActions.request({ category }));
+      this.productPort.loadProducts(category);
     });
   }
 
   onAddToBasket(product: Product): void {
-    const customerId = this.authService.extractCustomerId();
-    if (!customerId) {
-      console.error('Customer not logged in.');
-      return;
-    }
+    const customerId = this.auth.extractCustomerId();
+    if (!customerId) return;
 
     const item: BasketItem = {
       productId: product.id,
@@ -55,7 +52,6 @@ export class ProductListFeature implements OnInit {
       price: product.price,
     };
 
-    this.store.dispatch(BasketAddItemActions.request({ customerId, item }));
+    this.basketPort.addItem(customerId, item);
   }
 }
-

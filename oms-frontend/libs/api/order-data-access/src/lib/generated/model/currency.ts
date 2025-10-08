@@ -13,4 +13,3 @@ export enum CurrencyModel {
 
   Eur = 'EUR',
 }
-

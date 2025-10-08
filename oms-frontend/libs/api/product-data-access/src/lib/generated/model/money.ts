@@ -13,4 +13,3 @@ export interface MoneyModel {
   amount: string;
   currency: CurrencyModel;
 }
-

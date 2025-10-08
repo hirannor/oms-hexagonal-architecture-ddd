@@ -19,4 +19,3 @@ describe('CustomerFeatureProfile', () => {
     expect(component).toBeTruthy();
   });
 });
-

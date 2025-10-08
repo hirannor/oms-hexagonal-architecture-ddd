@@ -4,7 +4,10 @@
   "sourceRoot": "libs/basket/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:feature", "scope:basket"],
+  "tags": [
+    "type:feature",
+    "scope:basket"
+  ],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

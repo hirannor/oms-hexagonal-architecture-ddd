@@ -641,4 +641,3 @@ export class CustomerApi extends BaseService {
     );
   }
 }
-

@@ -13,4 +13,3 @@ export interface ChangeOrderStatusModel {
   newStatus: OrderStatusModel;
   orderId: string;
 }
-

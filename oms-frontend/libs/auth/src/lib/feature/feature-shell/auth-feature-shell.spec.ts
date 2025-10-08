@@ -19,4 +19,3 @@ describe('AuthFeatureRegister', () => {
     expect(component).toBeTruthy();
   });
 });
-

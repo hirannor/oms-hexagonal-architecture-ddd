@@ -38,10 +38,11 @@ The architecture enforces clear separation through **ArchUnit** tests and follow
 
 The Angular workspace mirrors backend boundaries:
 
-- `libs/<feature>` → feature modules (e.g., customer, order, product etc.)
-- `libs/api/*-data-access` → generated TypeScript clients from OpenAPI
-- `libs/shared-*` → cross-cutting technical layer providing reusable UI components, interceptors, and general utilities shared across the app.
-- `libs/models` → model types used by the frontend application
+- `libs/<feature>` → Feature-specific UI modules (e.g., order, customer, product)
+- `libs/*-data-access` → NgRx store, effects, and facades
+- `libs/api/*-data-access` → Generated OpenAPI clients for backend APIs
+- `libs/shared-*` → Reusable UI, utilities, and technical infrastructure
+- `libs/models` → Core domain model types and interfaces
 
 ---
 

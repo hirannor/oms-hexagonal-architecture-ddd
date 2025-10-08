@@ -14,4 +14,3 @@ export const Countries: { label: string; value: CountryCode }[] = Object.values(
   label: CountryLabels[code],
   value: code,
 }));
-

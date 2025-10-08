@@ -2,4 +2,3 @@
 import { CustomerApi } from './customer.service';
 
 export const APIS = [CustomerApi];
-

@@ -16,4 +16,3 @@ export interface BasketItemModel {
   quantity: number;
   price: MoneyModel;
 }
-

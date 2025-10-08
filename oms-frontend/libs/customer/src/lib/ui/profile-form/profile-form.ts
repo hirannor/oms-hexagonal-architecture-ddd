@@ -111,4 +111,3 @@ export class ProfileFormComponent implements OnChanges {
     return allEmpty || allFilled ? null : { incompleteAddress: true };
   }
 }
-

@@ -2,4 +2,3 @@
   HUF = 'HUF',
   EUR = 'EUR',
 }
-

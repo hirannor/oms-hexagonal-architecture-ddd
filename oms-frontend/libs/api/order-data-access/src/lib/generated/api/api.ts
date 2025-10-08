@@ -2,4 +2,3 @@
 import { OrderApi } from './order.service';
 
 export const APIS = [OrderApi];
-
