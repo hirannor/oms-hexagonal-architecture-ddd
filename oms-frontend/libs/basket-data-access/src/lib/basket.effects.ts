@@ -86,7 +86,7 @@ export class BasketEffects {
       ofType(BasketAddItemActions.request),
       withLatestFrom(this.store.select(selectBasket)),
       concatMap(([{ customerId, item }, basket]) => {
-        const basketId = basket?.id;
+        const existingBasketId = basket?.id;
 
         const addItemToBasket = (id: string) =>
           this.basketApi
@@ -98,7 +98,34 @@ export class BasketEffects {
                     const updated = this.normalize(
                       BasketMapper.mapToBasket(apiBasket)
                     );
-                    this.notifications.success(`${item.name} added to basket`);
+
+                    const prevItem = basket?.items.find(
+                      (i) => i.productId === item.productId
+                    );
+                    const newItem = updated.items.find(
+                      (i) => i.productId === item.productId
+                    );
+
+                    if (!prevItem && newItem) {
+                      this.notifications.success(
+                        `${item.name} added to basket`
+                      );
+                    } else if (
+                      prevItem &&
+                      newItem &&
+                      newItem.quantity > prevItem.quantity
+                    ) {
+                      this.notifications.info(
+                        `${item.name} quantity increased`
+                      );
+                    } else if (
+                      prevItem &&
+                      newItem &&
+                      newItem.quantity === prevItem.quantity
+                    ) {
+                      this.notifications.info(`${item.name} already in basket`);
+                    }
+
                     return BasketAddItemActions.success({ basket: updated });
                   })
                 )
@@ -116,23 +143,42 @@ export class BasketEffects {
               })
             );
 
-        if (!basketId) {
-          return this.basketApi.createBasket({ customerId }).pipe(
-            switchMap((apiBasket) =>
-              addItemToBasket(BasketMapper.mapToBasket(apiBasket).id)
-            ),
-            catchError((error) =>
-              of(
-                BasketCreationActions.failure({
-                  error:
-                    error.message ?? 'Failed to create basket before adding',
+        if (!existingBasketId) {
+          return this.basketApi.displayBy(customerId).pipe(
+            switchMap((existing) => {
+              if (existing?.id) return addItemToBasket(existing.id);
+              return this.basketApi
+                .createBasket({ customerId })
+                .pipe(
+                  switchMap((created) =>
+                    addItemToBasket(BasketMapper.mapToBasket(created).id)
+                  )
+                );
+            }),
+            catchError((error) => {
+              if (error.status === 404) {
+                return this.basketApi
+                  .createBasket({ customerId })
+                  .pipe(
+                    switchMap((created) =>
+                      addItemToBasket(BasketMapper.mapToBasket(created).id)
+                    )
+                  );
+              }
+              this.notifications.error(
+                'Failed to add item',
+                error.message ?? 'Unknown error'
+              );
+              return of(
+                BasketAddItemActions.failure({
+                  error: error.message ?? 'Failed to add item',
                 })
-              )
-            )
+              );
+            })
           );
         }
 
-        return addItemToBasket(basketId);
+        return addItemToBasket(existingBasketId);
       })
     )
   );
@@ -143,11 +189,15 @@ export class BasketEffects {
       withLatestFrom(this.store.select(selectBasket)),
       concatMap(([{ customerId, item }, basket]) => {
         if (!basket?.id) {
-          this.notifications.error('Cannot remove item â€” basket not found');
+          this.notifications.error('Cannot remove item — basket not found');
           return of(
             BasketRemoveItemActions.failure({ error: 'Basket not found' })
           );
         }
+
+        const prevItem = basket.items.find(
+          (i) => i.productId === item.productId
+        );
 
         return this.basketApi
           .removeItem(basket.id, BasketMapper.mapToBasketItemModel(item))
@@ -159,21 +209,23 @@ export class BasketEffects {
                     BasketMapper.mapToBasket(apiBasket)
                   );
 
-                  const stillInBasket = updated.items.some(
+                  const newItem = updated.items.find(
                     (i) => i.productId === item.productId
                   );
 
-                  if (stillInBasket) {
+                  if (!newItem && prevItem) {
+                    this.notifications.info(`${item.name} removed from basket`);
+                  } else if (
+                    newItem &&
+                    prevItem &&
+                    newItem.quantity < prevItem.quantity
+                  ) {
                     this.notifications.info(
                       `Reduced quantity for ${item.name}`
                     );
-                  } else {
-                    this.notifications.info(`${item.name} removed`);
                   }
 
-                  return BasketRemoveItemActions.success({
-                    basket: updated,
-                  });
+                  return BasketRemoveItemActions.success({ basket: updated });
                 })
               )
             ),

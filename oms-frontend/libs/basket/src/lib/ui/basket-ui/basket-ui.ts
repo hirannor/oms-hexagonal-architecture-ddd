@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Basket, BasketItem } from '@oms-frontend/models';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { RouterLink } from '@angular/router';
 import { Tooltip } from 'primeng/tooltip';
 
 @Component({
@@ -14,7 +13,6 @@ import { Tooltip } from 'primeng/tooltip';
     ButtonIcon,
     ButtonLabel,
     TableModule,
-    RouterLink,
     Tooltip,
   ],
   standalone: true,

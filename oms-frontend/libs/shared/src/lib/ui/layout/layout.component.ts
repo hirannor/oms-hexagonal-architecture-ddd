@@ -8,7 +8,10 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
 import { MenuItem } from 'primeng/api';
-import { AuthService } from '../../core/auth/auth.service';
+import { AuthService, NotificationItem, NotificationService } from '../../core';
+import { OverlayModule } from 'primeng/overlay';
+import { map, Observable } from 'rxjs';
+import { BadgeDirective } from 'primeng/badge';
 
 @Component({
   selector: 'oms-layout',
@@ -22,11 +25,32 @@ import { AuthService } from '../../core/auth/auth.service';
     PanelMenuModule,
     InputTextModule,
     TooltipModule,
+    OverlayModule,
+    BadgeDirective,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
+  private readonly notificationService = inject(NotificationService);
+
+  readonly notifications$: Observable<NotificationItem[]> =
+    this.notificationService.notifications$;
+
+  overlayVisible = false;
+
+  readonly hasNotifications$ = this.notifications$.pipe(
+    map((n) => !!n && n.length > 0)
+  );
+
+  toggleOverlay() {
+    this.overlayVisible = !this.overlayVisible;
+  }
+
+  onClearAll() {
+    this.notificationService.clearAll();
+  }
+
   sidebarItems: MenuItem[] = [
     {
       label: 'Products',

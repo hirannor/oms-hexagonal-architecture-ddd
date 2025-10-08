@@ -1,81 +1,53 @@
-# OmsFrontend
+# 🧩 OMS Frontend
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+**OMS Frontend** is the **Angular 20** client application for the [Order Management System (OMS)](https://github.com/hirannor/oms-hexagonal-architecture-ddd) —  
+a full-stack demo project showcasing modern enterprise design using **Hexagonal Architecture**, **Domain-Driven Design (DDD)**, and **event-driven communication**.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+Built as a modular **Nx monorepo**, this frontend consumes the OMS backend’s REST APIs (OpenAPI 3.0-generated clients),  
+leveraging **NgRx** for state management, **PrimeNG** for UI, and **clean architecture** principles throughout.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+---
 
-## Finish your CI setup
+## 🚀 Tech Stack
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/rqbcbi4LUA)
+| Layer            | Technology                                             |
+|------------------|--------------------------------------------------------|
+| Framework        | **Angular 20 (Standalone Components)**                 |
+| Workspace        | **Nx Monorepo**                                        |
+| State Management | **NgRx** (store, effects, actions, selectors)          |
+| API Integration  | **OpenAPI Generator (TypeScript Angular client)**      |
+| UI Library       | **PrimeNG 20+**                                        |
+| Styling          | **SCSS + Tailwind-inspired utilities**                 |
+| Auth             | **JWT-based Authentication (via OMS Backend)**         |
+| Tooling          | **TypeScript**, **ESLint**, **Prettier**, **Nx Cloud** |
 
-## Run tasks
+---
 
-To run the dev server for your app, use:
+## 🧱 Core Libraries Overview
 
-```sh
+| Project / Library                | Description                                                                                                                            |
+|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| **@oms-frontend/shared**         | Core shared utilities, interceptors, layout, guards, and reusable UI components.                                                       |
+| **@oms-frontend/models**         | Domain representation models shared across all frontend projects.                                                                      |
+| **@oms-frontend/api-***          | Auto-generated OpenAPI REST clients for each domain (e.g. `api-auth-data-access`, `api-order-data-access`, `api-product-data-access`). |
+| **@oms-frontend/\*-data-access** | NgRx store, effects, and facades for each bounded context (e.g. `basket-data-access`, `order-data-access`, etc.).                      |
+| **@oms-frontend/order**          | Feature & UI libs for order management                                                                                                 |
+| **@oms-frontend/basket**         | Feature & UI libs for basket and checkout                                                                                              |
+| **@oms-frontend/customer**       | Feature & UI libs for customer profiles                                                                                                |
+| **@oms-frontend/product**        | Feature & UI libs for product listing & details                                                                                        |
+| **@oms-frontend/auth**           | Feature & UI libs for authentication and login                                                                                         |
+
+## 🧩 Architecture Notes
+
+Each domain (Order, Basket, Customer, Product, Auth) follows a **feature-driven modular structure** under `libs/`,  
+separating **UI**, **feature logic**.  
+This ensures **strong encapsulation** and **independent evolution** of each module.
+
+---
+
+## 🧑‍💻 Development
+
+Start the frontend app:
+
+```bash
 npx nx serve oms-app
-```
-
-To create a production bundle:
-
-```sh
-npx nx build oms-app
-```
-
-To see all available targets to run for a project, run:
-
-```sh
-npx nx show project oms-app
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)

@@ -1,18 +1,21 @@
+/* ---------- ROOT CONTAINER ---------- */
 .layout-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background: #f9fafb;
 }
 
 /* ---------- HEADER ---------- */
 .layout-header {
   background: var(--p-primary-500, #2f855a);
-  color: white;
+  color: #fff;
   padding: 0.75rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 20;
 
   h2 {
     margin: 0;
@@ -21,13 +24,28 @@
   }
 }
 
+/* ---------- APP TITLE LINK ---------- */
+.app-title-link {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+  }
+}
+
+/* ---------- HEADER SEARCH ---------- */
 .header-search {
   flex: 1;
   max-width: 600px;
   margin: 0 2rem;
   display: flex;
   align-items: center;
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #d1d5db;
   border-radius: 25px;
   overflow: hidden;
@@ -41,34 +59,119 @@
     font-size: 0.95rem;
     background: transparent;
   }
-}
 
-.app-title-link {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-decoration: none;
-  transition: opacity 0.2s ease-in-out;
+  button {
+    border: none;
+    background: transparent;
+    color: var(--p-primary-500, #2f855a);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
 
-  &:hover {
-    opacity: 0.85;
-    text-decoration: underline;
+    &:hover {
+      background: var(--p-primary-100, #d1fae5);
+    }
   }
 }
 
+/* ---------- HEADER RIGHT ---------- */
 .header-right {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
+  position: relative;
 
-.layout-header .p-avatar {
-  background: #ffffff;
-  color: #16a34a;
-}
+  /* --- General icon buttons (bell, cart, orders, avatar) --- */
+  .p-button,
+  button[pbutton] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0.4rem !important;
+    width: 2.2rem;
+    height: 2.2rem;
+    min-width: unset !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease-in-out, transform 0.15s ease-in-out;
 
-.cursor-pointer {
-  cursor: pointer;
+    /* Removes the white line beside the icon */
+    .p-button-label {
+      display: none !important;
+    }
+
+    .pi {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.4);
+      outline-offset: 2px;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+
+  /* --- Bell button --- */
+  .notification-button {
+    position: relative;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+
+    .pi-bell {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &.has-notifications {
+      color: #ffd700;
+      animation: bellPulse 0.6s ease-in-out;
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
+    }
+
+    &:hover {
+      color: #d1fae5;
+
+      .pi-bell {
+        transform: scale(1.1);
+      }
+    }
+
+    .p-badge {
+      background-color: #ef4444;
+      color: #fff;
+      font-size: 0.7rem;
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      box-shadow: 0 0 0 2px var(--p-primary-500, #2f855a);
+    }
+  }
+
+  /* --- Avatar --- */
+  .p-avatar {
+    background: #ffffff;
+    color: #16a34a;
+    cursor: pointer;
+    transition: transform 0.15s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
 
 /* ---------- BODY ---------- */
@@ -80,7 +183,7 @@
 
 /* ---------- SIDEBAR ---------- */
 .layout-sidebar {
-  width: 300px;
+  width: 280px;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
   padding: 1rem;
@@ -119,7 +222,6 @@
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-
   overflow-y: auto;
   min-height: 0;
 }
@@ -131,4 +233,135 @@
   text-align: center;
   font-size: 0.875rem;
   color: #6b7280;
+  padding: 0.75rem;
+}
+
+/* ---------- NOTIFICATION OVERLAY ---------- */
+.notification-overlay {
+  position: absolute !important;
+  top: 52px !important;
+  right: 10px !important;
+  transform: none !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+  animation: fadeIn 0.15s ease-in-out;
+}
+
+/* Main notification panel */
+.notification-panel {
+  width: 320px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 16px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+    filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.1));
+  }
+
+  &:empty {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h4 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+    color: var(--p-text-color);
+  }
+
+  .notifications-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+    max-height: 250px;
+    overflow-y: auto;
+    background: #fafafa;
+    border-radius: 6px;
+
+    li {
+      padding: 0.5rem 0.25rem;
+      border-bottom: 1px solid #e5e7eb;
+
+      &.success {
+        border-left: 3px solid #22c55e;
+        padding-left: .5rem;
+      }
+
+      &.warn {
+        border-left: 3px solid #f59e0b;
+        padding-left: .5rem;
+      }
+
+      &.error {
+        border-left: 3px solid #ef4444;
+        padding-left: .5rem;
+      }
+
+      &.info {
+        border-left: 3px solid #3b82f6;
+        padding-left: .5rem;
+      }
+
+      .title {
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+
+      .message {
+        font-size: 0.85rem;
+        color: var(--p-text-secondary-color);
+      }
+
+      small {
+        color: var(--p-text-secondary-color);
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--p-text-secondary-color);
+    margin: 1rem 0;
+  }
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes bellPulse {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

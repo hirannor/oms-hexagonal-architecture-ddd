@@ -5,42 +5,45 @@
     <lib-loading-spinner></lib-loading-spinner>
   } @else {
     @if (basket$ | async; as basket) {
-      @switch (basket.status) {
 
-        @case ('ACTIVE') {
-          <lib-basket-ui
-            [basket]="basket"
-            (increase)="onIncrease($event)"
-            (decrease)="onDecrease($event)"
-            (remove)="onRemove($event)"
-            (checkout)="onCheckout()"
-          ></lib-basket-ui>
-        }
-        @case ('CHECKED_OUT') {
-          <lib-basket-ui-summary
-            [basket]="basket"
-            (confirmOrderClicked)="onConfirmOrder($event)"
-          ></lib-basket-ui-summary>
-        }
-        @default {
-          <div class="empty-basket">
-            <h3>Your basket is empty 🛒</h3>
-            <p>Start shopping to add your first item.</p>
-            <button
-              pButton
-              pButtonLabel="Browse Products"
-              pButtonIcon="pi pi-box"
-              routerLink="/products"
-              class="p-button-outlined p-button-secondary"
-            >
-              Browse Products
-            </button>
-          </div>
+      @if (!basket || basket.items.length === 0) {
+        <div class="empty-basket">
+          <h3>Your basket is empty 🛒</h3>
+          <p>Start shopping to add your first item.</p>
+          <button
+            pButton
+            pButtonLabel="Browse Products"
+            pButtonIcon="pi pi-box"
+            routerLink="/products"
+            class="p-button-outlined p-button-secondary"
+          >
+            Browse Products
+          </button>
+        </div>
+      } @else {
+        @switch (basket.status) {
+
+          @case ('ACTIVE') {
+            <lib-basket-ui
+              [basket]="basket"
+              (increase)="onIncrease($event)"
+              (decrease)="onDecrease($event)"
+              (remove)="onRemove($event)"
+              (checkout)="onCheckout()"
+            ></lib-basket-ui>
+          }
+          @case ('CHECKED_OUT') {
+            <lib-basket-ui-summary
+              [basket]="basket"
+              (confirmOrderClicked)="onConfirmOrder($event)"
+            ></lib-basket-ui-summary>
+          }
         }
       }
+
     } @else {
       <div class="empty-basket">
-        <h3>Your basket is empty 🛒</h3>
+        <h3>Your basket is empty</h3>
         <p>Start shopping to add your first item.</p>
         <button
           pButton

@@ -18,9 +18,10 @@ and **event-driven communication** between bounded contexts.
 - **Frontend:** Angular 20 (Nx Monorepo + NgRx) · PrimeNG · TypeScript
 - **API Contract:** Centralized [OpenAPI 3.0.3](openapi/) definitions shared between backend & frontend
 
-> 📘 For in-depth domain and backend design details, see [oms-backend/README.md](oms-backend/README.md).
-
----
+> 📘 For in-depth domain and architecture documentation:
+>
+> - **Backend:** [oms-backend/README.md](oms-backend/README.md) — Spring Boot + DDD + Hexagonal Architecture
+> - **Frontend:** [oms-frontend/README.md](oms-frontend/README.md) — Angular 20 + Nx + NgRx Modular Monorepo
 
 ## ⚙️ Architecture Overview
 

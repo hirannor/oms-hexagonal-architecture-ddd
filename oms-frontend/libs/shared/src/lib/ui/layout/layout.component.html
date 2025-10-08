@@ -18,6 +18,56 @@
     <div class="header-right">
       <button
         pButton
+        type="button"
+        pTooltip="Notifications"
+        rounded="true"
+        pBadge
+        tooltipPosition="bottom"
+        [value]="(notifications$ | async)?.length || ''"
+        (click)="toggleOverlay()"
+        [ngClass]="{
+        'notification-button': true,
+        'has-notifications': hasNotifications$ | async}"
+      >
+        <span class="pi pi-bell" pButtonIcon></span>
+      </button>
+
+      <p-overlay
+        [(visible)]="overlayVisible"
+        appendTo="body"
+        class="notification-overlay"
+        (onHide)="overlayVisible = false"
+      >
+        <div class="notification-panel">
+          @if (notifications$ | async; as notifications) {
+            @if (notifications.length > 0) {
+              <ul class="notifications-list">
+                @for (n of notifications; track n.timestamp) {
+                  <li [ngClass]="n.type">
+                    <div class="title">{{ n.title }}</div>
+                    <div class="message">{{ n.message }}</div>
+                    <small>{{ n.timestamp | date: 'shortTime' }}</small>
+                  </li>
+                }
+              </ul>
+
+              <button
+                pButton
+                pButtonLabel="Clear All"
+                class="p-button-text p-button-sm"
+                (click)="onClearAll()"
+              >
+                Clear All
+              </button>
+            } @else {
+              <p class="empty">No notifications</p>
+            }
+          }
+        </div>
+      </p-overlay>
+
+      <button
+        pButton
         pTooltip="My Basket"
         rounded="true"
         routerLink="/basket"
@@ -38,7 +88,12 @@
         <span class="pi pi-list" pButtonIcon></span>
       </button>
 
-      <p-menu #profileMenu [model]="profileItems" [popup]="true"></p-menu>
+      <p-menu
+        #profileMenu
+        [model]="profileItems"
+        [popup]="true"
+        appendTo="body">
+      </p-menu>
       <p-avatar
         (click)="profileMenu.toggle($event)"
         class="cursor-pointer"
