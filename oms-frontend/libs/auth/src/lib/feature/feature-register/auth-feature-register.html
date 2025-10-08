@@ -36,13 +36,4 @@
     <button [disabled]="form.invalid" pButton type="submit">Register</button>
   </div>
 
-  @if (success$ | async) {
-    <div class="form-message success">
-      Registration successful! You can now log in.
-    </div>
-  }
-
-  @if (error$ | async; as err) {
-    <div class="form-message error">{{ err }}</div>
-  }
 </form>

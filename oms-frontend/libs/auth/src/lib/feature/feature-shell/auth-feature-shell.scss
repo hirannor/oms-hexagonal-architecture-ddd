@@ -1,10 +1,11 @@
 .auth-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  background: #f9f9f9;
-  padding: 2rem;
+  background-color: #f9fafb;
+  padding: 4rem 1rem;
 }
 
 .auth-forms {
@@ -12,19 +13,51 @@
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .auth-card {
-  width: 350px;
-  padding: 1rem;
+  width: 320px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: #ffffff;
 
-  .p-card-header {
-    font-size: 1.25rem;
-    font-weight: bold;
+  ::ng-deep .p-card-header {
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 
-  .p-card-subheader {
+  ::ng-deep .p-card-subheader {
+    color: #6b7280;
     font-size: 0.9rem;
-    color: #666;
   }
+}
+
+.auth-feedback {
+  text-align: center;
+  margin-top: 1rem;
+  min-height: 2.5rem;
+}
+
+.form-message {
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  min-width: 300px;
+  text-align: center;
+}
+
+.form-message.success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.form-message.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
 }

@@ -33,9 +33,6 @@ export class AuthFeatureRegister {
 
   readonly loading$ = this.auth.loading$;
 
-  readonly success$ = this.auth.success$;
-  readonly error$ = this.auth.error$;
-
   onSubmit(): void {
     if (this.form.invalid) return;
 

@@ -1,12 +1,31 @@
 ﻿<div class="auth-container">
   <div class="auth-forms">
-    <p-card header="Welcome Back" class="auth-card" subheader="Please log in to continue">
+    <p-card
+      header="Welcome Back"
+      class="auth-card"
+      subheader="Please log in to continue"
+    >
       <lib-auth-feature-login></lib-auth-feature-login>
     </p-card>
 
-    <p-card header="Create Account" class="auth-card" subheader="Register to continue">
+    <p-card
+      header="Create Account"
+      class="auth-card"
+      subheader="Register to continue"
+    >
       <lib-auth-feature-register></lib-auth-feature-register>
     </p-card>
   </div>
-</div>
 
+  <div class="auth-feedback">
+    @if (registerSuccess$ | async) {
+      <div class="form-message success">
+        Registration successful! You can now log in.
+      </div>
+    }
+
+    @if (error$ | async; as err) {
+      <div class="form-message error">{{ err }}</div>
+    }
+  </div>
+</div>
