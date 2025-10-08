@@ -1,25 +1,23 @@
 ﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { OrderMapper } from '@oms-frontend/models';
+import { Router } from '@angular/router';
+import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import {
   NotificationService,
   ProblemDetailsMapper,
 } from '@oms-frontend/shared';
-import { catchError, map, mergeMap, of, tap } from 'rxjs';
-import { Router } from '@angular/router';
-
 import {
   OrderCreateActions,
   OrderDetailsActions,
   OrderLoadActions,
   OrderPaymentActions,
 } from './order.actions';
-import { OrderApi } from '@oms-frontend/api/order-data-access';
+import { ORDER_API_PORT } from '@oms-frontend/models';
 
 @Injectable()
 export class OrderEffects {
   private readonly actions$ = inject(Actions);
-  private readonly api = inject(OrderApi);
+  private readonly api = inject(ORDER_API_PORT);
   private readonly notifications = inject(NotificationService);
   private readonly router = inject(Router);
 
@@ -28,21 +26,9 @@ export class OrderEffects {
       ofType(OrderLoadActions.request),
       mergeMap(() =>
         this.api.displayMine().pipe(
-          map((apiOrders) =>
-            OrderLoadActions.success({
-              orders: apiOrders.map(OrderMapper.mapToOrder),
-            })
-          ),
+          map((orders) => OrderLoadActions.success({ orders })),
           catchError((err) => {
-            if (err.error) {
-              const problem = ProblemDetailsMapper.fromApi(err.error);
-              this.notifications.fromProblem(problem);
-            } else {
-              this.notifications.error(
-                'Failed to load orders',
-                err.message ?? 'Unknown error'
-              );
-            }
+            this.handleError('Failed to load orders', err);
             return of(
               OrderLoadActions.failure({
                 error: err?.message ?? 'Load orders failed',
@@ -59,22 +45,13 @@ export class OrderEffects {
       ofType(OrderPaymentActions.request),
       mergeMap(({ orderId }) =>
         this.api.pay(orderId).pipe(
-          map((response) => {
-            const { paymentUrl } = response;
+          map(({ paymentUrl }) => {
             window.open(paymentUrl, '_blank');
             this.notifications.success('Redirecting to payment...');
             return OrderPaymentActions.success({ paymentUrl });
           }),
           catchError((err) => {
-            if (err.error) {
-              const problem = ProblemDetailsMapper.fromApi(err.error);
-              this.notifications.fromProblem(problem);
-            } else {
-              this.notifications.error(
-                'Payment failed',
-                err.message ?? 'Unknown error'
-              );
-            }
+            this.handleError('Payment failed', err);
             return of(
               OrderPaymentActions.failure({
                 error: err?.message ?? 'Payment failed',
@@ -89,36 +66,22 @@ export class OrderEffects {
   createOrder$ = createEffect(() =>
     this.actions$.pipe(
       ofType(OrderCreateActions.request),
-      mergeMap(({ customerId, products }) => {
-        const createOrder = OrderMapper.mapToCreateOrderModel({
-          customerId,
-          products,
-        });
-
-        return this.api.createOrder(createOrder).pipe(
-          map((apiOrder) => {
-            const order = OrderMapper.mapToOrder(apiOrder);
+      mergeMap(({ customerId, products }) =>
+        this.api.createOrder({ customerId, products }).pipe(
+          map((order) => {
             this.notifications.success('Order created successfully');
             return OrderCreateActions.success({ order });
           }),
           catchError((err) => {
-            if (err.error) {
-              const problem = ProblemDetailsMapper.fromApi(err.error);
-              this.notifications.fromProblem(problem);
-            } else {
-              this.notifications.error(
-                'Order creation failed',
-                err.message ?? 'Unknown error'
-              );
-            }
+            this.handleError('Order creation failed', err);
             return of(
               OrderCreateActions.failure({
                 error: err?.message ?? 'Order creation failed',
               })
             );
           })
-        );
-      })
+        )
+      )
     )
   );
 
@@ -127,21 +90,9 @@ export class OrderEffects {
       ofType(OrderDetailsActions.request),
       mergeMap(({ orderId }) =>
         this.api.displayBy(orderId).pipe(
-          map((apiOrder) =>
-            OrderDetailsActions.success({
-              order: OrderMapper.mapToOrder(apiOrder),
-            })
-          ),
+          map((order) => OrderDetailsActions.success({ order })),
           catchError((err) => {
-            if (err.error) {
-              const problem = ProblemDetailsMapper.fromApi(err.error);
-              this.notifications.fromProblem(problem);
-            } else {
-              this.notifications.error(
-                'Failed to load order',
-                err.message ?? 'Unknown error'
-              );
-            }
+            this.handleError('Failed to load order', err);
             return of(
               OrderDetailsActions.failure({
                 error: err?.message ?? 'Load order failed',
@@ -163,4 +114,13 @@ export class OrderEffects {
       ),
     { dispatch: false }
   );
+
+  private handleError(title: string, err: any) {
+    if (err.error) {
+      const problem = ProblemDetailsMapper.fromApi(err.error);
+      this.notifications.fromProblem(problem);
+    } else {
+      this.notifications.error(title, err.message ?? 'Unknown error');
+    }
+  }
 }

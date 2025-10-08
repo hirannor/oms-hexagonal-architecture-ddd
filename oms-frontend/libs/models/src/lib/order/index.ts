@@ -4,3 +4,4 @@ export * from './order-item';
 export * from './create-order';
 export * from './mapping/order-mapper';
 export * from './order.port';
+export * from './order-api.port';

@@ -3,3 +3,4 @@ export * from './lib/order.effects';
 export * from './lib/order.reducer';
 export * from './lib/order.selector';
 export * from './lib/order.facade';
+export * from './lib/order-api.adapter';

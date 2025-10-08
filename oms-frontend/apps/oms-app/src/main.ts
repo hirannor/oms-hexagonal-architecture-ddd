@@ -21,10 +21,15 @@ import {
   AUTH_PORT,
   BASKET_PORT,
   CUSTOMER_PORT,
+  ORDER_API_PORT,
   ORDER_PORT,
   PRODUCT_PORT,
 } from '@oms-frontend/models';
-import { OrderEffects, OrderFacade } from '@oms-frontend/order-data-access';
+import {
+  OrderApiAdapter,
+  OrderEffects,
+  OrderFacade,
+} from '@oms-frontend/order-data-access';
 import {
   BasketEffects,
   BasketFacade,
@@ -89,5 +94,6 @@ bootstrapApplication(App, {
     { provide: PRODUCT_PORT, useExisting: ProductFacade },
     { provide: AUTH_PORT, useExisting: AuthFacade },
     { provide: CUSTOMER_PORT, useExisting: CustomerFacade },
+    { provide: ORDER_API_PORT, useExisting: OrderApiAdapter },
   ],
 }).catch((err) => console.error(err));
