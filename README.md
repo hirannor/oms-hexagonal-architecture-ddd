@@ -82,3 +82,6 @@ This ensures **exactly-once semantics** and stable inter-module communication.
 - Typed REST clients generated from `/openapi` using:
   ```bash
   npm run generate:apis
+
+![APP_1](img/app_1.gif)
+![APP_1](img/app_2.gif)
