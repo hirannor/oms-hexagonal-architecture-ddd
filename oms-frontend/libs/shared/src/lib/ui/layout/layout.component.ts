@@ -1,6 +1,7 @@
 ﻿import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AUTH_STATE } from '@oms-frontend/models';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
@@ -33,6 +34,7 @@ import { BadgeDirective } from 'primeng/badge';
 })
 export class LayoutComponent {
   private readonly notificationService = inject(NotificationService);
+  private readonly auth = inject(AUTH_STATE);
 
   readonly notifications$: Observable<NotificationItem[]> =
     this.notificationService.notifications$;
@@ -118,7 +120,6 @@ export class LayoutComponent {
       ],
     },
   ];
-  private authService: AuthService = inject(AuthService);
   profileItems: MenuItem[] = [
     {
       label: 'My Profile',
@@ -129,7 +130,7 @@ export class LayoutComponent {
     {
       label: 'Logout',
       icon: 'pi pi-sign-out',
-      command: () => this.authService.logout(),
+      command: () => this.auth.logout(),
     },
   ];
 }

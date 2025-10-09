@@ -2,54 +2,33 @@
 import { Router } from '@angular/router';
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
 import { map, Observable, tap } from 'rxjs';
-
-const ACCESS_TOKEN_KEY = 'accessToken';
-const REFRESH_TOKEN_KEY = 'refreshToken';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private router = inject(Router);
-  private authApi = inject(AuthApi);
+  private readonly router = inject(Router);
+  private readonly api = inject(AuthApi);
+  private readonly tokenStorage = inject(TokenStorageService);
 
   saveTokens(accessToken: string, refreshToken: string): void {
-    sessionStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
-    sessionStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+    this.tokenStorage.saveTokens(accessToken, refreshToken);
   }
 
-  getAccessToken(): string | null {
-    return sessionStorage.getItem(ACCESS_TOKEN_KEY);
+  retrieveAccessToken(): string | null {
+    return this.tokenStorage.retrieveAccessToken();
   }
 
-  getRefreshToken(): string | null {
-    return sessionStorage.getItem(REFRESH_TOKEN_KEY);
+  retrieveRefreshToken(): string | null {
+    return this.tokenStorage.retrieveRefreshToken();
   }
 
   clearTokens(): void {
-    sessionStorage.removeItem(ACCESS_TOKEN_KEY);
-    sessionStorage.removeItem(REFRESH_TOKEN_KEY);
-  }
-
-  logout(): void {
-    this.clearTokens();
-    this.router.navigate(['/login']);
-  }
-
-  extractCustomerId(): string | null {
-    const token = this.getAccessToken();
-    if (!token) return null;
-
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      return payload['customerId'] || null;
-    } catch {
-      return null;
-    }
+    this.tokenStorage.clearTokens();
   }
 
   extractEmailAddress(): string | null {
-    const token = this.getAccessToken();
+    const token = this.retrieveAccessToken();
     if (!token) return null;
-
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
       return payload['sub'] || null;
@@ -58,14 +37,25 @@ export class AuthService {
     }
   }
 
+  extractCustomerId(): string | null {
+    const token = this.retrieveAccessToken();
+    if (!token) return null;
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload['customerId'] || null;
+    } catch {
+      return null;
+    }
+  }
+
   refreshTokens(): Observable<{ accessToken: string; refreshToken: string }> {
-    const refreshToken = this.getRefreshToken();
+    const refreshToken = this.tokenStorage.retrieveRefreshToken();
     if (!refreshToken) throw new Error('No refresh token available');
 
-    return this.authApi.refreshToken({ refreshToken }).pipe(
+    return this.api.refreshToken({ refreshToken }).pipe(
       tap((res) => {
         if (res.accessToken && res.refreshToken) {
-          this.saveTokens(res.accessToken, res.refreshToken);
+          this.tokenStorage.saveTokens(res.accessToken, res.refreshToken);
         }
       }),
       map((res) => ({
@@ -75,7 +65,12 @@ export class AuthService {
     );
   }
 
+  logout(): void {
+    this.clearTokens();
+    this.router.navigate(['/login']);
+  }
+
   navigateToOrders(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/orders']);
   }
 }

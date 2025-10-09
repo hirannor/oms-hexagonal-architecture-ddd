@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 
 export const authGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
-  const token = authService.getAccessToken();
+  const token = authService.retrieveAccessToken();
 
   if (token) return true;
 

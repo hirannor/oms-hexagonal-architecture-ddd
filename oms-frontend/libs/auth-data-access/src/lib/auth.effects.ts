@@ -1,21 +1,27 @@
 ﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
-import { AUTH_API, LoginPayload, RegisterPayload } from '@oms-frontend/models';
+import {
+  AUTH_API,
+  AUTH_STATE,
+  LoginPayload,
+  RegisterPayload,
+} from '@oms-frontend/models';
 import { AuthService, ProblemDetailsMapper } from '@oms-frontend/shared';
 import { AuthActions } from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
   private readonly actions$ = inject(Actions);
-  private readonly api = inject(AUTH_API);
-  private readonly auth = inject(AuthService);
+  private readonly authApi = inject(AUTH_API);
+  private readonly authState = inject(AUTH_STATE);
+  private readonly authService = inject(AuthService);
 
   navigateAfterLogin$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
-        tap(() => this.auth.navigateToOrders())
+        tap(() => this.authService.navigateToOrders())
       ),
     { dispatch: false }
   );
@@ -25,9 +31,9 @@ export class AuthEffects {
       ofType(AuthActions.login),
       mergeMap(({ email, password }) => {
         const payload: LoginPayload = { email, password };
-        return this.api.authenticate(payload).pipe(
+        return this.authApi.authenticate(payload).pipe(
           map((res) => {
-            this.auth.saveTokens(res.accessToken, res.refreshToken);
+            this.authService.saveTokens(res.accessToken, res.refreshToken);
             return AuthActions.loginSuccess({
               email: res.email,
               accessToken: res.accessToken,
@@ -48,7 +54,7 @@ export class AuthEffects {
       ofType(AuthActions.register),
       mergeMap(({ email, password }) => {
         const payload: RegisterPayload = { email, password };
-        return this.api.register(payload).pipe(
+        return this.authApi.register(payload).pipe(
           map(() => AuthActions.registerSuccess({ email })),
           catchError((err) => {
             const message = this.resolveErrorMessage(
@@ -66,12 +72,12 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.refreshToken),
       mergeMap(() =>
-        this.auth.refreshTokens().pipe(
+        this.authService.refreshTokens().pipe(
           map(({ accessToken, refreshToken }) =>
             AuthActions.refreshTokenSuccess({ accessToken, refreshToken })
           ),
           catchError((err) => {
-            this.auth.logout();
+            this.authState.logout();
             const message = this.resolveErrorMessage(err, 'Session expired');
             return of(AuthActions.refreshTokenFailure({ error: message }));
           })
@@ -82,12 +88,18 @@ export class AuthEffects {
 
   private resolveErrorMessage(err: unknown, fallback: string): string {
     if (!err) return fallback;
+
     try {
-      const problem = ProblemDetailsMapper.fromApi((err as any).error);
+      const problemDetails = err as { error?: unknown; message?: string };
+      const problem = ProblemDetailsMapper.fromApi(problemDetails.error);
+
       if (problem?.detail) return problem.detail;
       if (problem?.title) return problem.title;
-      if ((err as any).message) return (err as any).message;
-    } catch {}
+      if (problemDetails.message) return problemDetails.message;
+    } catch (e) {
+      console.error('Error while mapping problem details:', e);
+    }
+
     return fallback;
   }
 }

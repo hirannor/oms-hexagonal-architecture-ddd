@@ -59,7 +59,7 @@ class RegistrationService implements Registrating {
 
     private void failBecauseCustomerAlreadyExistBy(final EmailAddress email) {
         throw new CustomerAlreadyExistWithEmailAddress(
-                String.format("Customer already exist with the given e-mail emailAddress: %s", email.asText())
+                String.format("Customer already exist with the given e-mail: %s", email.asText())
         );
     }
 }

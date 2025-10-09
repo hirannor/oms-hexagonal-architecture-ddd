@@ -14,7 +14,7 @@ export const AuthInterceptor: HttpInterceptorFn = (
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> => {
   const auth = inject(AuthService);
-  const accessToken = auth.getAccessToken();
+  const accessToken = auth.retrieveAccessToken();
 
   if (req.url.includes('/auth/refresh')) {
     return next(req);
@@ -27,7 +27,7 @@ export const AuthInterceptor: HttpInterceptorFn = (
   return next(cloned).pipe(
     catchError((err: unknown) => {
       if (err instanceof HttpErrorResponse && err.status === 401) {
-        const refreshToken = auth.getRefreshToken();
+        const refreshToken = auth.retrieveRefreshToken();
         if (!refreshToken) {
           auth.logout();
           return throwError(() => err);
