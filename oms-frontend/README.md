@@ -29,7 +29,7 @@ leveraging **NgRx** for state management, **PrimeNG** for UI, and **clean archit
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | **@oms-frontend/shared**         | Core shared utilities, interceptors, layout, guards, and reusable UI components.                                                       |
 | **@oms-frontend/models**         | Domain representation models shared across all frontend projects.                                                                      |
-| **@oms-frontend/api-\***         | Auto-generated OpenAPI REST clients for each domain (e.g. `api-auth-data-access`, `api-order-data-access`, `api-product-data-access`). |
+| **@oms-frontend/openapi-\***     | Auto-generated OpenAPI REST clients for each domain (e.g. `api-auth-data-access`, `api-order-data-access`, `api-product-data-access`). |
 | **@oms-frontend/\*-data-access** | NgRx store, effects, and facades for each bounded context (e.g. `basket-data-access`, `order-data-access`, etc.).                      |
 | **@oms-frontend/order**          | Feature & UI libs for order management                                                                                                 |
 | **@oms-frontend/basket**         | Feature & UI libs for basket and checkout                                                                                              |

@@ -15,41 +15,48 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@oms-frontend/auth": ["libs/auth/auth-feature/src/index.ts"],
+      "@oms-frontend/auth-data-access": [
+        "libs/auth/auth-data-access/src/index.ts"
+      ],
       "@oms-frontend/api/auth-data-access": [
-        "libs/api/auth-data-access/src/index.ts"
+        "libs/openapi/auth-data-access/src/index.ts"
+      ],
+
+      "@oms-frontend/basket": ["libs/basket/basket-feature/src/index.ts"],
+      "@oms-frontend/basket-data-access": [
+        "libs/basket/basket-data-access/src/index.ts"
       ],
       "@oms-frontend/api/basket-data-access": [
-        "libs/api/basket-data-access/src/index.ts"
+        "libs/openapi/basket-data-access/src/index.ts"
+      ],
+
+      "@oms-frontend/customer": ["libs/customer/customer-feature/src/index.ts"],
+      "@oms-frontend/customer-data-access": [
+        "libs/customer/customer-data-access/src/index.ts"
       ],
       "@oms-frontend/api/customer-data-access": [
-        "libs/api/customer-data-access/src/index.ts"
+        "libs/openapi/customer-data-access/src/index.ts"
+      ],
+
+      "@oms-frontend/order": ["libs/order/order-feature/src/index.ts"],
+      "@oms-frontend/order-data-access": [
+        "libs/order/order-data-access/src/index.ts"
       ],
       "@oms-frontend/api/order-data-access": [
-        "libs/api/order-data-access/src/index.ts"
+        "libs/openapi/order-data-access/src/index.ts"
+      ],
+
+      "@oms-frontend/product": ["libs/product/product-feature/src/index.ts"],
+      "@oms-frontend/product-data-access": [
+        "libs/product/product-data-access/src/index.ts"
       ],
       "@oms-frontend/api/product-data-access": [
-        "libs/api/product-data-access/src/index.ts"
+        "libs/openapi/product-data-access/src/index.ts"
       ],
-      "@oms-frontend/auth": ["libs/auth/src/index.ts"],
-      "@oms-frontend/basket": ["libs/basket/src/index.ts"],
-      "@oms-frontend/customer": ["libs/customer/src/index.ts"],
-      "@oms-frontend/models": ["libs/models/src/index.ts"],
-      "@oms-frontend/order": ["libs/order/src/index.ts"],
-      "@oms-frontend/order-data-access": [
-        "libs/order-data-access/src/index.ts"
-      ],
-      "@oms-frontend/basket-data-access": [
-        "libs/basket-data-access/src/index.ts"
-      ],
-      "@oms-frontend/product-data-access": [
-        "libs/product-data-access/src/index.ts"
-      ],
-      "@oms-frontend/auth-data-access": ["libs/auth-data-access/src/index.ts"],
-      "@oms-frontend/customer-data-access": [
-        "libs/customer-data-access/src/index.ts"
-      ],
-      "@oms-frontend/product": ["libs/product/src/index.ts"],
-      "@oms-frontend/shared": ["libs/shared/src/index.ts"]
+
+      "@oms-frontend/shared": ["libs/shared/src/index.ts"],
+      "@oms-frontend/models": ["libs/models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
