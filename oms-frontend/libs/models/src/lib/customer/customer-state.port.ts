@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from './customer';
 
-export interface ICustomerPort {
+export interface CustomerState {
   readonly customer$: Observable<Customer | null>;
 
   readonly loading$: Observable<boolean>;
@@ -14,4 +14,6 @@ export interface ICustomerPort {
   updateCustomer(customer: Customer): void;
 }
 
-export const CUSTOMER_PORT = new InjectionToken<ICustomerPort>('CUSTOMER_PORT');
+export const CUSTOMER_STATE = new InjectionToken<CustomerState>(
+  'CUSTOMER_STATE'
+);

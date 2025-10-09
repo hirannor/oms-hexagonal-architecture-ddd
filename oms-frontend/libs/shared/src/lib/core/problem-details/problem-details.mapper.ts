@@ -1,10 +1,7 @@
-﻿import {
-  ProblemDetails,
-  ProblemDetails as UiProblemDetails,
-} from './problem-details';
+﻿import { ProblemDetails } from './problem-details';
 
 export class ProblemDetailsMapper {
-  static fromApi(model: unknown): UiProblemDetails {
+  static fromApi(model: unknown): ProblemDetails {
     if (!model || typeof model !== 'object') {
       return { detail: 'Unknown error', status: 0 };
     }

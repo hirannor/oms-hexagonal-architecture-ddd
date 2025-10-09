@@ -1,7 +1,13 @@
 ﻿<form (ngSubmit)="onSubmit()" [formGroup]="form" class="auth-form p-fluid">
   <div class="form-field">
     <label for="email">Email</label>
-    <input formControlName="email" id="email" pInputText placeholder="you@example.com" type="email"/>
+    <input
+      formControlName="email"
+      id="email"
+      pInputText
+      placeholder="you@example.com"
+      type="email"
+    />
   </div>
 
   <div class="form-field">
@@ -19,4 +25,3 @@
     <button [disabled]="form.invalid" pButton type="submit">Login</button>
   </div>
 </form>
-

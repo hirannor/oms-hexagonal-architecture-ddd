@@ -3,9 +3,11 @@
   AuthenticationResultModel,
   RegisterModel,
 } from '@oms-frontend/api/auth-data-access';
-import { LoginPayload } from '../login-payload';
-import { RegisterPayload } from '../register-payload';
-import { AuthResult } from '../auth-result';
+import {
+  AuthResult,
+  LoginPayload,
+  RegisterPayload,
+} from '@oms-frontend/models';
 
 export class AuthMapper {
   static mapToAuthenticateModel(payload: LoginPayload): AuthenticateModel {

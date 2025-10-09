@@ -4,13 +4,16 @@
   BasketStatusModel,
 } from '@oms-frontend/api/basket-data-access';
 import { CurrencyModel } from '@oms-frontend/api/order-data-access';
-import { Currency } from '../../core';
-import { BasketItem } from '../basket-item';
-import { BasketStatus } from '../basket-status';
-import { Basket } from '../basket';
+import {
+  Basket,
+  BasketItem,
+  BasketStatus,
+  Currency,
+} from '@oms-frontend/models';
 
 export class BasketMapper {
   static mapToBasket(model: BasketModel): Basket {
+    console.log('Received basketModel to map Basket', model);
     return {
       id: model.id,
       customerId: model.customerId,
@@ -37,6 +40,7 @@ export class BasketMapper {
   }
 
   private static mapToBasketItem(model: BasketItemModel): BasketItem {
+    console.log('single item', model);
     return {
       productId: model.productId,
       name: model.name,

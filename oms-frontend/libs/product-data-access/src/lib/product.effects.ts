@@ -1,35 +1,26 @@
 ﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProductMapper } from '@oms-frontend/models';
 import { NotificationService } from '@oms-frontend/shared';
-import {
-  ProductCreateActions,
-  ProductDetailsActions,
-  ProductLoadActions,
-} from './product.actions';
+import { ProductDetailsActions, ProductLoadActions } from './product.actions';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { ProductApi } from '@oms-frontend/api/product-data-access';
+import { PRODUCT_API } from '@oms-frontend/models';
 
 @Injectable()
 export class ProductEffects {
-  private actions$ = inject(Actions);
-  private api = inject(ProductApi);
-  private notifications = inject(NotificationService);
+  private readonly actions$ = inject(Actions);
+  private readonly api = inject(PRODUCT_API);
+  private readonly notifications = inject(NotificationService);
 
   loadById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductDetailsActions.request),
       mergeMap(({ id }) =>
         this.api.displayBy(id).pipe(
-          map((res) =>
-            ProductDetailsActions.success({
-              product: ProductMapper.mapToProduct(res),
-            })
-          ),
+          map((product) => ProductDetailsActions.success({ product })),
           catchError((err) =>
             of(
               ProductDetailsActions.failure({
-                error: err?.message ?? 'failed to load product',
+                error: err?.message ?? 'Failed to load product',
               })
             )
           )
@@ -42,40 +33,13 @@ export class ProductEffects {
     this.actions$.pipe(
       ofType(ProductLoadActions.request),
       mergeMap(({ category, search }) =>
-        this.api.displayAll(category).pipe(
-          map((res) =>
-            ProductLoadActions.success({
-              products: res.map(ProductMapper.mapToProduct),
-            })
-          ),
+        this.api.displayAll(category, search).pipe(
+          map((products) => ProductLoadActions.success({ products })),
           catchError((err) => {
-            this.notifications.error('failed to load products');
+            this.notifications.error('Failed to load products');
             return of(
               ProductLoadActions.failure({
-                error: err?.message ?? 'failed to load products',
-              })
-            );
-          })
-        )
-      )
-    )
-  );
-
-  create$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ProductCreateActions.request),
-      mergeMap(({ product }) =>
-        this.api.create(ProductMapper.mapToProductModel(product)).pipe(
-          map((res) =>
-            ProductCreateActions.success({
-              product: ProductMapper.mapToProduct(res),
-            })
-          ),
-          catchError((err) => {
-            this.notifications.error('failed to create product');
-            return of(
-              ProductCreateActions.failure({
-                error: err?.message ?? 'failed to create product',
+                error: err?.message ?? 'Failed to load products',
               })
             );
           })

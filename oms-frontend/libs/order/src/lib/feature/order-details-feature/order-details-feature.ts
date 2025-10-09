@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { OrderDetailsUi } from '../../ui/order-details-ui/order-details-ui';
-import { ORDER_PORT } from '@oms-frontend/models';
+import { ORDER_STATE } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-order-feature-details',
@@ -12,7 +12,7 @@ import { ORDER_PORT } from '@oms-frontend/models';
   templateUrl: './order-details-feature.html',
 })
 export class OrderDetailsFeature implements OnInit {
-  private readonly orders = inject(ORDER_PORT);
+  private readonly orders = inject(ORDER_STATE);
   private readonly route = inject(ActivatedRoute);
 
   readonly order$ = this.orders.selectedOrder$;

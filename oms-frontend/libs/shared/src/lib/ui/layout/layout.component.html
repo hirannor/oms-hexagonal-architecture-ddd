@@ -9,7 +9,7 @@
     </div>
 
     <div class="header-search">
-      <input pInputText placeholder="Search products..." type="text"/>
+      <input pInputText placeholder="Search products..." type="text" />
       <button pButton>
         <span class="pi pi-search" pButtonIcon></span>
       </button>
@@ -26,8 +26,9 @@
         [value]="(notifications$ | async)?.length || ''"
         (click)="toggleOverlay()"
         [ngClass]="{
-        'notification-button': true,
-        'has-notifications': hasNotifications$ | async}"
+          'notification-button': true,
+          'has-notifications': hasNotifications$ | async
+        }"
       >
         <span class="pi pi-bell" pButtonIcon></span>
       </button>
@@ -39,30 +40,29 @@
         (onHide)="overlayVisible = false"
       >
         <div class="notification-panel">
-          @if (notifications$ | async; as notifications) {
-            @if (notifications.length > 0) {
-              <ul class="notifications-list">
-                @for (n of notifications; track n.timestamp) {
-                  <li [ngClass]="n.type">
-                    <div class="title">{{ n.title }}</div>
-                    <div class="message">{{ n.message }}</div>
-                    <small>{{ n.timestamp | date: 'shortTime' }}</small>
-                  </li>
-                }
-              </ul>
-
-              <button
-                pButton
-                pButtonLabel="Clear All"
-                class="p-button-text p-button-sm"
-                (click)="onClearAll()"
-              >
-                Clear All
-              </button>
-            } @else {
-              <p class="empty">No notifications</p>
+          @if (notifications$ | async; as notifications) { @if
+          (notifications.length > 0) {
+          <ul class="notifications-list">
+            @for (n of notifications; track n.timestamp) {
+            <li [ngClass]="n.type">
+              <div class="title">{{ n.title }}</div>
+              <div class="message">{{ n.message }}</div>
+              <small>{{ n.timestamp | date : 'shortTime' }}</small>
+            </li>
             }
-          }
+          </ul>
+
+          <button
+            pButton
+            pButtonLabel="Clear All"
+            class="p-button-text p-button-sm"
+            (click)="onClearAll()"
+          >
+            Clear All
+          </button>
+          } @else {
+          <p class="empty">No notifications</p>
+          } }
         </div>
       </p-overlay>
 
@@ -92,7 +92,8 @@
         #profileMenu
         [model]="profileItems"
         [popup]="true"
-        appendTo="body">
+        appendTo="body"
+      >
       </p-menu>
       <p-avatar
         (click)="profileMenu.toggle($event)"
@@ -120,4 +121,3 @@
     <p>© 2025 OMS - All rights reserved</p>
   </footer>
 </div>
-

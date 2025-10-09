@@ -2,10 +2,10 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import {
-  BASKET_PORT,
+  BASKET_STATE,
   BasketItem,
   Product,
-  PRODUCT_PORT,
+  PRODUCT_STATE,
 } from '@oms-frontend/models';
 import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -24,8 +24,8 @@ import { ProductCard } from '../../ui/product-card/product-card';
   styleUrls: ['./product-list-feature.scss'],
 })
 export class ProductListFeature implements OnInit {
-  private readonly productPort = inject(PRODUCT_PORT);
-  private readonly basketPort = inject(BASKET_PORT);
+  private readonly productPort = inject(PRODUCT_STATE);
+  private readonly basketPort = inject(BASKET_STATE);
   private readonly auth = inject(AuthService);
   private readonly route = inject(ActivatedRoute);
 
@@ -34,6 +34,12 @@ export class ProductListFeature implements OnInit {
   readonly basket$ = this.basketPort.basket$;
 
   ngOnInit(): void {
+    const customerId = this.auth.extractCustomerId();
+
+    if (customerId) {
+      this.basketPort.loadBasket(customerId);
+    }
+
     this.route.paramMap.subscribe((params) => {
       const category = params.get('category') ?? undefined;
       this.productPort.loadProducts(category);

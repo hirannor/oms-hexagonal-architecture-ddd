@@ -6,22 +6,16 @@
   <h2>Payment Successful!</h2>
 
   <p class="message">
-    Thank you! Your payment has been processed successfully, and your order is now confirmed.
+    Thank you! Your payment has been processed successfully, and your order is
+    now confirmed.
   </p>
 
   @if (sessionId) {
-    <p class="session">
-      <strong>Session ID:</strong> {{ sessionId }}
-    </p>
+  <p class="session"><strong>Session ID:</strong> {{ sessionId }}</p>
   }
 
-  <button
-    (click)="goToOrders()"
-    class="p-button-success"
-    pButton
-  >
+  <button (click)="goToOrders()" class="p-button-success" pButton>
     <span class="pi pi-list" pButtonIcon></span>
     <span pButtonLabel>View My Orders</span>
   </button>
 </div>
-

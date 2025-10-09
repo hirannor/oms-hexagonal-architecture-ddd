@@ -1,7 +1,7 @@
 ﻿<p-card class="product-card">
   <h3>{{ product.name }}</h3>
-  <img alt="{{ product.name }}"
-       src="/assets/images/placeholder.png"/>
+
+  <img alt="{{ product.name }}" src="/assets/images/placeholder.png" />
 
   <p class="description">{{ product.description }}</p>
 
@@ -10,6 +10,7 @@
   </div>
 
   <div class="actions">
+    @if (!disabled) {
     <button
       (click)="addToBasket.emit(product)"
       [disabled]="disabled"
@@ -17,9 +18,15 @@
       pButton
       pButtonIcon="pi pi-shopping-cart"
       pButtonLabel="Add to Basket"
-      type="button">
+      type="button"
+    >
       Add to Basket
     </button>
+    } @else {
+    <div class="disabled-message">
+      <i class="pi pi-lock"></i>
+      Basket already checked out
+    </div>
+    }
   </div>
 </p-card>
-

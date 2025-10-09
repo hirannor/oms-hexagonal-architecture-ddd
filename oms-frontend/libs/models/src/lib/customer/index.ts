@@ -1,4 +1,4 @@
-export * from './mapping/customer.mapper';
 export * from './customer';
 export * from './country-enum';
-export * from './customer.port';
+export * from './customer-state.port';
+export * from './customer-api.port';

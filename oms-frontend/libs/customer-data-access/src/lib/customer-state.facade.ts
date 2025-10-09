@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Customer, ICustomerPort } from '@oms-frontend/models';
+import { Customer, CustomerState } from '@oms-frontend/models';
 import {
   selectCustomer,
   selectCustomerLoading,
@@ -13,7 +13,7 @@ import {
 } from './customer.actions';
 
 @Injectable({ providedIn: 'root' })
-export class CustomerFacade implements ICustomerPort {
+export class CustomerStateFacade implements CustomerState {
   private readonly store = inject(Store);
 
   readonly customer$: Observable<Customer | null> =

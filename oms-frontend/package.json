@@ -11,13 +11,16 @@
     "generate:api:product": "openapi-generator-cli generate -i ../openapi/products-api.yml -g typescript-angular -o libs/api/product-data-access/src/lib/generated --additional-properties=providedInRoot=true,stringEnums=true,modelSuffix=Model,serviceSuffix=Api",
     "generate:apis": "npm run generate:api:customer && npm run generate:api:auth && npm run generate:api:basket && npm run generate:api:order && npm run generate:api:product",
     "start": "nx serve oms-app",
+    "prebuild": "npm run format",
     "build": "nx build oms-app",
     "test": "nx test oms-app",
     "lint": "nx lint oms-app",
     "e2e": "nx e2e oms-app-e2e",
     "test:all": "nx run-many --target=test --all",
     "lint:all": "nx run-many --target=lint --all --exclude='api-*'",
-    "build:all": "nx run-many --target=build --all"
+    "build:all": "nx run-many --target=build --all",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@angular/animations": "~20.3.2",

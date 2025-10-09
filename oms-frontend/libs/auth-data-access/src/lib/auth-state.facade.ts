@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IAuthPort } from '@oms-frontend/models';
+import { AuthState } from '@oms-frontend/models';
 import { AuthActions } from './auth.actions';
 import {
   selectAuthError,
@@ -10,7 +10,7 @@ import {
 } from './auth.selector';
 
 @Injectable({ providedIn: 'root' })
-export class AuthFacade implements IAuthPort {
+export class AuthStateFacade implements AuthState {
   private readonly store = inject(Store);
 
   readonly loading$: Observable<boolean> = this.store.select(selectAuthLoading);

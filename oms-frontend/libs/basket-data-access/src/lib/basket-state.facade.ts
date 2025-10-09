@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Basket, BasketItem, IBasketPort } from '@oms-frontend/models';
+import { Basket, BasketItem, BasketState } from '@oms-frontend/models';
 import {
   BasketAddItemActions,
   BasketCheckoutActions,
@@ -12,7 +12,7 @@ import {
 import { selectBasket, selectBasketLoading } from './basket.selector';
 
 @Injectable({ providedIn: 'root' })
-export class BasketFacade implements IBasketPort {
+export class BasketStateFacade implements BasketState {
   private readonly store = inject(Store);
 
   readonly basket$: Observable<Basket | null> = this.store.select(selectBasket);

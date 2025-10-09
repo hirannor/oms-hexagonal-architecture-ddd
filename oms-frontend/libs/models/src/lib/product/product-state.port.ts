@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from './product';
 
-export interface IProductPort {
+export interface ProductState {
   readonly products$: Observable<Product[]>;
 
   readonly loading$: Observable<boolean>;
@@ -10,4 +10,4 @@ export interface IProductPort {
   loadProducts(category?: string): void;
 }
 
-export const PRODUCT_PORT = new InjectionToken<IProductPort>('PRODUCT_PORT');
+export const PRODUCT_STATE = new InjectionToken<ProductState>('PRODUCT_STATE');

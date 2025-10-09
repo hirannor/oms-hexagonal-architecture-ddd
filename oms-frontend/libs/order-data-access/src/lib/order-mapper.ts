@@ -5,11 +5,13 @@
   OrderModel,
   OrderStatusModel,
 } from '@oms-frontend/api/order-data-access';
-import { Currency } from '../../core';
-import { OrderItem } from '../order-item';
-import { Order } from '../order';
-import { OrderStatus } from '../order-status';
-import { CreateOrder } from '../create-order';
+import {
+  CreateOrder,
+  Currency,
+  Order,
+  OrderItem,
+  OrderStatus,
+} from '@oms-frontend/models';
 
 export class OrderMapper {
   static mapToOrder(model: OrderModel): Order {

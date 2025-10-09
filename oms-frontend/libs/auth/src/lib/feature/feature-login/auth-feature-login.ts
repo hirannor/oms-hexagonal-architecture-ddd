@@ -5,7 +5,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { AUTH_PORT } from '@oms-frontend/models';
+import { AUTH_STATE } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-auth-feature-login',
@@ -23,7 +23,7 @@ import { AUTH_PORT } from '@oms-frontend/models';
 })
 export class AuthFeatureLogin {
   private readonly fb = inject(FormBuilder);
-  private readonly auth = inject(AUTH_PORT);
+  private readonly auth = inject(AUTH_STATE);
 
   readonly form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

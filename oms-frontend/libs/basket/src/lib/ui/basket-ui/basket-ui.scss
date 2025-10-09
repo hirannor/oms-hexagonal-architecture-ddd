@@ -28,9 +28,50 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
 
   .basket-summary {
     font-size: 1.2rem;
+    font-weight: 500;
+
+    strong {
+      color: #10b981;
+    }
+  }
+
+  .basket-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    button {
+      min-width: 200px;
+      font-weight: 500;
+    }
+
+    .p-button-secondary {
+      background-color: #f3f4f6;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #e5e7eb;
+      }
+    }
+
+    .p-button-success {
+      background-color: #10b981;
+      border: none;
+
+      &:hover {
+        background-color: #0ea373;
+      }
+    }
   }
 
   .checkout-button {

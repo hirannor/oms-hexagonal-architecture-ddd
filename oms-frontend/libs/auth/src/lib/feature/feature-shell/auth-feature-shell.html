@@ -19,13 +19,11 @@
 
   <div class="auth-feedback">
     @if (registerSuccess$ | async) {
-      <div class="form-message success">
-        Registration successful! You can now log in.
-      </div>
-    }
-
-    @if (error$ | async; as err) {
-      <div class="form-message error">{{ err }}</div>
+    <div class="form-message success">
+      Registration successful! You can now log in.
+    </div>
+    } @if (error$ | async; as err) {
+    <div class="form-message error">{{ err }}</div>
     }
   </div>
 </div>

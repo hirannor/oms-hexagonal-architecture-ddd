@@ -10,10 +10,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -33,21 +30,11 @@
       "@oms-frontend/api/product-data-access": [
         "libs/api/product-data-access/src/index.ts"
       ],
-      "@oms-frontend/auth": [
-        "libs/auth/src/index.ts"
-      ],
-      "@oms-frontend/basket": [
-        "libs/basket/src/index.ts"
-      ],
-      "@oms-frontend/customer": [
-        "libs/customer/src/index.ts"
-      ],
-      "@oms-frontend/models": [
-        "libs/models/src/index.ts"
-      ],
-      "@oms-frontend/order": [
-        "libs/order/src/index.ts"
-      ],
+      "@oms-frontend/auth": ["libs/auth/src/index.ts"],
+      "@oms-frontend/basket": ["libs/basket/src/index.ts"],
+      "@oms-frontend/customer": ["libs/customer/src/index.ts"],
+      "@oms-frontend/models": ["libs/models/src/index.ts"],
+      "@oms-frontend/order": ["libs/order/src/index.ts"],
       "@oms-frontend/order-data-access": [
         "libs/order-data-access/src/index.ts"
       ],
@@ -57,22 +44,13 @@
       "@oms-frontend/product-data-access": [
         "libs/product-data-access/src/index.ts"
       ],
-      "@oms-frontend/auth-data-access": [
-        "libs/auth-data-access/src/index.ts"
-      ],
+      "@oms-frontend/auth-data-access": ["libs/auth-data-access/src/index.ts"],
       "@oms-frontend/customer-data-access": [
         "libs/customer-data-access/src/index.ts"
       ],
-      "@oms-frontend/product": [
-        "libs/product/src/index.ts"
-      ],
-      "@oms-frontend/shared": [
-        "libs/shared/src/index.ts"
-      ]
+      "@oms-frontend/product": ["libs/product/src/index.ts"],
+      "@oms-frontend/shared": ["libs/shared/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

@@ -4,9 +4,9 @@ import { RouterLink } from '@angular/router';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import {
   Basket,
-  BASKET_PORT,
+  BASKET_STATE,
   BasketItem,
-  ORDER_PORT,
+  ORDER_STATE,
 } from '@oms-frontend/models';
 import { AuthService, LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { BasketUi } from '../../ui/basket-ui/basket-ui';
@@ -29,8 +29,8 @@ import { BasketSummaryUi } from '../../ui/basket-summary-ui/basket-summary-ui';
   styleUrls: ['./basket-cart-feature.scss'],
 })
 export class BasketCartFeature implements OnInit {
-  private readonly baskets = inject(BASKET_PORT);
-  private readonly orders = inject(ORDER_PORT);
+  private readonly baskets = inject(BASKET_STATE);
+  private readonly orders = inject(ORDER_STATE);
   private readonly auth = inject(AuthService);
 
   readonly basket$ = this.baskets.basket$;

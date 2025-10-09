@@ -3,7 +3,7 @@ import { InjectionToken } from '@angular/core';
 import { Order } from './order';
 import { Basket } from '../basket';
 
-export interface IOrderPort {
+export interface OrderState {
   readonly allOrders$: Observable<Order[]>;
   readonly selectedOrder$: Observable<Order | undefined>;
   readonly loading$: Observable<boolean>;
@@ -17,4 +17,4 @@ export interface IOrderPort {
   pay(orderId: string): void;
 }
 
-export const ORDER_PORT = new InjectionToken<IOrderPort>('ORDER_PORT');
+export const ORDER_STATE = new InjectionToken<OrderState>('ORDER_STATE');

@@ -1,11 +1,12 @@
-import { CreateOrder, IOrderApiPort, OrderMapper } from '@oms-frontend/models';
-import { OrderApi } from '@oms-frontend/api/order-data-access';
+import { CreateOrder, OrderApi } from '@oms-frontend/models';
+import { OrderApi as GeneratedOrderApi } from '@oms-frontend/api/order-data-access';
 import { inject, Injectable } from '@angular/core';
 import { map } from 'rxjs';
+import { OrderMapper } from './order-mapper';
 
 @Injectable({ providedIn: 'root' })
-export class OrderApiAdapter implements IOrderApiPort {
-  private readonly api = inject(OrderApi);
+export class OrderApiService implements OrderApi {
+  private readonly api = inject(GeneratedOrderApi);
 
   displayMine() {
     return this.api

@@ -1,14 +1,14 @@
 ﻿<div class="profile-container">
   <p-card header="My Profile">
     @if (loading$ | async) {
-      <lib-loading-spinner></lib-loading-spinner>
+    <lib-loading-spinner></lib-loading-spinner>
     } @else {
-      <lib-customer-ui-profile-form
-        [customer]="customer$ | async"
-        [updating]="(updating$ | async)"
-        (save)="onSave($event)">
-      </lib-customer-ui-profile-form>
+    <lib-customer-ui-profile-form
+      [customer]="customer$ | async"
+      [updating]="(updating$ | async)"
+      (save)="onSave($event)"
+    >
+    </lib-customer-ui-profile-form>
     }
   </p-card>
 </div>
-

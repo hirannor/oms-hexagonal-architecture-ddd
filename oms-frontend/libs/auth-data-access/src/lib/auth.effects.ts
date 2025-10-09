@@ -1,19 +1,14 @@
 ﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {
-  AuthMapper,
-  LoginPayload,
-  RegisterPayload,
-} from '@oms-frontend/models';
-import { AuthService, ProblemDetailsMapper } from '@oms-frontend/shared';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
-import { AuthApi } from '@oms-frontend/api/auth-data-access';
+import { AUTH_API, LoginPayload, RegisterPayload } from '@oms-frontend/models';
+import { AuthService, ProblemDetailsMapper } from '@oms-frontend/shared';
 import { AuthActions } from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
   private readonly actions$ = inject(Actions);
-  private readonly api = inject(AuthApi);
+  private readonly api = inject(AUTH_API);
   private readonly auth = inject(AuthService);
 
   navigateAfterLogin$ = createEffect(
@@ -30,30 +25,20 @@ export class AuthEffects {
       ofType(AuthActions.login),
       mergeMap(({ email, password }) => {
         const payload: LoginPayload = { email, password };
-
-        return this.api
-          .authenticate(AuthMapper.mapToAuthenticateModel(payload))
-          .pipe(
-            map((res) => {
-              this.auth.saveTokens(
-                res.accessToken ?? '',
-                res.refreshToken ?? ''
-              );
-
-              return AuthActions.loginSuccess({
-                email: res.emailAddress ?? '',
-                accessToken: res.accessToken ?? '',
-                refreshToken: res.refreshToken ?? '',
-              });
-            }),
-            catchError((err) => {
-              const errorMessage = this.resolveErrorMessage(
-                err,
-                'Login failed'
-              );
-              return of(AuthActions.loginFailure({ error: errorMessage }));
-            })
-          );
+        return this.api.authenticate(payload).pipe(
+          map((res) => {
+            this.auth.saveTokens(res.accessToken, res.refreshToken);
+            return AuthActions.loginSuccess({
+              email: res.email,
+              accessToken: res.accessToken,
+              refreshToken: res.refreshToken,
+            });
+          }),
+          catchError((err) => {
+            const message = this.resolveErrorMessage(err, 'Login failed');
+            return of(AuthActions.loginFailure({ error: message }));
+          })
+        );
       })
     )
   );
@@ -63,15 +48,14 @@ export class AuthEffects {
       ofType(AuthActions.register),
       mergeMap(({ email, password }) => {
         const payload: RegisterPayload = { email, password };
-
-        return this.api.register(AuthMapper.mapToRegisterModel(payload)).pipe(
+        return this.api.register(payload).pipe(
           map(() => AuthActions.registerSuccess({ email })),
           catchError((err) => {
-            const errorMessage = this.resolveErrorMessage(
+            const message = this.resolveErrorMessage(
               err,
               'Registration failed'
             );
-            return of(AuthActions.registerFailure({ error: errorMessage }));
+            return of(AuthActions.registerFailure({ error: message }));
           })
         );
       })
@@ -88,11 +72,8 @@ export class AuthEffects {
           ),
           catchError((err) => {
             this.auth.logout();
-            const errorMessage = this.resolveErrorMessage(
-              err,
-              'Session expired'
-            );
-            return of(AuthActions.refreshTokenFailure({ error: errorMessage }));
+            const message = this.resolveErrorMessage(err, 'Session expired');
+            return of(AuthActions.refreshTokenFailure({ error: message }));
           })
         )
       )
@@ -101,15 +82,12 @@ export class AuthEffects {
 
   private resolveErrorMessage(err: unknown, fallback: string): string {
     if (!err) return fallback;
-
     try {
       const problem = ProblemDetailsMapper.fromApi((err as any).error);
-
       if (problem?.detail) return problem.detail;
       if (problem?.title) return problem.title;
       if ((err as any).message) return (err as any).message;
     } catch {}
-
     return fallback;
   }
 }

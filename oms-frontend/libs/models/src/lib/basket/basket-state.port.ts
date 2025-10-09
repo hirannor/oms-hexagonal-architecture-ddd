@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { BasketItem } from './basket-item';
 import { Basket } from './basket';
 
-export interface IBasketPort {
+export interface BasketState {
   readonly basket$: Observable<Basket | null>;
 
   readonly loading$: Observable<boolean>;
@@ -19,4 +19,4 @@ export interface IBasketPort {
   clear(): void;
 }
 
-export const BASKET_PORT = new InjectionToken<IBasketPort>('BASKET_PORT');
+export const BASKET_STATE = new InjectionToken<BasketState>('BASKET_STATE');

@@ -12,12 +12,12 @@ import {
   OrderLoadActions,
   OrderPaymentActions,
 } from './order.actions';
-import { ORDER_API_PORT } from '@oms-frontend/models';
+import { ORDER_API } from '@oms-frontend/models';
 
 @Injectable()
 export class OrderEffects {
   private readonly actions$ = inject(Actions);
-  private readonly api = inject(ORDER_API_PORT);
+  private readonly api = inject(ORDER_API);
   private readonly notifications = inject(NotificationService);
   private readonly router = inject(Router);
 

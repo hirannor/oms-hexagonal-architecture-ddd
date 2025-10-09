@@ -1,3 +1,3 @@
 export * from './product';
-export * from './product.mapper';
-export * from './product.port';
+export * from './product-state.port';
+export * from './product-api.port';

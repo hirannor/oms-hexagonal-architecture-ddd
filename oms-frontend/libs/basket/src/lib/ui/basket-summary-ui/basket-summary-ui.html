@@ -15,8 +15,8 @@
         <td>{{ item.quantity }}</td>
         <td>{{ item.price.amount }} {{ item.price.currency }}</td>
         <td>
-          {{ (+item.price.amount * item.quantity) | number: '1.2-2' }}
-          {{ item.price.currency }}
+          {{ (+item.price.amount * item.quantity) | number: '1.2-2' }} {{
+          item.price.currency }}
         </td>
       </tr>
     </ng-template>
@@ -25,7 +25,9 @@
   <div class="summary-footer">
     <h3>
       Grand Total:
-      <strong>{{ basket.totalPrice.amount }} {{ basket.totalPrice.currency }}</strong>
+      <strong
+        >{{ basket.totalPrice.amount }} {{ basket.totalPrice.currency }}</strong
+      >
     </h3>
 
     <div class="order-actions">
@@ -38,7 +40,5 @@
         <span pButtonLabel>Confirm Order</span>
       </button>
     </div>
-
   </div>
 </div>
-

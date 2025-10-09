@@ -2,4 +2,5 @@
 export * from './lib/customer.effects';
 export * from './lib/customer.reducer';
 export * from './lib/customer.selector';
-export * from './lib/customer.facade';
+export * from './lib/customer-state.facade';
+export * from './lib/customer-api.service';

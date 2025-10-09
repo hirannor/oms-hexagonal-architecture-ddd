@@ -2,16 +2,11 @@
   <h2 class="feature-title">Order Details</h2>
 
   @if (loading$ | async) {
-    <lib-loading-spinner></lib-loading-spinner>
+  <lib-loading-spinner></lib-loading-spinner>
+  } @else { @if (order$ | async; as order) {
+  <lib-order-details-ui [order]="order" (pay)="onPay($event)">
+  </lib-order-details-ui>
   } @else {
-    @if (order$ | async; as order) {
-      <lib-order-details-ui
-        [order]="order"
-        (pay)="onPay($event)">
-      </lib-order-details-ui>
-    } @else {
-      <p>No order found.</p>
-    }
-  }
+  <p>No order found.</p>
+  } }
 </div>
-

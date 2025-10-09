@@ -11,7 +11,7 @@ leveraging **NgRx** for state management, **PrimeNG** for UI, and **clean archit
 ## 🚀 Tech Stack
 
 | Layer            | Technology                                             |
-|------------------|--------------------------------------------------------|
+| ---------------- | ------------------------------------------------------ |
 | Framework        | **Angular 20 (Standalone Components)**                 |
 | Workspace        | **Nx Monorepo**                                        |
 | State Management | **NgRx** (store, effects, actions, selectors)          |
@@ -26,10 +26,10 @@ leveraging **NgRx** for state management, **PrimeNG** for UI, and **clean archit
 ## 🧱 Core Libraries Overview
 
 | Project / Library                | Description                                                                                                                            |
-|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | **@oms-frontend/shared**         | Core shared utilities, interceptors, layout, guards, and reusable UI components.                                                       |
 | **@oms-frontend/models**         | Domain representation models shared across all frontend projects.                                                                      |
-| **@oms-frontend/api-***          | Auto-generated OpenAPI REST clients for each domain (e.g. `api-auth-data-access`, `api-order-data-access`, `api-product-data-access`). |
+| **@oms-frontend/api-\***         | Auto-generated OpenAPI REST clients for each domain (e.g. `api-auth-data-access`, `api-order-data-access`, `api-product-data-access`). |
 | **@oms-frontend/\*-data-access** | NgRx store, effects, and facades for each bounded context (e.g. `basket-data-access`, `order-data-access`, etc.).                      |
 | **@oms-frontend/order**          | Feature & UI libs for order management                                                                                                 |
 | **@oms-frontend/basket**         | Feature & UI libs for basket and checkout                                                                                              |
@@ -51,3 +51,4 @@ Start the frontend app:
 
 ```bash
 npx nx serve oms-app
+```

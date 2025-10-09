@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { LoadingSpinnerComponent } from '@oms-frontend/shared';
 import { OrderHistoryUi } from '../../ui/order-history-ui/order-history-ui';
-import { ORDER_PORT } from '@oms-frontend/models';
+import { ORDER_STATE } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-order-feature-history',
@@ -11,7 +11,7 @@ import { ORDER_PORT } from '@oms-frontend/models';
   templateUrl: './order-history-feature.html',
 })
 export class OrderHistoryFeature implements OnInit {
-  private readonly orders = inject(ORDER_PORT);
+  private readonly orders = inject(ORDER_STATE);
 
   readonly orders$ = this.orders.allOrders$;
   readonly loading$ = this.orders.loading$;

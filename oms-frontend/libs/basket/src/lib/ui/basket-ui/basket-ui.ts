@@ -1,5 +1,6 @@
 ﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Basket, BasketItem } from '@oms-frontend/models';
 import { ButtonDirective, ButtonIcon, ButtonLabel } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -14,6 +15,7 @@ import { Tooltip } from 'primeng/tooltip';
     ButtonLabel,
     TableModule,
     Tooltip,
+    RouterLink,
   ],
   standalone: true,
   templateUrl: './basket-ui.html',

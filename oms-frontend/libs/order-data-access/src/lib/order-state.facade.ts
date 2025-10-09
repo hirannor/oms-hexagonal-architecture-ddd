@@ -11,11 +11,11 @@ import {
   OrderLoadActions,
   OrderPaymentActions,
 } from './order.actions';
-import { Basket, IOrderPort, OrderItem } from '@oms-frontend/models';
+import { Basket, OrderState, OrderItem } from '@oms-frontend/models';
 import { AuthService } from '@oms-frontend/shared';
 
 @Injectable({ providedIn: 'root' })
-export class OrderFacade implements IOrderPort {
+export class OrderStateFacade implements OrderState {
   private readonly store = inject(Store);
   private readonly auth = inject(AuthService);
 

@@ -4,8 +4,7 @@
   CountryModel,
   CustomerModel,
 } from '@oms-frontend/api/customer-data-access';
-import { Customer } from '../customer';
-import { CountryCode } from '../country-enum';
+import { CountryCode, Customer } from '@oms-frontend/models';
 
 export class CustomerMapper {
   static fromApi(model: CustomerModel): Customer {
