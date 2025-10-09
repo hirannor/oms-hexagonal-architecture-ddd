@@ -10,6 +10,4 @@ export interface CustomerApi {
   ): Observable<Customer>;
 }
 
-export const CUSTOMER_API = new InjectionToken<CustomerApi>(
-  'CUSTOMER_API_PORT'
-);
+export const CUSTOMER_API = new InjectionToken<CustomerApi>('CUSTOMER_API');

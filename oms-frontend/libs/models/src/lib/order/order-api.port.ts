@@ -13,4 +13,4 @@ export interface OrderApi {
   pay(orderId: string): Observable<{ paymentUrl: string }>;
 }
 
-export const ORDER_API = new InjectionToken<OrderApi>('ORDER_API_PORT');
+export const ORDER_API = new InjectionToken<OrderApi>('ORDER_API');

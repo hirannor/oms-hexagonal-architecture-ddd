@@ -9,4 +9,4 @@ export interface AuthApi {
   register(payload: RegisterPayload): Observable<void>;
 }
 
-export const AUTH_API = new InjectionToken<AuthApi>('AUTH_API_PORT');
+export const AUTH_API = new InjectionToken<AuthApi>('AUTH_API');

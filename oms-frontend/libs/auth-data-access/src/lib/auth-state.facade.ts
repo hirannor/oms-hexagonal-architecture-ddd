@@ -31,8 +31,6 @@ export class AuthStateFacade implements AuthState {
   }
 
   logout(): void {
-    this.authService.clearTokens();
     this.store.dispatch(AuthActions.logout());
-    this.router.navigate(['/login']);
   }
 }

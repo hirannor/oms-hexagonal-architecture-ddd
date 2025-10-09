@@ -19,4 +19,4 @@ export interface BasketApi {
   checkout(customerId: string): Observable<Basket>;
 }
 
-export const BASKET_API = new InjectionToken<BasketApi>('BASKET_API_PORT');
+export const BASKET_API = new InjectionToken<BasketApi>('BASKET_API');

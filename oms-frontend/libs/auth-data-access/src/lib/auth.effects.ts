@@ -1,4 +1,5 @@
 ﻿import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import {
@@ -13,6 +14,7 @@ import { AuthActions } from './auth.actions';
 @Injectable()
 export class AuthEffects {
   private readonly actions$ = inject(Actions);
+  private readonly router = inject(Router);
   private readonly authApi = inject(AUTH_API);
   private readonly authState = inject(AUTH_STATE);
   private readonly authService = inject(AuthService);
@@ -21,7 +23,9 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
-        tap(() => this.authService.navigateToOrders())
+        tap(() => {
+          this.router.navigate(['/products']);
+        })
       ),
     { dispatch: false }
   );
@@ -84,6 +88,18 @@ export class AuthEffects {
         )
       )
     )
+  );
+
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logout),
+        tap(() => {
+          this.authService.clearTokens();
+          this.router.navigate(['/login']);
+        })
+      ),
+    { dispatch: false }
   );
 
   private resolveErrorMessage(err: unknown, fallback: string): string {

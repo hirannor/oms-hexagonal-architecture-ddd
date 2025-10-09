@@ -1,12 +1,10 @@
 ﻿import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
 import { map, Observable, tap } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly router = inject(Router);
   private readonly api = inject(AuthApi);
   private readonly tokenStorage = inject(TokenStorageService);
 
@@ -67,10 +65,5 @@ export class AuthService {
 
   logout(): void {
     this.clearTokens();
-    this.router.navigate(['/login']);
-  }
-
-  navigateToOrders(): void {
-    this.router.navigate(['/orders']);
   }
 }
