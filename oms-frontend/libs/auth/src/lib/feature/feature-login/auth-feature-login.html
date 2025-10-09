@@ -1,9 +1,9 @@
-﻿<form (ngSubmit)="onSubmit()" [formGroup]="form" class="auth-form p-fluid">
+﻿<form (ngSubmit)="onLogin()" [formGroup]="loginForm" class="auth-form p-fluid">
   <div class="form-field">
     <label for="email">Email</label>
     <input
-      formControlName="email"
       id="email"
+      formControlName="email"
       pInputText
       placeholder="you@example.com"
       type="email"
@@ -13,15 +13,43 @@
   <div class="form-field">
     <label for="password">Password</label>
     <p-password
+      id="password"
+      formControlName="password"
       [feedback]="false"
       [inputStyleClass]="'w-full'"
+      placeholder="Enter password"
       class="w-full"
-      formControlName="password"
-      id="password"
     ></p-password>
   </div>
 
   <div class="form-actions">
-    <button [disabled]="form.invalid" pButton type="submit">Login</button>
+    <button
+      [disabled]="loginForm.invalid || (loading$ | async)"
+      pButton
+      type="submit"
+    >
+      Login
+    </button>
+  </div>
+
+  <div class="form-footer">
+    <p>
+      Don't have an account?
+      <a
+        href="#"
+        role="button"
+        (click)="switchToRegister.emit(); $event.preventDefault()"
+        (keydown.enter)="switchToRegister.emit()"
+        (keydown.space)="switchToRegister.emit()"
+      >
+        Create one
+      </a>
+    </p>
+  </div>
+
+  <div class="form-feedback">
+    @if (error$ | async; as err) {
+    <p class="error">{{ err }}</p>
+    }
   </div>
 </form>

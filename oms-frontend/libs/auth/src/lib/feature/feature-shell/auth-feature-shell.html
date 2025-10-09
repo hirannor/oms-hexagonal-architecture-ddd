@@ -1,29 +1,15 @@
-﻿<div class="auth-container">
-  <div class="auth-forms">
-    <p-card
-      header="Welcome Back"
-      class="auth-card"
-      subheader="Please log in to continue"
-    >
-      <lib-auth-feature-login></lib-auth-feature-login>
-    </p-card>
+<div class="auth-shell-container">
+  <h1 class="auth-shell-title">Order Management System</h1>
 
-    <p-card
-      header="Create Account"
-      class="auth-card"
-      subheader="Register to continue"
-    >
-      <lib-auth-feature-register></lib-auth-feature-register>
-    </p-card>
-  </div>
-
-  <div class="auth-feedback">
-    @if (registerSuccess$ | async) {
-    <div class="form-message success">
-      Registration successful! You can now log in.
-    </div>
-    } @if (error$ | async; as err) {
-    <div class="form-message error">{{ err }}</div>
+  <p-card class="auth-shell-card">
+    @if (mode === 'login') {
+    <lib-auth-feature-login
+      (switchToRegister)="toggleMode()"
+    ></lib-auth-feature-login>
+    } @else {
+    <lib-auth-feature-register
+      (switchToLogin)="toggleMode()"
+    ></lib-auth-feature-register>
     }
-  </div>
+  </p-card>
 </div>

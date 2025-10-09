@@ -59,13 +59,36 @@ export class AuthEffects {
       mergeMap(({ email, password }) => {
         const payload: RegisterPayload = { email, password };
         return this.authApi.register(payload).pipe(
-          map(() => AuthActions.registerSuccess({ email })),
+          map(() => AuthActions.registerSuccess({ email, password })),
           catchError((err) => {
             const message = this.resolveErrorMessage(
               err,
               'Registration failed'
             );
             return of(AuthActions.registerFailure({ error: message }));
+          })
+        );
+      })
+    )
+  );
+
+  autoLoginAfterRegister$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.registerSuccess),
+      mergeMap(({ email, password }) => {
+        const payload: LoginPayload = { email, password };
+        return this.authApi.authenticate(payload).pipe(
+          map((res) => {
+            this.authService.saveTokens(res.accessToken, res.refreshToken);
+            return AuthActions.loginSuccess({
+              email: res.email,
+              accessToken: res.accessToken,
+              refreshToken: res.refreshToken,
+            });
+          }),
+          catchError((err) => {
+            const message = this.resolveErrorMessage(err, 'Auto login failed');
+            return of(AuthActions.loginFailure({ error: message }));
           })
         );
       })

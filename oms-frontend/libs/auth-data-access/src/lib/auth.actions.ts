@@ -12,7 +12,7 @@ export const AuthActions = createActionGroup({
     'Login Failure': props<{ error: string }>(),
 
     Register: props<{ email: string; password: string }>(),
-    'Register Success': props<{ email: string }>(),
+    'Register Success': props<{ email: string; password: string }>(),
     'Register Failure': props<{ error: string }>(),
 
     'Refresh Token': emptyProps(),
@@ -21,7 +21,7 @@ export const AuthActions = createActionGroup({
       refreshToken: string;
     }>(),
     'Refresh Token Failure': props<{ error: string }>(),
-
+    'Clear Messages': emptyProps(),
     Logout: emptyProps(),
   },
 });

@@ -33,4 +33,8 @@ export class AuthStateFacade implements AuthState {
   logout(): void {
     this.store.dispatch(AuthActions.logout());
   }
+
+  clearMessages(): void {
+    this.store.dispatch(AuthActions.clearMessages());
+  }
 }

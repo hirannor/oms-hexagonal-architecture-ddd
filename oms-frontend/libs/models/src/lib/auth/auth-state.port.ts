@@ -11,6 +11,8 @@ export interface AuthState {
   login(email: string, password: string): void;
 
   logout(): void;
+
+  clearMessages(): void;
 }
 
 export const AUTH_STATE = new InjectionToken<AuthState>('AUTH_STATE');

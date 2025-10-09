@@ -1,7 +1,6 @@
-﻿import { Component, inject } from '@angular/core';
+﻿import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
@@ -13,7 +12,6 @@ import { AUTH_STATE } from '@oms-frontend/models';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    CardModule,
     InputTextModule,
     PasswordModule,
     ButtonModule,
@@ -25,28 +23,23 @@ export class AuthFeatureLogin {
   private readonly fb = inject(FormBuilder);
   private readonly auth = inject(AUTH_STATE);
 
-  readonly form = this.fb.group({
+  @Output() switchToRegister = new EventEmitter<void>();
+
+  readonly loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
 
   readonly loading$ = this.auth.loading$;
+  readonly error$ = this.auth.error$;
 
-  get email() {
-    return this.form.get('email')!;
-  }
-
-  get password() {
-    return this.form.get('password')!;
-  }
-
-  onSubmit(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
+  onLogin(): void {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
       return;
     }
 
-    const { email, password } = this.form.value;
+    const { email, password } = this.loginForm.value;
     if (email && password) {
       this.auth.login(email, password);
     }

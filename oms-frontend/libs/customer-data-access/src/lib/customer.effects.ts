@@ -1,4 +1,5 @@
 ﻿import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NotificationService } from '@oms-frontend/shared';
 import {
@@ -13,6 +14,7 @@ import { CustomerMapper } from './customer.mapper';
 export class CustomerEffects {
   private readonly actions$ = inject(Actions);
   private readonly api = inject(CustomerApi);
+  private readonly router = inject(Router);
   private readonly notifications = inject(NotificationService);
 
   loadProfile$ = createEffect(() =>
@@ -75,6 +77,7 @@ export class CustomerEffects {
         ofType(CustomerProfileUpdateActions.success),
         tap(() => {
           this.notifications.success('Profile updated successfully');
+          this.router.navigate(['/products']);
         })
       ),
     { dispatch: false }
