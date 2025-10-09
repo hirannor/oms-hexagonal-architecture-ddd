@@ -20,9 +20,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <rest-api-definition.version>1.0.0-SNAPSHOT</rest-api-definition.version>
 
-        <!-- OpenAPI generator package targets -->
         <openapi-generator-maven-plugin.customers.apiPackage>
             io.github.hirannor.oms.adapter.web.rest.customer.api
         </openapi-generator-maven-plugin.customers.apiPackage>
@@ -57,21 +55,9 @@
         <openapi-generator-maven-plugin.baskets.modelPackage>
             io.github.hirannor.oms.adapter.web.rest.baskets.model
         </openapi-generator-maven-plugin.baskets.modelPackage>
-
-        <!-- JWT versions -->
-        <jjwt-api.version>0.13.0</jjwt-api.version>
-        <jjwt-impl.version>0.13.0</jjwt-impl.version>
-        <jjwt-jackson.version>0.13.0</jjwt-jackson.version>
     </properties>
 
     <dependencies>
-        <!-- Pull the packaged YAMLs -->
-        <dependency>
-            <groupId>io.github.hirannor.oms</groupId>
-            <artifactId>rest-api-definition</artifactId>
-            <version>${rest-api-definition.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
@@ -90,7 +76,6 @@
             </exclusions>
         </dependency>
 
-        <!-- Provided Spring Boot runtime -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -104,58 +89,10 @@
             <version>${spring-boot.version}</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- JWT -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>${jjwt-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>${jjwt-impl.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId>
-            <version>${jjwt-jackson.version}</version>
-            <scope>runtime</scope>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-
-            <!-- Unpack YAMLs from rest-api-definition -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>fetch-api-def</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>io.github.hirannor.oms</groupId>
-                                    <artifactId>rest-api-definition</artifactId>
-                                    <version>${rest-api-definition.version}</version>
-                                    <outputDirectory>${project.build.directory}</outputDirectory>
-                                    <includes>**/*.yml</includes>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Generate Spring interfaces from OpenAPI -->
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
@@ -171,14 +108,13 @@
                     </configOptions>
                 </configuration>
                 <executions>
-
                     <execution>
                         <id>authentication-api</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.build.directory}/authentication-api.yml</inputSpec>
+                            <inputSpec>${project.basedir}/../../openapi/authentication-api.yml</inputSpec>
                             <apiPackage>${openapi-generator-maven-plugin.authentication.apiPackage}</apiPackage>
                             <modelPackage>${openapi-generator-maven-plugin.authentication.modelPackage}</modelPackage>
                             <typeMappings>
@@ -196,7 +132,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.build.directory}/customers-api.yml</inputSpec>
+                            <inputSpec>${project.basedir}/../../openapi/customers-api.yml</inputSpec>
                             <apiPackage>${openapi-generator-maven-plugin.customers.apiPackage}</apiPackage>
                             <modelPackage>${openapi-generator-maven-plugin.customers.modelPackage}</modelPackage>
                             <typeMappings>
@@ -214,7 +150,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.build.directory}/products-api.yml</inputSpec>
+                            <inputSpec>${project.basedir}/../../openapi/products-api.yml</inputSpec>
                             <apiPackage>${openapi-generator-maven-plugin.products.apiPackage}</apiPackage>
                             <modelPackage>${openapi-generator-maven-plugin.products.modelPackage}</modelPackage>
                             <typeMappings>
@@ -232,7 +168,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.build.directory}/orders-api.yml</inputSpec>
+                            <inputSpec>${project.basedir}/../../openapi/orders-api.yml</inputSpec>
                             <apiPackage>${openapi-generator-maven-plugin.orders.apiPackage}</apiPackage>
                             <modelPackage>${openapi-generator-maven-plugin.orders.modelPackage}</modelPackage>
                             <typeMappings>
@@ -250,7 +186,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.build.directory}/baskets-api.yml</inputSpec>
+                            <inputSpec>${project.basedir}/../../openapi/baskets-api.yml</inputSpec>
                             <apiPackage>${openapi-generator-maven-plugin.baskets.apiPackage}</apiPackage>
                             <modelPackage>${openapi-generator-maven-plugin.baskets.modelPackage}</modelPackage>
                             <typeMappings>
@@ -261,7 +197,6 @@
                             </importMappings>
                         </configuration>
                     </execution>
-
                 </executions>
             </plugin>
         </plugins>

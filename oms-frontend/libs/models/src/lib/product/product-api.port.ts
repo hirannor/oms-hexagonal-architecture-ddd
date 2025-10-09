@@ -4,6 +4,7 @@ import { Product } from './product';
 
 export interface ProductApi {
   displayBy(id: string): Observable<Product>;
+
   displayAll(category?: string, search?: string): Observable<Product[]>;
 }
 

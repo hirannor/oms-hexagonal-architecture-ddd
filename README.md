@@ -39,7 +39,6 @@ The architecture enforces clear separation through **ArchUnit** tests and follow
 
 The Angular workspace mirrors backend boundaries:
 
-
 - `libs/<domain>/<*-feature>` → Feature-specific UI modules (e.g., order, customer, product)  
   Contain routed feature shells, presentation components, and feature-specific UIs.
 

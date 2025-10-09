@@ -4,6 +4,7 @@ import { Customer } from './customer';
 
 export interface CustomerApi {
   authenticatedCustomer(): Observable<Customer>;
+
   changePersonalDetails(
     customerId: string,
     cmd: Customer

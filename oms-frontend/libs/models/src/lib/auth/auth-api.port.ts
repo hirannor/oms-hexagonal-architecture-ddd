@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 export interface AuthApi {
   authenticate(payload: LoginPayload): Observable<AuthResult>;
+
   register(payload: RegisterPayload): Observable<void>;
 }
 

@@ -11,7 +11,7 @@ import {
   OrderLoadActions,
   OrderPaymentActions,
 } from './order.actions';
-import { Basket, OrderState, OrderItem } from '@oms-frontend/models';
+import { Basket, OrderItem, OrderState } from '@oms-frontend/models';
 import { AuthService } from '@oms-frontend/shared';
 
 @Injectable({ providedIn: 'root' })

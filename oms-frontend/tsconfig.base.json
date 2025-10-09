@@ -22,7 +22,6 @@
       "@oms-frontend/api/auth-data-access": [
         "libs/openapi/auth-data-access/src/index.ts"
       ],
-
       "@oms-frontend/basket": ["libs/basket/basket-feature/src/index.ts"],
       "@oms-frontend/basket-data-access": [
         "libs/basket/basket-data-access/src/index.ts"
@@ -30,7 +29,6 @@
       "@oms-frontend/api/basket-data-access": [
         "libs/openapi/basket-data-access/src/index.ts"
       ],
-
       "@oms-frontend/customer": ["libs/customer/customer-feature/src/index.ts"],
       "@oms-frontend/customer-data-access": [
         "libs/customer/customer-data-access/src/index.ts"
@@ -38,7 +36,6 @@
       "@oms-frontend/api/customer-data-access": [
         "libs/openapi/customer-data-access/src/index.ts"
       ],
-
       "@oms-frontend/order": ["libs/order/order-feature/src/index.ts"],
       "@oms-frontend/order-data-access": [
         "libs/order/order-data-access/src/index.ts"
@@ -46,7 +43,6 @@
       "@oms-frontend/api/order-data-access": [
         "libs/openapi/order-data-access/src/index.ts"
       ],
-
       "@oms-frontend/product": ["libs/product/product-feature/src/index.ts"],
       "@oms-frontend/product-data-access": [
         "libs/product/product-data-access/src/index.ts"
@@ -54,7 +50,6 @@
       "@oms-frontend/api/product-data-access": [
         "libs/openapi/product-data-access/src/index.ts"
       ],
-
       "@oms-frontend/shared": ["libs/shared/src/index.ts"],
       "@oms-frontend/models": ["libs/models/src/index.ts"]
     }

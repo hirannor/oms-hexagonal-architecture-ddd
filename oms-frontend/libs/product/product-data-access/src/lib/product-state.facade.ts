@@ -1,7 +1,7 @@
 ﻿import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ProductState, Product } from '@oms-frontend/models';
+import { Product, ProductState } from '@oms-frontend/models';
 import { ProductLoadActions } from './product.actions';
 import { selectAllProducts, selectProductLoading } from './product.selector';
 

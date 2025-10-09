@@ -37,8 +37,8 @@ import {
 import {
   BasketApiService,
   BasketEffects,
-  BasketStateFacade,
   basketReducer,
+  BasketStateFacade,
 } from '@oms-frontend/basket-data-access';
 import {
   ProductApiService,
@@ -48,14 +48,14 @@ import {
 import {
   AuthApiService,
   AuthEffects,
-  AuthStateFacade,
   authReducer,
+  AuthStateFacade,
 } from '@oms-frontend/auth-data-access';
 import {
   CustomerApiService,
   CustomerEffects,
-  CustomerStateFacade,
   customerReducer,
+  CustomerStateFacade,
 } from '@oms-frontend/customer-data-access';
 
 export const environment = {

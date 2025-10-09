@@ -2,10 +2,10 @@
 import { map } from 'rxjs';
 import { AuthApi as GeneratedAuthApi } from '@oms-frontend/api/auth-data-access';
 import {
+  AuthApi,
+  AuthResult,
   LoginPayload,
   RegisterPayload,
-  AuthResult,
-  AuthApi,
 } from '@oms-frontend/models';
 import { AuthMapper } from './auth.mapper';
 

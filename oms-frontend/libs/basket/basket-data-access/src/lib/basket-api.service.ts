@@ -1,6 +1,6 @@
 ﻿import { inject, Injectable } from '@angular/core';
 import { BasketApi as GeneratedBasketApi } from '@oms-frontend/api/basket-data-access';
-import { BasketItem, BasketApi } from '@oms-frontend/models';
+import { BasketApi, BasketItem } from '@oms-frontend/models';
 import { map, switchMap } from 'rxjs';
 import { BasketMapper } from './basket.mapper';
 

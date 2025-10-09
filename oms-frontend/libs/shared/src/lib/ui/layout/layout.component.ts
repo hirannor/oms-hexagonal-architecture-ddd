@@ -9,7 +9,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
 import { MenuItem } from 'primeng/api';
-import { AuthService, NotificationItem, NotificationService } from '../../core';
+import { NotificationItem, NotificationService } from '../../core';
 import { OverlayModule } from 'primeng/overlay';
 import { map, Observable } from 'rxjs';
 import { BadgeDirective } from 'primeng/badge';
