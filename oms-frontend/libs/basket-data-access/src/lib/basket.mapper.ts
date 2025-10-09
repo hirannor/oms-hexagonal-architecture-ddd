@@ -13,7 +13,6 @@ import {
 
 export class BasketMapper {
   static mapToBasket(model: BasketModel): Basket {
-    console.log('Received basketModel to map Basket', model);
     return {
       id: model.id,
       customerId: model.customerId,
@@ -40,7 +39,6 @@ export class BasketMapper {
   }
 
   private static mapToBasketItem(model: BasketItemModel): BasketItem {
-    console.log('single item', model);
     return {
       productId: model.productId,
       name: model.name,
