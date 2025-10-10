@@ -43,6 +43,8 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   readonly searchControl = new FormControl('');
 
+  private static readonly PRODUCTS_PATH = '/products';
+
   ngOnInit(): void {
     this.searchControl.valueChanges
       .pipe(
@@ -60,7 +62,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         ),
         takeUntil(this.destroy$)
       )
-      .subscribe(() => this.clearSearch(false));
+      .subscribe((event) => {
+        if (!event.url.startsWith(SearchBarComponent.PRODUCTS_PATH)) {
+          this.clearSearch(false);
+        }
+      });
   }
 
   ngOnDestroy(): void {
@@ -70,7 +76,17 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   onSearch(term: string): void {
     const trimmed = term.trim();
+    if (!trimmed) return;
+
     this.searchTerm.emit(trimmed);
+
+    const currentUrl = this.router.url;
+    if (!currentUrl.startsWith(SearchBarComponent.PRODUCTS_PATH)) {
+      this.router.navigate([SearchBarComponent.PRODUCTS_PATH], {
+        queryParams: { search: trimmed },
+      });
+    }
+
     this.productState.loadProducts(undefined, trimmed);
   }
 
