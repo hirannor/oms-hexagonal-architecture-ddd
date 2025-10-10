@@ -37,22 +37,23 @@ The architecture enforces clear separation through **ArchUnit** tests and follow
 
 ### Frontend — Nx Modular Architecture
 
-The Angular workspace mirrors backend boundaries:
+The Angular workspace mirrors backend bounded contexts and enforces clear separation of concerns:
 
-- `libs/<domain>/<*-feature>` → Feature-specific UI modules (e.g., order, customer, product)  
-  Contain routed feature shells, presentation components, and feature-specific UIs.
+- `libs/<domain>/<*-feature>` → **Feature-specific UI modules**  
+  Contain routed feature shells, smart/presentational components, and domain-focused UI implementations.
 
-- `libs/<domain>/*-data-access` → State management and domain data layer  
-  Includes NgRx store, actions, reducers, selectors, effects, facades, and domain ports/adapters.
+- `libs/<domain>/*-data-access` → **State management and domain data layer**  
+  Encapsulates NgRx store, actions, reducers, selectors, effects, facades, and a service layer.  
+  Effects use the service layer, which wraps the generated OpenAPI client and maps API responses into domain models.
 
-- `libs/openapi/*-data-access` → Generated OpenAPI clients for backend APIs  
-  Auto-generated TypeScript clients with raw API services and models.
+- `libs/openapi/*-data-access` → **Generated OpenAPI clients for backend APIs**  
+  Auto-generated TypeScript clients containing raw API methods and models (no business logic).
 
-- `libs/shared-*` → Reusable shared libraries  
-  Provide cross-cutting UI components, interceptors, guards, and utilities.
+- `libs/shared` → **Reusable shared infrastructure and UI**  
+  Provides cross-cutting components, interceptors, guards, layout, and common utilities.
 
-- `libs/models` → Core domain model types and interfaces  
-  Define the data structures shared across all domains and layers.
+- `libs/models` → **Core domain model definitions**  
+  Contains type-safe interfaces and value objects shared across all frontend libraries.
 
 ---
 

@@ -25,23 +25,17 @@ leveraging **NgRx** for state management, **PrimeNG** for UI, and **clean archit
 
 ## 🧱 Core Libraries Overview
 
-| Project / Library                | Description                                                                                                                            |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **@oms-frontend/shared**         | Core shared utilities, interceptors, layout, guards, and reusable UI components.                                                       |
-| **@oms-frontend/models**         | Domain representation models shared across all frontend projects.                                                                      |
-| **@oms-frontend/openapi-\***     | Auto-generated OpenAPI REST clients for each domain (e.g. `api-auth-data-access`, `api-order-data-access`, `api-product-data-access`). |
-| **@oms-frontend/\*-data-access** | NgRx store, effects, and facades for each bounded context (e.g. `basket-data-access`, `order-data-access`, etc.).                      |
-| **@oms-frontend/order**          | Feature & UI libs for order management                                                                                                 |
-| **@oms-frontend/basket**         | Feature & UI libs for basket and checkout                                                                                              |
-| **@oms-frontend/customer**       | Feature & UI libs for customer profiles                                                                                                |
-| **@oms-frontend/product**        | Feature & UI libs for product listing & details                                                                                        |
-| **@oms-frontend/auth**           | Feature & UI libs for authentication and login                                                                                         |
-
-## 🧩 Architecture Notes
-
-Each domain (Order, Basket, Customer, Product, Auth) follows a **feature-driven modular structure** under `libs/`,  
-separating **UI**, **feature logic**.  
-This ensures **strong encapsulation** and **independent evolution** of each module.
+| Project / Library                                | Description                                                                                                                                                                                          |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **@oms-frontend/shared**                         | Core shared utilities, interceptors, layout, guards, and reusable UI components.                                                                                                                     |
+| **@oms-frontend/models**                         | Domain representation models shared across all frontend projects.                                                                                                                                    |
+| **@oms-frontend/api/api-`<domain>`-data-access** | Auto-generated OpenAPI REST clients for each domain (e.g. `api-auth-data-access`, `api-order-data-access`, `api-product-data-access`).                                                               |
+| **@oms-frontend/`<domain>`-data-access**         | Contains the NgRx store, effects, facade, and service layer for each bounded context. Effects use the service layer, which wraps the generated OpenAPI client and maps responses into domain models. |
+| **@oms-frontend/order**                          | Feature & UI libs for order management.                                                                                                                                                              |
+| **@oms-frontend/basket**                         | Feature & UI libs for basket and checkout.                                                                                                                                                           |
+| **@oms-frontend/customer**                       | Feature & UI libs for customer profiles.                                                                                                                                                             |
+| **@oms-frontend/product**                        | Feature & UI libs for product listing & details.                                                                                                                                                     |
+| **@oms-frontend/auth**                           | Feature & UI libs for authentication and login.                                                                                                                                                      |
 
 ---
 
