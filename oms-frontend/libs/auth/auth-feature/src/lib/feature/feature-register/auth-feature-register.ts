@@ -4,7 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { AUTH_STATE } from '@oms-frontend/models';
+import { AUTH_STATE, RegisterPayload } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-auth-feature-register',
@@ -40,6 +40,11 @@ export class AuthFeatureRegister {
     const { email, password, confirmPassword } = this.registerForm.value;
     if (password !== confirmPassword) return;
 
-    this.auth.register(email!, password!);
+    const payload: RegisterPayload = {
+      email: email!,
+      password: password!,
+    };
+
+    this.auth.register(payload);
   }
 }

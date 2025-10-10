@@ -66,6 +66,6 @@ export class BasketCartFeature implements OnInit {
   }
 
   onConfirmOrder(basket: Basket): void {
-    this.orders.createFromBasket(basket);
+    this.orders.createOrderFrom(basket);
   }
 }

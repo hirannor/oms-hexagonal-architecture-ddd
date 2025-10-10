@@ -1,6 +1,11 @@
 ﻿import { createReducer, on } from '@ngrx/store';
 import { AuthState } from './auth.models';
-import { AuthActions } from './auth.actions';
+import {
+  AuthLoginActions,
+  AuthRegisterActions,
+  AuthRefreshActions,
+  AuthMiscActions,
+} from './auth.actions';
 
 export const initialState: AuthState = {
   user: null,
@@ -14,83 +19,79 @@ export const initialState: AuthState = {
 export const authReducer = createReducer(
   initialState,
 
-  on(AuthActions.login, (state) => ({
+  on(AuthLoginActions.request, (state) => ({
     ...state,
     loading: true,
     error: null,
     success: false,
   })),
 
-  on(
-    AuthActions.loginSuccess,
-    (state, { email, accessToken, refreshToken }) => ({
-      ...state,
-      user: { email },
-      accessToken,
-      refreshToken,
-      loading: false,
-      error: null,
-      success: true,
-    })
-  ),
-
-  on(AuthActions.loginFailure, (state, { error }) => ({
+  on(AuthLoginActions.success, (state, { result }) => ({
     ...state,
-    loading: false,
-    error,
-    success: false,
-  })),
-
-  on(AuthActions.register, (state) => ({
-    ...state,
-    loading: true,
-    error: null,
-    success: false,
-  })),
-
-  on(AuthActions.registerSuccess, (state, { email }) => ({
-    ...state,
-    user: { email },
+    user: { email: result.email },
+    accessToken: result.accessToken,
+    refreshToken: result.refreshToken,
     loading: false,
     error: null,
     success: true,
   })),
 
-  on(AuthActions.registerFailure, (state, { error }) => ({
+  on(AuthLoginActions.failure, (state, { error }) => ({
     ...state,
     loading: false,
     error,
     success: false,
   })),
 
-  on(AuthActions.refreshToken, (state) => ({
+  on(AuthRegisterActions.request, (state) => ({
+    ...state,
+    loading: true,
+    error: null,
+    success: false,
+  })),
+
+  on(AuthRegisterActions.success, (state, { result }) => ({
+    ...state,
+    user: { email: result.email },
+    accessToken: result.accessToken,
+    refreshToken: result.refreshToken,
+    loading: false,
+    error: null,
+    success: true,
+  })),
+
+  on(AuthRegisterActions.failure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+    success: false,
+  })),
+
+  on(AuthRefreshActions.request, (state) => ({
     ...state,
     loading: true,
     error: null,
   })),
 
-  on(
-    AuthActions.refreshTokenSuccess,
-    (state, { accessToken, refreshToken }) => ({
-      ...state,
-      accessToken,
-      refreshToken,
-      loading: false,
-      error: null,
-    })
-  ),
+  on(AuthRefreshActions.success, (state, { accessToken, refreshToken }) => ({
+    ...state,
+    accessToken,
+    refreshToken,
+    loading: false,
+    error: null,
+  })),
 
-  on(AuthActions.refreshTokenFailure, (state, { error }) => ({
+  on(AuthRefreshActions.failure, (state, { error }) => ({
     ...state,
     loading: false,
     error,
   })),
 
-  on(AuthActions.clearMessages, (state) => ({
+  on(AuthMiscActions.clearMessages, (state) => ({
     ...state,
     error: null,
     success: false,
   })),
 
-  on(AuthActions.logout, () => initialState)
+  on(AuthMiscActions.logout, () => initialState)
 );

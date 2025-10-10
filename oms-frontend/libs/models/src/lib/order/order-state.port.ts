@@ -10,9 +10,9 @@ export interface OrderState {
 
   loadOrders(): void;
 
-  loadOrderById(orderId: string): void;
+  loadOrderBy(orderId: string): void;
 
-  createFromBasket(basket: Basket): void;
+  createOrderFrom(basket: Basket): void;
 
   pay(orderId: string): void;
 }

@@ -3,8 +3,13 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '@oms-frontend/shared';
 import { Observable } from 'rxjs';
-import { AuthState } from '@oms-frontend/models';
-import { AuthActions } from './auth.actions';
+import { AuthState, LoginPayload, RegisterPayload } from '@oms-frontend/models';
+import {
+  AuthLoginActions,
+  AuthRegisterActions,
+  AuthRefreshActions,
+  AuthMiscActions,
+} from './auth.actions';
 import {
   selectAuthError,
   selectAuthLoading,
@@ -22,19 +27,23 @@ export class AuthStateFacade implements AuthState {
     this.store.select(selectAuthError);
   readonly success$: Observable<boolean> = this.store.select(selectAuthSuccess);
 
-  register(email: string, password: string): void {
-    this.store.dispatch(AuthActions.register({ email, password }));
+  register(payload: RegisterPayload): void {
+    this.store.dispatch(AuthRegisterActions.request({ payload }));
   }
 
-  login(email: string, password: string): void {
-    this.store.dispatch(AuthActions.login({ email, password }));
+  login(payload: LoginPayload): void {
+    this.store.dispatch(AuthLoginActions.request({ payload }));
   }
 
   logout(): void {
-    this.store.dispatch(AuthActions.logout());
+    this.store.dispatch(AuthMiscActions.logout());
   }
 
   clearMessages(): void {
-    this.store.dispatch(AuthActions.clearMessages());
+    this.store.dispatch(AuthMiscActions.clearMessages());
+  }
+
+  refreshTokens(): void {
+    this.store.dispatch(AuthRefreshActions.request());
   }
 }

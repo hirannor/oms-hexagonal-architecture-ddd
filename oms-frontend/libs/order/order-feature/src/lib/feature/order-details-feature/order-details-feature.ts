@@ -21,7 +21,7 @@ export class OrderDetailsFeature implements OnInit {
   ngOnInit(): void {
     const orderId = this.route.snapshot.paramMap.get('orderId');
     if (orderId) {
-      this.orders.loadOrderById(orderId);
+      this.orders.loadOrderBy(orderId);
     }
   }
 

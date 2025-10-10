@@ -27,15 +27,13 @@ export class OrderStateFacade implements OrderState {
     this.store.dispatch(OrderLoadActions.request());
   }
 
-  loadOrderById(orderId: string): void {
+  loadOrderBy(orderId: string): void {
     this.store.dispatch(OrderDetailsActions.request({ orderId }));
   }
 
-  createFromBasket(basket: Basket): void {
+  createOrderFrom(basket: Basket): void {
     const customerId = this.auth.extractCustomerId();
     if (!customerId) return;
-
-    console.log('sad');
 
     const products: OrderItem[] = basket.items.map((item) => ({
       productId: item.productId,

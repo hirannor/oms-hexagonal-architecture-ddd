@@ -4,7 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { AUTH_STATE } from '@oms-frontend/models';
+import { AUTH_STATE, LoginPayload } from '@oms-frontend/models';
 
 @Component({
   selector: 'lib-auth-feature-login',
@@ -40,8 +40,13 @@ export class AuthFeatureLogin {
     }
 
     const { email, password } = this.loginForm.value;
+
     if (email && password) {
-      this.auth.login(email, password);
+      const payload: LoginPayload = {
+        email: email!,
+        password: password!,
+      };
+      this.auth.login(payload);
     }
   }
 }
