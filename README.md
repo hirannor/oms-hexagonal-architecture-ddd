@@ -39,23 +39,29 @@ The architecture enforces clear separation through **ArchUnit** tests and follow
 
 The Angular workspace mirrors backend bounded contexts and enforces clear separation of concerns:
 
-- `libs/<domain>/<*-feature>` → **Feature-specific UI modules**  
-  Contain routed feature shells, smart/presentational components, and domain-focused UI implementations.
+- `libs/<domain>/<domain>-feature` → **Feature-specific UI modules**  
+  Contain routed feature shells, smart/presentational components, and domain-focused UI implementations.  
+  **e.g.** `libs/product/product-feature`
 
-- `libs/<domain>/*-data-access` → **State management and domain data layer**  
+
+- `libs/<domain>/<domain>-data-access` → **State management and domain data layer**  
   Encapsulates NgRx store, actions, reducers, selectors, effects, facades, and a service layer.  
-  Effects use the service layer, which wraps the generated OpenAPI client and maps API responses into domain models.
+  Effects use the service layer, which wraps the generated OpenAPI client and maps API responses into domain models.  
+  **e.g.** `libs/product/product-data-access`
 
-- `libs/openapi/*-data-access` → **Generated OpenAPI clients for backend APIs**  
-  Auto-generated TypeScript clients containing raw API methods and models (no business logic).
+
+- `libs/openapi/<domain>-data-access` → **Generated OpenAPI clients for backend APIs**  
+  Auto-generated TypeScript clients containing raw API methods and models (no business logic).  
+  **e.g.** `libs/openapi/product-data-access`
+
 
 - `libs/shared` → **Reusable shared infrastructure and UI**  
   Provides cross-cutting components, interceptors, guards, layout, and common utilities.
 
+
 - `libs/models` → **Core domain model definitions**  
   Contains type-safe interfaces and value objects shared across all frontend libraries.
 
----
 
 ## 🧩 Domain Model
 
