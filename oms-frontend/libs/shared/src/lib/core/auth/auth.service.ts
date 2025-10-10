@@ -2,11 +2,13 @@
 import { AuthApi } from '@oms-frontend/api/auth-data-access';
 import { map, Observable, tap } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly api = inject(AuthApi);
   private readonly tokenStorage = inject(TokenStorageService);
+  private readonly router = inject(Router);
 
   saveTokens(accessToken: string, refreshToken: string): void {
     this.tokenStorage.saveTokens(accessToken, refreshToken);
@@ -18,10 +20,6 @@ export class AuthService {
 
   retrieveRefreshToken(): string | null {
     return this.tokenStorage.retrieveRefreshToken();
-  }
-
-  clearTokens(): void {
-    this.tokenStorage.clearTokens();
   }
 
   extractEmailAddress(): string | null {
@@ -64,6 +62,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.clearTokens();
+    this.tokenStorage.clearTokens();
+    this.router.navigate(['/login']);
   }
 }
