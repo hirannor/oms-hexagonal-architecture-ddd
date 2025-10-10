@@ -1,0 +1,45 @@
+.header-search {
+  flex: 1;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    background: transparent;
+    box-shadow: none;
+
+    &:focus,
+    &:active {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    color: var(--p-primary-500, #2f855a);
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: var(--p-primary-100, #d1fae5);
+    }
+  }
+
+  .clear-btn {
+    min-width: 42px;
+  }
+}

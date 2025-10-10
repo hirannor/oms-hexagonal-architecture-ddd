@@ -5,15 +5,15 @@ import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import {
   AUTH_API,
   AUTH_STATE,
-  LoginPayload,
   AuthResult,
+  LoginPayload,
 } from '@oms-frontend/models';
 import { AuthService, ProblemDetailsMapper } from '@oms-frontend/shared';
 import {
   AuthLoginActions,
-  AuthRegisterActions,
-  AuthRefreshActions,
   AuthMiscActions,
+  AuthRefreshActions,
+  AuthRegisterActions,
 } from './auth.actions';
 
 @Injectable()

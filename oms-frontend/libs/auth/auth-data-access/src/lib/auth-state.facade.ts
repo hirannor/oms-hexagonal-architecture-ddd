@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 import { AuthState, LoginPayload, RegisterPayload } from '@oms-frontend/models';
 import {
   AuthLoginActions,
-  AuthRegisterActions,
-  AuthRefreshActions,
   AuthMiscActions,
+  AuthRefreshActions,
+  AuthRegisterActions,
 } from './auth.actions';
 import {
   selectAuthError,

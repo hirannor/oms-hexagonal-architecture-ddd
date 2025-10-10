@@ -24,6 +24,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 @RestController
 @RequestMapping("/api")
@@ -32,25 +33,13 @@ class ProductController implements ProductsApi {
 
     private final Function<CreateProductModel, CreateProduct> mapCreateProductModelToCommand;
     private final Function<Product, ProductModel> mapProductToModel;
-
     private final ProductCreation productCreator;
     private final ProductDisplaying products;
 
     @Autowired
-    ProductController(final ProductCreation productCreator,
-                      final ProductDisplaying products) {
+    ProductController(final ProductCreation productCreator, final ProductDisplaying products) {
         this.mapCreateProductModelToCommand = new CreateProductModelToCommandMapper();
         this.mapProductToModel = new ProductToModelMapper();
-        this.productCreator = productCreator;
-        this.products = products;
-    }
-
-    ProductController(final Function<CreateProductModel, CreateProduct> mapCreateProductModelToCommand,
-                      final Function<Product, ProductModel> mapProductToModel,
-                      final ProductCreation productCreator,
-                      final ProductDisplaying products) {
-        this.mapProductToModel = mapProductToModel;
-        this.mapCreateProductModelToCommand = mapCreateProductModelToCommand;
         this.productCreator = productCreator;
         this.products = products;
     }
@@ -69,17 +58,20 @@ class ProductController implements ProductsApi {
         return ResponseEntity.created(location).build();
     }
 
-
     @Override
-    public ResponseEntity<List<ProductModel>> displayAll(Optional<String> category, Optional<String> name) {
-        final Optional<ProductCategory> productCategory = category
-                .map(String::toUpperCase)
-                .map(mapToProductModel()
-                        .andThen(mapProductCategoryModelToDomain()));
+    public ResponseEntity<List<ProductModel>> displayAll(final Optional<String> category,
+                                                         final Optional<String> search) {
+
+        final Optional<ProductCategory> maybeCategory = category
+                .map(ProductController::mapToProductCategory);
+
+        final Optional<String> maybeName = search
+                .filter(isNotBlank())
+                .map(String::trim);
 
         final FilterCriteria criteria = new FilterCriteria.Builder()
-                .name(name)
-                .category(productCategory)
+                .category(maybeCategory)
+                .name(maybeName)
                 .assemble();
 
         final List<ProductModel> products = this.products.displayAll(criteria)
@@ -90,25 +82,21 @@ class ProductController implements ProductsApi {
         return ResponseEntity.ok(products);
     }
 
-
     @Override
     public ResponseEntity<ProductModel> displayBy(final String id) {
         return products.displayBy(ProductId.from(id))
-                .map(mapProductToModel
-                        .andThen(mapToProductModelResponseEntity()))
+                .map(mapProductToModel.andThen(ResponseEntity::ok))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    private Function<String, ProductCategoryModel> mapToProductModel() {
-        return ProductCategoryModel::fromValue;
+    private Predicate<String> isNotBlank() {
+        return value -> !value.isBlank();
     }
 
-    private Function<ProductModel, ResponseEntity<ProductModel>> mapToProductModelResponseEntity() {
-        return ResponseEntity::ok;
-    }
+    private static ProductCategory mapToProductCategory(final String rawCategory) {
+        final ProductCategoryModel model = ProductCategoryModel.fromValue(rawCategory.toUpperCase());
 
-    private Function<ProductCategoryModel, ProductCategory> mapProductCategoryModelToDomain() {
-        return productCategoryModel -> switch (productCategoryModel) {
+        return switch (model) {
             case DISPLAY -> ProductCategory.DISPLAY;
             case ACCESSORIES -> ProductCategory.ACCESSORIES;
             case STORAGE -> ProductCategory.STORAGE;

@@ -2,9 +2,9 @@
 import { AuthState } from './auth.models';
 import {
   AuthLoginActions,
-  AuthRegisterActions,
-  AuthRefreshActions,
   AuthMiscActions,
+  AuthRefreshActions,
+  AuthRegisterActions,
 } from './auth.actions';
 
 export const initialState: AuthState = {

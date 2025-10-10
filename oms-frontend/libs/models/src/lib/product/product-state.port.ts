@@ -7,7 +7,7 @@ export interface ProductState {
 
   readonly loading$: Observable<boolean>;
 
-  loadProducts(category?: string): void;
+  loadProducts(category?: string, search?: string): void;
 }
 
 export const PRODUCT_STATE = new InjectionToken<ProductState>('PRODUCT_STATE');

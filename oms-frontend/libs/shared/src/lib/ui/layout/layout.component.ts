@@ -13,6 +13,7 @@ import { NotificationItem, NotificationService } from '../../core';
 import { OverlayModule } from 'primeng/overlay';
 import { map, Observable } from 'rxjs';
 import { BadgeDirective } from 'primeng/badge';
+import { SearchBarComponent } from '../searchbar/search-bar.component';
 
 @Component({
   selector: 'lib-layout',
@@ -28,6 +29,7 @@ import { BadgeDirective } from 'primeng/badge';
     TooltipModule,
     OverlayModule,
     BadgeDirective,
+    SearchBarComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',

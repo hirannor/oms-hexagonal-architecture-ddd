@@ -1,0 +1,33 @@
+﻿<div class="header-search">
+  <input
+    type="text"
+    pInputText
+    [formControl]="searchControl"
+    placeholder="Search products..."
+    (keyup.enter)="onSubmit()"
+  />
+
+  <button
+    pButton
+    type="button"
+    rounded="true"
+    pTooltip="Search"
+    tooltipPosition="bottom"
+    (click)="onSubmit()"
+  >
+    <span class="pi pi-search" pButtonIcon></span>
+  </button>
+
+  <button
+    pButton
+    type="button"
+    rounded="true"
+    pTooltip="Clear"
+    tooltipPosition="bottom"
+    class="p-button-text clear-btn"
+    [style.visibility]="searchControl.value ? 'visible' : 'hidden'"
+    (click)="clearSearch()"
+  >
+    <span class="pi pi-times" pButtonIcon></span>
+  </button>
+</div>

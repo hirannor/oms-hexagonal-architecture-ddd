@@ -32,6 +32,9 @@ final class ProductNameMatcher implements Specification<ProductModel> {
             final CriteriaQuery<?> query,
             final CriteriaBuilder cb
     ) {
-        return cb.equal(root.get(ProductModel_.NAME), productNameToMatchWith);
+        return cb.like(
+                cb.lower(root.get(ProductModel_.NAME)),
+                "%" + productNameToMatchWith.toLowerCase() + "%"
+        );
     }
 }

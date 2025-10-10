@@ -1,8 +1,8 @@
 ﻿import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import {
+  AuthResult,
   LoginPayload,
   RegisterPayload,
-  AuthResult,
 } from '@oms-frontend/models';
 
 export const AuthLoginActions = createActionGroup({

@@ -161,13 +161,13 @@ export class ProductApi extends BaseService {
   /**
    * List all products
    * @param category
-   * @param name
+   * @param search
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public displayAll(
     category?: string,
-    name?: string,
+    search?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -178,7 +178,7 @@ export class ProductApi extends BaseService {
   ): Observable<Array<ProductModel>>;
   public displayAll(
     category?: string,
-    name?: string,
+    search?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -189,7 +189,7 @@ export class ProductApi extends BaseService {
   ): Observable<HttpResponse<Array<ProductModel>>>;
   public displayAll(
     category?: string,
-    name?: string,
+    search?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -200,7 +200,7 @@ export class ProductApi extends BaseService {
   ): Observable<HttpEvent<Array<ProductModel>>>;
   public displayAll(
     category?: string,
-    name?: string,
+    search?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
@@ -217,8 +217,8 @@ export class ProductApi extends BaseService {
     );
     localVarQueryParameters = this.addToHttpParams(
       localVarQueryParameters,
-      <any>name,
-      'name'
+      <any>search,
+      'search'
     );
 
     let localVarHeaders = this.defaultHeaders;

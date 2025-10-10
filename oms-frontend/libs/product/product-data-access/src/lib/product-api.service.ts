@@ -16,7 +16,7 @@ export class ProductApiService implements ProductApi {
 
   displayAll(category?: string, search?: string) {
     return this.api
-      .displayAll(category)
+      .displayAll(category, search)
       .pipe(
         map((res) => res.map((model) => ProductMapper.mapToProduct(model)))
       );

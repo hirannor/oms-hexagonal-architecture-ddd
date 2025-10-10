@@ -14,7 +14,7 @@ export class ProductStateFacade implements ProductState {
   readonly loading$: Observable<boolean> =
     this.store.select(selectProductLoading);
 
-  loadProducts(category?: string): void {
-    this.store.dispatch(ProductLoadActions.request({ category }));
+  loadProducts(category?: string, search?: string): void {
+    this.store.dispatch(ProductLoadActions.request({ category, search }));
   }
 }

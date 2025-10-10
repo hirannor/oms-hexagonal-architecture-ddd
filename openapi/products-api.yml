@@ -19,7 +19,7 @@ paths:
           required: false
           schema:
             type: string
-        - name: name
+        - name: search
           in: query
           required: false
           schema:
